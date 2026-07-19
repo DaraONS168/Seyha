@@ -1,0 +1,2 @@
+import Modal from './Modal'
+export default function ConfirmDialog({ open, onClose, onConfirm, title = 'បញ្ជាក់សកម្មភាព', message, loading }) { return <Modal open={open} onClose={onClose} title={title} size="max-w-md"><p className="mb-6 text-sm text-slate-600">{message}</p><div className="flex justify-end gap-3"><button className="btn-secondary" onClick={onClose}>បោះបង់</button><button className="btn-danger" disabled={loading} onClick={onConfirm}>{loading ? 'កំពុងលុប...' : 'បញ្ជាក់'}</button></div></Modal> }

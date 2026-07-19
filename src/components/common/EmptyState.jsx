@@ -1,0 +1,2 @@
+import { Inbox } from 'lucide-react'
+export default function EmptyState({ title = 'មិនមានទិន្នន័យ', description = 'ទិន្នន័យនឹងបង្ហាញនៅទីនេះ។' }) { return <div className="flex min-h-48 flex-col items-center justify-center p-8 text-center"><div className="mb-3 rounded-full bg-slate-100 p-3"><Inbox className="text-slate-400"/></div><p className="font-semibold">{title}</p><p className="mt-1 text-sm text-slate-500">{description}</p></div> }
