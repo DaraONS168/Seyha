@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
-import { Bell, ChartNoAxesCombined, ChevronDown, History, LayoutDashboard, LogOut, Menu, PhoneCall, Search, Settings, Users, UserRound, X } from 'lucide-react'
+import { Bell, CalendarRange, ChartNoAxesCombined, ChevronDown, History, LayoutDashboard, LogOut, Menu, PhoneCall, Search, Settings, Users, UserRound, X } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import { useNotifications } from '../hooks/useNotifications'
 
 const nav = [
   ['/', 'ផ្ទាំងគ្រប់គ្រង', LayoutDashboard], ['/customers', 'អតិថិជន', Users], ['/follow-ups', 'Follow Up', PhoneCall],
   ['/calls', 'ប្រវត្តិការហៅ', History], ['/reports', 'របាយការណ៍', ChartNoAxesCombined], ['/sales', 'ក្រុមលក់', UserRound],
+  ['/visit-plans', 'ផែនការចុះស្រុក', CalendarRange],
   ['/notifications', 'ការជូនដំណឹង', Bell], ['/settings', 'ការកំណត់', Settings],
 ]
 

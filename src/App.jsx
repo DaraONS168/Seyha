@@ -15,6 +15,7 @@ const ReportsPage = lazy(() => import('./pages/ReportsPage'))
 const SalesTeamPage = lazy(() => import('./pages/SalesTeamPage'))
 const NotificationsPage = lazy(() => import('./pages/NotificationsPage'))
 const SettingsPage = lazy(() => import('./pages/SettingsPage'))
+const VisitPlansPage = lazy(() => import('./pages/VisitPlansPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="customers" element={<CustomersPage/>}/>
         <Route path="customers/:id" element={<CustomerDetailPage/>}/>
         <Route path="follow-ups" element={<FollowUpsPage/>}/>
+        <Route path="visit-plans" element={<VisitPlansPage/>}/>
         <Route path="calls" element={<CallHistoryPage/>}/>
         <Route path="reports" element={<ReportsPage/>}/>
         <Route path="sales" element={<AdminRoute><SalesTeamPage/></AdminRoute>}/>
