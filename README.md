@@ -1,154 +1,198 @@
 # Customer Follow Up Management System
 
-ប្រព័ន្ធ CRM responsive សម្រាប់ក្រុម Sales កត់ត្រាអតិថិជន ការហៅ និង Follow Up។ UI ប្រើភាសាខ្មែរជាចម្បង និងភ្ជាប់ទិន្នន័យដោយផ្ទាល់ជាមួយ Supabase។
+Responsive CRM សម្រាប់ក្រុម Sales គ្រប់គ្រងអតិថិជន ការហៅ Follow Up ផែនការចុះសួរសុខទុក្ខ ការជូនដំណឹង របាយការណ៍ និងសិទ្ធិអ្នកប្រើប្រាស់។ UI ប្រើភាសាខ្មែរជាចម្បង ហើយភ្ជាប់ទិន្នន័យជាមួយ Supabase។
 
 ## Technology
 
 - React 18 + Vite 6
 - Tailwind CSS 3
-- Supabase Database, Auth និង Row Level Security
-- Lucide React, date-fns, Recharts, SheetJS និង Sonner
+- Supabase Database, Auth, Edge Functions និង Row Level Security
+- React Router, Lucide React, date-fns, Recharts និង Sonner
 - Browser Notification API
 
-## មុខងារសំខាន់
+## Main Features
 
-- Username/password authentication, persistent session, protected routes និង role Admin/Sales
-- Customer CRUD, search/filter/sort/pagination, phone validation និង duplicate warning
-- Call history timeline; RPC មួយកត់ត្រាការហៅ, update status និងបង្កើត follow-up ជា transaction
-- Today/overdue/upcoming/completed follow-ups ជាមួយ complete, reschedule និង click-to-call
-- Database-backed notification center និង browser notifications មិនផ្ញើស្ទួន
-- Dashboard cards/charts, recent activity និង sales performance
-- Customer report filters និង CSV/Excel/print export
-- Admin-only sales performance និង company settings
-- PostgreSQL constraints, indexes, triggers, RLS និង seed data
+- Username/password authentication with persistent sessions and protected routes
+- Admin, manager, sales, user, custom roles and permission-based navigation
+- Customer CRUD with search, filters, sorting, pagination, phone validation and duplicate warnings
+- Call records with status updates, follow-up creation and call history timelines
+- Follow-up queues for today, overdue, upcoming and completed work
+- Visit planning for field activity and route/schedule tracking
+- Database-backed notification center plus browser notifications
+- Dashboard metrics, charts, recent activity and sales performance
+- Reports with filters and export/print workflows
+- Admin tools for sales team, users, permissions, roles and company settings
+- PostgreSQL constraints, indexes, triggers, RLS policies and seed data
 
-## Folder structure
+## Project Structure
 
 ```text
 .
-├── supabase/
-│   ├── migrations/001_initial_schema.sql
-│   └── seed.sql
 ├── src/
 │   ├── components/
-│   │   ├── calls/CallRecordModal.jsx
-│   │   ├── common/{AdminRoute,Badge,ConfirmDialog,EmptyState,LoadingState,Modal,ProtectedRoute}.jsx
-│   │   └── customers/CustomerForm.jsx
-│   ├── contexts/AuthContext.jsx
-│   ├── hooks/useNotifications.js
-│   ├── layouts/DashboardLayout.jsx
+│   │   ├── calls/
+│   │   ├── common/
+│   │   └── customers/
+│   ├── contexts/
+│   ├── hooks/
+│   ├── layouts/
 │   ├── pages/
-│   │   ├── LoginPage.jsx
-│   │   ├── DashboardPage.jsx
-│   │   ├── CustomersPage.jsx
-│   │   ├── CustomerDetailPage.jsx
-│   │   ├── FollowUpsPage.jsx
-│   │   ├── CallHistoryPage.jsx
-│   │   ├── ReportsPage.jsx
-│   │   ├── SalesTeamPage.jsx
-│   │   ├── NotificationsPage.jsx
-│   │   ├── SettingsPage.jsx
-│   │   └── NotFoundPage.jsx
-│   ├── services/{supabase,customerService,callService,followUpService,dashboardService,reportService}.js
-│   ├── utils/{constants,formatters}.js
+│   ├── services/
+│   ├── utils/
 │   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
+├── scripts/
+│   ├── create-admin.mjs
+│   ├── create-sales-via-function.mjs
+│   ├── diagnose-notifications.mjs
+│   ├── verify-admin.mjs
+│   ├── verify-notifications.mjs
+│   ├── verify-sales-function.mjs
+│   └── verify-visit-plans.mjs
+├── supabase/
+│   ├── functions/
+│   │   ├── manage-sales/
+│   │   └── manage-users/
+│   ├── migrations/
+│   │   ├── 001_initial_schema.sql
+│   │   ├── 002_bootstrap_demo_admin.sql
+│   │   ├── 003_visit_planning.sql
+│   │   ├── 004_improve_notifications.sql
+│   │   ├── 005_username_auth.sql
+│   │   ├── 006_user_roles_permissions.sql
+│   │   ├── 007_permission_rls_and_user_audit.sql
+│   │   ├── 008_add_user_role.sql
+│   │   └── 009_custom_roles.sql
+│   └── seed.sql
 ├── .env.example
 ├── package.json
 ├── tailwind.config.js
 └── vite.config.js
 ```
 
-## 1. Installation
+## Requirements
 
-Requirements: Node.js 18.18+ (Node 20 LTS recommended), npm និង Supabase project។
+- Node.js 18.18+; Node 20 LTS is recommended
+- npm
+- Supabase project
+- Supabase CLI if you want to push migrations or deploy Edge Functions from the terminal
+
+## Installation
 
 ```bash
 npm install
 ```
 
-## 2. Supabase setup
+## Environment Variables
 
-1. បង្កើត project នៅ Supabase Dashboard។
-2. ចូល **SQL Editor** ហើយ run files ក្នុង `supabase/migrations/` តាមលំដាប់លេខ រួមទាំង `005_username_auth.sql`។
-3. ចូល **Authentication > Providers > Email** ហើយបើក Email provider។ សម្រាប់ demo អាចបិទ Confirm email ជាបណ្ដោះអាសន្ន។
-4. ចូល **Authentication > Users > Add user** ហើយបង្កើត Admin ដំបូង៖
-   - `admin@demo.com` / password ដែលមានសុវត្ថិភាព
-   - `sales@demo.com` / password ដែលមានសុវត្ថិភាព
-5. Run `supabase/seed.sql` ក្នុង SQL Editor។ Script នេះកំណត់ Admin/Sales roles និងបញ្ចូល sample customers។ Password មិនត្រូវបាន hard-code ក្នុង repository ទេ។
-
-បើប្រើ Supabase CLI៖
-
-```bash
-supabase link --project-ref YOUR_PROJECT_REF
-supabase db push
-```
-
-> `profiles` row បង្កើតដោយ trigger ពេលបង្កើត Auth user។ User ថ្មីមាន role `sales` ដោយ default។ មានតែ Admin ទេដែលគួរកែ role។
-
-## 3. Environment variables
-
-ចម្លង `.env.example` ទៅ `.env` ហើយដាក់ Project URL និង anon/publishable key ពី **Project Settings > API**៖
+Copy `.env.example` to `.env` and fill in the Supabase project values from Project Settings > API:
 
 ```env
 VITE_SUPABASE_URL=https://your-project.supabase.co
 VITE_SUPABASE_ANON_KEY=your-anon-key
 ```
 
-កុំដាក់ `service_role` key នៅ frontend ឬ environment variable ដែលចាប់ផ្ដើមដោយ `VITE_`។ Anon key មានសុវត្ថិភាពសម្រាប់ browser នៅពេល RLS ត្រូវបានបើកដូច migration នេះ។
+Do not expose the Supabase `service_role` key in frontend code or in any `VITE_` environment variable. The anon key is intended for browser use when RLS policies are configured correctly.
 
-## 4. Run locally
+## Supabase Setup
+
+Run the migrations in order:
+
+```bash
+supabase link --project-ref YOUR_PROJECT_REF
+supabase db push
+```
+
+Or run each SQL file manually in the Supabase SQL Editor from `001_initial_schema.sql` through `009_custom_roles.sql`.
+
+Then seed demo/reference data:
+
+```sql
+-- Run in Supabase SQL Editor
+-- File: supabase/seed.sql
+```
+
+For authentication, enable the Email provider in Supabase Authentication. During local development you can temporarily disable email confirmation.
+
+## Edge Functions
+
+This project includes Supabase Edge Functions for privileged user-management workflows:
+
+- `manage-sales`
+- `manage-users`
+
+Deploy them with the Supabase CLI:
+
+```bash
+supabase functions deploy manage-sales
+supabase functions deploy manage-users
+```
+
+These functions require server-side Supabase secrets in the Supabase project. Keep service keys in Supabase function secrets, not in frontend `.env` files.
+
+## Run Locally
 
 ```bash
 npm run dev
 ```
 
-បើក URL ដែល Vite បង្ហាញ (ជាទូទៅ `http://localhost:5173`)។ Admin ចាស់អាច login ដោយ email បានដដែល ហើយគណនី Sales ដែលបង្កើតពីទំព័រ **ក្រុម Sales** នឹង login ដោយ Username និងពាក្យសម្ងាត់។
+Open the URL printed by Vite, usually `http://localhost:5173`.
 
-## 5. Production build
+## Production Build
 
 ```bash
 npm run build
 npm run preview
 ```
 
-Output នៅក្នុង `dist/`។
+The production output is generated in `dist/`.
 
-## Notification behavior
+## Useful Commands
 
-ពេល app បើក វាហៅ database function `sync_due_notifications()`។ Function បង្កើត notifications តែ Follow Up ដែលដល់ពេល/ហួសពេល និងមិនមែន Converted/Cancelled។ `notified_at` ត្រូវបាន update បន្ទាប់ពី Browser Notification ផ្ញើ ដូច្នេះ refresh មិនផ្ញើស្ទួន។ User ត្រូវចុច **អនុញ្ញាត Browser Notification** ម្ដង។ Browser notifications ត្រូវការ HTTPS លើ production (localhost ត្រូវបានអនុញ្ញាតសម្រាប់ development)។
+```bash
+npm run dev      # Start the development server
+npm run build    # Create a production build
+npm run preview  # Preview the production build
+npm run lint     # Run ESLint
+```
 
-## Security model
+Project verification helpers:
 
-- Admin អាចអាន/កែទិន្នន័យទាំងអស់។
-- Sales អាចអាន និងកែតែ customers/follow-ups ដែល assign ឱ្យខ្លួន និងកត់ត្រាការហៅសម្រាប់ customers ទាំងនោះ។
-- រាល់ tables បានបើក RLS; UI role checks គ្រាន់តែសម្រាប់ UX ប៉ុណ្ណោះ។
-- Input ត្រូវបាន validate/sanitize នៅ client ហើយ database មាន constraints បន្ថែម។
-- Customer deletion ប្រើ confirmation dialog ហើយ related rows លុបតាម foreign-key cascade។
+```bash
+node scripts/verify-admin.mjs
+node scripts/verify-notifications.mjs
+node scripts/verify-sales-function.mjs
+node scripts/verify-visit-plans.mjs
+node scripts/diagnose-notifications.mjs
+```
+
+## Notification Behavior
+
+When the app runs, it syncs due and overdue follow-up notifications from the database. Browser notifications are sent only when the user grants permission, and production browser notifications require HTTPS. Localhost is allowed for development.
+
+## Security Model
+
+- Admin users can manage all data, users, permissions and settings.
+- Manager and Sales access is controlled through database-backed permissions.
+- Sales users should only work with assigned customers, follow-ups, calls and visit plans.
+- RLS policies protect data at the database layer; frontend permission checks are for user experience.
+- User and sales account creation is handled through privileged Supabase Edge Functions.
 
 ## Deployment
 
 ### Vercel
 
-1. Push repository ទៅ GitHub ហើយ Import project ក្នុង Vercel។
-2. Framework preset: **Vite**; Build command: `npm run build`; Output: `dist`។
-3. បន្ថែម `VITE_SUPABASE_URL` និង `VITE_SUPABASE_ANON_KEY` ក្នុង Project Environment Variables។
-4. Deploy ហើយបន្ថែម production URL ទៅ Supabase **Authentication > URL Configuration > Redirect URLs**។
+1. Import the repository into Vercel.
+2. Use the Vite framework preset.
+3. Set build command to `npm run build` and output directory to `dist`.
+4. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
+5. Add the production URL to Supabase Authentication > URL Configuration > Redirect URLs.
 
 ### Netlify
 
-Build command `npm run build`, publish directory `dist`, បន្ថែម environment variables ដូចខាងលើ។ សម្រាប់ client-side routes បង្កើត rewrite `/* /index.html 200` ក្នុង Netlify dashboard។
+Use build command `npm run build` and publish directory `dist`. Add the same environment variables. For client-side routing, configure a rewrite from `/*` to `/index.html` with status `200`.
 
 ### Static Apache/XAMPP
 
-Run `npm run build`, serve contents ក្នុង `dist`, បើក `mod_rewrite` ហើយ rewrite routes ដែលមិនមែន file ទៅ `index.html`។ Production ត្រូវប្រើ HTTPS ដើម្បីឱ្យ Browser Notification ដំណើរការ។
-
-## Useful commands
-
-```bash
-npm run dev      # development server
-npm run build    # production build
-npm run preview  # preview build
-npm run lint     # ESLint
-```
+Run `npm run build`, serve the `dist/` contents, enable `mod_rewrite`, and rewrite non-file routes to `index.html`. Use HTTPS in production so browser notifications can work.

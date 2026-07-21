@@ -20,6 +20,9 @@ const labelOf = (items, value) => items.find(([key]) => key === value)?.[1] || v
 const today = format(new Date(), 'yyyy-MM-dd')
 const emptyPlan = { title:'', start_date:today, end_date:today, province:'', district:'', assigned_to:'', purpose:'', transport:'', status:'planned', notes:'' }
 const emptyStop = { customer_id:'', commune:'', village:'', address:'', visit_at:'', stop_order:1, purpose:'', result:'', status:'pending', latitude:'', longitude:'', notes:'' }
+const planFields = ['title', 'start_date', 'end_date', 'province', 'district', 'assigned_to', 'purpose', 'transport', 'status', 'notes']
+const stopFields = ['customer_id', 'commune', 'village', 'address', 'visit_at', 'stop_order', 'purpose', 'result', 'status', 'latitude', 'longitude', 'notes']
+const pickFields = (source, fields) => Object.fromEntries(fields.map(field => [field, source[field]]))
 
 const planTiming = plan => {
   if (plan.status === 'completed') return { label:'បានបញ្ចប់', border:'border-l-green-500', text:'text-green-700' }
@@ -60,7 +63,7 @@ export default function VisitPlansPage() {
     if (planForm.end_date < planForm.start_date) { toast.error('ថ្ងៃបញ្ចប់ត្រូវនៅក្រោយថ្ងៃចាប់ផ្ដើម'); return }
     if (!planForm.assigned_to) { toast.error('សូមជ្រើសរើស Sales'); return }
     setSaving(true)
-    const payload = { ...planForm, title:sanitizeText(planForm.title), district:sanitizeText(planForm.district), purpose:sanitizeText(planForm.purpose), transport:sanitizeText(planForm.transport), notes:sanitizeText(planForm.notes) }
+    const payload = { ...pickFields(planForm, planFields), title:sanitizeText(planForm.title), district:sanitizeText(planForm.district), purpose:sanitizeText(planForm.purpose), transport:sanitizeText(planForm.transport), notes:sanitizeText(planForm.notes) }
     const { data, error } = editing ? await visitPlanService.update(editing.id, payload) : await visitPlanService.create({ ...payload, created_by:user.id })
     setSaving(false)
     if (error) { toast.error(error.message); return }
@@ -84,7 +87,7 @@ export default function VisitPlansPage() {
   const updateStopForm = event => setStopForm(current => ({ ...current, [event.target.name]:event.target.value }))
   const saveStop = async event => {
     event.preventDefault(); setSaving(true)
-    const payload = { ...stopForm, visit_plan_id:selected.id, customer_id:stopForm.customer_id || null, visit_at:new Date(stopForm.visit_at).toISOString(), stop_order:Number(stopForm.stop_order), latitude:stopForm.latitude ? Number(stopForm.latitude) : null, longitude:stopForm.longitude ? Number(stopForm.longitude) : null, commune:sanitizeText(stopForm.commune), village:sanitizeText(stopForm.village), address:sanitizeText(stopForm.address), purpose:sanitizeText(stopForm.purpose), result:sanitizeText(stopForm.result), notes:sanitizeText(stopForm.notes) }
+    const payload = { ...pickFields(stopForm, stopFields), visit_plan_id:selected.id, customer_id:stopForm.customer_id || null, visit_at:new Date(stopForm.visit_at).toISOString(), stop_order:Number(stopForm.stop_order), latitude:stopForm.latitude ? Number(stopForm.latitude) : null, longitude:stopForm.longitude ? Number(stopForm.longitude) : null, commune:sanitizeText(stopForm.commune), village:sanitizeText(stopForm.village), address:sanitizeText(stopForm.address), purpose:sanitizeText(stopForm.purpose), result:sanitizeText(stopForm.result), notes:sanitizeText(stopForm.notes) }
     const { error } = editingStop ? await visitPlanService.updateStop(editingStop.id, payload) : await visitPlanService.createStop({ ...payload, created_by:user.id })
     setSaving(false)
     if (error) { toast.error(error.message); return }
