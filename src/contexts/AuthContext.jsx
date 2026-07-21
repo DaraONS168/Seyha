@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
 
   const loadProfile = useCallback(async (user) => {
     if (!user) { setProfile(null); return }
-    const { data } = await supabase.from('profiles').select('*').eq('id', user.id).single()
+    const { data } = await supabase.from('profiles').select('*,app_role:app_roles!profiles_role_fkey(name,permissions)').eq('id', user.id).single()
     setProfile(data || { id: user.id, email: user.email, full_name: user.user_metadata?.full_name || user.email, role: 'sales' })
   }, [])
 
@@ -35,7 +35,7 @@ export function AuthProvider({ children }) {
   const value = useMemo(() => ({
     session, user: session?.user || null, profile, loading,
     isAdmin: profile?.role === 'admin',
-    hasPermission: permission => profile?.role === 'admin' || profile?.permissions?.includes(permission),
+    hasPermission: permission => profile?.role === 'admin' || (profile?.app_role?.permissions || profile?.permissions)?.includes(permission),
     signIn: (username, password) => supabase.auth.signInWithPassword({
       email: usernameToEmail(username), password,
     }),

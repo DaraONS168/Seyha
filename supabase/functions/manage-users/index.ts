@@ -26,6 +26,17 @@ Deno.serve(async request => {
   }
   if (targetId === actorId && ['delete', 'set_active'].includes(action)) return json({ error: 'អ្នកមិនអាចបិទ ឬលុបគណនីខ្លួនឯងបានទេ' }, 400)
 
+  if (action === 'create_role') {
+    const name = String(body.name || '').replace(/[<>]/g, '').trim()
+    const permissions = [...new Set(Array.isArray(body.permissions) ? body.permissions.filter(key => typeof key === 'string' && allowedPermissions.has(key)) : [])]
+    if (name.length < 2 || name.length > 50) return json({ error: 'ឈ្មោះ Role ត្រូវមាន 2-50 តួ' }, 400)
+    const key = `custom_${crypto.randomUUID().replaceAll('-', '').slice(0, 12)}`
+    const { data, error } = await adminClient.from('app_roles').insert({ key, name, permissions }).select().single()
+    if (error) return json({ error: error.code === '23505' ? 'ឈ្មោះ Role នេះមានរួចហើយ' : error.message }, 400)
+    await log('role_created', null, { role_key: key, name, permissions })
+    return json({ role: data }, 201)
+  }
+
   if (action === 'delete') {
     const { error } = await adminClient.auth.admin.deleteUser(targetId)
     if (error) return json({ error: error.message }, error.status || 400)
@@ -50,8 +61,11 @@ Deno.serve(async request => {
 
   const fullName = String(body.full_name || '').replace(/[<>]/g, '').trim()
   const phone = String(body.phone || '').replace(/[<>]/g, '').trim() || null
-  const role = ['admin', 'manager', 'sales', 'user'].includes(String(body.role)) ? String(body.role) : 'user'
-  const permissions = role === 'admin' ? [...allowedPermissions] : [...new Set(Array.isArray(body.permissions) ? body.permissions.filter(key => typeof key === 'string' && allowedPermissions.has(key)) : [])]
+  const requestedRole = String(body.role || 'user')
+  const { data: selectedRole } = await adminClient.from('app_roles').select('key,permissions').eq('key', requestedRole).single()
+  if (!selectedRole) return json({ error: 'Role មិនត្រឹមត្រូវ' }, 400)
+  const role = selectedRole.key
+  const permissions = selectedRole.permissions
   if (!fullName) return json({ error: 'ឈ្មោះមិនត្រឹមត្រូវ' }, 400)
 
   if (action === 'update') {
