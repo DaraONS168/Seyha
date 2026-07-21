@@ -7,11 +7,16 @@ import Modal from '../components/common/Modal'
 import ConfirmDialog from '../components/common/ConfirmDialog'
 import LoadingState from '../components/common/LoadingState'
 import EmptyState from '../components/common/EmptyState'
-import { PERMISSIONS } from '../utils/permissions'
+import { PERMISSIONS, ROLE_DEFAULTS } from '../utils/permissions'
 import { sanitizeText } from '../utils/formatters'
 
 const blank = { full_name: '', username: '', phone: '', password: '', role: 'user' }
 const roleLabels = { admin: 'Administrator', manager: 'Manager', sales: 'Sales', user: 'User' }
+const rolePresets = [
+  { key: 'manager', label: 'Manager', description: 'មើលក្រុមលក់ និងរបាយការណ៍', permissions: ROLE_DEFAULTS.manager },
+  { key: 'sales', label: 'Sales', description: 'ធ្វើការជាមួយអតិថិជន និង Follow Up', permissions: ROLE_DEFAULTS.sales },
+  { key: 'user', label: 'Viewer', description: 'មើលតែផ្ទាំងគ្រប់គ្រង និងការជូនដំណឹង', permissions: ROLE_DEFAULTS.user },
+]
 
 export default function UserManagementPage() {
   const { user: currentUser } = useAuth()
@@ -60,6 +65,7 @@ export default function UserManagementPage() {
   const openCreate = () => { setEditing(null); setForm({ ...blank, role: roles.find(role => role.key === 'user')?.key || roles[0]?.key || 'user' }); setFormOpen(true) }
   const openEdit = item => { setEditing(item); setForm({ full_name: item.full_name, username: item.username || '', phone: item.phone || '', password: '', role: item.role }); setFormOpen(true) }
   const toggleRolePermission = key => setRoleForm(current => ({ ...current, permissions: current.permissions.includes(key) ? current.permissions.filter(item => item !== key) : [...current.permissions, key] }))
+  const applyRolePreset = preset => setRoleForm(current => ({ ...current, name: current.name || preset.label, permissions: preset.permissions }))
 
   const createRole = async event => {
     event.preventDefault(); setSaving(true)
@@ -116,6 +122,16 @@ export default function UserManagementPage() {
     <Modal open={roleOpen} onClose={() => setRoleOpen(false)} title="បង្កើត Role និង Permissions" size="max-w-2xl">
       <form className="space-y-5" onSubmit={createRole}>
         <div><label className="label">ឈ្មោះ Role *</label><input className="field" required minLength="2" maxLength="50" value={roleForm.name} onChange={event => setRoleForm({...roleForm, name:event.target.value})} placeholder="ឧ. Supervisor"/></div>
+        <div>
+          <div className="mb-3 flex items-center gap-2"><ShieldCheck size={19} className="text-blue-600"/><p className="font-semibold">Role Presets</p></div>
+          <div className="grid gap-2 sm:grid-cols-3">
+            {rolePresets.map(preset => <button type="button" key={preset.key} onClick={() => applyRolePreset(preset)} className="rounded-xl border p-3 text-left transition hover:border-blue-300 hover:bg-blue-50">
+              <span className="block text-sm font-semibold">{preset.label}</span>
+              <span className="mt-1 block text-xs leading-5 text-slate-500">{preset.description}</span>
+            </button>)}
+          </div>
+          <p className="mt-2 text-xs text-slate-500">ចុច preset ដើម្បីជ្រើស permissions ស្រាប់ បន្ទាប់មកអ្នកអាចកែ checkbox បន្ថែមបាន។</p>
+        </div>
         <div><div className="mb-3 flex items-center gap-2"><ShieldCheck size={19} className="text-blue-600"/><p className="font-semibold">ជ្រើស Permissions សម្រាប់ Role</p></div><div className="grid gap-2 sm:grid-cols-2">{PERMISSIONS.map(permission => <label key={permission.key} className={`flex cursor-pointer items-center gap-3 rounded-xl border p-3 text-sm ${roleForm.permissions.includes(permission.key) ? 'border-blue-300 bg-blue-50' : ''}`}><input type="checkbox" checked={roleForm.permissions.includes(permission.key)} onChange={() => toggleRolePermission(permission.key)}/>{permission.label}</label>)}</div></div>
         <div className="flex justify-end gap-3 border-t pt-4"><button type="button" className="btn-secondary" onClick={() => setRoleOpen(false)}>បោះបង់</button><button className="btn-primary" disabled={saving}><ShieldCheck size={18}/>{saving ? 'កំពុងបង្កើត...' : 'បង្កើត Role'}</button></div>
       </form>
