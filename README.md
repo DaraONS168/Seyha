@@ -12,7 +12,7 @@
 
 ## មុខងារសំខាន់
 
-- Email/password authentication, persistent session, protected routes និង role Admin/Sales
+- Username/password authentication, persistent session, protected routes និង role Admin/Sales
 - Customer CRUD, search/filter/sort/pagination, phone validation និង duplicate warning
 - Call history timeline; RPC មួយកត់ត្រាការហៅ, update status និងបង្កើត follow-up ជា transaction
 - Today/overdue/upcoming/completed follow-ups ជាមួយ complete, reschedule និង click-to-call
@@ -71,9 +71,9 @@ npm install
 ## 2. Supabase setup
 
 1. បង្កើត project នៅ Supabase Dashboard។
-2. ចូល **SQL Editor** បើក និង run file `supabase/migrations/001_initial_schema.sql` ទាំងមូល។
+2. ចូល **SQL Editor** ហើយ run files ក្នុង `supabase/migrations/` តាមលំដាប់លេខ រួមទាំង `005_username_auth.sql`។
 3. ចូល **Authentication > Providers > Email** ហើយបើក Email provider។ សម្រាប់ demo អាចបិទ Confirm email ជាបណ្ដោះអាសន្ន។
-4. ចូល **Authentication > Users > Add user** ហើយបង្កើត៖
+4. ចូល **Authentication > Users > Add user** ហើយបង្កើត Admin ដំបូង៖
    - `admin@demo.com` / password ដែលមានសុវត្ថិភាព
    - `sales@demo.com` / password ដែលមានសុវត្ថិភាព
 5. Run `supabase/seed.sql` ក្នុង SQL Editor។ Script នេះកំណត់ Admin/Sales roles និងបញ្ចូល sample customers។ Password មិនត្រូវបាន hard-code ក្នុង repository ទេ។
@@ -104,7 +104,7 @@ VITE_SUPABASE_ANON_KEY=your-anon-key
 npm run dev
 ```
 
-បើក URL ដែល Vite បង្ហាញ (ជាទូទៅ `http://localhost:5173`) ហើយ login ដោយ demo user ដែលបានបង្កើត។
+បើក URL ដែល Vite បង្ហាញ (ជាទូទៅ `http://localhost:5173`)។ Admin ចាស់អាច login ដោយ email បានដដែល ហើយគណនី Sales ដែលបង្កើតពីទំព័រ **ក្រុម Sales** នឹង login ដោយ Username និងពាក្យសម្ងាត់។
 
 ## 5. Production build
 

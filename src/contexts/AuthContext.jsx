@@ -2,6 +2,12 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import { supabase } from '../services/supabase'
 
 const AuthContext = createContext(null)
+const USERNAME_EMAIL_DOMAIN = 'users.crm.local'
+
+const usernameToEmail = value => {
+  const login = value.trim().toLowerCase()
+  return login.includes('@') ? login : `${login}@${USERNAME_EMAIL_DOMAIN}`
+}
 
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(null)
@@ -29,7 +35,9 @@ export function AuthProvider({ children }) {
   const value = useMemo(() => ({
     session, user: session?.user || null, profile, loading,
     isAdmin: profile?.role === 'admin',
-    signIn: (email, password) => supabase.auth.signInWithPassword({ email, password }),
+    signIn: (username, password) => supabase.auth.signInWithPassword({
+      email: usernameToEmail(username), password,
+    }),
     signOut: () => supabase.auth.signOut(),
     refreshProfile: () => loadProfile(session?.user),
   }), [session, profile, loading, loadProfile])
