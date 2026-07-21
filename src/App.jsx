@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import ProtectedRoute from './components/common/ProtectedRoute'
 import AdminRoute from './components/common/AdminRoute'
+import PermissionRoute from './components/common/PermissionRoute'
 import LoadingState from './components/common/LoadingState'
 import DashboardLayout from './layouts/DashboardLayout'
 
@@ -17,22 +18,24 @@ const NotificationsPage = lazy(() => import('./pages/NotificationsPage'))
 const SettingsPage = lazy(() => import('./pages/SettingsPage'))
 const VisitPlansPage = lazy(() => import('./pages/VisitPlansPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+const UserManagementPage = lazy(() => import('./pages/UserManagementPage'))
 
 export default function App() {
   return <Suspense fallback={<LoadingState label="កំពុងបើកទំព័រ..."/>}>
     <Routes>
       <Route path="/login" element={<LoginPage/>}/>
       <Route element={<ProtectedRoute><DashboardLayout/></ProtectedRoute>}>
-        <Route index element={<DashboardPage/>}/>
-        <Route path="customers" element={<CustomersPage/>}/>
-        <Route path="customers/:id" element={<CustomerDetailPage/>}/>
-        <Route path="follow-ups" element={<FollowUpsPage/>}/>
-        <Route path="visit-plans" element={<VisitPlansPage/>}/>
-        <Route path="calls" element={<CallHistoryPage/>}/>
-        <Route path="reports" element={<ReportsPage/>}/>
-        <Route path="sales" element={<AdminRoute><SalesTeamPage/></AdminRoute>}/>
-        <Route path="notifications" element={<NotificationsPage/>}/>
-        <Route path="settings" element={<AdminRoute><SettingsPage/></AdminRoute>}/>
+        <Route index element={<PermissionRoute permission="dashboard"><DashboardPage/></PermissionRoute>}/>
+        <Route path="customers" element={<PermissionRoute permission="customers"><CustomersPage/></PermissionRoute>}/>
+        <Route path="customers/:id" element={<PermissionRoute permission="customers"><CustomerDetailPage/></PermissionRoute>}/>
+        <Route path="follow-ups" element={<PermissionRoute permission="follow_ups"><FollowUpsPage/></PermissionRoute>}/>
+        <Route path="visit-plans" element={<PermissionRoute permission="visit_plans"><VisitPlansPage/></PermissionRoute>}/>
+        <Route path="calls" element={<PermissionRoute permission="calls"><CallHistoryPage/></PermissionRoute>}/>
+        <Route path="reports" element={<PermissionRoute permission="reports"><ReportsPage/></PermissionRoute>}/>
+        <Route path="sales" element={<PermissionRoute permission="sales_team"><SalesTeamPage/></PermissionRoute>}/>
+        <Route path="notifications" element={<PermissionRoute permission="notifications"><NotificationsPage/></PermissionRoute>}/>
+        <Route path="users" element={<AdminRoute><UserManagementPage/></AdminRoute>}/>
+        <Route path="settings" element={<PermissionRoute permission="settings"><SettingsPage/></PermissionRoute>}/>
       </Route>
       <Route path="*" element={<NotFoundPage/>}/>
     </Routes>

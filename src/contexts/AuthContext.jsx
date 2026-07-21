@@ -35,6 +35,7 @@ export function AuthProvider({ children }) {
   const value = useMemo(() => ({
     session, user: session?.user || null, profile, loading,
     isAdmin: profile?.role === 'admin',
+    hasPermission: permission => profile?.role === 'admin' || profile?.permissions?.includes(permission),
     signIn: (username, password) => supabase.auth.signInWithPassword({
       email: usernameToEmail(username), password,
     }),

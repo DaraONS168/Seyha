@@ -1,26 +1,26 @@
 import { useState } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
-import { Bell, CalendarRange, ChartNoAxesCombined, ChevronDown, History, LayoutDashboard, LogOut, Menu, PhoneCall, Search, Settings, Users, UserRound, X } from 'lucide-react'
+import { Bell, CalendarRange, ChartNoAxesCombined, ChevronDown, History, LayoutDashboard, LogOut, Menu, PhoneCall, Search, Settings, UserCog, Users, UserRound, X } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import { useNotifications } from '../hooks/useNotifications'
 
 const nav = [
-  ['/', 'ផ្ទាំងគ្រប់គ្រង', LayoutDashboard], ['/customers', 'អតិថិជន', Users], ['/follow-ups', 'Follow Up', PhoneCall],
-  ['/calls', 'ប្រវត្តិការហៅ', History], ['/reports', 'របាយការណ៍', ChartNoAxesCombined], ['/sales', 'ក្រុមលក់', UserRound],
-  ['/visit-plans', 'ផែនការចុះស្រុក', CalendarRange],
-  ['/notifications', 'ការជូនដំណឹង', Bell], ['/settings', 'ការកំណត់', Settings],
+  ['/', 'ផ្ទាំងគ្រប់គ្រង', LayoutDashboard, 'dashboard'], ['/customers', 'អតិថិជន', Users, 'customers'], ['/follow-ups', 'Follow Up', PhoneCall, 'follow_ups'],
+  ['/calls', 'ប្រវត្តិការហៅ', History, 'calls'], ['/reports', 'របាយការណ៍', ChartNoAxesCombined, 'reports'], ['/sales', 'ក្រុមលក់', UserRound, 'sales_team'],
+  ['/visit-plans', 'ផែនការចុះស្រុក', CalendarRange, 'visit_plans'],
+  ['/notifications', 'ការជូនដំណឹង', Bell, 'notifications'], ['/users', 'អ្នកប្រើប្រាស់', UserCog, 'user_management'], ['/settings', 'ការកំណត់', Settings, 'settings'],
 ]
 
 export default function DashboardLayout() {
   const [mobile, setMobile] = useState(false)
   const [profileOpen, setProfileOpen] = useState(false)
-  const { profile, signOut } = useAuth()
+  const { profile, signOut, hasPermission } = useAuth()
   const { unread } = useNotifications()
   const navigate = useNavigate()
   const logout = async () => { await signOut(); navigate('/login') }
   const sidebar = <>
     <div className="flex h-[72px] items-center gap-3 border-b border-blue-500/30 px-5 py-4"><div className="grid size-10 place-items-center rounded-xl bg-white text-blue-600"><PhoneCall size={21}/></div><div><p className="font-bold">Customer CRM</p><p className="text-xs text-blue-100">Follow Up System</p></div></div>
-    <nav className="flex-1 space-y-1 overflow-y-auto p-3">{nav.map(([to, label, Icon]) => <NavLink key={to} to={to} end={to === '/'} onClick={() => setMobile(false)} className={({ isActive }) => `flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition ${isActive ? 'bg-white text-blue-700 shadow' : 'text-blue-50 hover:bg-blue-500'}`}><Icon size={19}/><span className="flex-1">{label}</span>{to === '/notifications' && unread > 0 && <span className="rounded-full bg-red-500 px-2 py-0.5 text-[10px] text-white">{unread}</span>}</NavLink>)}</nav>
+    <nav className="flex-1 space-y-1 overflow-y-auto p-3">{nav.filter(([, , , permission]) => hasPermission(permission)).map(([to, label, Icon]) => <NavLink key={to} to={to} end={to === '/'} onClick={() => setMobile(false)} className={({ isActive }) => `flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition ${isActive ? 'bg-white text-blue-700 shadow' : 'text-blue-50 hover:bg-blue-500'}`}><Icon size={19}/><span className="flex-1">{label}</span>{to === '/notifications' && unread > 0 && <span className="rounded-full bg-red-500 px-2 py-0.5 text-[10px] text-white">{unread}</span>}</NavLink>)}</nav>
     <button onClick={logout} className="m-3 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-blue-50 hover:bg-blue-500"><LogOut size={19}/>ចាកចេញ</button>
   </>
   return <div className="min-h-screen bg-slate-50">
