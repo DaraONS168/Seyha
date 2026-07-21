@@ -15,4 +15,5 @@ export const ROLE_DEFAULTS = {
   admin: PERMISSIONS.map(item => item.key),
   manager: ['dashboard', 'customers', 'follow_ups', 'visit_plans', 'calls', 'reports', 'sales_team', 'notifications'],
   sales: ['dashboard', 'customers', 'follow_ups', 'visit_plans', 'calls', 'notifications'],
+  user: ['dashboard', 'notifications'],
 }

@@ -50,7 +50,7 @@ Deno.serve(async request => {
 
   const fullName = String(body.full_name || '').replace(/[<>]/g, '').trim()
   const phone = String(body.phone || '').replace(/[<>]/g, '').trim() || null
-  const role = ['admin', 'manager', 'sales'].includes(String(body.role)) ? String(body.role) : 'sales'
+  const role = ['admin', 'manager', 'sales', 'user'].includes(String(body.role)) ? String(body.role) : 'user'
   const permissions = role === 'admin' ? [...allowedPermissions] : [...new Set(Array.isArray(body.permissions) ? body.permissions.filter(key => typeof key === 'string' && allowedPermissions.has(key)) : [])]
   if (!fullName) return json({ error: 'ឈ្មោះមិនត្រឹមត្រូវ' }, 400)
 
