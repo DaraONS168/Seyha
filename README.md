@@ -143,6 +143,20 @@ Then seed demo/reference data:
 
 For authentication, enable the Email provider in Supabase Authentication. During local development you can temporarily disable email confirmation.
 
+## Provincial Expense Management
+
+The React + Supabase expense module follows this workflow:
+
+`Budget Setup → Request → Budget Validation → Approval → Payment → Actual Expense → Verification → Closure`
+
+- `/expenses` — provincial expense dashboard
+- `/expenses/budgets` — annual provincial budget setup
+- `/expenses/requests` — searchable requests and workflow actions
+- `/expenses/requests/new` — multi-step request form
+- `/expenses/requests/:id` — approvals, payments, actual items, documents and closure
+
+Migration `supabase/migrations/018_provincial_expense_management.sql` provides configurable approval rules, transaction-safe budget RPCs, separation of duties, private evidence storage, RLS and audit logs. Deploy it with `npx supabase db push`, then deploy updated user-role permissions with `npx supabase functions deploy manage-users`.
+
 ## Edge Functions
 
 This project includes Supabase Edge Functions for privileged user-management workflows:

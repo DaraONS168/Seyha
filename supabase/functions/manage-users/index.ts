@@ -2,7 +2,7 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
 const headers = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type', 'Access-Control-Allow-Methods': 'POST, OPTIONS' }
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { ...headers, 'Content-Type': 'application/json' } })
-const allowedPermissions = new Set(['dashboard', 'customers', 'follow_ups', 'visit_plans', 'calls', 'reports', 'sales_team', 'markets.view', 'markets.create', 'markets.update', 'markets.delete', 'markets.restore', 'markets.import', 'markets.export', 'markets.view_audit', 'notifications', 'settings', 'user_management'])
+const allowedPermissions = new Set(['dashboard', 'customers', 'follow_ups', 'visit_plans', 'calls', 'reports', 'sales_team', 'markets.view', 'markets.create', 'markets.update', 'markets.delete', 'markets.restore', 'markets.import', 'markets.export', 'markets.view_audit', 'expenses.view', 'expenses.create', 'expenses.submit', 'expenses.approve', 'expenses.pay', 'expenses.actual', 'expenses.complete', 'expenses.reopen', 'expenses.override_limit', 'expenses.audit', 'expenses.reports', 'expenses.budgets.view', 'expenses.budgets.manage', 'expenses.budgets.revise', 'expenses.fiscal_lock', 'expenses.verify', 'fuel.view', 'fuel.create', 'fuel.submit', 'fuel.approve', 'fuel.reports', 'vehicles.manage', 'fuel.budgets.view', 'fuel.budgets.manage', 'notifications', 'settings', 'user_management'])
 const passwordValid = (value: string) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(value)
 
 Deno.serve(async request => {

@@ -18,9 +18,9 @@ const PLAN_COLORS = { draft:'bg-slate-100 text-slate-700', planned:'bg-blue-100 
 const STOP_COLORS = { pending:'bg-blue-50 text-blue-700', visited:'bg-green-50 text-green-700', rescheduled:'bg-orange-50 text-orange-700', missed:'bg-red-50 text-red-700', cancelled:'bg-slate-100 text-slate-600' }
 const labelOf = (items, value) => items.find(([key]) => key === value)?.[1] || value
 const today = format(new Date(), 'yyyy-MM-dd')
-const emptyPlan = { title:'', start_date:today, end_date:today, province:'', district:'', assigned_to:'', purpose:'', transport:'', status:'planned', notes:'' }
+const emptyPlan = { title:'', start_date:today, end_date:today, province:'', district:'', assigned_to:'', purpose:'', transport:'', planned_distance_km:'', status:'planned', notes:'' }
 const emptyStop = { customer_id:'', commune:'', village:'', address:'', visit_at:'', stop_order:1, purpose:'', result:'', status:'pending', latitude:'', longitude:'', notes:'' }
-const planFields = ['title', 'start_date', 'end_date', 'province', 'district', 'assigned_to', 'purpose', 'transport', 'status', 'notes']
+const planFields = ['title', 'start_date', 'end_date', 'province', 'district', 'assigned_to', 'purpose', 'transport', 'planned_distance_km', 'status', 'notes']
 const stopFields = ['customer_id', 'commune', 'village', 'address', 'visit_at', 'stop_order', 'purpose', 'result', 'status', 'latitude', 'longitude', 'notes']
 const pickFields = (source, fields) => Object.fromEntries(fields.map(field => [field, source[field]]))
 
@@ -63,7 +63,7 @@ export default function VisitPlansPage() {
     if (planForm.end_date < planForm.start_date) { toast.error('ថ្ងៃបញ្ចប់ត្រូវនៅក្រោយថ្ងៃចាប់ផ្ដើម'); return }
     if (!planForm.assigned_to) { toast.error('សូមជ្រើសរើស Sales'); return }
     setSaving(true)
-    const payload = { ...pickFields(planForm, planFields), title:sanitizeText(planForm.title), district:sanitizeText(planForm.district), purpose:sanitizeText(planForm.purpose), transport:sanitizeText(planForm.transport), notes:sanitizeText(planForm.notes) }
+    const payload = { ...pickFields(planForm, planFields), title:sanitizeText(planForm.title), district:sanitizeText(planForm.district), purpose:sanitizeText(planForm.purpose), transport:sanitizeText(planForm.transport), planned_distance_km:planForm.planned_distance_km ? Number(planForm.planned_distance_km) : null, notes:sanitizeText(planForm.notes) }
     const { data, error } = editing ? await visitPlanService.update(editing.id, payload) : await visitPlanService.create({ ...payload, created_by:user.id })
     setSaving(false)
     if (error) { toast.error(error.message); return }

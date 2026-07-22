@@ -1,28 +1,47 @@
 import { useState } from 'react'
-import { NavLink, Outlet, useNavigate } from 'react-router-dom'
-import { Bell, CalendarRange, ChartNoAxesCombined, ChevronDown, History, LayoutDashboard, LogOut, Menu, PhoneCall, Search, Settings, Store, UserCog, Users, UserRound, X } from 'lucide-react'
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Bell, CalendarRange, ChartNoAxesCombined, ChevronDown, ChevronRight, CircleDollarSign, Fuel, History, Landmark, LayoutDashboard, LogOut, Menu, PhoneCall, ReceiptText, Search, Settings, Store, UserCog, Users, UserRound, WalletCards, X } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import { useNotifications } from '../hooks/useNotifications'
 
-const nav = [
-  ['/', 'ផ្ទាំងគ្រប់គ្រង', LayoutDashboard, 'dashboard'], ['/customers', 'អតិថិជន', Users, 'customers'], ['/follow-ups', 'Follow Up', PhoneCall, 'follow_ups'],
-  ['/calls', 'ប្រវត្តិការហៅ', History, 'calls'], ['/reports', 'របាយការណ៍', ChartNoAxesCombined, 'reports'], ['/sales', 'ក្រុមលក់', UserRound, 'sales_team'],
-  ['/visit-plans', 'ផែនការចុះស្រុក', CalendarRange, 'visit_plans'],
-  ['/markets', 'គ្រប់គ្រងផ្សារ', Store, 'markets.view'],
-  ['/notifications', 'ការជូនដំណឹង', Bell, 'notifications'], ['/users', 'អ្នកប្រើប្រាស់', UserCog, 'user_management'], ['/settings', 'ការកំណត់', Settings, 'settings'],
+const navGroups = [
+  { label: 'ទូទៅ', items: [{ to:'/',label:'ផ្ទាំងគ្រប់គ្រង',icon:LayoutDashboard,permission:'dashboard' }] },
+  { label: 'គ្រប់គ្រងអតិថិជន', items: [
+    { to:'/customers',label:'អតិថិជន',icon:Users,permission:'customers' },{ to:'/follow-ups',label:'Follow Up',icon:PhoneCall,permission:'follow_ups' },
+    { to:'/calls',label:'ប្រវត្តិការហៅ',icon:History,permission:'calls' },{ to:'/visit-plans',label:'ផែនការចុះស្រុក',icon:CalendarRange,permission:'visit_plans' },
+    { to:'/sales',label:'ក្រុមលក់',icon:UserRound,permission:'sales_team' },{ to:'/reports',label:'របាយការណ៍',icon:ChartNoAxesCombined,permission:'reports' },
+  ]},
+  { label: 'ប្រតិបត្តិការ', items: [{ to:'/markets',label:'គ្រប់គ្រងផ្សារ',icon:Store,permission:'markets.view' }] },
+  { label: 'ហិរញ្ញវត្ថុ', items: [{ key:'expenses',label:'គ្រប់គ្រងចំណាយ',icon:WalletCards,permission:'expenses.view',children:[
+    { to:'/expenses',label:'ផ្ទាំងសង្ខេប',icon:Landmark,permission:'expenses.view' },{ to:'/expenses/requests',label:'សំណើចំណាយ',icon:ReceiptText,permission:'expenses.view' },
+    { to:'/expenses/budgets',label:'ថវិកាតាមខេត្ត',icon:CircleDollarSign,permission:'expenses.budgets.view' },
+    { to:'/expenses/fuel',label:'ចំណាយសាំង',icon:Fuel,permission:'fuel.view' },
+    { to:'/expenses/fuel/budgets',label:'ថវិកាសាំង',icon:CircleDollarSign,permission:'fuel.budgets.view' },
+  ]}]},
+  { label: 'ប្រព័ន្ធ', items: [{ to:'/notifications',label:'ការជូនដំណឹង',icon:Bell,permission:'notifications' },{ to:'/users',label:'អ្នកប្រើប្រាស់',icon:UserCog,permission:'user_management' },{ to:'/settings',label:'ការកំណត់',icon:Settings,permission:'settings' }] },
 ]
 
 export default function DashboardLayout() {
   const [mobile, setMobile] = useState(false)
   const [profileOpen, setProfileOpen] = useState(false)
+  const location = useLocation()
+  const [expanded, setExpanded] = useState({ expenses: location.pathname.startsWith('/expenses') })
   const { profile, signOut, hasPermission } = useAuth()
   const { unread } = useNotifications()
   const navigate = useNavigate()
   const logout = async () => { await signOut(); navigate('/login') }
+  const linkClass = ({ isActive }) => `group relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all ${isActive ? 'bg-white text-blue-700 shadow-sm' : 'text-blue-50 hover:bg-white/10 hover:text-white'}`
   const sidebar = <>
-    <div className="flex h-[72px] items-center gap-3 border-b border-blue-500/30 px-5 py-4"><div className="grid size-10 place-items-center rounded-xl bg-white text-blue-600"><PhoneCall size={21}/></div><div><p className="font-bold">Customer CRM</p><p className="text-xs text-blue-100">Follow Up System</p></div></div>
-    <nav className="flex-1 space-y-1 overflow-y-auto p-3">{nav.filter(([, , , permission]) => hasPermission(permission)).map(([to, label, Icon]) => <NavLink key={to} to={to} end={to === '/'} onClick={() => setMobile(false)} className={({ isActive }) => `flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition ${isActive ? 'bg-white text-blue-700 shadow' : 'text-blue-50 hover:bg-blue-500'}`}><Icon size={19}/><span className="flex-1">{label}</span>{to === '/notifications' && unread > 0 && <span className="rounded-full bg-red-500 px-2 py-0.5 text-[10px] text-white">{unread}</span>}</NavLink>)}</nav>
-    <button onClick={logout} className="m-3 flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-blue-50 hover:bg-blue-500"><LogOut size={19}/>ចាកចេញ</button>
+    <div className="flex h-[76px] items-center gap-3 border-b border-white/10 px-4"><div className="grid size-11 shrink-0 place-items-center rounded-2xl bg-white text-blue-600 shadow-sm"><PhoneCall size={22}/></div><div className="min-w-0"><p className="truncate text-base font-bold tracking-tight">Customer CRM</p><p className="truncate text-xs text-blue-100">Government Management System</p></div></div>
+    <nav className="flex-1 space-y-5 overflow-y-auto px-3 py-4">{navGroups.map(group => {
+      const visibleItems=group.items.filter(item=>hasPermission(item.permission))
+      if(!visibleItems.length)return null
+      return <section key={group.label}><p className="mb-1.5 px-3 text-[10px] font-bold uppercase tracking-[0.16em] text-blue-200/80">{group.label}</p><div className="space-y-1">{visibleItems.map(item=>{
+        const Icon=item.icon
+        if(item.children){const children=item.children.filter(child=>hasPermission(child.permission));const isActive=item.children.some(child=>location.pathname===child.to||location.pathname.startsWith(`${child.to}/`));const open=expanded[item.key]||isActive;return <div key={item.key}><button onClick={()=>setExpanded(current=>({...current,[item.key]:!open}))} className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${isActive?'bg-blue-700/40 text-white':'text-blue-50 hover:bg-white/10'}`}><Icon size={19}/><span className="flex-1 text-left">{item.label}</span>{open?<ChevronDown size={16}/>:<ChevronRight size={16}/>}</button>{open&&<div className="ml-5 mt-1 space-y-1 border-l border-blue-300/30 pl-3">{children.map(child=>{const ChildIcon=child.icon;return <NavLink key={child.to} to={child.to} end={child.to==='/expenses'} onClick={()=>setMobile(false)} className={linkClass}><ChildIcon size={17}/><span className="flex-1">{child.label}</span></NavLink>})}</div>}</div>}
+        return <NavLink key={item.to} to={item.to} end={item.to==='/'} onClick={()=>setMobile(false)} className={linkClass}><Icon size={19}/><span className="flex-1">{item.label}</span>{item.to==='/notifications'&&unread>0&&<span className="grid min-w-5 place-items-center rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] text-white">{unread>9?'9+':unread}</span>}</NavLink>
+      })}</div></section>})}</nav>
+    <div className="border-t border-white/10 p-3"><button onClick={logout} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-blue-100 transition hover:bg-red-500/20 hover:text-white"><LogOut size={19}/>ចាកចេញ</button></div>
   </>
   return <div className="min-h-screen bg-slate-50">
     <aside className="fixed inset-y-0 left-0 z-40 hidden w-64 flex-col bg-blue-600 text-white lg:flex">{sidebar}</aside>

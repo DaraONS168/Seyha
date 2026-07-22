@@ -22,6 +22,13 @@ const UserManagementPage = lazy(() => import('./pages/UserManagementPage'))
 const MarketsPage = lazy(() => import('./pages/MarketsPage'))
 const MarketFormPage = lazy(() => import('./pages/MarketFormPage'))
 const MarketDetailPage = lazy(() => import('./pages/MarketDetailPage'))
+const ExpenseDashboardPage = lazy(() => import('./pages/ExpenseDashboardPage'))
+const ProvincialBudgetsPage = lazy(() => import('./pages/ProvincialBudgetsPage'))
+const ExpenseRequestsPage = lazy(() => import('./pages/ExpenseRequestsPage'))
+const ExpenseRequestFormPage = lazy(() => import('./pages/ExpenseRequestFormPage'))
+const ExpenseRequestDetailPage = lazy(() => import('./pages/ExpenseRequestDetailPage'))
+const FuelExpensesPage = lazy(() => import('./pages/FuelExpensesPage'))
+const FuelBudgetsPage = lazy(() => import('./pages/FuelBudgetsPage'))
 
 export default function App() {
   return <Suspense fallback={<LoadingState label="កំពុងបើកទំព័រ..."/>}>
@@ -42,6 +49,14 @@ export default function App() {
         <Route path="markets/new" element={<PermissionRoute permission="markets.create"><MarketFormPage/></PermissionRoute>}/>
         <Route path="markets/:id" element={<PermissionRoute permission="markets.view"><MarketDetailPage/></PermissionRoute>}/>
         <Route path="markets/:id/edit" element={<PermissionRoute permission="markets.update"><MarketFormPage/></PermissionRoute>}/>
+        <Route path="expenses" element={<PermissionRoute permission="expenses.view"><ExpenseDashboardPage/></PermissionRoute>}/>
+        <Route path="expenses/budgets" element={<PermissionRoute permission="expenses.budgets.view"><ProvincialBudgetsPage/></PermissionRoute>}/>
+        <Route path="expenses/requests" element={<PermissionRoute permission="expenses.view"><ExpenseRequestsPage/></PermissionRoute>}/>
+        <Route path="expenses/requests/new" element={<PermissionRoute permission="expenses.create"><ExpenseRequestFormPage/></PermissionRoute>}/>
+        <Route path="expenses/requests/:id" element={<PermissionRoute permission="expenses.view"><ExpenseRequestDetailPage/></PermissionRoute>}/>
+        <Route path="expenses/requests/:id/edit" element={<PermissionRoute permission="expenses.create"><ExpenseRequestFormPage/></PermissionRoute>}/>
+        <Route path="expenses/fuel" element={<PermissionRoute permission="fuel.view"><FuelExpensesPage/></PermissionRoute>}/>
+        <Route path="expenses/fuel/budgets" element={<PermissionRoute permission="fuel.budgets.view"><FuelBudgetsPage/></PermissionRoute>}/>
         <Route path="settings" element={<PermissionRoute permission="settings"><SettingsPage/></PermissionRoute>}/>
       </Route>
       <Route path="*" element={<NotFoundPage/>}/>
