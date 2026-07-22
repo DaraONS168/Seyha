@@ -19,6 +19,9 @@ const SettingsPage = lazy(() => import('./pages/SettingsPage'))
 const VisitPlansPage = lazy(() => import('./pages/VisitPlansPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 const UserManagementPage = lazy(() => import('./pages/UserManagementPage'))
+const MarketsPage = lazy(() => import('./pages/MarketsPage'))
+const MarketFormPage = lazy(() => import('./pages/MarketFormPage'))
+const MarketDetailPage = lazy(() => import('./pages/MarketDetailPage'))
 
 export default function App() {
   return <Suspense fallback={<LoadingState label="កំពុងបើកទំព័រ..."/>}>
@@ -35,6 +38,10 @@ export default function App() {
         <Route path="sales" element={<PermissionRoute permission="sales_team"><SalesTeamPage/></PermissionRoute>}/>
         <Route path="notifications" element={<PermissionRoute permission="notifications"><NotificationsPage/></PermissionRoute>}/>
         <Route path="users" element={<AdminRoute><UserManagementPage/></AdminRoute>}/>
+        <Route path="markets" element={<PermissionRoute permission="markets.view"><MarketsPage/></PermissionRoute>}/>
+        <Route path="markets/new" element={<PermissionRoute permission="markets.create"><MarketFormPage/></PermissionRoute>}/>
+        <Route path="markets/:id" element={<PermissionRoute permission="markets.view"><MarketDetailPage/></PermissionRoute>}/>
+        <Route path="markets/:id/edit" element={<PermissionRoute permission="markets.update"><MarketFormPage/></PermissionRoute>}/>
         <Route path="settings" element={<PermissionRoute permission="settings"><SettingsPage/></PermissionRoute>}/>
       </Route>
       <Route path="*" element={<NotFoundPage/>}/>

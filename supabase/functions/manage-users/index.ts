@@ -2,7 +2,7 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
 const headers = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type', 'Access-Control-Allow-Methods': 'POST, OPTIONS' }
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { ...headers, 'Content-Type': 'application/json' } })
-const allowedPermissions = new Set(['dashboard', 'customers', 'follow_ups', 'visit_plans', 'calls', 'reports', 'sales_team', 'notifications', 'settings', 'user_management'])
+const allowedPermissions = new Set(['dashboard', 'customers', 'follow_ups', 'visit_plans', 'calls', 'reports', 'sales_team', 'markets.view', 'markets.create', 'markets.update', 'markets.delete', 'markets.restore', 'markets.import', 'markets.export', 'markets.view_audit', 'notifications', 'settings', 'user_management'])
 const passwordValid = (value: string) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(value)
 
 Deno.serve(async request => {
@@ -66,10 +66,17 @@ Deno.serve(async request => {
   if (!selectedRole) return json({ error: 'Role មិនត្រឹមត្រូវ' }, 400)
   const role = selectedRole.key
   const permissions = selectedRole.permissions
+  const provinceId = body.province_id ? Number(body.province_id) : null
+  const districtId = body.district_id ? Number(body.district_id) : null
+  if (districtId) {
+    const { data: district } = await adminClient.from('districts').select('province_id').eq('id', districtId).single()
+    if (!district || district.province_id !== provinceId) return json({ error: 'District មិនស្ថិតក្នុង Province ដែលបានជ្រើស' }, 400)
+  }
   if (!fullName) return json({ error: 'ឈ្មោះមិនត្រឹមត្រូវ' }, 400)
+  if (action === 'update' && targetId === actorId && role !== actor.role) return json({ error: 'អ្នកមិនអាចប្ដូរ Role របស់ខ្លួនឯងបានទេ' }, 400)
 
   if (action === 'update') {
-    const { error } = await adminClient.from('profiles').update({ full_name: fullName, phone, role, permissions }).eq('id', targetId)
+    const { error } = await adminClient.from('profiles').update({ full_name: fullName, phone, role, permissions, province_id: provinceId, district_id: districtId }).eq('id', targetId)
     if (error) return json({ error: error.message }, 400)
     await adminClient.auth.admin.updateUserById(targetId, { user_metadata: { full_name: fullName } })
     await log('user_updated', targetId, { role, permissions })
@@ -83,7 +90,7 @@ Deno.serve(async request => {
   const email = `${username}@users.crm.local`
   const { data, error } = await adminClient.auth.admin.createUser({ email, password, email_confirm: true, user_metadata: { full_name: fullName, username } })
   if (error) return json({ error: error.message.toLowerCase().includes('already') ? 'Username នេះមានរួចហើយ' : error.message }, error.status || 400)
-  const { error: profileError } = await adminClient.from('profiles').update({ full_name: fullName, username, phone, role, permissions, is_active: true }).eq('id', data.user.id)
+  const { error: profileError } = await adminClient.from('profiles').update({ full_name: fullName, username, phone, role, permissions, province_id: provinceId, district_id: districtId, is_active: true }).eq('id', data.user.id)
   if (profileError) { await adminClient.auth.admin.deleteUser(data.user.id); return json({ error: profileError.message }, 400) }
   await log('user_created', data.user.id, { username, role, permissions })
   return json({ user: { id: data.user.id, username, role, permissions } }, 201)

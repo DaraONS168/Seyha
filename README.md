@@ -91,7 +91,10 @@ Copy `.env.example` to `.env` and fill in the Supabase project values from Proje
 ```env
 VITE_SUPABASE_URL=https://your-project.supabase.co
 VITE_SUPABASE_ANON_KEY=your-anon-key
+VITE_GOOGLE_MAPS_API_KEY=your-restricted-browser-key
 ```
+
+`VITE_GOOGLE_MAPS_API_KEY` is optional. Without it, users can enter coordinates, use their current location, and view the embedded map. With it, the market form supports clicking the map and dragging its marker. Restrict this browser key to the application's domains in Google Cloud Console.
 
 Do not expose the Supabase `service_role` key in frontend code or in any `VITE_` environment variable. The anon key is intended for browser use when RLS policies are configured correctly.
 
@@ -105,6 +108,31 @@ supabase db push
 ```
 
 Or run each SQL file manually in the Supabase SQL Editor from `001_initial_schema.sql` through `009_custom_roles.sql`.
+
+The Market Management backend is provided by `010_market_management.sql`. It creates geographic lookup tables, market types, markets, audit logs, automatic market codes, statistics, Row Level Security, and the `market-images` storage bucket. Run all migrations through `010_market_management.sql`, then redeploy `manage-users` so the new `markets` permission can be assigned to roles.
+
+```bash
+supabase db push
+supabase functions deploy manage-users
+```
+
+The frontend data layer is available in:
+
+- `src/services/marketService.js` for CRUD, filters, pagination, statistics, soft delete, restore, audit history, validation, and image uploads
+- `src/services/marketLookupService.js` for cascading province, district, commune, village, and market-type lookups
+
+### Market Import and Export
+
+The Market List toolbar supports Excel import, filtered Excel export, and filtered PDF export. Download and use the provided template before importing. Lookup values in imported files use `market_type_code`, `province_code`, `district_code`, `commune_code`, and optional `village_code`. The preview step validates every row before writing valid records to Supabase.
+
+### Market Tests
+
+```bash
+npm test
+npm run test:watch
+```
+
+Tests cover required fields, coordinates, phone/email, stall constraints, operating hours, and the Google Maps fallback state.
 
 Then seed demo/reference data:
 

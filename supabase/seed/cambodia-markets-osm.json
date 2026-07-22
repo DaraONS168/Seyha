@@ -1,0 +1,5669 @@
+{
+  "generated_at": "2026-07-22T09:43:45.479Z",
+  "source": "https://overpass-api.de/api/interpreter",
+  "markets": [
+    {
+      "osm_id": "node/1060194618",
+      "latitude": 12.3804417,
+      "longitude": 104.4836831,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Phsar"
+      },
+      "display_name": "Phsar, National Road 53A, ភូមិក្តុល, ទឹកផុស, ខេត្តកំពង់ឆ្នាំង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar",
+        "road": "National Road 53A",
+        "village": "ភូមិក្តុល",
+        "county": "ទឹកផុស",
+        "state": "ខេត្តកំពង់ឆ្នាំង",
+        "ISO3166-2-lvl4": "KH-4",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/11112407812",
+      "latitude": 13.3636709,
+      "longitude": 103.8604053,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Weekly market",
+        "opening_hours": "Sat-Sun 05:30-12:00",
+        "phone": "+85512841335",
+        "website": "http://facebook.com/siemreapweeklymarket"
+      },
+      "display_name": "Weekly market, Street 18, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171201, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Weekly market",
+        "road": "Street 18",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171201",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/11478674892",
+      "latitude": 13.0945167,
+      "longitude": 103.1952845,
+      "tags": {
+        "amenity": "marketplace",
+        "check_date:opening_hours": "2026-01-31",
+        "name": "Night market?",
+        "opening_hours:signed": "no",
+        "wheelchair": "limited"
+      },
+      "display_name": "Night market?, Street 127, សង្កាត់ស្វាយប៉ោ, បាត់ដំបង, ខេត្តបាត់ដំបង, 021402, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Night market?",
+        "road": "Street 127",
+        "village": "សង្កាត់ស្វាយប៉ោ",
+        "county": "បាត់ដំបង",
+        "state": "ខេត្តបាត់ដំបង",
+        "ISO3166-2-lvl4": "KH-2",
+        "postcode": "021402",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/11538732783",
+      "latitude": 13.346923,
+      "longitude": 103.8488858,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Huge Market"
+      },
+      "display_name": "Huge Market, ផ្លូវ ផ្សារក្រោម, ភូមិ​គ្រួស, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 177130, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Huge Market",
+        "road": "ផ្លូវ ផ្សារក្រោម",
+        "village": "ភូមិ​គ្រួស",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "177130",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/13077553202",
+      "latitude": 11.5114415,
+      "longitude": 104.8589797,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:housenumber": "No. 61",
+        "addr:postcode": "12000",
+        "addr:street": "Street Toul Pong Ror, Sangkat Chaom Chao1, Khan Posenchey Phnom Penh, 120909",
+        "amenity": "marketplace",
+        "name": "Lucky Express Tuol Pongro",
+        "opening_hours": "Mo-Su 07:30-22:00",
+        "operator": "Lucky",
+        "payment:app": "yes",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "phone": "081220440",
+        "shop": "supermarket"
+      },
+      "display_name": "Lucky Express Tuol Pongro, No. 61, Santepheap 40M Road, ភូមិធម្មត្រ័យ, សង្កាត់ព្រៃស, ខណ្ឌពោធិ៍សែនជ័យ, រាជធានីភ្នំពេញ, 120504, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Lucky Express Tuol Pongro",
+        "house_number": "No. 61",
+        "road": "Santepheap 40M Road",
+        "hamlet": "ភូមិធម្មត្រ័យ",
+        "village": "សង្កាត់ព្រៃស",
+        "town": "ខណ្ឌពោធិ៍សែនជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120504",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/13077553203",
+      "latitude": 11.5103763,
+      "longitude": 104.8607708,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "12000",
+        "addr:street": "choam chao",
+        "amenity": "marketplace",
+        "name": "Potential Department Store",
+        "operator": "AEON",
+        "payment:app": "yes",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "phone": "023888001",
+        "shop": "department_store"
+      },
+      "display_name": "Potential Department Store, ផ្លូវក្រវ៉ាត់ក្រុងខ្សែទី២, សង្កាត់ព្រៃស, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120504, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "shop": "Potential Department Store",
+        "road": "ផ្លូវក្រវ៉ាត់ក្រុងខ្សែទី២",
+        "village": "សង្កាត់ព្រៃស",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120504",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/13077665141",
+      "latitude": 11.5020816,
+      "longitude": 104.8552285,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:place": "ខណ្ឌដង្កោ ភ្នំពេញ",
+        "addr:postcode": "12000",
+        "amenity": "marketplace",
+        "building": "yes",
+        "mobile": "0966939339",
+        "name": "SALMON EMPIRE Toul Pongro",
+        "name:km": "សាលម៉ុន អេមផាយអឺ សាខាទួលពង្រ",
+        "operator": "Self Employ"
+      },
+      "display_name": "SALMON EMPIRE Toul Pongro, ខណ្ឌដង្កោ ភ្នំពេញ, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120504, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "SALMON EMPIRE Toul Pongro",
+        "locality": "ខណ្ឌដង្កោ ភ្នំពេញ",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120504",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/13080650488",
+      "latitude": 11.4995597,
+      "longitude": 104.8189479,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "120000",
+        "amenity": "marketplace",
+        "name": "Borey Piphup Tmey National Road 3",
+        "name:km": "បុរី​ ពិភពថ្មីផ្លូវជាតិលេខ ៣",
+        "opening_hours": "24/7"
+      },
+      "display_name": "Borey Piphup Tmey National Road 3, ផ្លូវជាតិលេខ៣, ភូមិព្រៃកី(ក), ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120000, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Borey Piphup Tmey National Road 3",
+        "road": "ផ្លូវជាតិលេខ៣",
+        "hamlet": "ភូមិព្រៃកី(ក)",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120000",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/13080663894",
+      "latitude": 11.5007943,
+      "longitude": 104.8235728,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "120000",
+        "amenity": "marketplace",
+        "building": "apartments",
+        "name": "G-Smart Tech-CCTV Security System",
+        "opening_hours": "Mo-Su 08:00-18:00",
+        "operator": "Ezviz"
+      },
+      "display_name": "G-Smart Tech-CCTV Security System, ផ្លូវជាតិលេខ៣, ភូមិព្រៃកី(ក), ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120000, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "G-Smart Tech-CCTV Security System",
+        "road": "ផ្លូវជាតិលេខ៣",
+        "hamlet": "ភូមិព្រៃកី(ក)",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120000",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/13081328656",
+      "latitude": 11.4922082,
+      "longitude": 104.806479,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "12000",
+        "amenity": "marketplace",
+        "name": "Kambol Rainbow Night Market"
+      },
+      "display_name": "Kambol Rainbow Night Market, ផ្លូវក្រវ៉ាត់ក្រុងខ្សែទី៣, ភូមិកប់ភ្លុក, សង្កាត់ភ្លើងឆេះរទេះ, ខណ្ឌកំបូល, រាជធានីភ្នំពេញ, 120908, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Kambol Rainbow Night Market",
+        "road": "ផ្លូវក្រវ៉ាត់ក្រុងខ្សែទី៣",
+        "hamlet": "ភូមិកប់ភ្លុក",
+        "village": "សង្កាត់ភ្លើងឆេះរទេះ",
+        "town": "ខណ្ឌកំបូល",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120908",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/13086800829",
+      "latitude": 14.3885095,
+      "longitude": 104.9652331,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "An Ses Marketplace"
+      },
+      "display_name": "An Ses Marketplace, អានសេះ, ជាំក្សាន្ដ, ខេត្តព្រះវិហារ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "An Ses Marketplace",
+        "village": "អានសេះ",
+        "county": "ជាំក្សាន្ដ",
+        "state": "ខេត្តព្រះវិហារ",
+        "ISO3166-2-lvl4": "KH-13",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/13313763002",
+      "latitude": 13.0548099,
+      "longitude": 103.2637896,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផសារ",
+        "name:ru": "Сладкие вкусные апельсины"
+      },
+      "display_name": "ផសារ, ផ្លូវជាតិលេខ៥, ភូមិ​ពុក​ឆ្មារ, សង្កែ, ខេត្តបាត់ដំបង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផសារ",
+        "road": "ផ្លូវជាតិលេខ៥",
+        "village": "ភូមិ​ពុក​ឆ្មារ",
+        "county": "សង្កែ",
+        "state": "ខេត្តបាត់ដំបង",
+        "ISO3166-2-lvl4": "KH-2",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/13337763903",
+      "latitude": 13.531396,
+      "longitude": 105.992254,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "រៀនភាសារុស្ស៊ី",
+        "name:ru": "Продают разную мелочь"
+      },
+      "display_name": "រៀនភាសារុស្ស៊ី, ផ្លូវលេខ ១៤, ក្រុងស្ទឹងត្រែង, ស្ទឹងត្រែង, ខេត្តស្ទឹងត្រែង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "រៀនភាសារុស្ស៊ី",
+        "road": "ផ្លូវលេខ ១៤",
+        "city": "ក្រុងស្ទឹងត្រែង",
+        "county": "ស្ទឹងត្រែង",
+        "state": "ខេត្តស្ទឹងត្រែង",
+        "ISO3166-2-lvl4": "KH-19",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/1616701062",
+      "latitude": 10.8360665,
+      "longitude": 104.4566127,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារឈូក",
+        "name:de": "Chhuk Market",
+        "name:en": "Chhuk Market"
+      },
+      "display_name": "ផ្សារឈូក, ផ្លូវជាតិលេខ៣, ឈូក, ខេត្តកំពត, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារឈូក",
+        "road": "ផ្លូវជាតិលេខ៣",
+        "residential": "ឈូក",
+        "town": "ឈូក",
+        "county": "ឈូក",
+        "state": "ខេត្តកំពត",
+        "ISO3166-2-lvl4": "KH-7",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/1750952343",
+      "latitude": 11.8272513,
+      "longitude": 106.180672,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Memot Market"
+      },
+      "display_name": "Memot Market, ផ្លូវជាតិលេខ៧, ភូមិសំរោងជេីងស្រុកមេមត់ខេត្ដត្បូងឃ្មុំ, ស្រុក​មេមត់, មេមត់, ខេត្តត្បូងឃ្មុំ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Memot Market",
+        "road": "ផ្លូវជាតិលេខ៧",
+        "hamlet": "ភូមិសំរោងជេីងស្រុកមេមត់ខេត្ដត្បូងឃ្មុំ",
+        "town": "ស្រុក​មេមត់",
+        "county": "មេមត់",
+        "state": "ខេត្តត្បូងឃ្មុំ",
+        "ISO3166-2-lvl4": "KH-25",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/1979165271",
+      "latitude": 12.715653,
+      "longitude": 104.8838456,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Old Market"
+      },
+      "display_name": "Old Market, ផ្លូវជាតិលេខ៦, សង្កាត់អាចារ្យលាក់, ក្រុងស្ទឹងសែន, ស្ទឹងសែន, ខេត្តកំពង់ធំ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Old Market",
+        "road": "ផ្លូវជាតិលេខ៦",
+        "quarter": "សង្កាត់អាចារ្យលាក់",
+        "city": "ក្រុងស្ទឹងសែន",
+        "county": "ស្ទឹងសែន",
+        "state": "ខេត្តកំពង់ធំ",
+        "ISO3166-2-lvl4": "KH-6",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/2702449979",
+      "latitude": 12.4997051,
+      "longitude": 105.1265413,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Kampong Thmar Market"
+      },
+      "display_name": "Kampong Thmar Market, 71, ឃុំកំពង់ថ្ម, បារាយណ៍, ខេត្តកំពង់ធំ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Kampong Thmar Market",
+        "road": "71",
+        "village": "ឃុំកំពង់ថ្ម",
+        "town": "បារាយណ៍",
+        "state": "ខេត្តកំពង់ធំ",
+        "ISO3166-2-lvl4": "KH-6",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/3414792946",
+      "latitude": 12.0522538,
+      "longitude": 105.044596,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Spider Market",
+        "opening_hours": "Mo-Su 00:00-18:00+",
+        "source": "GPS"
+      },
+      "display_name": "Spider Market, ផ្លូវជាតិលេខ៦, ស្រុកជើងព្រៃ, ជើងព្រៃ, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Spider Market",
+        "road": "ផ្លូវជាតិលេខ៦",
+        "town": "ស្រុកជើងព្រៃ",
+        "county": "ជើងព្រៃ",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4408159668",
+      "latitude": 13.3739087,
+      "longitude": 103.7890459,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Kro Bey Wet Market"
+      },
+      "display_name": "Kro Bey Wet Market, ផ្លូវ ៥២, ភូមិ​គ្រួស, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171210, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Kro Bey Wet Market",
+        "road": "ផ្លូវ ៥២",
+        "village": "ភូមិ​គ្រួស",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171210",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4409203490",
+      "latitude": 13.3672414,
+      "longitude": 103.7875434,
+      "tags": {
+        "addr:street": "Street 52",
+        "amenity": "marketplace",
+        "name:en": "Krobey Real Market"
+      },
+      "display_name": "Krobey Real Market, ផ្លូវ ៥២, ភូមិ​គ្រួស, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171210, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Krobey Real Market",
+        "road": "ផ្លូវ ៥២",
+        "village": "ភូមិ​គ្រួស",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171210",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4437085657",
+      "latitude": 13.1055223,
+      "longitude": 103.1996006,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ហេង ឆាយ លី",
+        "name:en": "Heng Chhay Ly Mart"
+      },
+      "display_name": "ហេង ឆាយ លី, Street 2, បាត់ដំបង, ខេត្តបាត់ដំបង, 021402, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ហេង ឆាយ លី",
+        "road": "Street 2",
+        "city": "បាត់ដំបង",
+        "county": "បាត់ដំបង",
+        "state": "ខេត្តបាត់ដំបង",
+        "ISO3166-2-lvl4": "KH-2",
+        "postcode": "021402",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4466699494",
+      "latitude": 11.589978,
+      "longitude": 104.8626103,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "120806",
+        "addr:street": "ផ្លូវ ឧកញ៉ា ម៉ុងឫទ្ធី (១៩២៨)",
+        "amenity": "marketplace",
+        "name": "ផ្សារ​បឹង​បៃតង​",
+        "name:en": "Boeung Baitorng Market",
+        "name:km": "ផ្សារ​បឹង​បៃតង​",
+        "opening_hours": "Mo-Su 06:00-22:00"
+      },
+      "display_name": "ផ្សារ​បឹង​បៃតង​, ផ្លូវ ឧកញ៉ា ម៉ុងឫទ្ធី (១៩២៨), ភូមិច្រេស, សង្កាត់គោកឃ្លាង, ខណ្ឌសែនសុខ, រាជធានីភ្នំពេញ, 120806, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​បឹង​បៃតង​",
+        "road": "ផ្លូវ ឧកញ៉ា ម៉ុងឫទ្ធី (១៩២៨)",
+        "hamlet": "ភូមិច្រេស",
+        "village": "សង្កាត់គោកឃ្លាង",
+        "town": "ខណ្ឌសែនសុខ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120806",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4535407311",
+      "latitude": 11.0757605,
+      "longitude": 104.4970475,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារត្រពាំងអណ្ដើក",
+        "name:en": "Trapeang Andaeuk Market",
+        "name:es": "Mercado Tropéang Ondáok"
+      },
+      "display_name": "ផ្សារត្រពាំងអណ្ដើក, National Road 41, ត្រពាំងអណ្តើក, ត្រាំកក់, ខេត្តតាកែវ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារត្រពាំងអណ្ដើក",
+        "road": "National Road 41",
+        "village": "ត្រពាំងអណ្តើក",
+        "county": "ត្រាំកក់",
+        "state": "ខេត្តតាកែវ",
+        "ISO3166-2-lvl4": "KH-21",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4558201089",
+      "latitude": 10.5336774,
+      "longitude": 104.3830048,
+      "tags": {
+        "amenity": "marketplace",
+        "name:en": "Phsar Pong Teuk"
+      },
+      "display_name": "Phsar Pong Teuk, ផ្លូវជាតិ លេខ 33, ឃុំពងទឹក, ដំណាក់ចង្អើរ, ខេត្តកែប, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Pong Teuk",
+        "road": "ផ្លូវជាតិ លេខ 33",
+        "village": "ឃុំពងទឹក",
+        "county": "ដំណាក់ចង្អើរ",
+        "state": "ខេត្តកែប",
+        "ISO3166-2-lvl4": "KH-23",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4593769291",
+      "latitude": 10.6140071,
+      "longitude": 103.9294893,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារត្រពាំងរពៅ"
+      },
+      "display_name": "ផ្សារត្រពាំងរពៅ, ផ្លូវជាតិលេខ៣, ឃុំ​ព្រែកត្នោត, បូកគោ, ខេត្តកំពត, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារត្រពាំងរពៅ",
+        "road": "ផ្លូវជាតិលេខ៣",
+        "neighbourhood": "ឃុំ​ព្រែកត្នោត",
+        "county": "បូកគោ",
+        "state": "ខេត្តកំពត",
+        "ISO3166-2-lvl4": "KH-7",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4682352219",
+      "latitude": 10.6174832,
+      "longitude": 104.7655467,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Kirivong Market"
+      },
+      "display_name": "Kirivong Market, 113, ភូមិកំពង់, ស្រុកគីរីវង់, គីរីវង់, ខេត្តតាកែវ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Kirivong Market",
+        "road": "113",
+        "hamlet": "ភូមិកំពង់",
+        "town": "ស្រុកគីរីវង់",
+        "county": "គីរីវង់",
+        "state": "ខេត្តតាកែវ",
+        "ISO3166-2-lvl4": "KH-21",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4688585627",
+      "latitude": 11.0708381,
+      "longitude": 104.7597525,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារស្វាយព្រៃ",
+        "name:en": "Svay Prey Market",
+        "name:es": "Mercado Svay Prey"
+      },
+      "display_name": "ផ្សារស្វាយព្រៃ, ផ្លូវជាតិលេខ២, ក្រុងដូនកែវ, សំរោង, ខេត្តតាកែវ, 211002, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារស្វាយព្រៃ",
+        "road": "ផ្លូវជាតិលេខ២",
+        "city": "ក្រុងដូនកែវ",
+        "county": "សំរោង",
+        "state": "ខេត្តតាកែវ",
+        "ISO3166-2-lvl4": "KH-21",
+        "postcode": "211002",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4765614821",
+      "latitude": 11.2897725,
+      "longitude": 104.708422,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារត្រាំខ្នារ",
+        "name:de": "ThamKah Markt",
+        "name:en": "ThamKah Market",
+        "name:km": "ផ្សារត្រាំខ្នារ"
+      },
+      "display_name": "ផ្សារត្រាំខ្នារ, ផ្លូវជាតិលេខ៣, ឃុំសូរភី, បាទី, ខេត្តតាកែវ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារត្រាំខ្នារ",
+        "road": "ផ្លូវជាតិលេខ៣",
+        "village": "ឃុំសូរភី",
+        "county": "បាទី",
+        "state": "ខេត្តតាកែវ",
+        "ISO3166-2-lvl4": "KH-21",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4776162025",
+      "latitude": 11.5743317,
+      "longitude": 104.8998402,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារអ៊ុនវិចិត្រ",
+        "name:en": "Un Vichet Market"
+      },
+      "display_name": "ផ្សារអ៊ុនវិចិត្រ, ផ្លូវ ៦១៤, សង្កាត់បឹងកក់ទី ២, ខណ្ឌទួលគោក, រាជធានីភ្នំពេញ, 120408, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារអ៊ុនវិចិត្រ",
+        "road": "ផ្លូវ ៦១៤",
+        "village": "សង្កាត់បឹងកក់ទី ២",
+        "town": "ខណ្ឌទួលគោក",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120408",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4776174121",
+      "latitude": 11.5747674,
+      "longitude": 104.9001856,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារ៧មករា",
+        "name:en": "7 Makara Market"
+      },
+      "display_name": "ផ្សារ៧មករា, ផ្លូវ ២៨៧, សង្កាត់បឹងកក់ទី ១, ខណ្ឌទួលគោក, រាជធានីភ្នំពេញ, 120407, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ៧មករា",
+        "road": "ផ្លូវ ២៨៧",
+        "village": "សង្កាត់បឹងកក់ទី ១",
+        "town": "ខណ្ឌទួលគោក",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120407",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4876112921",
+      "latitude": 11.5199609,
+      "longitude": 104.8598729,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារទួលពង្រ ចោមចៅ"
+      },
+      "display_name": "ផ្សារទួលពង្រ ចោមចៅ, ផ្លូវ ២២, ភូមិចោមចៅ, សង្កាត់ចោមចៅទី២, ខណ្ឌពោធិ៍សែនជ័យ, រាជធានីភ្នំពេញ, 120910, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារទួលពង្រ ចោមចៅ",
+        "road": "ផ្លូវ ២២",
+        "hamlet": "ភូមិចោមចៅ",
+        "village": "សង្កាត់ចោមចៅទី២",
+        "town": "ខណ្ឌពោធិ៍សែនជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120910",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4881385121",
+      "latitude": 12.458075,
+      "longitude": 107.1842456,
+      "tags": {
+        "amenity": "marketplace",
+        "name:en": "Indigenous People's Market"
+      },
+      "display_name": "Indigenous People's Market, Pou Chry Road, ក្រុងសែនមនោរម្យ, សង្កាត់សុខដុម, សែនមនោរម្យ, ខេត្តមណ្ឌលគិរី, 110502, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Indigenous People's Market",
+        "road": "Pou Chry Road",
+        "city": "ក្រុងសែនមនោរម្យ",
+        "county": "សែនមនោរម្យ",
+        "state": "ខេត្តមណ្ឌលគិរី",
+        "ISO3166-2-lvl4": "KH-11",
+        "postcode": "110502",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4884871121",
+      "latitude": 11.5302389,
+      "longitude": 104.7979205,
+      "tags": {
+        "amenity": "marketplace",
+        "name:en": "Orng Market"
+      },
+      "display_name": "Orng Market, ផ្លូវជាតិលេខ៤, ភូមិអង្គកែវ, ភូមិព្រៃព្រីងខាងត្បូង២, ខណ្ឌពោធិ៍សែនជ័យ, រាជធានីភ្នំពេញ, 120906, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Orng Market",
+        "road": "ផ្លូវជាតិលេខ៤",
+        "hamlet": "ភូមិអង្គកែវ",
+        "village": "ភូមិព្រៃព្រីងខាងត្បូង២",
+        "town": "ខណ្ឌពោធិ៍សែនជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120906",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4907542985",
+      "latitude": 10.788171,
+      "longitude": 104.8220162,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារកំពង់ជ្រៃថ្មី",
+        "name:en": "Kampong Chrey Thmey Market",
+        "name:es": "Mercado Kampong Chrey Thmey"
+      },
+      "display_name": "ផ្សារកំពង់ជ្រៃថ្មី, ផ្លូវជាតិលេខ២, ទ្រាំង, ដូនកែវ, ខេត្តតាកែវ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារកំពង់ជ្រៃថ្មី",
+        "road": "ផ្លូវជាតិលេខ២",
+        "town": "ទ្រាំង",
+        "county": "ដូនកែវ",
+        "state": "ខេត្តតាកែវ",
+        "ISO3166-2-lvl4": "KH-21",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4962945525",
+      "latitude": 11.823594,
+      "longitude": 104.7611004,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សាររាត្រី",
+        "name:en": "Night Market"
+      },
+      "display_name": "ផ្សាររាត្រី, ផ្លូវជាតិលេខ៥, កំពង់ត្រឡាច, ខេត្តកំពង់ឆ្នាំង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សាររាត្រី",
+        "road": "ផ្លូវជាតិលេខ៥",
+        "town": "កំពង់ត្រឡាច",
+        "state": "ខេត្តកំពង់ឆ្នាំង",
+        "ISO3166-2-lvl4": "KH-4",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/4962957125",
+      "latitude": 12.2383254,
+      "longitude": 104.6698896,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សាររាត្រី",
+        "name:en": "Night Market"
+      },
+      "display_name": "ផ្សាររាត្រី, Chansary Road, ក្រុងកំពង់ឆ្នាំង, កំពង់ឆ្នាំង, ខេត្តកំពង់ឆ្នាំង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សាររាត្រី",
+        "road": "Chansary Road",
+        "city": "ក្រុងកំពង់ឆ្នាំង",
+        "county": "កំពង់ឆ្នាំង",
+        "state": "ខេត្តកំពង់ឆ្នាំង",
+        "ISO3166-2-lvl4": "KH-4",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/5040028719",
+      "latitude": 11.5684245,
+      "longitude": 104.8609671,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារដីហុយ",
+        "name:km": "ផ្សារដីហុយ"
+      },
+      "display_name": "ផ្សារដីហុយ, ផ្លូវលេខ ៥៨ភី, ភូមិដីថ្មី, សង្កាត់ទឹកថ្លា, ខណ្ឌសែនសុខ, រាជធានីភ្នំពេញ, 120806, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារដីហុយ",
+        "road": "ផ្លូវលេខ ៥៨ភី",
+        "hamlet": "ភូមិដីថ្មី",
+        "village": "សង្កាត់ទឹកថ្លា",
+        "town": "ខណ្ឌសែនសុខ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120806",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/5058507298",
+      "latitude": 11.5310004,
+      "longitude": 104.907074,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:country": "KH",
+        "amenity": "marketplace",
+        "name": "ផ្សារទួលពង្រ"
+      },
+      "display_name": "ផ្សារទួលពង្រ, ផ្លូវ ៣១BT, ភូមិត្នោតជ្រំ, សង្កាត់បឹងទំពុនទី១, ខណ្ឌមានជ័យ, រាជធានីភ្នំពេញ, 120606, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារទួលពង្រ",
+        "road": "ផ្លូវ ៣១BT",
+        "hamlet": "ភូមិត្នោតជ្រំ",
+        "village": "សង្កាត់បឹងទំពុនទី១",
+        "town": "ខណ្ឌមានជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120606",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/5102312422",
+      "latitude": 11.5076412,
+      "longitude": 104.7150152,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារអង្គស្នួល"
+      },
+      "display_name": "ផ្សារអង្គស្នួល, ផ្លូវជាតិលេខ៤, Svay Chhum, ភូមិ ត្រពាំងជួន, ឃុំដំណាក់អំពិល, អង្គស្នួល, សំរោងទង, ខេត្តកណ្ដាល, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារអង្គស្នួល",
+        "road": "ផ្លូវជាតិលេខ៤",
+        "neighbourhood": "Svay Chhum",
+        "hamlet": "ភូមិ ត្រពាំងជួន",
+        "village": "ឃុំដំណាក់អំពិល",
+        "town": "អង្គស្នួល",
+        "county": "សំរោងទង",
+        "state": "ខេត្តកណ្ដាល",
+        "ISO3166-2-lvl4": "KH-8",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/5122482900",
+      "latitude": 12.5608461,
+      "longitude": 105.0483654,
+      "tags": {
+        "addr:city": "Kampong Thom",
+        "addr:country": "KH",
+        "amenity": "marketplace",
+        "name": "Tangkrosang Market"
+      },
+      "display_name": "Tangkrosang Market, ផ្លូវជាតិលេខ៦, ស្រុក​សន្ទុក, សន្ទុក, ខេត្តកំពង់ធំ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Tangkrosang Market",
+        "road": "ផ្លូវជាតិលេខ៦",
+        "town": "ស្រុក​សន្ទុក",
+        "county": "សន្ទុក",
+        "state": "ខេត្តកំពង់ធំ",
+        "ISO3166-2-lvl4": "KH-6",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/5203520922",
+      "latitude": 13.3594711,
+      "longitude": 103.8507644,
+      "tags": {
+        "amenity": "marketplace",
+        "name:en": "Clothes Market",
+        "name:km": "ផ្សារសំលៀកបំពាក់"
+      },
+      "display_name": "ផ្សារសំលៀកបំពាក់, វិថី​ទេព​វង្ស, ភូមិ​គ្រួស, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 123456, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារសំលៀកបំពាក់",
+        "road": "វិថី​ទេព​វង្ស",
+        "village": "ភូមិ​គ្រួស",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "123456",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/5208493663",
+      "latitude": 12.2653695,
+      "longitude": 104.678265,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Phsar Kroum"
+      },
+      "display_name": "Phsar Kroum, ផ្លូវ​នរោត្តម, ក្រុងកំពង់ឆ្នាំង, កំពង់ឆ្នាំង, ខេត្តកំពង់ឆ្នាំង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Kroum",
+        "road": "ផ្លូវ​នរោត្តម",
+        "city": "ក្រុងកំពង់ឆ្នាំង",
+        "county": "កំពង់ឆ្នាំង",
+        "state": "ខេត្តកំពង់ឆ្នាំង",
+        "ISO3166-2-lvl4": "KH-4",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/5415136156",
+      "latitude": 12.8597189,
+      "longitude": 102.6034783,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Pailin Market"
+      },
+      "display_name": "Pailin Market, ផ្លូវជាតិលេខ ៥៧, ប៉ៃលិន, ខេត្តប៉ៃលិន, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Pailin Market",
+        "road": "ផ្លូវជាតិលេខ ៥៧",
+        "city": "ប៉ៃលិន",
+        "state": "ខេត្តប៉ៃលិន",
+        "ISO3166-2-lvl4": "KH-24",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/5437020686",
+      "latitude": 11.5236877,
+      "longitude": 104.8517584,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារពិភពថ្មី",
+        "name:en": "Piphop Thmey Market",
+        "name:km": "ផ្សារពិភពថ្មី"
+      },
+      "display_name": "ផ្សារពិភពថ្មី, ផ្លូវ ១៨, សង្កាត់ចោមចៅទី១, ភូមិចោមចៅ, សង្កាត់ចោមចៅទី២, ខណ្ឌពោធិ៍សែនជ័យ, រាជធានីភ្នំពេញ, 120910, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារពិភពថ្មី",
+        "road": "ផ្លូវ ១៨",
+        "quarter": "សង្កាត់ចោមចៅទី១",
+        "hamlet": "ភូមិចោមចៅ",
+        "village": "សង្កាត់ចោមចៅទី២",
+        "town": "ខណ្ឌពោធិ៍សែនជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120910",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/5611141916",
+      "latitude": 12.4269861,
+      "longitude": 107.3088374,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Dak Dam Market",
+        "operator": "Nget Chanlika, So Dane, Sra Lonh"
+      },
+      "display_name": "Dak Dam Market, 3782, Dak Dam, អូររាំង, ខេត្តមណ្ឌលគិរី, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Dak Dam Market",
+        "road": "3782",
+        "village": "Dak Dam",
+        "county": "អូររាំង",
+        "state": "ខេត្តមណ្ឌលគិរី",
+        "ISO3166-2-lvl4": "KH-11",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/5626774460",
+      "latitude": 11.6022818,
+      "longitude": 104.9093036,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារបឹងសាឡាងថ្មី",
+        "name:en": "New Boeung Salang Market",
+        "name:es": "Mercado Boeung Salang Nuevo",
+        "name:km": "ផ្សារបឹងសាឡាងថ្មី"
+      },
+      "display_name": "ផ្សារបឹងសាឡាងថ្មី, ផ្លូវ បេតុង, ភូមិទួលថ្ងាន់, សង្កាត់ឬស្សីកែវ, ខណ្ឌឫស្សីកែវ, រាជធានីភ្នំពេញ, 120707, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារបឹងសាឡាងថ្មី",
+        "road": "ផ្លូវ បេតុង",
+        "hamlet": "ភូមិទួលថ្ងាន់",
+        "village": "សង្កាត់ឬស្សីកែវ",
+        "town": "ខណ្ឌឫស្សីកែវ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120707",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/568954855",
+      "latitude": 13.3188037,
+      "longitude": 103.8510317,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Banteay Chey Market"
+      },
+      "display_name": "Banteay Chey Market, ផ្លូវជាតិ​លេខ៦៣, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 177130, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Banteay Chey Market",
+        "road": "ផ្លូវជាតិ​លេខ៦៣",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "177130",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/570497069",
+      "latitude": 13.4444713,
+      "longitude": 103.9374666,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Preah Dak Market"
+      },
+      "display_name": "Preah Dak Market, 67, បន្ទាយស្រី, ខេត្តសៀមរាប, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Preah Dak Market",
+        "road": "67",
+        "county": "បន្ទាយស្រី",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/5717175074",
+      "latitude": 11.0131348,
+      "longitude": 104.6736322,
+      "tags": {
+        "addr:postcode": "885",
+        "addr:street": "street 3",
+        "amenity": "marketplace",
+        "email": "ngetsreylin@yahoo.com",
+        "name": "ផ្សារអង់តាដោម",
+        "name:en": "Angtadom Market",
+        "name:km": "ផ្សារអង់តាដោម",
+        "opening_hours": "24/7",
+        "operator": "Sreylin",
+        "phone": "098315026"
+      },
+      "display_name": "ផ្សារអង់តាដោម, ផ្លូវជាតិលេខ៣, ឃុំអង្គតាសោម, ត្រាំកក់, ខេត្តតាកែវ, 885, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារអង់តាដោម",
+        "road": "ផ្លូវជាតិលេខ៣",
+        "village": "ឃុំអង្គតាសោម",
+        "county": "ត្រាំកក់",
+        "state": "ខេត្តតាកែវ",
+        "ISO3166-2-lvl4": "KH-21",
+        "postcode": "885",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/6217576091",
+      "latitude": 11.5828851,
+      "longitude": 104.5319456,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារក្រាំងចេក"
+      },
+      "display_name": "ផ្សារក្រាំងចេក, ផ្លូវជាតិ​លេខ១២៩, Ampil Phsem, សាមគ្គីមុនីជ័យ, ខេត្តកំពង់ស្ពឺ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារក្រាំងចេក",
+        "road": "ផ្លូវជាតិ​លេខ១២៩",
+        "village": "Ampil Phsem",
+        "county": "សាមគ្គីមុនីជ័យ",
+        "state": "ខេត្តកំពង់ស្ពឺ",
+        "ISO3166-2-lvl4": "KH-5",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/6222984387",
+      "latitude": 12.4581885,
+      "longitude": 107.1840126,
+      "tags": {
+        "amenity": "marketplace",
+        "name:en": "Night Market"
+      },
+      "display_name": "Night Market, Pou Chry Road, ក្រុងសែនមនោរម្យ, សង្កាត់សុខដុម, សែនមនោរម្យ, ខេត្តមណ្ឌលគិរី, 110502, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Night Market",
+        "road": "Pou Chry Road",
+        "city": "ក្រុងសែនមនោរម្យ",
+        "county": "សែនមនោរម្យ",
+        "state": "ខេត្តមណ្ឌលគិរី",
+        "ISO3166-2-lvl4": "KH-11",
+        "postcode": "110502",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/6253519585",
+      "latitude": 13.3555443,
+      "longitude": 103.8518601,
+      "tags": {
+        "amenity": "marketplace",
+        "name:en": "Night Market Souvenirs",
+        "name:km": "ផ្សាររាត្រីវត្ថុអនុស្សាវរីយ៍"
+      },
+      "display_name": "ផ្សាររាត្រីវត្ថុអនុស្សាវរីយ៍, Harbour Road, ភូមិ​គ្រួស, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171000, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សាររាត្រីវត្ថុអនុស្សាវរីយ៍",
+        "road": "Harbour Road",
+        "village": "ភូមិ​គ្រួស",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171000",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "node/8115548189",
+      "latitude": 11.4413087,
+      "longitude": 104.8586199,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ដេប៉ូ អុិន វិចិត្រ",
+        "phone": "+855 096 9717277; +855 076 9717277"
+      },
+      "display_name": "ដេប៉ូ អុិន វិចិត្រ, 20A, ភូមិក្រពើទ្រោម, សង្កាត់ទៀន, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120511, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ដេប៉ូ អុិន វិចិត្រ",
+        "road": "20A",
+        "hamlet": "ភូមិក្រពើទ្រោម",
+        "village": "សង្កាត់ទៀន",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120511",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "relation/6901826",
+      "latitude": 13.3557758,
+      "longitude": 103.8518843,
+      "tags": {
+        "addr:city": "Siem Reap",
+        "addr:country": "KH",
+        "addr:postcode": "17254",
+        "addr:street": "Angkor Night Market Street",
+        "alt_name": "Night Market",
+        "amenity": "marketplace",
+        "contact:email": "info@angkornightmarket.com",
+        "contact:facebook": "https://www.facebook.com/angkornightmarket",
+        "contact:google_plus": "https://plus.google.com/+Angkornightmarket",
+        "contact:instagram": "https://www.instagram.com/angkornightmarket/",
+        "contact:linkedin": "https://www.linkedin.com/company/angkor-night-market",
+        "contact:phone:EN": "+855 69 835 835",
+        "contact:phone:KM": "+855 93 800 811",
+        "contact:twitter": "https://twitter.com/angkornight",
+        "contact:website": "http://www.angkornightmarket.com/",
+        "contact:youtube": "https://www.youtube.com/channel/UCwy9pFBo9wNTS0s0M4gNodA",
+        "email": "info@angkornightmarket.com",
+        "name": "Angkor Night Market",
+        "note": "Currently no wikipedia article. Closest link: https://en.wikipedia.org/wiki/Siem_Reap#Markets",
+        "tourism": "attraction",
+        "type": "site"
+      },
+      "display_name": "CoCo House, Harbour Road, ភូមិ​គ្រួស, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171000, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "CoCo House",
+        "road": "Harbour Road",
+        "village": "ភូមិ​គ្រួស",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171000",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1060887275",
+      "latitude": 11.5633156,
+      "longitude": 104.9162113,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​អូរឫស្សី",
+        "name:en": "Phsar Orussey",
+        "name:km": "ផ្សារ​អូរឫស្សី",
+        "name:ko": "오릇세이 시장 모림가"
+      },
+      "display_name": "ផ្លូវ ១១១, សង្កាត់អូរឬស្សីទី ១, ប្រាំពីរមករា, រាជធានីភ្នំពេញ, 120301, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "ផ្លូវ ១១១",
+        "village": "សង្កាត់អូរឬស្សីទី ១",
+        "town": "ប្រាំពីរមករា",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120301",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1071956818",
+      "latitude": 11.5640837,
+      "longitude": 104.9163827,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Live Animal Market"
+      },
+      "display_name": "Live Animal Market, ផ្លូវ ១១១, សង្កាត់អូរឬស្សីទី ១, ប្រាំពីរមករា, រាជធានីភ្នំពេញ, 120301, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Live Animal Market",
+        "road": "ផ្លូវ ១១១",
+        "village": "សង្កាត់អូរឬស្សីទី ១",
+        "town": "ប្រាំពីរមករា",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120301",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1106034756",
+      "latitude": 11.8914,
+      "longitude": 105.1606838,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Prek Dambouk Market",
+        "name:km": "ផ្សារព្រែកដំបូក"
+      },
+      "display_name": "Prek Dambouk Market, ផ្លូវជាតិលេខ៣៨១, ភូមិផ្ទះកណ្ដាលក្រោម, ស្រុកស្រីសន្ធរ, ស្រីសន្ធរ, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Prek Dambouk Market",
+        "road": "ផ្លូវជាតិលេខ៣៨១",
+        "hamlet": "ភូមិផ្ទះកណ្ដាលក្រោម",
+        "town": "ស្រុកស្រីសន្ធរ",
+        "county": "ស្រីសន្ធរ",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1106034764",
+      "latitude": 11.8374218,
+      "longitude": 105.0671572,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Moan Dop Market",
+        "name:en": "Moan Dop Market",
+        "name:km": "ផ្សារមាន់ដប់"
+      },
+      "display_name": "Moan Dop Market, ផ្លូវជាតិលេខ៣៨១, ភូមិផ្ទះកណ្ដាលក្រោម, ស្រុកស្រីសន្ធរ, ស្រីសន្ធរ, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Moan Dop Market",
+        "road": "ផ្លូវជាតិលេខ៣៨១",
+        "hamlet": "ភូមិផ្ទះកណ្ដាលក្រោម",
+        "town": "ស្រុកស្រីសន្ធរ",
+        "county": "ស្រីសន្ធរ",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1106034772",
+      "latitude": 11.7733944,
+      "longitude": 105.0263595,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Preah Prasop Thmey Market",
+        "name:en": "Preah Prasop Thmey Market",
+        "name:km": "ផ្សារព្រះប្រសប់ថ្មី"
+      },
+      "display_name": "Preah Prasop Thmey Market, ផ្លូវជាតិលេខ៣៨១, ស្រុកខ្សាច់កណ្ដាល, ខេត្តកណ្ដាល, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Preah Prasop Thmey Market",
+        "road": "ផ្លូវជាតិលេខ៣៨១",
+        "town": "ស្រុកខ្សាច់កណ្ដាល",
+        "state": "ខេត្តកណ្ដាល",
+        "ISO3166-2-lvl4": "KH-8",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1112066528",
+      "latitude": 11.77696,
+      "longitude": 104.6752871,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារខ្សាច់ពូន",
+        "name:en": "Khsach Poun Market",
+        "name:km": "ផ្សារខ្សាច់ពូន"
+      },
+      "display_name": "ផ្សារខ្សាច់ពូន, 44, ស្រុកថ្ពង, ឧដុង្គម៉ែជ័យ, ខេត្តកំពង់ស្ពឺ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារខ្សាច់ពូន",
+        "road": "44",
+        "town": "ស្រុកថ្ពង",
+        "county": "ឧដុង្គម៉ែជ័យ",
+        "state": "ខេត្តកំពង់ស្ពឺ",
+        "ISO3166-2-lvl4": "KH-5",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1128232804",
+      "latitude": 12.2745911,
+      "longitude": 104.7263193,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "K. Leaeng Maret"
+      },
+      "display_name": "K. Leaeng Maret, ផ្លូវជាតិលេខ 50C, ស្រុកកំពង់លែង, ខេត្តកំពង់ឆ្នាំង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "K. Leaeng Maret",
+        "road": "ផ្លូវជាតិលេខ 50C",
+        "town": "ស្រុកកំពង់លែង",
+        "state": "ខេត្តកំពង់ឆ្នាំង",
+        "ISO3166-2-lvl4": "KH-4",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1157951075",
+      "latitude": 11.8280496,
+      "longitude": 106.1812983,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Memot Market"
+      },
+      "display_name": "Memot Market, ផ្លូវជាតិលេខ៧, ភូមិសំរោងជេីងស្រុកមេមត់ខេត្ដត្បូងឃ្មុំ, ស្រុក​មេមត់, មេមត់, ខេត្តត្បូងឃ្មុំ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Memot Market",
+        "road": "ផ្លូវជាតិលេខ៧",
+        "hamlet": "ភូមិសំរោងជេីងស្រុកមេមត់ខេត្ដត្បូងឃ្មុំ",
+        "town": "ស្រុក​មេមត់",
+        "county": "មេមត់",
+        "state": "ខេត្តត្បូងឃ្មុំ",
+        "ISO3166-2-lvl4": "KH-25",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1158625070",
+      "latitude": 11.5354251,
+      "longitude": 104.7615274,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "market",
+        "name": "ផ្សារសង្ឃឹមថ្មី",
+        "name:en": "New Hope Market",
+        "operator": "Borey New Hope"
+      },
+      "display_name": "ផ្សារសង្ឃឹមថ្មី, Phka Mlis Street (NH09), បុរីសង្ឃឹមថ្មី, ភូមិកប់អំបិល, សង្កាត់កំបូល, ខណ្ឌកំបូល, រាជធានីភ្នំពេញ, 120905, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារសង្ឃឹមថ្មី",
+        "road": "Phka Mlis Street (NH09)",
+        "residential": "បុរីសង្ឃឹមថ្មី",
+        "hamlet": "ភូមិកប់អំបិល",
+        "village": "សង្កាត់កំបូល",
+        "town": "ខណ្ឌកំបូល",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120905",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1158627843",
+      "latitude": 11.5182381,
+      "longitude": 104.7761603,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារពិភពថ្មី (កំបូល ១)",
+        "name:en": "New World Market (Kambol I)"
+      },
+      "display_name": "ផ្សារពិភពថ្មី (កំបូល ១), Street 01, ភូមិត្រពាំងគល់, សង្កាត់កន្ទោក, ខណ្ឌកំបូល, រាជធានីភ្នំពេញ, 120906, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារពិភពថ្មី (កំបូល ១)",
+        "road": "Street 01",
+        "hamlet": "ភូមិត្រពាំងគល់",
+        "village": "សង្កាត់កន្ទោក",
+        "town": "ខណ្ឌកំបូល",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120906",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1159329366",
+      "latitude": 11.5385127,
+      "longitude": 104.8205397,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "amenity": "marketplace",
+        "name": "ផ្សារឯករាជ្យ ២",
+        "name:en": "Ekareach Market II"
+      },
+      "display_name": "ផ្សារឯករាជ្យ ២, ផ្លូវលេខ ៣, សង្កាត់ចោមចៅទី៣, ភូមិត្រពាំងពោធិ៍, ភូមិព្រៃព្រីងខាងត្បូង២, ខណ្ឌពោធិ៍សែនជ័យ, រាជធានីភ្នំពេញ, 120916, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារឯករាជ្យ ២",
+        "road": "ផ្លូវលេខ ៣",
+        "quarter": "សង្កាត់ចោមចៅទី៣",
+        "hamlet": "ភូមិត្រពាំងពោធិ៍",
+        "village": "ភូមិព្រៃព្រីងខាងត្បូង២",
+        "town": "ខណ្ឌពោធិ៍សែនជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120916",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1159330777",
+      "latitude": 11.5249501,
+      "longitude": 104.7972805,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "yes",
+        "name": "ផ្សារ ញូវថោន អូដឹម",
+        "name:en": "Odem New Town Market"
+      },
+      "display_name": "ផ្សារ ញូវថោន អូដឹម, ផ្លូវជាតិលេខ៤, ភូមិអង្គកែវ, ភូមិព្រៃព្រីងខាងត្បូង២, ខណ្ឌពោធិ៍សែនជ័យ, រាជធានីភ្នំពេញ, 120906, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ ញូវថោន អូដឹម",
+        "road": "ផ្លូវជាតិលេខ៤",
+        "hamlet": "ភូមិអង្គកែវ",
+        "village": "ភូមិព្រៃព្រីងខាងត្បូង២",
+        "town": "ខណ្ឌពោធិ៍សែនជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120906",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1180073411",
+      "latitude": 12.3641404,
+      "longitude": 105.5892989,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "yes",
+        "name": "ផ្សារ​ បែកអន្លូង (ផ្សារ សែនមនោរម្យ)",
+        "name:en": "Bek Anlong Market (Sen Monorom Market)"
+      },
+      "display_name": "ផ្សារ​ បែកអន្លូង (ផ្សារ សែនមនោរម្យ), Bek Anlong, ស្ទឹងត្រង់, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​ បែកអន្លូង (ផ្សារ សែនមនោរម្យ)",
+        "town": "Bek Anlong",
+        "county": "ស្ទឹងត្រង់",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1180073412",
+      "latitude": 12.3640269,
+      "longitude": 105.5892307,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "yes",
+        "name": "ផ្សារ​ បែកអន្លូង (ផ្សារ សែនមនោរម្យ)",
+        "name:en": "Bek Anlong Market (Sen Monorom Market)"
+      },
+      "display_name": "ផ្សារ​ បែកអន្លូង (ផ្សារ សែនមនោរម្យ), Bek Anlong, ស្ទឹងត្រង់, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​ បែកអន្លូង (ផ្សារ សែនមនោរម្យ)",
+        "town": "Bek Anlong",
+        "county": "ស្ទឹងត្រង់",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1189632946",
+      "latitude": 11.5579421,
+      "longitude": 104.7764332,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "yes",
+        "name": "Romdul Market"
+      },
+      "display_name": "Romdul Market, Street 127, Borey Williams Pka Romdul, ភូមិរំដួលត្បូង, សង្កាត់កំបូល, ខណ្ឌកំបូល, រាជធានីភ្នំពេញ, 120905, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Romdul Market",
+        "road": "Street 127",
+        "residential": "Borey Williams Pka Romdul",
+        "hamlet": "ភូមិរំដួលត្បូង",
+        "village": "សង្កាត់កំបូល",
+        "town": "ខណ្ឌកំបូល",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120905",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1193640679",
+      "latitude": 10.6053202,
+      "longitude": 103.5184606,
+      "tags": {
+        "amenity": "marketplace",
+        "area": "yes",
+        "highway": "pedestrian",
+        "name": "ច្រករបៀងមាត់សមុទ្រ",
+        "name:en": "Seaside Plaza",
+        "name:zh": "半岛湾海边广场"
+      },
+      "display_name": "Master suki soup (半岛湾）, វិថីតេជោ, សង្កាត់បី, ព្រះសីហនុ, ខេត្តព្រះសីហនុ, 180403, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Master suki soup (半岛湾）",
+        "road": "វិថីតេជោ",
+        "suburb": "សង្កាត់បី",
+        "city": "ព្រះសីហនុ",
+        "county": "ព្រះសីហនុ",
+        "province": "ខេត្តព្រះសីហនុ",
+        "ISO3166-2-lvl4": "KH-18",
+        "postcode": "180403",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1197847098",
+      "latitude": 11.514201,
+      "longitude": 104.9415493,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "no",
+        "name": "Cham Market"
+      },
+      "display_name": "Cham Market, ផ្លូវ ៣៦៩, Preak Tapov, ភូមិឬស្សីស្រស់, សង្កាត់ព្រែកប្រា, ខណ្ឌច្បារអំពៅ, រាជធានីភ្នំពេញ, 121204, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Cham Market",
+        "road": "ផ្លូវ ៣៦៩",
+        "neighbourhood": "Preak Tapov",
+        "hamlet": "ភូមិឬស្សីស្រស់",
+        "village": "សង្កាត់ព្រែកប្រា",
+        "town": "ខណ្ឌច្បារអំពៅ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "121204",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1202665093",
+      "latitude": 10.6226691,
+      "longitude": 103.5300224,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារលើ",
+        "name:en": "Phsar Leur"
+      },
+      "display_name": "ផ្លូវ ២១៨, សង្កាត់បី, ព្រះសីហនុ, ខេត្តព្រះសីហនុ, 180000, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "ផ្លូវ ២១៨",
+        "suburb": "សង្កាត់បី",
+        "city": "ព្រះសីហនុ",
+        "county": "ព្រះសីហនុ",
+        "province": "ខេត្តព្រះសីហនុ",
+        "ISO3166-2-lvl4": "KH-18",
+        "postcode": "180000",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1213921613",
+      "latitude": 13.8084984,
+      "longitude": 104.9779025,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "yes",
+        "name": "ផ្សារកំពង់ប្រណាក",
+        "name:en": "Kampong Pranak Market",
+        "name:es": "Mercado Kampong Pranak",
+        "name:ko": "껌뿡쁘라낙시장"
+      },
+      "display_name": "ផ្សារកំពង់ប្រណាក, Preah Khan Street, ក្រុងព្រះវិហារ, ព្រះវិហារ, ខេត្តព្រះវិហារ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារកំពង់ប្រណាក",
+        "road": "Preah Khan Street",
+        "city": "ក្រុងព្រះវិហារ",
+        "county": "ព្រះវិហារ",
+        "state": "ខេត្តព្រះវិហារ",
+        "ISO3166-2-lvl4": "KH-13",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/121784627",
+      "latitude": 11.9972835,
+      "longitude": 105.4622121,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Boeung Kok"
+      },
+      "display_name": "សុភមង្គល, 41, ក្រុងកំពង់ចាម, កំពង់ចាម, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "សុភមង្គល",
+        "road": "41",
+        "city": "ក្រុងកំពង់ចាម",
+        "county": "កំពង់ចាម",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1300793303",
+      "latitude": 12.2910773,
+      "longitude": 105.6283713,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារក្រូចឆ្មារ",
+        "name:en": "Krouch Chhmar Market"
+      },
+      "display_name": "ផ្សារក្រូចឆ្មារ, 308, ស្រុក​ក្រូចឆ្មារ, ក្រូចឆ្មារ, ខេត្តត្បូងឃ្មុំ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារក្រូចឆ្មារ",
+        "road": "308",
+        "town": "ស្រុក​ក្រូចឆ្មារ",
+        "county": "ក្រូចឆ្មារ",
+        "state": "ខេត្តត្បូងឃ្មុំ",
+        "ISO3166-2-lvl4": "KH-25",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1304387958",
+      "latitude": 11.5559836,
+      "longitude": 104.8856363,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "2002 Market"
+      },
+      "display_name": "Lyheng Thmey, ផ្លូវ ២០០២, ភូមិចុងថ្នល់ខាងកើត, សង្កាត់អូរបែកក្អម, ខណ្ឌសែនសុខ, រាជធានីភ្នំពេញ, 120802, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Lyheng Thmey",
+        "road": "ផ្លូវ ២០០២",
+        "hamlet": "ភូមិចុងថ្នល់ខាងកើត",
+        "village": "សង្កាត់អូរបែកក្អម",
+        "town": "ខណ្ឌសែនសុខ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120802",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1352536791",
+      "latitude": 13.3582591,
+      "longitude": 103.8619626,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "market n3"
+      },
+      "display_name": "market n3, Street 21, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171209, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "market n3",
+        "road": "Street 21",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171209",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1361363223",
+      "latitude": 11.5689382,
+      "longitude": 104.9571797,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារហនុមាន"
+      },
+      "display_name": "ផ្សារហនុមាន, Arey Khsat Ferry Road, ឃុំអរិយក្សត្រ, ស្រុកល្វាឯម, ខេត្តកណ្ដាល, 120208, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារហនុមាន",
+        "road": "Arey Khsat Ferry Road",
+        "village": "ឃុំអរិយក្សត្រ",
+        "town": "ស្រុកល្វាឯម",
+        "state": "ខេត្តកណ្ដាល",
+        "ISO3166-2-lvl4": "KH-8",
+        "postcode": "120208",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1364227026",
+      "latitude": 11.5472572,
+      "longitude": 104.956057,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សាររាត្រីកោះនរា",
+        "name:en": "Khmer StrEAT Night Market",
+        "operator": "Khmer StrEAT Night Market"
+      },
+      "display_name": "ផ្សាររាត្រីកោះនរា, Mekong Promenade, ​កោះ​នរា​, សង្កាត់វាលស្បូវ, ខណ្ឌច្បារអំពៅ, រាជធានីភ្នំពេញ, 121205, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សាររាត្រីកោះនរា",
+        "road": "Mekong Promenade",
+        "suburb": "​កោះ​នរា​",
+        "village": "សង្កាត់វាលស្បូវ",
+        "town": "ខណ្ឌច្បារអំពៅ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "121205",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1369574720",
+      "latitude": 11.5090455,
+      "longitude": 104.8890091,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Chamkadoung Market"
+      },
+      "display_name": "130, ផ្លូវ ចំការដូង (២១៧), ភូមិថ្មី, សង្កាត់ដង្កោ, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120501, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "house_number": "130",
+        "road": "ផ្លូវ ចំការដូង (២១៧)",
+        "hamlet": "ភូមិថ្មី",
+        "village": "សង្កាត់ដង្កោ",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120501",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1371655265",
+      "latitude": 11.4995393,
+      "longitude": 104.8201212,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "120000",
+        "addr:street": "ផ្លូវជាតិលេខ៣",
+        "amenity": "marketplace",
+        "building": "residential",
+        "name": "Borey Piphup Tmey National Road #3",
+        "name:km": "បុរី​ ពិភពថ្មីផ្លូវជាតិលេខ ៣",
+        "office": "company"
+      },
+      "display_name": "Borey Piphup Tmey National Road #3, ផ្លូវជាតិលេខ៣, ភូមិព្រៃកី(ក), ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120000, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "office": "Borey Piphup Tmey National Road #3",
+        "road": "ផ្លូវជាតិលេខ៣",
+        "hamlet": "ភូមិព្រៃកី(ក)",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120000",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1371655389",
+      "latitude": 11.4995964,
+      "longitude": 104.8212401,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "120502",
+        "addr:street": "ផ្លូវជាតិលេខ៣",
+        "amenity": "marketplace",
+        "landuse": "residential",
+        "name": "Borey Piphub Thmey National Road 3",
+        "name:km": "បុរី ពិភពថ្មីផ្លូវជាតិលេខ ៣",
+        "opening_hours": "24/7"
+      },
+      "display_name": "ពិសាអីសិន, ផ្លូវជាតិលេខ៣, ភូមិព្រៃកី(ក), ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120502, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ពិសាអីសិន",
+        "road": "ផ្លូវជាតិលេខ៣",
+        "hamlet": "ភូមិព្រៃកី(ក)",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120502",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1413022146",
+      "latitude": 11.6055439,
+      "longitude": 104.9177398,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phum Ahha Night Market (closed)"
+      },
+      "display_name": "Phum Ahha Night Market (closed), ផ្លូវជាតិលេខ៥, សង្កាត់ឬស្សីកែវ, ខណ្ឌឫស្សីកែវ, រាជធានីភ្នំពេញ, 120703, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phum Ahha Night Market (closed)",
+        "road": "ផ្លូវជាតិលេខ៥",
+        "village": "សង្កាត់ឬស្សីកែវ",
+        "town": "ខណ្ឌឫស្សីកែវ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120703",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1422961607",
+      "latitude": 11.4904357,
+      "longitude": 104.8424223,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "12000",
+        "addr:street": "Borey Sunny Road #6",
+        "amenity": "marketplace",
+        "building": "semidetached_house",
+        "building:levels": "2",
+        "height": "6",
+        "name": "Borey Sunny Project C"
+      },
+      "display_name": "Oh My C11, C11, Borey Sunny Road #6, ភូមិកំរៀង, សង្កាត់ព្រៃវែង, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120503, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Oh My C11",
+        "house_number": "C11",
+        "road": "Borey Sunny Road #6",
+        "hamlet": "ភូមិកំរៀង",
+        "village": "សង្កាត់ព្រៃវែង",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120503",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1422995075",
+      "latitude": 11.4897149,
+      "longitude": 104.8415021,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "12000",
+        "addr:street": "ភុមិកំរៀង សង្កាត់ព្រៃវែង ខណ្ឌដង្កោ ភ្នំពេញ",
+        "amenity": "marketplace",
+        "building": "semidetached_house",
+        "building:levels": "2",
+        "height": "6",
+        "name": "Borey Sunny Project U"
+      },
+      "display_name": "Borey Sunny Project U, Borey Sunny CUQ Road, ភូមិកំរៀង, សង្កាត់ព្រៃវែង, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120503, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Borey Sunny Project U",
+        "road": "Borey Sunny CUQ Road",
+        "hamlet": "ភូមិកំរៀង",
+        "village": "សង្កាត់ព្រៃវែង",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120503",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1422995077",
+      "latitude": 11.5016341,
+      "longitude": 104.8405369,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:street": "Road 30M Tuol Pongro, Phnom Penh",
+        "amenity": "marketplace",
+        "building": "semidetached_house",
+        "building:levels": "3",
+        "height": "9",
+        "name": "បុរីមរកតSH ទួលពង្រ2"
+      },
+      "display_name": "បុរីមរកតSH ទួលពង្រ2, Santepheap 40M Road, ភូមិធម្មត្រ័យ, សង្កាត់ព្រៃស, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120504, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "បុរីមរកតSH ទួលពង្រ2",
+        "road": "Santepheap 40M Road",
+        "hamlet": "ភូមិធម្មត្រ័យ",
+        "village": "សង្កាត់ព្រៃស",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120504",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1422995089",
+      "latitude": 11.5031828,
+      "longitude": 104.8588146,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "12000",
+        "addr:street": "ផ្លូវ​ទួលពង្រ, Phnom Penh",
+        "amenity": "marketplace",
+        "building": "semidetached_house",
+        "name": "Borey HL",
+        "name:km": "បុរី អេច អិល"
+      },
+      "display_name": "Borey HL, Santepheap 40M Road, ភូមិធម្មត្រ័យ, សង្កាត់ព្រៃស, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120504, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Borey HL",
+        "road": "Santepheap 40M Road",
+        "hamlet": "ភូមិធម្មត្រ័យ",
+        "village": "សង្កាត់ព្រៃស",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120504",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1422995090",
+      "latitude": 11.5058098,
+      "longitude": 104.8579256,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:street": "Thommeak Trai, Prey Sar, Dangkao",
+        "amenity": "marketplace",
+        "building": "semidetached_house",
+        "name": "Borey Phnom Penh Sok San (The Sok San Park)",
+        "name:km": "បុរី ភ្នំពេញសុខសាន្ត"
+      },
+      "display_name": "Borey Phnom Penh Sok San (The Sok San Park), Santepheap 40M Road, ភូមិធម្មត្រ័យ, សង្កាត់ព្រៃស, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120504, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Borey Phnom Penh Sok San (The Sok San Park)",
+        "road": "Santepheap 40M Road",
+        "hamlet": "ភូមិធម្មត្រ័យ",
+        "village": "សង្កាត់ព្រៃស",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120504",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1422995091",
+      "latitude": 11.5075226,
+      "longitude": 104.8582205,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "12000",
+        "addr:street": "Thommeak Trak, Prey Sar, Dangkao",
+        "amenity": "marketplace",
+        "building": "semidetached_house",
+        "name": "TH Residence Dangkoa I",
+        "name:km": "ធី អេច រ៉េស៊ីឌែន ដង្កោទី១"
+      },
+      "display_name": "TH Residence Dangkoa I, Santepheap 40M Road, ភូមិធម្មត្រ័យ, សង្កាត់ព្រៃស, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120504, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "TH Residence Dangkoa I",
+        "road": "Santepheap 40M Road",
+        "hamlet": "ភូមិធម្មត្រ័យ",
+        "village": "សង្កាត់ព្រៃស",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120504",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1423468963",
+      "latitude": 11.4993614,
+      "longitude": 104.8769806,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "12000",
+        "addr:street": "ផ្លូវ ៥០ ម៉ែត្រ",
+        "amenity": "marketplace",
+        "landuse": "residential",
+        "name": "Borey Chipmong 50M",
+        "residential": "apartments",
+        "tourism": "guest_house"
+      },
+      "display_name": "Borey Phnom Penh Sok San (The Sok San Town), ផ្លូវព្រៃស, ភូមិប្រការ, សង្កាត់ព្រៃស, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120504, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Borey Phnom Penh Sok San (The Sok San Town)",
+        "road": "ផ្លូវព្រៃស",
+        "hamlet": "ភូមិប្រការ",
+        "village": "សង្កាត់ព្រៃស",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120504",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1423468964",
+      "latitude": 11.499187,
+      "longitude": 104.8757834,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "12000",
+        "addr:street": "ផ្លូវ ៥០ ម៉ែត្រ",
+        "amenity": "marketplace",
+        "landuse": "residential",
+        "name": "Borey Phnom Penh Sok San (The Sok San Town)",
+        "name:km": "បុរី​ភ្នំពេញសុខសាន្ត",
+        "tourism": "attraction"
+      },
+      "display_name": "Borey Phnom Penh Sok San (The Sok San Town), Street P11, ភូមិប្រការ, សង្កាត់ដង្កោ, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120501, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Borey Phnom Penh Sok San (The Sok San Town)",
+        "road": "Street P11",
+        "hamlet": "ភូមិប្រការ",
+        "village": "សង្កាត់ដង្កោ",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120501",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1423506757",
+      "latitude": 11.4381803,
+      "longitude": 104.8936812,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "12000",
+        "amenity": "marketplace",
+        "landuse": "residential",
+        "name": "Piphup Thmey Kour Srov 2",
+        "name:km": "បុរីពិភពថ្មីគួរស្រូវ២",
+        "residential": "apartments",
+        "tourism": "apartment"
+      },
+      "display_name": "Piphup Thmey Kour Srov 2, Street 1, ភូមិក្រាំងស្វាយ, សង្កាត់ព្រែកកំពឹស, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120510, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Piphup Thmey Kour Srov 2",
+        "road": "Street 1",
+        "hamlet": "ភូមិក្រាំងស្វាយ",
+        "village": "សង្កាត់ព្រែកកំពឹស",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120510",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1423517926",
+      "latitude": 11.4914958,
+      "longitude": 104.8429614,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "12000",
+        "addr:street": "ផ្លូវ សាន់នី",
+        "amenity": "marketplace",
+        "building": "apartments",
+        "layer": "1",
+        "name": "Borey Sunny Q",
+        "name:km": "បុរី សាន់និ ឃ្យូ",
+        "tourism": "hotel"
+      },
+      "display_name": "Borey Sunny Q, Borey Sunny Road #2, ភូមិកំរៀង, សង្កាត់ព្រៃវែង, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120503, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Borey Sunny Q",
+        "road": "Borey Sunny Road #2",
+        "hamlet": "ភូមិកំរៀង",
+        "village": "សង្កាត់ព្រៃវែង",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120503",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1445746837",
+      "latitude": 10.9959288,
+      "longitude": 104.7553243,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារបុរីរស្មី"
+      },
+      "display_name": "ផ្សារបុរីរស្មី, ផ្លូវជាតិលេខ២, ក្រុងដូនកែវ, ដូនកែវ, ខេត្តតាកែវ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារបុរីរស្មី",
+        "road": "ផ្លូវជាតិលេខ២",
+        "city": "ក្រុងដូនកែវ",
+        "county": "ដូនកែវ",
+        "state": "ខេត្តតាកែវ",
+        "ISO3166-2-lvl4": "KH-21",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1445746838",
+      "latitude": 10.9956411,
+      "longitude": 104.7561793,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "BoreyRaksmey's Night Market"
+      },
+      "display_name": "BoreyRaksmey's Night Market, ផ្លូវជាតិលេខ២, ក្រុងដូនកែវ, ដូនកែវ, ខេត្តតាកែវ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "BoreyRaksmey's Night Market",
+        "road": "ផ្លូវជាតិលេខ២",
+        "city": "ក្រុងដូនកែវ",
+        "county": "ដូនកែវ",
+        "state": "ខេត្តតាកែវ",
+        "ISO3166-2-lvl4": "KH-21",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1450153412",
+      "latitude": 12.5328531,
+      "longitude": 103.9099147,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "retail",
+        "name": "Pou Poui Market"
+      },
+      "display_name": "Pou Poui Market, Street Number 105, ពោធិ៍តាកួយ, ក្រុងពោធិ៍សាត់, ពោធិ៍សាត់, ខេត្តពោធិ៍សាត់, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Pou Poui Market",
+        "road": "Street Number 105",
+        "hamlet": "ពោធិ៍តាកួយ",
+        "city": "ក្រុងពោធិ៍សាត់",
+        "county": "ពោធិ៍សាត់",
+        "state": "ខេត្តពោធិ៍សាត់",
+        "ISO3166-2-lvl4": "KH-15",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1450172132",
+      "latitude": 12.584686,
+      "longitude": 103.9565611,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Kandieang Market"
+      },
+      "display_name": "Kandieang Market, Road 154, ពោធិ៍កំបោរ, ស្រុកកណ្ដៀង, កណ្ដៀង, ខេត្តពោធិ៍សាត់, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Kandieang Market",
+        "road": "Road 154",
+        "hamlet": "ពោធិ៍កំបោរ",
+        "town": "ស្រុកកណ្ដៀង",
+        "county": "កណ្ដៀង",
+        "state": "ខេត្តពោធិ៍សាត់",
+        "ISO3166-2-lvl4": "KH-15",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1450282548",
+      "latitude": 12.3085069,
+      "longitude": 103.0956475,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Pramoay Market"
+      },
+      "display_name": "Pramoay Market, ផ្លូវជាតិលេខ៥៥, ប្រម៉ោយ, អូរកំបោរ, វាលវែង, ខេត្តពោធិ៍សាត់, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "shop": "Pramoay Market",
+        "road": "ផ្លូវជាតិលេខ៥៥",
+        "residential": "ប្រម៉ោយ",
+        "village": "អូរកំបោរ",
+        "county": "វាលវែង",
+        "state": "ខេត្តពោធិ៍សាត់",
+        "ISO3166-2-lvl4": "KH-15",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1450690972",
+      "latitude": 12.3521936,
+      "longitude": 103.7675742,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Kra Varnh Market"
+      },
+      "display_name": "Kra Varnh Market, Road 155, ស្រុកភ្នំក្រវ៉ាញ, ភ្នំក្រវ៉ាញ, ខេត្តពោធិ៍សាត់, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Kra Varnh Market",
+        "road": "Road 155",
+        "town": "ស្រុកភ្នំក្រវ៉ាញ",
+        "county": "ភ្នំក្រវ៉ាញ",
+        "state": "ខេត្តពោធិ៍សាត់",
+        "ISO3166-2-lvl4": "KH-15",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1450811296",
+      "latitude": 12.5332609,
+      "longitude": 104.2095782,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Krakor Market"
+      },
+      "display_name": "Krakor Market, 54, ស្រុកក្រគរ, ខេត្តពោធិ៍សាត់, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Krakor Market",
+        "road": "54",
+        "town": "ស្រុកក្រគរ",
+        "state": "ខេត្តពោធិ៍សាត់",
+        "ISO3166-2-lvl4": "KH-15",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1451047420",
+      "latitude": 12.6351824,
+      "longitude": 103.7251808,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Beong Khnar Market"
+      },
+      "display_name": "Beong Khnar Market, ផ្លូវជាតិលេខ៥, បឹងខ្នា, បាកាន, ខេត្តពោធិ៍សាត់, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Beong Khnar Market",
+        "road": "ផ្លូវជាតិលេខ៥",
+        "town": "បឹងខ្នា",
+        "state": "ខេត្តពោធិ៍សាត់",
+        "ISO3166-2-lvl4": "KH-15",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1451131060",
+      "latitude": 12.5333349,
+      "longitude": 103.910366,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Pou Poui Market"
+      },
+      "display_name": "Pou Poui Market, Street Number 105, ពោធិ៍តាកួយ, ក្រុងពោធិ៍សាត់, ពោធិ៍សាត់, ខេត្តពោធិ៍សាត់, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Pou Poui Market",
+        "road": "Street Number 105",
+        "hamlet": "ពោធិ៍តាកួយ",
+        "city": "ក្រុងពោធិ៍សាត់",
+        "county": "ពោធិ៍សាត់",
+        "state": "ខេត្តពោធិ៍សាត់",
+        "ISO3166-2-lvl4": "KH-15",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1451366879",
+      "latitude": 12.2990276,
+      "longitude": 104.1729118,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Bam Nak Market"
+      },
+      "display_name": "Bam Nak Market, National Road 53B, ភូមិទួលត្បែង, បំណក់, ខេត្តពោធិ៍សាត់, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Bam Nak Market",
+        "road": "National Road 53B",
+        "hamlet": "ភូមិទួលត្បែង",
+        "town": "បំណក់",
+        "state": "ខេត្តពោធិ៍សាត់",
+        "ISO3166-2-lvl4": "KH-15",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1453116903",
+      "latitude": 10.6163333,
+      "longitude": 104.1735776,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Bokor Night Market"
+      },
+      "display_name": "Bokor Night Market, Makeng Street, កំពត, ខេត្តកំពត, 070216, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Bokor Night Market",
+        "road": "Makeng Street",
+        "city": "កំពត",
+        "county": "កំពត",
+        "state": "ខេត្តកំពត",
+        "ISO3166-2-lvl4": "KH-7",
+        "postcode": "070216",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1460145234",
+      "latitude": 11.7507583,
+      "longitude": 105.0097782,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "ផ្សារខ្សាច់កណ្ដាល",
+        "name:en": "Khsach Kandal Market"
+      },
+      "display_name": "ផ្សារខ្សាច់កណ្ដាល, ផ្លូវជាតិលេខ៣៨១, ស្រុកខ្សាច់កណ្ដាល, ខេត្តកណ្ដាល, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារខ្សាច់កណ្ដាល",
+        "road": "ផ្លូវជាតិលេខ៣៨១",
+        "town": "ស្រុកខ្សាច់កណ្ដាល",
+        "state": "ខេត្តកណ្ដាល",
+        "ISO3166-2-lvl4": "KH-8",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/1466674840",
+      "latitude": 11.5064412,
+      "longitude": 104.859527,
+      "tags": {
+        "addr:city": "Phnom Penh",
+        "addr:postcode": "12000",
+        "addr:street": "Santepheap 40M Road",
+        "amenity": "marketplace",
+        "name": "Borey Phnom Penh Sok San 7"
+      },
+      "display_name": "Borey Phnom Penh Sok San 7, Santepheap 40M Road, ភូមិធម្មត្រ័យ, សង្កាត់ព្រៃស, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120504, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Borey Phnom Penh Sok San 7",
+        "road": "Santepheap 40M Road",
+        "hamlet": "ភូមិធម្មត្រ័យ",
+        "village": "សង្កាត់ព្រៃស",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120504",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/148570138",
+      "latitude": 10.9808868,
+      "longitude": 104.7789632,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Thmei"
+      },
+      "display_name": "ផ្លូវជាតិលេខ២, ក្រុងដូនកែវ, ដូនកែវ, ខេត្តតាកែវ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "ផ្លូវជាតិលេខ២",
+        "city": "ក្រុងដូនកែវ",
+        "county": "ដូនកែវ",
+        "state": "ខេត្តតាកែវ",
+        "ISO3166-2-lvl4": "KH-21",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/162424131",
+      "latitude": 11.9766865,
+      "longitude": 105.4589603,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar 7 Makara"
+      },
+      "display_name": "Nana Cosmetic, ស្ពានឫស្សីកោះប៉ែន, កោះចាស់, កំពង់ចាម, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "shop": "Nana Cosmetic",
+        "road": "ស្ពានឫស្សីកោះប៉ែន",
+        "village": "កោះចាស់",
+        "county": "កំពង់ចាម",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/162584911",
+      "latitude": 11.5748132,
+      "longitude": 104.8914691,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារមាន់អាំង",
+        "name:en": "Phsar Moan Ang"
+      },
+      "display_name": "ផ្សារមាន់អាំង, ផ្លូវ ៣១៥, សង្កាត់បឹងកក់ទី ២, ខណ្ឌទួលគោក, រាជធានីភ្នំពេញ, 120408, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារមាន់អាំង",
+        "road": "ផ្លូវ ៣១៥",
+        "village": "សង្កាត់បឹងកក់ទី ២",
+        "town": "ខណ្ឌទួលគោក",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120408",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/162762679",
+      "latitude": 12.0286809,
+      "longitude": 104.9645094,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារឃុំផ្អាវ",
+        "name:en": "Ph'av Market"
+      },
+      "display_name": "ផ្សារឃុំផ្អាវ, ផ្លូវជាតិលេខ៦, បាធាយ, ជើងព្រៃ, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារឃុំផ្អាវ",
+        "road": "ផ្លូវជាតិលេខ៦",
+        "town": "បាធាយ",
+        "county": "ជើងព្រៃ",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/167956499",
+      "latitude": 13.3619057,
+      "longitude": 103.8682962,
+      "tags": {
+        "addr:city": "Siem Reap",
+        "addr:country": "KH",
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Samaki Market",
+        "name:km": "ផ្សារសាមគ្គី"
+      },
+      "display_name": "Samaki Market, ផ្លូវជាតិលេខ៦, Banteay Chas Village, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171201, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Samaki Market",
+        "road": "ផ្លូវជាតិលេខ៦",
+        "suburb": "Banteay Chas Village",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171201",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/168558696",
+      "latitude": 11.5538646,
+      "longitude": 104.9029563,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារដើមគរ",
+        "name:en": "Phsar Deoum Kor",
+        "wheelchair": "yes"
+      },
+      "display_name": "ផ្សារដើមគរ, ផ្លូវ ៣៧៤, សង្កាត់ទួលស្វាយព្រៃទី១, ខណ្ឌបឹងកេងកង, រាជធានីភ្នំពេញ, 120106, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារដើមគរ",
+        "road": "ផ្លូវ ៣៧៤",
+        "village": "សង្កាត់ទួលស្វាយព្រៃទី១",
+        "town": "ខណ្ឌបឹងកេងកង",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120106",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/168559362",
+      "latitude": 11.5755413,
+      "longitude": 104.897051,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​ទួលគោក",
+        "name:en": "Phsar Toul Kork",
+        "opening_hours": "Mo-Su,PH 06:00-18:00"
+      },
+      "display_name": "Pharmacy Vicheth, ផ្លូវ ២៩៥, សង្កាត់បឹងកក់ទី ២, ខណ្ឌទួលគោក, រាជធានីភ្នំពេញ, 120408, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Pharmacy Vicheth",
+        "road": "ផ្លូវ ២៩៥",
+        "village": "សង្កាត់បឹងកក់ទី ២",
+        "town": "ខណ្ឌទួលគោក",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120408",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/168559582",
+      "latitude": 11.5569899,
+      "longitude": 104.9031806,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារនាគមាស",
+        "name:en": "Phsar Neak Meas"
+      },
+      "display_name": "ផ្សារនាគមាស, ផ្លូវ ២៣៤, សង្កាត់ផ្សារដើមគរ, ខណ្ឌទួលគោក, រាជធានីភ្នំពេញ, 120409, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារនាគមាស",
+        "road": "ផ្លូវ ២៣៤",
+        "village": "សង្កាត់ផ្សារដើមគរ",
+        "town": "ខណ្ឌទួលគោក",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120409",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/168559607",
+      "latitude": 11.5681853,
+      "longitude": 104.9011609,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារសាមគ្គី",
+        "name:en": "Phsar Samaki"
+      },
+      "display_name": "ផ្សារសាមគ្គី, វិថី ព្រះជ័យជេដ្ធា (១១៨), សង្កាត់ផ្សារដេប៉ូទី ១, ខណ្ឌទួលគោក, រាជធានីភ្នំពេញ, 120401, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារសាមគ្គី",
+        "road": "វិថី ព្រះជ័យជេដ្ធា (១១៨)",
+        "village": "សង្កាត់ផ្សារដេប៉ូទី ១",
+        "town": "ខណ្ឌទួលគោក",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120401",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/170294649",
+      "latitude": 10.7344141,
+      "longitude": 105.0941517,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Chợ Tha Mau Frontier"
+      },
+      "display_name": "Chợ Tha Mau Frontier, ភូមិថ្មបីដុំ, បូរីជលសារ, ខេត្តតាកែវ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Chợ Tha Mau Frontier",
+        "hamlet": "ភូមិថ្មបីដុំ",
+        "county": "បូរីជលសារ",
+        "state": "ខេត្តតាកែវ",
+        "ISO3166-2-lvl4": "KH-21",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/172422572",
+      "latitude": 11.563377,
+      "longitude": 104.8574809,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​ពោធិ៍ចិនតុង",
+        "name:en": "Phsar Pochentong"
+      },
+      "display_name": "ផ្សារ​ពោធិ៍ចិនតុង, មហាវិថី សហព័ន្ធរុស្ស៊ី, ភូមិប៉ប្រកខាងជើង, សង្កាត់កាកាបទី១, ខណ្ឌពោធិ៍សែនជ័យ, រាជធានីភ្នំពេញ, 120912, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​ពោធិ៍ចិនតុង",
+        "road": "មហាវិថី សហព័ន្ធរុស្ស៊ី",
+        "hamlet": "ភូមិប៉ប្រកខាងជើង",
+        "village": "សង្កាត់កាកាបទី១",
+        "town": "ខណ្ឌពោធិ៍សែនជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120912",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/179566082",
+      "latitude": 11.5008226,
+      "longitude": 104.8309184,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "yes",
+        "landuse": "retail",
+        "name": "Phsar Chom Chao"
+      },
+      "display_name": "Phsar Chom Chao, Santepheap 40M Road, ភូមិធម្មត្រ័យ, សង្កាត់ព្រៃស, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120504, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Chom Chao",
+        "road": "Santepheap 40M Road",
+        "hamlet": "ភូមិធម្មត្រ័យ",
+        "village": "សង្កាត់ព្រៃស",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120504",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/181384400",
+      "latitude": 11.591587,
+      "longitude": 104.9083107,
+      "tags": {
+        "alt_name": "Phsar Sam Han",
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារធំ​ទួលសង្កែ",
+        "name:en": "Phsar Thom Toul Sangke",
+        "name:km": "ផ្សារធំ​ទួលសង្កែ",
+        "name:ko": "삼한시장"
+      },
+      "display_name": "ផ្សារធំ​ទួលសង្កែ, ផ្លូវ ១០៣, Toul Sangke B Community, ភូមិទួលថ្ងាន់, សង្កាត់ទួលសង្កែទី១, ខណ្ឌឫស្សីកែវ, រាជធានីភ្នំពេញ, 120707, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារធំ​ទួលសង្កែ",
+        "road": "ផ្លូវ ១០៣",
+        "neighbourhood": "Toul Sangke B Community",
+        "hamlet": "ភូមិទួលថ្ងាន់",
+        "village": "សង្កាត់ទួលសង្កែទី១",
+        "town": "ខណ្ឌឫស្សីកែវ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120707",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/181395721",
+      "latitude": 11.5335308,
+      "longitude": 104.8308028,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារចោមចៅ",
+        "name:en": "Phsar Chom Chao"
+      },
+      "display_name": "ផ្សារចោមចៅ, មហាវិថី វេងស្រេង, ព្រែជីសាក់, សង្កាត់ចោមចៅទី៣, ភូមិជ្រៃកោង, ភូមិព្រៃព្រីងខាងត្បូង១, ខណ្ឌពោធិ៍សែនជ័យ, រាជធានីភ្នំពេញ, 120916, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារចោមចៅ",
+        "road": "មហាវិថី វេងស្រេង",
+        "neighbourhood": "ព្រែជីសាក់",
+        "quarter": "សង្កាត់ចោមចៅទី៣",
+        "hamlet": "ភូមិជ្រៃកោង",
+        "village": "ភូមិព្រៃព្រីងខាងត្បូង១",
+        "town": "ខណ្ឌពោធិ៍សែនជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120916",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/185514141",
+      "latitude": 12.77479,
+      "longitude": 103.4462829,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "New  Market"
+      },
+      "display_name": "New  Market, ផ្លូវជាតិលេខ៥, ស្រុកមោងឫស្សី, មោងឫស្សី, ខេត្តបាត់ដំបង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "New  Market",
+        "road": "ផ្លូវជាតិលេខ៥",
+        "town": "ស្រុកមោងឫស្សី",
+        "county": "មោងឫស្សី",
+        "state": "ខេត្តបាត់ដំបង",
+        "ISO3166-2-lvl4": "KH-2",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/185514142",
+      "latitude": 12.7719729,
+      "longitude": 103.4472789,
+      "tags": {
+        "alt_name": "Old Market",
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Moung Roessei Market"
+      },
+      "display_name": "Moung Roessei Market, ផ្លូវជាតិលេខ៥, ស្រុកមោងឫស្សី, មោងឫស្សី, ខេត្តបាត់ដំបង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Moung Roessei Market",
+        "road": "ផ្លូវជាតិលេខ៥",
+        "town": "ស្រុកមោងឫស្សី",
+        "county": "មោងឫស្សី",
+        "state": "ខេត្តបាត់ដំបង",
+        "ISO3166-2-lvl4": "KH-2",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/185659327",
+      "latitude": 12.6421545,
+      "longitude": 103.3935671,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Market"
+      },
+      "display_name": "Market, ព្រែកជីក, រុក្ខគិរី, ខេត្តបាត់ដំបង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Market",
+        "village": "ព្រែកជីក",
+        "county": "រុក្ខគិរី",
+        "state": "ខេត្តបាត់ដំបង",
+        "ISO3166-2-lvl4": "KH-2",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/185659337",
+      "latitude": 12.8053319,
+      "longitude": 103.4606076,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Market"
+      },
+      "display_name": "Market, 149, ស្រុកមោងឫស្សី, មោងឫស្សី, ខេត្តបាត់ដំបង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Market",
+        "road": "149",
+        "town": "ស្រុកមោងឫស្សី",
+        "county": "មោងឫស្សី",
+        "state": "ខេត្តបាត់ដំបង",
+        "ISO3166-2-lvl4": "KH-2",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/187624612",
+      "latitude": 11.5694514,
+      "longitude": 104.928752,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារកណ្ដាល",
+        "name:en": "Phsar Kandal",
+        "name:vi": "Chợ Kandal"
+      },
+      "display_name": "Kitchenware, ផ្លូវ ១៤៨, សង្កាត់ផ្សារកណ្ដាលទី ១, ខណ្ឌដូនពេញ, រាជធានីភ្នំពេញ, 120205, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "shop": "Kitchenware",
+        "road": "ផ្លូវ ១៤៨",
+        "village": "សង្កាត់ផ្សារកណ្ដាលទី ១",
+        "town": "ខណ្ឌដូនពេញ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120205",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/191513380",
+      "latitude": 11.5619492,
+      "longitude": 104.8797938,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​ទឹកល្អក់",
+        "name:en": "Phsar Tuek L'ak"
+      },
+      "display_name": "ផ្សារ​ទឹកល្អក់, ផ្លូវបេតុង, ភូមិចុងថ្នល់ខាងកើត, សង្កាត់ទឹកថ្លា, ខណ្ឌសែនសុខ, រាជធានីភ្នំពេញ, 120802, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​ទឹកល្អក់",
+        "road": "ផ្លូវបេតុង",
+        "hamlet": "ភូមិចុងថ្នល់ខាងកើត",
+        "village": "សង្កាត់ទឹកថ្លា",
+        "town": "ខណ្ឌសែនសុខ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120802",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/191526660",
+      "latitude": 13.3523521,
+      "longitude": 103.8548772,
+      "tags": {
+        "addr:city": "Siem Reap",
+        "addr:country": "KH",
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Art Center Night Market",
+        "name:en": "Night Market",
+        "name:km": "ផ្សារ​រាត្រី",
+        "name:zh": "暹粒艺术中心夜市"
+      },
+      "display_name": "Art center night market, Old Market Bridge, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171000, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "shop": "Art center night market",
+        "road": "Old Market Bridge",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171000",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/194781404",
+      "latitude": 11.6597705,
+      "longitude": 104.8598803,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​ព្រែកព្នៅ",
+        "name:en": "Phsar Prek Phnov"
+      },
+      "display_name": "ផ្សារ​ព្រែកព្នៅ, Market Street, ភូមិពោធិមង្គល, សង្កាត់ព្រែកព្នៅ, ខណ្ឌព្រែកព្នៅ, រាជធានីភ្នំពេញ, 121101, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​ព្រែកព្នៅ",
+        "road": "Market Street",
+        "hamlet": "ភូមិពោធិមង្គល",
+        "village": "សង្កាត់ព្រែកព្នៅ",
+        "town": "ខណ្ឌព្រែកព្នៅ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "121101",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/223940003",
+      "latitude": 11.5549801,
+      "longitude": 104.9320697,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារកាប់គោ",
+        "name:en": "Phsar Kapko"
+      },
+      "display_name": "ផ្សារកាប់គោ, ផ្លូវ ៩, កោះពេជ្រ, សង្កាត់ទន្លេបាសាក់, ខណ្ឌចំការមន, រាជធានីភ្នំពេញ, 120101, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារកាប់គោ",
+        "road": "ផ្លូវ ៩",
+        "suburb": "កោះពេជ្រ",
+        "village": "សង្កាត់ទន្លេបាសាក់",
+        "town": "ខណ្ឌចំការមន",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120101",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/224715907",
+      "latitude": 12.5386695,
+      "longitude": 103.9195594,
+      "tags": {
+        "amenity": "marketplace",
+        "layer": "1",
+        "name": "Pursat Market",
+        "name:km": "ផ្សារថ្មីពោធិ៍សាត់"
+      },
+      "display_name": "Pursat Market, Road 154, ព្រៃញី, ក្រុងពោធិ៍សាត់, ពោធិ៍សាត់, ខេត្តពោធិ៍សាត់, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Pursat Market",
+        "road": "Road 154",
+        "hamlet": "ព្រៃញី",
+        "city": "ក្រុងពោធិ៍សាត់",
+        "county": "ពោធិ៍សាត់",
+        "state": "ខេត្តពោធិ៍សាត់",
+        "ISO3166-2-lvl4": "KH-15",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/225383461",
+      "latitude": 11.5588788,
+      "longitude": 104.8890087,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារហេងលី",
+        "name:en": "Phsar Heng Ly",
+        "name:km": "ផ្សារហេងលី"
+      },
+      "display_name": "ផ្សារហេងលី, ផ្លូវ ២៧១, ភូមិអូរបែកក្អម, សង្កាត់ទឹកថ្លា, ខណ្ឌសែនសុខ, រាជធានីភ្នំពេញ, 120805, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារហេងលី",
+        "road": "ផ្លូវ ២៧១",
+        "hamlet": "ភូមិអូរបែកក្អម",
+        "village": "សង្កាត់ទឹកថ្លា",
+        "town": "ខណ្ឌសែនសុខ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120805",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/230091047",
+      "latitude": 11.8458513,
+      "longitude": 105.3730412,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Phsar Prey Samdex"
+      },
+      "display_name": "Phsar Prey Samdex, 314, អន្លង់សរ, ស៊ីធរកណ្ដាល, ខេត្តព្រៃវែង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Prey Samdex",
+        "road": "314",
+        "village": "អន្លង់សរ",
+        "town": "ស៊ីធរកណ្ដាល",
+        "state": "ខេត្តព្រៃវែង",
+        "ISO3166-2-lvl4": "KH-14",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/238687920",
+      "latitude": 11.5325864,
+      "longitude": 104.9353751,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​ច្បារ​អំពៅ",
+        "name:en": "Phsar Chbar Ampov"
+      },
+      "display_name": "ផ្លូវ ៣៦៩, ភូមិឬស្សីស្រស់, សង្កាត់ច្បារអំពៅទី ២, ខណ្ឌច្បារអំពៅ, រាជធានីភ្នំពេញ, 121202, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "ផ្លូវ ៣៦៩",
+        "hamlet": "ភូមិឬស្សីស្រស់",
+        "village": "សង្កាត់ច្បារអំពៅទី ២",
+        "town": "ខណ្ឌច្បារអំពៅ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "121202",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/241997428",
+      "latitude": 11.5445617,
+      "longitude": 104.8942373,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារស្ទឹងមានជ័យ",
+        "name:en": "Phsar Stung Mean Chey"
+      },
+      "display_name": "ផ្សារស្ទឹងមានជ័យ, មហាវិថី សម្តេច មុនីរ៉េត (២១៧), ភូមិភ្នាត, សង្កាត់ស្ទឹងមានជ័យទី១, ខណ្ឌមានជ័យ, រាជធានីភ្នំពេញ, 120603, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារស្ទឹងមានជ័យ",
+        "road": "មហាវិថី សម្តេច មុនីរ៉េត (២១៧)",
+        "hamlet": "ភូមិភ្នាត",
+        "village": "សង្កាត់ស្ទឹងមានជ័យទី១",
+        "town": "ខណ្ឌមានជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120603",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/245719709",
+      "latitude": 13.442307,
+      "longitude": 103.7288133,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name:en": "Puok Market"
+      },
+      "display_name": "Puok Market, ផ្លូវជាតិលេខ៦, ស្រុក​ពួក, ពួក, ខេត្តសៀមរាប, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Puok Market",
+        "road": "ផ្លូវជាតិលេខ៦",
+        "town": "ស្រុក​ពួក",
+        "county": "ពួក",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/258510595",
+      "latitude": 13.1049779,
+      "longitude": 103.1950135,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Boeung Chhouk"
+      },
+      "display_name": "Street 109, បាត់ដំបង, ខេត្តបាត់ដំបង, 021402, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "Street 109",
+        "city": "បាត់ដំបង",
+        "county": "បាត់ដំបង",
+        "state": "ខេត្តបាត់ដំបង",
+        "ISO3166-2-lvl4": "KH-2",
+        "postcode": "021402",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/260632859",
+      "latitude": 13.3755978,
+      "longitude": 103.8874981,
+      "tags": {
+        "addr:city": "Siem Reap",
+        "addr:country": "KH",
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Street 60"
+      },
+      "display_name": "Phsar Street 60, ផ្លូវ ៦០, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171201, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Street 60",
+        "road": "ផ្លូវ ៦០",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171201",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/291546420",
+      "latitude": 11.546953,
+      "longitude": 104.8872872,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​សឡា",
+        "name:en": "Phsar Sola"
+      },
+      "display_name": "ផ្សារ​សឡា, ផ្លូវ ៧២ស៊ី, ភូមិភ្នាត, សង្កាត់ស្ទឹងមានជ័យទី១, ខណ្ឌមានជ័យ, រាជធានីភ្នំពេញ, 120603, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​សឡា",
+        "road": "ផ្លូវ ៧២ស៊ី",
+        "hamlet": "ភូមិភ្នាត",
+        "village": "សង្កាត់ស្ទឹងមានជ័យទី១",
+        "town": "ខណ្ឌមានជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120603",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/299952153",
+      "latitude": 11.5322108,
+      "longitude": 104.8649439,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារកាណាឌីយ៉ា",
+        "name:en": "Phsar Canadia"
+      },
+      "display_name": "ផ្សារកាណាឌីយ៉ា, មហាវិថី វេងស្រេង, សង្កាត់ចោមចៅទី១, ភូមិត្រពាំងថ្លឹង, ខណ្ឌពោធិ៍សែនជ័យ, រាជធានីភ្នំពេញ, 120914, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារកាណាឌីយ៉ា",
+        "road": "មហាវិថី វេងស្រេង",
+        "quarter": "សង្កាត់ចោមចៅទី១",
+        "hamlet": "ភូមិត្រពាំងថ្លឹង",
+        "town": "ខណ្ឌពោធិ៍សែនជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120914",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/299952154",
+      "latitude": 11.5326474,
+      "longitude": 104.8771111,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារឯករាជ្យ ៣",
+        "name:en": "Phsar Ekreach III"
+      },
+      "display_name": "ផ្សារឯករាជ្យ ៣, មហាវិថី វេងស្រេង, សង្កាត់ចោមចៅទី១, ភូមិត្រពាំងថ្លឹង, ខណ្ឌមានជ័យ, រាជធានីភ្នំពេញ, 120914, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារឯករាជ្យ ៣",
+        "road": "មហាវិថី វេងស្រេង",
+        "quarter": "សង្កាត់ចោមចៅទី១",
+        "hamlet": "ភូមិត្រពាំងថ្លឹង",
+        "town": "ខណ្ឌមានជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120914",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/299952156",
+      "latitude": 11.5301937,
+      "longitude": 104.853496,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារត្រពាំងថ្លឹង",
+        "name:en": "Phsar Trapeang Thleng"
+      },
+      "display_name": "ផ្សារត្រពាំងថ្លឹង, មហាវិថី វេងស្រេង, ព្រែជីសាក់, សង្កាត់ចោមចៅទី៣, ភូមិជ្រៃកោង, ភូមិព្រៃព្រីងខាងត្បូង១, ខណ្ឌពោធិ៍សែនជ័យ, រាជធានីភ្នំពេញ, 120914, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារត្រពាំងថ្លឹង",
+        "road": "មហាវិថី វេងស្រេង",
+        "neighbourhood": "ព្រែជីសាក់",
+        "quarter": "សង្កាត់ចោមចៅទី៣",
+        "hamlet": "ភូមិជ្រៃកោង",
+        "village": "ភូមិព្រៃព្រីងខាងត្បូង១",
+        "town": "ខណ្ឌពោធិ៍សែនជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120914",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/304058307",
+      "latitude": 11.08228,
+      "longitude": 105.7962325,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Veal Youn Market"
+      },
+      "display_name": "រង្វង់​មូល​បេនឡាន​ ផ្សារ​វាលយន្ត, Road 107, សង្កាត់ស្វាយរៀង, ស្វាយរៀង, ខេត្តស្វាយរៀង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "historic": "រង្វង់​មូល​បេនឡាន​ ផ្សារ​វាលយន្ត",
+        "road": "Road 107",
+        "city": "សង្កាត់ស្វាយរៀង",
+        "county": "ស្វាយរៀង",
+        "state": "ខេត្តស្វាយរៀង",
+        "ISO3166-2-lvl4": "KH-20",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/309038899",
+      "latitude": 10.6114129,
+      "longitude": 104.1813555,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "commercial",
+        "name": "ផ្សាររាត្រីខេត្តកំពត",
+        "name:en": "Kampot Night Market"
+      },
+      "display_name": "ផ្សាររាត្រីខេត្តកំពត, Street 720, កំពត, ខេត្តកំពត, 070216, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សាររាត្រីខេត្តកំពត",
+        "road": "Street 720",
+        "city": "កំពត",
+        "county": "កំពត",
+        "state": "ខេត្តកំពត",
+        "ISO3166-2-lvl4": "KH-7",
+        "postcode": "070216",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/310963695",
+      "latitude": 13.6024302,
+      "longitude": 102.9678074,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Psar Chomka Kor (Psar Thmey)"
+      },
+      "display_name": "Taxi parking (to Banteay Chmar), 56, ភូមិពង្រ, ក្រុងសិរីសោភ័ណ, សិរីសោភ័ណ, ខេត្តបន្ទាយមានជ័យ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Taxi parking (to Banteay Chmar)",
+        "road": "56",
+        "hamlet": "ភូមិពង្រ",
+        "city": "ក្រុងសិរីសោភ័ណ",
+        "county": "សិរីសោភ័ណ",
+        "state": "ខេត្តបន្ទាយមានជ័យ",
+        "ISO3166-2-lvl4": "KH-1",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/311486939",
+      "latitude": 11.5100676,
+      "longitude": 104.932428,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារចាក់អង្រែ",
+        "name:en": "Phsar Chak Angrae"
+      },
+      "display_name": "ផ្សារចាក់អង្រែ, មហាវិថី ហ៊ុន នាង, បឹងទំពុន, សង្កាត់ចាក់អង្រែលើ, ខណ្ឌមានជ័យ, រាជធានីភ្នំពេញ, 120601, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារចាក់អង្រែ",
+        "road": "មហាវិថី ហ៊ុន នាង",
+        "suburb": "បឹងទំពុន",
+        "village": "សង្កាត់ចាក់អង្រែលើ",
+        "town": "ខណ្ឌមានជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120601",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/357814480",
+      "latitude": 10.7046124,
+      "longitude": 103.8151892,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Veal Renh"
+      },
+      "display_name": "Phsar Veal Renh, ផ្លូវជាតិលេខ៤, ឃុំ​វាលរេញ, ព្រៃនប់, ខេត្តព្រះសីហនុ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Veal Renh",
+        "road": "ផ្លូវជាតិលេខ៤",
+        "village": "ឃុំ​វាលរេញ",
+        "district": "ព្រៃនប់",
+        "province": "ខេត្តព្រះសីហនុ",
+        "ISO3166-2-lvl4": "KH-18",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/377358453",
+      "latitude": 11.5466899,
+      "longitude": 104.9254632,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារបឹងកេងកង",
+        "name:en": "Phsar Boeung Keng Kang"
+      },
+      "display_name": "ផ្លូវ ៣៩២, សង្កាត់បឹងកេងកងទី ១, ខណ្ឌបឹងកេងកង, រាជធានីភ្នំពេញ, 120102, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "ផ្លូវ ៣៩២",
+        "village": "សង្កាត់បឹងកេងកងទី ១",
+        "town": "ខណ្ឌបឹងកេងកង",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120102",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/377359299",
+      "latitude": 10.6230457,
+      "longitude": 103.5320743,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "មជ្ឈមណ្ឌល​ពាណិជ្ជកម្ម ក្រុងព្រះសីហនុ",
+        "name:en": "Sihanoukville Trade Center"
+      },
+      "display_name": "មជ្ឈមណ្ឌល​ពាណិជ្ជកម្ម ក្រុងព្រះសីហនុ, ផ្លូវ ៨០៤, សង្កាត់បី, ព្រះសីហនុ, ខេត្តព្រះសីហនុ, 180000, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "មជ្ឈមណ្ឌល​ពាណិជ្ជកម្ម ក្រុងព្រះសីហនុ",
+        "road": "ផ្លូវ ៨០៤",
+        "suburb": "សង្កាត់បី",
+        "city": "ព្រះសីហនុ",
+        "county": "ព្រះសីហនុ",
+        "province": "ខេត្តព្រះសីហនុ",
+        "ISO3166-2-lvl4": "KH-18",
+        "postcode": "180000",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/377360535",
+      "latitude": 11.5405168,
+      "longitude": 104.9147008,
+      "tags": {
+        "alt_name": "Russian Market",
+        "alt_name:es": "Mercado ruso",
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារទួលទំពូង",
+        "name:de": "Russischer Markt",
+        "name:en": "Phsar Toul Tom Poung",
+        "name:es": "Phsa Toúl Tom Pung",
+        "name:fr": "Marché Russe",
+        "name:it": "Mercato Russo",
+        "name:km": "ផ្សារទួលទំពូង",
+        "name:vi": "Chợ Nga (Tuol Tom Poung)"
+      },
+      "display_name": "ផ្លូវ ៤៥០, សង្កាត់បឹងត្របែក, សង្កាត់ទួលទំពូងទី ១, ខណ្ឌចំការមន, រាជធានីភ្នំពេញ, 120112, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "ផ្លូវ ៤៥០",
+        "hamlet": "សង្កាត់បឹងត្របែក",
+        "village": "សង្កាត់ទួលទំពូងទី ១",
+        "town": "ខណ្ឌចំការមន",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120112",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/377362272",
+      "latitude": 11.5732595,
+      "longitude": 104.9264929,
+      "tags": {
+        "alt_name": "Old Market",
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារចាស់",
+        "name:en": "Phsar Chas"
+      },
+      "display_name": "កាហ្វេរេនដិវើស, វិថី ឧកញ៉ា អ៊ីង ប៊ុនហ៊ូវ (១០៨), សង្កាត់វត្តភ្នំ, ខណ្ឌដូនពេញ, រាជធានីភ្នំពេញ, 120211, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "កាហ្វេរេនដិវើស",
+        "road": "វិថី ឧកញ៉ា អ៊ីង ប៊ុនហ៊ូវ (១០៨)",
+        "village": "សង្កាត់វត្តភ្នំ",
+        "town": "ខណ្ឌដូនពេញ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120211",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/377365601",
+      "latitude": 11.5907822,
+      "longitude": 104.898016,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​ទំនប់",
+        "name:en": "Tomnop Market"
+      },
+      "display_name": "Piseth pagna, ផ្លូវ ជាសុផារ៉ា (ផ្លូវ ៥៩៨), ភូមិទួលថ្ងាន់, សង្កាត់ទួលសង្កែទី២, ខណ្ឌឫស្សីកែវ, រាជធានីភ្នំពេញ, 120707, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Piseth pagna",
+        "road": "ផ្លូវ ជាសុផារ៉ា (ផ្លូវ ៥៩៨)",
+        "hamlet": "ភូមិទួលថ្ងាន់",
+        "village": "សង្កាត់ទួលសង្កែទី២",
+        "town": "ខណ្ឌឫស្សីកែវ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120707",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/377366781",
+      "latitude": 11.5310591,
+      "longitude": 104.8644947,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារឯករាជ្យ ១",
+        "name:en": "Phsar Ekreach I"
+      },
+      "display_name": "Wing, មហាវិថី វេងស្រេង, សង្កាត់ចោមចៅទី១, ភូមិត្រពាំងថ្លឹង, ខណ្ឌពោធិ៍សែនជ័យ, រាជធានីភ្នំពេញ, 120914, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Wing",
+        "road": "មហាវិថី វេងស្រេង",
+        "quarter": "សង្កាត់ចោមចៅទី១",
+        "hamlet": "ភូមិត្រពាំងថ្លឹង",
+        "town": "ខណ្ឌពោធិ៍សែនជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120914",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/377371701",
+      "latitude": 11.5638244,
+      "longitude": 104.9066068,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារដេប៉ូ",
+        "name:en": "Phsar Depot",
+        "name:km": "ផ្សារដេប៉ូ"
+      },
+      "display_name": "Kim Seng Express, មហាវិថី ហ្សាវ៉ាហាឡាល នេរុហ៍ (ផ្លូវ ២១៥), សង្កាត់វាលវង់, ប្រាំពីរមករា, រាជធានីភ្នំពេញ, 120307, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "office": "Kim Seng Express",
+        "road": "មហាវិថី ហ្សាវ៉ាហាឡាល នេរុហ៍ (ផ្លូវ ២១៥)",
+        "village": "សង្កាត់វាលវង់",
+        "town": "ប្រាំពីរមករា",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120307",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/377373297",
+      "latitude": 11.569601,
+      "longitude": 104.921081,
+      "tags": {
+        "alt_name": "Phsar Thmei",
+        "alt_name:en": "Central Market, Phnom Penh",
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារធំថ្មី",
+        "name:en": "Central Market",
+        "name:km": "ផ្សារធំថ្មី",
+        "name:lo": "ຕະຫລາດ",
+        "name:th": "ตลาดกลาง",
+        "name:vi": "Chợ Psar Thmey",
+        "name:zh": "中央市场",
+        "opening_hours": "07:00-18:00",
+        "wikidata": "Q190668",
+        "wikimedia_commons": "Category:Phsar Thom Thmei",
+        "wikipedia": "en:Central Market, Phnom Penh"
+      },
+      "display_name": "ផ្លូវ ១៣៦, សង្កាត់ផ្សារថ្មីទី ២, ខណ្ឌដូនពេញ, រាជធានីភ្នំពេញ, 120202, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "ផ្លូវ ១៣៦",
+        "village": "សង្កាត់ផ្សារថ្មីទី ២",
+        "town": "ខណ្ឌដូនពេញ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120202",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/377377503",
+      "latitude": 11.5343323,
+      "longitude": 104.8791992,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារលូប្រាំ",
+        "name:en": "Phsar Louy 5"
+      },
+      "display_name": "ផ្សារលូប្រាំ, មហាវិថី វេងស្រេង, សង្កាត់ចោមចៅទី១, ភូមិត្រពាំងថ្លឹង, ខណ្ឌមានជ័យ, រាជធានីភ្នំពេញ, 120914, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារលូប្រាំ",
+        "road": "មហាវិថី វេងស្រេង",
+        "quarter": "សង្កាត់ចោមចៅទី១",
+        "hamlet": "ភូមិត្រពាំងថ្លឹង",
+        "town": "ខណ្ឌមានជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120914",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/377422152",
+      "latitude": 11.5540459,
+      "longitude": 104.9107818,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​​អូឡាំពិក",
+        "name:en": "Olympic Market",
+        "name:km": "ផ្សារ​​អូឡាំពិក",
+        "name:vi": "Chợ Olympic",
+        "name:zh": "欧林匹克市场"
+      },
+      "display_name": "អាម៉ាហ្សូន, ផ្លូវ ១៩៩ - Street 199, សង្កាត់ទំនប់ទឹក, ខណ្ឌបឹងកេងកង, រាជធានីភ្នំពេញ, 120108, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "អាម៉ាហ្សូន",
+        "road": "ផ្លូវ ១៩៩ - Street 199",
+        "village": "សង្កាត់ទំនប់ទឹក",
+        "town": "ខណ្ឌបឹងកេងកង",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120108",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/377424110",
+      "latitude": 11.5567509,
+      "longitude": 104.8930166,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​​សំណង់១២",
+        "name:en": "Phsar Samnang 12"
+      },
+      "display_name": "ផ្សារ​​សំណង់១២, ផ្លូវ ២៦៥, Community (TK31), សង្កាត់ទឹកល្អក់ទី ៣, ខណ្ឌទួលគោក, រាជធានីភ្នំពេញ, 120410, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​​សំណង់១២",
+        "road": "ផ្លូវ ២៦៥",
+        "neighbourhood": "Community (TK31)",
+        "village": "សង្កាត់ទឹកល្អក់ទី ៣",
+        "town": "ខណ្ឌទួលគោក",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120410",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/377437402",
+      "latitude": 11.4833457,
+      "longitude": 104.9453166,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារតាខ្មៅ",
+        "name:en": "Phsar Ta Khmao"
+      },
+      "display_name": "ផ្សារតាខ្មៅ, ផ្លូវ ២០៥, តាខ្មៅ, ខេត្តកណ្ដាល, 120602, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារតាខ្មៅ",
+        "road": "ផ្លូវ ២០៥",
+        "city": "តាខ្មៅ",
+        "state": "ខេត្តកណ្ដាល",
+        "ISO3166-2-lvl4": "KH-8",
+        "postcode": "120602",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/378905988",
+      "latitude": 13.7363253,
+      "longitude": 106.9875333,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar"
+      },
+      "display_name": "Food Stalls, Street 66, ក្រុងបានលុង, បានលុង, ខេត្តរតនគិរី, 160903, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Food Stalls",
+        "road": "Street 66",
+        "city": "ក្រុងបានលុង",
+        "county": "បានលុង",
+        "state": "ខេត្តរតនគិរី",
+        "ISO3166-2-lvl4": "KH-16",
+        "postcode": "160903",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/379543403",
+      "latitude": 11.5648797,
+      "longitude": 104.8737398,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​បូរីទឹកថ្លា",
+        "name:en": "Phsar Borey Tuek L'ak"
+      },
+      "display_name": "Cheese Pizza & Co, 110C, ផ្លូវ ៣៦សូនី, ភូមិចុងថ្នល់ខាងលិច, សង្កាត់ទឹកថ្លា, ខណ្ឌសែនសុខ, រាជធានីភ្នំពេញ, 120802, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Cheese Pizza & Co",
+        "house_number": "110C",
+        "road": "ផ្លូវ ៣៦សូនី",
+        "hamlet": "ភូមិចុងថ្នល់ខាងលិច",
+        "village": "សង្កាត់ទឹកថ្លា",
+        "town": "ខណ្ឌសែនសុខ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120802",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/389529747",
+      "latitude": 11.4884505,
+      "longitude": 104.9426623,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារថ្មី​តាខ្មៅ",
+        "name:en": "Ta Khmao Phsar Thmei"
+      },
+      "display_name": "ផ្សារថ្មី​តាខ្មៅ, ផ្លូវជាតិលេខ២, តាខ្មៅ, ខេត្តកណ្ដាល, 120602, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារថ្មី​តាខ្មៅ",
+        "road": "ផ្លូវជាតិលេខ២",
+        "city": "តាខ្មៅ",
+        "state": "ខេត្តកណ្ដាល",
+        "ISO3166-2-lvl4": "KH-8",
+        "postcode": "120602",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/390213582",
+      "latitude": 11.5876784,
+      "longitude": 104.9144692,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារតូច",
+        "name:en": "Phsar Toch"
+      },
+      "display_name": "ផ្សារតូច, ផ្លូវ ៩០០, Toul Sangke B Community, សង្កាត់ទួលសង្កែទី១, ខណ្ឌឫស្សីកែវ, រាជធានីភ្នំពេញ, 120706, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារតូច",
+        "road": "ផ្លូវ ៩០០",
+        "neighbourhood": "Toul Sangke B Community",
+        "village": "សង្កាត់ទួលសង្កែទី១",
+        "town": "ខណ្ឌឫស្សីកែវ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120706",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/393914399",
+      "latitude": 11.5490653,
+      "longitude": 104.8295446,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារព្រៃទា",
+        "name:en": "Phsar Prey Tea",
+        "name:km": "ផ្សារព្រៃទា"
+      },
+      "display_name": "ផ្សារព្រៃទា, ផ្លូវ ៨៦ក, ភូមិព្រៃទា, សង្កាត់កាកាបទី២, ខណ្ឌពោធិ៍សែនជ័យ, រាជធានីភ្នំពេញ, 120913, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារព្រៃទា",
+        "road": "ផ្លូវ ៨៦ក",
+        "hamlet": "ភូមិព្រៃទា",
+        "village": "សង្កាត់កាកាបទី២",
+        "town": "ខណ្ឌពោធិ៍សែនជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120913",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/396695725",
+      "latitude": 12.0237421,
+      "longitude": 105.4142901,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Market"
+      },
+      "display_name": "Market, ផ្លូវជាតិលេខ៧, ស្រុកកំពង់សៀម, កំពង់សៀម, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Market",
+        "road": "ផ្លូវជាតិលេខ៧",
+        "town": "ស្រុកកំពង់សៀម",
+        "county": "កំពង់សៀម",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/407943474",
+      "latitude": 11.5199217,
+      "longitude": 104.9166195,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារប៉េសេ",
+        "name:en": "Phsar PC"
+      },
+      "display_name": "ផ្សារប៉េសេ, ផ្លូវ បឹងទំពុន (៣៧១), ត្នោតជ្រុំទី៣, បឹងទំពុន, សង្កាត់បឹងទំពុនទី២, ខណ្ឌមានជ័យ, រាជធានីភ្នំពេញ, 120606, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារប៉េសេ",
+        "road": "ផ្លូវ បឹងទំពុន (៣៧១)",
+        "neighbourhood": "ត្នោតជ្រុំទី៣",
+        "suburb": "បឹងទំពុន",
+        "village": "សង្កាត់បឹងទំពុនទី២",
+        "town": "ខណ្ឌមានជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120606",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/418612259",
+      "latitude": 12.3637684,
+      "longitude": 105.5884087,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "yes",
+        "layer": "1",
+        "name": "ផ្សារ​ បែកអន្លូង (ផ្សារ សែនមនោរម្យ)",
+        "name:en": "Bek Anlong Market (Sen Monorom Market)"
+      },
+      "display_name": "ផ្សារ​ បែកអន្លូង (ផ្សារ សែនមនោរម្យ), Bek Anlong, ស្ទឹងត្រង់, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​ បែកអន្លូង (ផ្សារ សែនមនោរម្យ)",
+        "town": "Bek Anlong",
+        "county": "ស្ទឹងត្រង់",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/426111510",
+      "latitude": 10.7244297,
+      "longitude": 103.8099765,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Thmei"
+      },
+      "display_name": "ព្រៃនប់, ខេត្តព្រះសីហនុ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "district": "ព្រៃនប់",
+        "province": "ខេត្តព្រះសីហនុ",
+        "ISO3166-2-lvl4": "KH-18",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/42672882",
+      "latitude": 13.3538661,
+      "longitude": 103.8551827,
+      "tags": {
+        "addr:city": "Siem Reap",
+        "addr:country": "KH",
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារចាស់",
+        "name:en": "Old Market",
+        "name:ko": "올드 마켓",
+        "name:zh": "舊市場",
+        "name:zh-Latn-pinyin": "Jiù shìchǎng",
+        "wikidata": "Q7253895",
+        "wikipedia": "en:Psah Chas"
+      },
+      "display_name": "Socheatra, ផ្លូវ ៩, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171000, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Socheatra",
+        "road": "ផ្លូវ ៩",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171000",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/42672883",
+      "latitude": 13.3596846,
+      "longitude": 103.8745706,
+      "tags": {
+        "addr:city": "Siem Reap",
+        "addr:country": "KH",
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារលើធំថ្មី",
+        "name:en": "Phsar Leu Thom Thmei Market"
+      },
+      "display_name": "ផ្សារលើធំថ្មី, ផ្លូវជាតិលេខ៦, Banteay Chas Village, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171201, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារលើធំថ្មី",
+        "road": "ផ្លូវជាតិលេខ៦",
+        "suburb": "Banteay Chas Village",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171201",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/441088981",
+      "latitude": 11.5499384,
+      "longitude": 104.9128816,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​ទួលអំពិល",
+        "name:en": "Phsar Tuol Ampil"
+      },
+      "display_name": "ផ្សារ​ទួលអំពិល, ផ្លូវ ១៧៣, សង្កាត់ទួលស្វាយព្រៃទី១, ខណ្ឌបឹងកេងកង, រាជធានីភ្នំពេញ, 120106, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​ទួលអំពិល",
+        "road": "ផ្លូវ ១៧៣",
+        "village": "សង្កាត់ទួលស្វាយព្រៃទី១",
+        "town": "ខណ្ឌបឹងកេងកង",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120106",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/442747251",
+      "latitude": 10.6252632,
+      "longitude": 103.5211917,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​ពាណិជ្ជកម្ម",
+        "name:en": "Phsar Benetchekam"
+      },
+      "display_name": "ផ្សារ​ពាណិជ្ជកម្ម, ផ្លូវ ១០៩, សង្កាត់ពីរ, ព្រះសីហនុ, ខេត្តព្រះសីហនុ, 180403, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​ពាណិជ្ជកម្ម",
+        "road": "ផ្លូវ ១០៩",
+        "suburb": "សង្កាត់ពីរ",
+        "city": "ព្រះសីហនុ",
+        "county": "ព្រះសីហនុ",
+        "province": "ខេត្តព្រះសីហនុ",
+        "ISO3166-2-lvl4": "KH-18",
+        "postcode": "180403",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/448934520",
+      "latitude": 12.4584119,
+      "longitude": 107.1855456,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar"
+      },
+      "display_name": "Phsar, Pou Chry Road, ក្រុងសែនមនោរម្យ, សង្កាត់សុខដុម, សែនមនោរម្យ, ខេត្តមណ្ឌលគិរី, 110502, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar",
+        "road": "Pou Chry Road",
+        "city": "ក្រុងសែនមនោរម្យ",
+        "county": "សែនមនោរម្យ",
+        "state": "ខេត្តមណ្ឌលគិរី",
+        "ISO3166-2-lvl4": "KH-11",
+        "postcode": "110502",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/450550287",
+      "latitude": 11.5528317,
+      "longitude": 104.8872531,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​​អូរបែកក្អម",
+        "name:en": "Phsar O Bei Kahorm"
+      },
+      "display_name": "ផ្សារ​​អូរបែកក្អម, ផ្លូវ ២៧១, ភូមិអូរបែកក្អម, សង្កាត់អូរបែកក្អម, ខណ្ឌសែនសុខ, រាជធានីភ្នំពេញ, 120805, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​​អូរបែកក្អម",
+        "road": "ផ្លូវ ២៧១",
+        "hamlet": "ភូមិអូរបែកក្អម",
+        "village": "សង្កាត់អូរបែកក្អម",
+        "town": "ខណ្ឌសែនសុខ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120805",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/450961290",
+      "latitude": 11.571697,
+      "longitude": 104.8712738,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​ដីហុយ",
+        "name:en": "Phsar Dey Hoy",
+        "name:km": "ផ្សារ​ដីហុយ"
+      },
+      "display_name": "phkachhouk, ផ្លូវ ហាណូយ (១០១៩), ពៅទេវី, សង្កាត់ភ្នំពេញថ្មី, ខណ្ឌសែនសុខ, រាជធានីភ្នំពេញ, 120802, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "phkachhouk",
+        "road": "ផ្លូវ ហាណូយ (១០១៩)",
+        "hamlet": "ពៅទេវី",
+        "village": "សង្កាត់ភ្នំពេញថ្មី",
+        "town": "ខណ្ឌសែនសុខ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120802",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/450966023",
+      "latitude": 11.5753131,
+      "longitude": 104.8528943,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​ឈូកមាស",
+        "name:en": "Phsar Chhouk Meas",
+        "name:km": "ផ្សារ​ឈូកមាស"
+      },
+      "display_name": "sok vibolphal, ផ្លូវ ឧកញ៉ា ទ្រី ហេង (២០១១), ភូមិគោកឃ្លាង, សង្កាត់គោកឃ្លាង, ខណ្ឌសែនសុខ, រាជធានីភ្នំពេញ, 120806, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "sok vibolphal",
+        "road": "ផ្លូវ ឧកញ៉ា ទ្រី ហេង (២០១១)",
+        "hamlet": "ភូមិគោកឃ្លាង",
+        "village": "សង្កាត់គោកឃ្លាង",
+        "town": "ខណ្ឌសែនសុខ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120806",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/451275105",
+      "latitude": 11.5681473,
+      "longitude": 104.9157067,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​ឌុយម៉ិច",
+        "name:en": "Phsar Dumex"
+      },
+      "display_name": "ផ្សារ​ឌុយម៉ិច, ផ្លូវ ១៣៤, សង្កាត់មនោរម្យ, ប្រាំពីរមករា, រាជធានីភ្នំពេញ, 120305, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​ឌុយម៉ិច",
+        "road": "ផ្លូវ ១៣៤",
+        "village": "សង្កាត់មនោរម្យ",
+        "town": "ប្រាំពីរមករា",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120305",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/451275106",
+      "latitude": 11.5667619,
+      "longitude": 104.9154267,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​សេរីភាព",
+        "name:en": "Phsar Sereipheap",
+        "name:km": "ផ្សារ​សេរីភាព"
+      },
+      "display_name": "ផ្សារ​សេរីភាព, ផ្លូវ ១៦៤, សង្កាត់អូរឬស្សីទី ៣, ប្រាំពីរមករា, រាជធានីភ្នំពេញ, 120303, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​សេរីភាព",
+        "road": "ផ្លូវ ១៦៤",
+        "village": "សង្កាត់អូរឬស្សីទី ៣",
+        "town": "ប្រាំពីរមករា",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120303",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/451275107",
+      "latitude": 11.5654599,
+      "longitude": 104.8971288,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​គីឡូលេខ៤",
+        "name:en": "Phsar Kilo 4"
+      },
+      "display_name": "ផ្សារ​គីឡូលេខ៤, ផ្លូវ ១៣៨ហ្សេត, សង្កាត់ទឹកល្អក់ទី ២, ខណ្ឌទួលគោក, រាជធានីភ្នំពេញ, 120405, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​គីឡូលេខ៤",
+        "road": "ផ្លូវ ១៣៨ហ្សេត",
+        "village": "សង្កាត់ទឹកល្អក់ទី ២",
+        "town": "ខណ្ឌទួលគោក",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120405",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/451275980",
+      "latitude": 11.5688156,
+      "longitude": 104.9229486,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​តាប៉ាង",
+        "name:en": "Phsar Ta Pang"
+      },
+      "display_name": "រស្មី និច្ច, វិថី ប៉ាស្ទ័រ (៥១), site analysis, សង្កាត់ផ្សារថ្មីទី ៣, ខណ្ឌដូនពេញ, រាជធានីភ្នំពេញ, 120203, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "រស្មី និច្ច",
+        "road": "វិថី ប៉ាស្ទ័រ (៥១)",
+        "residential": "site analysis",
+        "village": "សង្កាត់ផ្សារថ្មីទី ៣",
+        "town": "ខណ្ឌដូនពេញ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120203",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/451295011",
+      "latitude": 11.563397,
+      "longitude": 104.9099123,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ស្តង់​បុរីកីឡាថ្មី",
+        "name:en": "Borey Keila New Store"
+      },
+      "display_name": "ស្តង់​បុរីកីឡាថ្មី, ផ្លូវ ៣៣៦, សង្កាត់វាលវង់, ប្រាំពីរមករា, រាជធានីភ្នំពេញ, 120307, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ស្តង់​បុរីកីឡាថ្មី",
+        "road": "ផ្លូវ ៣៣៦",
+        "village": "សង្កាត់វាលវង់",
+        "town": "ប្រាំពីរមករា",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120307",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/451296303",
+      "latitude": 11.5631287,
+      "longitude": 104.888605,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​ត្រពាំងឈូក",
+        "name:en": "Phsar Trapeang Chhuk"
+      },
+      "display_name": "ផ្សារ​ត្រពាំងឈូក, ផ្លូវ ១៣៨, ភូមិសេប៉េសេ, សង្កាត់ទឹកថ្លា, ខណ្ឌសែនសុខ, រាជធានីភ្នំពេញ, 120802, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​ត្រពាំងឈូក",
+        "road": "ផ្លូវ ១៣៨",
+        "hamlet": "ភូមិសេប៉េសេ",
+        "village": "សង្កាត់ទឹកថ្លា",
+        "town": "ខណ្ឌសែនសុខ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120802",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/462908985",
+      "latitude": 13.5878201,
+      "longitude": 102.9792129,
+      "tags": {
+        "addr:street": "Preah Ponlia",
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Psar Riatrey Night Market",
+        "name:en": "TM Night Market",
+        "operator": "TM3 co ltd"
+      },
+      "display_name": "Preah Ponlia, ក្រុងសិរីសោភ័ណ, សិរីសោភ័ណ, ខេត្តបន្ទាយមានជ័យ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "Preah Ponlia",
+        "city": "ក្រុងសិរីសោភ័ណ",
+        "county": "សិរីសោភ័ណ",
+        "state": "ខេត្តបន្ទាយមានជ័យ",
+        "ISO3166-2-lvl4": "KH-1",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/475040888",
+      "latitude": 11.2954299,
+      "longitude": 104.8451868,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Palmyra fruit and frog stands"
+      },
+      "display_name": "(ជាងម៉ូតូ), ផ្លូវជាតិលេខ២, ភូមិឱតាសាំង, ឃុំចំបក់, បាទី, ខេត្តតាកែវ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "shop": "(ជាងម៉ូតូ)",
+        "road": "ផ្លូវជាតិលេខ២",
+        "hamlet": "ភូមិឱតាសាំង",
+        "town": "ឃុំចំបក់",
+        "county": "បាទី",
+        "state": "ខេត្តតាកែវ",
+        "ISO3166-2-lvl4": "KH-21",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/476113816",
+      "latitude": 11.6595098,
+      "longitude": 104.7807395,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "yes",
+        "name": "ផ្សារត្រពាំងព្រីង",
+        "name:en": "Trapeang Pring Market"
+      },
+      "display_name": "ផ្សារត្រពាំងព្រីង, ផ្លូវជាតិលេខ១៣០, ភូមិធំ, សង្កាត់ពញាពន់, ខណ្ឌព្រែកព្នៅ, រាជធានីភ្នំពេញ, 121102, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារត្រពាំងព្រីង",
+        "road": "ផ្លូវជាតិលេខ១៣០",
+        "hamlet": "ភូមិធំ",
+        "village": "សង្កាត់ពញាពន់",
+        "town": "ខណ្ឌព្រែកព្នៅ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "121102",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/477208082",
+      "latitude": 11.4966709,
+      "longitude": 104.8989155,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "yes",
+        "name": "ផ្សារចាប",
+        "name:en": "Chab Market"
+      },
+      "display_name": "ផ្សារចាប, ផ្លូវ ចំការដូង (២១៧), ភូមិថ្មី, សង្កាត់ដង្កោ, ខណ្ឌដង្កោ, រាជធានីភ្នំពេញ, 120501, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារចាប",
+        "road": "ផ្លូវ ចំការដូង (២១៧)",
+        "hamlet": "ភូមិថ្មី",
+        "village": "សង្កាត់ដង្កោ",
+        "town": "ខណ្ឌដង្កោ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120501",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/479837064",
+      "latitude": 12.4846439,
+      "longitude": 106.0182417,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Kratie"
+      },
+      "display_name": "Phsar Kratie, 308, ក្រុងក្រចេះ, ក្រចេះ, ខេត្តក្រចេះ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Kratie",
+        "road": "308",
+        "city": "ក្រុងក្រចេះ",
+        "county": "ក្រចេះ",
+        "state": "ខេត្តក្រចេះ",
+        "ISO3166-2-lvl4": "KH-10",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/480011391",
+      "latitude": 10.607874,
+      "longitude": 104.1795841,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Old Market"
+      },
+      "display_name": "Hair by Chantel, A27, Street 724, កំពត, ខេត្តកំពត, 070216, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "shop": "Hair by Chantel",
+        "house_number": "A27",
+        "road": "Street 724",
+        "city": "កំពត",
+        "county": "កំពត",
+        "state": "ខេត្តកំពត",
+        "ISO3166-2-lvl4": "KH-7",
+        "postcode": "070216",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/485718855",
+      "latitude": 13.3795102,
+      "longitude": 103.8531,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​ដើម​ក្រឡាញ់",
+        "name:en": "Phsar Deum Kralanh"
+      },
+      "display_name": "ផ្សារ​ដើម​ក្រឡាញ់, Phsar Dam Krolanh Road, ភូមិ​គ្រួស, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171253, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​ដើម​ក្រឡាញ់",
+        "road": "Phsar Dam Krolanh Road",
+        "village": "ភូមិ​គ្រួស",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171253",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/48681402",
+      "latitude": 13.1021202,
+      "longitude": 103.1984832,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សាណាត់",
+        "name:en": "Phsar Nat",
+        "wikidata": "Q63139408"
+      },
+      "display_name": "Juwelierstände, Street 113, បាត់ដំបង, ខេត្តបាត់ដំបង, 021402, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "shop": "Juwelierstände",
+        "road": "Street 113",
+        "city": "បាត់ដំបង",
+        "county": "បាត់ដំបង",
+        "state": "ខេត្តបាត់ដំបង",
+        "ISO3166-2-lvl4": "KH-2",
+        "postcode": "021402",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/488465428",
+      "latitude": 11.9900679,
+      "longitude": 105.4642293,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Food Market"
+      },
+      "display_name": "Pharmacy B Vihea Sour, Cheyvarman 7, ក្រុងកំពង់ចាម, កំពង់ចាម, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Pharmacy B Vihea Sour",
+        "road": "Cheyvarman 7",
+        "city": "ក្រុងកំពង់ចាម",
+        "county": "កំពង់ចាម",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/488465429",
+      "latitude": 11.9907459,
+      "longitude": 105.4647501,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Thom"
+      },
+      "display_name": "Preah Ketomealea Street, ក្រុងកំពង់ចាម, កំពង់ចាម, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "Preah Ketomealea Street",
+        "city": "ក្រុងកំពង់ចាម",
+        "county": "កំពង់ចាម",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/488548619",
+      "latitude": 13.656073,
+      "longitude": 102.5626937,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារប៉ោយប៉ែត",
+        "name:en": "Poipet Market"
+      },
+      "display_name": "ផ្សារប៉ោយប៉ែត, Derm Pottrea Road, សង្កាត់ប៉ោយប៉ែត, ប៉ោយប៉ែត, ក្រុងប៉ោយប៉ែត, ខេត្តបន្ទាយមានជ័យ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារប៉ោយប៉ែត",
+        "road": "Derm Pottrea Road",
+        "suburb": "សង្កាត់ប៉ោយប៉ែត",
+        "city": "ប៉ោយប៉ែត",
+        "county": "ក្រុងប៉ោយប៉ែត",
+        "state": "ខេត្តបន្ទាយមានជ័យ",
+        "ISO3166-2-lvl4": "KH-1",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/490568428",
+      "latitude": 11.8226957,
+      "longitude": 104.7436323,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Samrong"
+      },
+      "display_name": "44, ស្រុកថ្ពង, ឧដុង្គម៉ែជ័យ, ខេត្តកំពង់ស្ពឺ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "44",
+        "town": "ស្រុកថ្ពង",
+        "county": "ឧដុង្គម៉ែជ័យ",
+        "state": "ខេត្តកំពង់ស្ពឺ",
+        "ISO3166-2-lvl4": "KH-5",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/491263983",
+      "latitude": 10.5593633,
+      "longitude": 104.4675633,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Market Place"
+      },
+      "display_name": "Market Place, ផ្លូវជាតិ លេខ 33, កំពង់ត្រាច, ខេត្តកំពត, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Market Place",
+        "road": "ផ្លូវជាតិ លេខ 33",
+        "town": "កំពង់ត្រាច",
+        "state": "ខេត្តកំពត",
+        "ISO3166-2-lvl4": "KH-7",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/493600189",
+      "latitude": 11.6559326,
+      "longitude": 104.860945,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "yes",
+        "name": "ផ្សារថ្មី ព្រែកព្នៅ",
+        "name:en": "New Preaek Pnov Market"
+      },
+      "display_name": "ផ្សារថ្មី ព្រែកព្នៅ, ផ្លូវ ទំនប់កប់ស្រូវ, សង្កាត់ស្វាយប៉ាក, ខណ្ឌឫស្សីកែវ, រាជធានីភ្នំពេញ, 120701, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារថ្មី ព្រែកព្នៅ",
+        "road": "ផ្លូវ ទំនប់កប់ស្រូវ",
+        "village": "សង្កាត់ស្វាយប៉ាក",
+        "town": "ខណ្ឌឫស្សីកែវ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120701",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/494449645",
+      "latitude": 10.9058191,
+      "longitude": 104.7838737,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "yes",
+        "name": "ផ្សារព្រៃសណ្ដែក",
+        "name:en": "Prey Sandaek Market"
+      },
+      "display_name": "ផ្សារព្រៃសណ្ដែក, ផ្លូវជាតិលេខ២, ទ្រាំង, ដូនកែវ, ខេត្តតាកែវ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារព្រៃសណ្ដែក",
+        "road": "ផ្លូវជាតិលេខ២",
+        "town": "ទ្រាំង",
+        "county": "ដូនកែវ",
+        "state": "ខេត្តតាកែវ",
+        "ISO3166-2-lvl4": "KH-21",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/504724994",
+      "latitude": 13.4123826,
+      "longitude": 103.8419074,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "yes",
+        "name": "Phum Pheak Market",
+        "name:km": "ផ្សារភូមិភក្តី"
+      },
+      "display_name": "Phum Pheak Market, Drop off zone, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171253, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phum Pheak Market",
+        "road": "Drop off zone",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171253",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/507810728",
+      "latitude": 11.989461,
+      "longitude": 105.4637412,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Sorlar Chen"
+      },
+      "display_name": "Phsar Sorlar Chen, Pasteur, ក្រុងកំពង់ចាម, កំពង់ចាម, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Sorlar Chen",
+        "road": "Pasteur",
+        "city": "ក្រុងកំពង់ចាម",
+        "county": "កំពង់ចាម",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/508485801",
+      "latitude": 12.2547951,
+      "longitude": 104.6696629,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារលើ",
+        "name:en": "Phsar Leur",
+        "name:vi": "Phsar Leur"
+      },
+      "display_name": "ផ្លូវ​នរោត្តម, ក្រុងកំពង់ឆ្នាំង, កំពង់ឆ្នាំង, ខេត្តកំពង់ឆ្នាំង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "ផ្លូវ​នរោត្តម",
+        "city": "ក្រុងកំពង់ឆ្នាំង",
+        "county": "កំពង់ឆ្នាំង",
+        "state": "ខេត្តកំពង់ឆ្នាំង",
+        "ISO3166-2-lvl4": "KH-4",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/509402477",
+      "latitude": 13.587012,
+      "longitude": 102.9725,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Psar Serey Sophon"
+      },
+      "display_name": "Lum, ក្រុងសិរីសោភ័ណ, សិរីសោភ័ណ, ខេត្តបន្ទាយមានជ័យ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "Lum",
+        "city": "ក្រុងសិរីសោភ័ណ",
+        "county": "សិរីសោភ័ណ",
+        "state": "ខេត្តបន្ទាយមានជ័យ",
+        "ISO3166-2-lvl4": "KH-1",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/510363987",
+      "latitude": 11.0341846,
+      "longitude": 104.5900671,
+      "tags": {
+        "addr:street": "Street 25",
+        "amenity": "marketplace",
+        "email": "cheasovannarayra@gmail.com",
+        "landuse": "retail",
+        "name": "ផ្សារអង្គរការ",
+        "name:en": "Angroka Market",
+        "name:km": "ផ្សារអង្គរការ",
+        "opening_hours": "Mo-Su 05:00-18:00",
+        "phone": "016399988l"
+      },
+      "display_name": "ផ្សារអង្គរការ, អង្គរការ, ត្រាំកក់, ខេត្តតាកែវ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារអង្គរការ",
+        "village": "អង្គរការ",
+        "county": "ត្រាំកក់",
+        "state": "ខេត្តតាកែវ",
+        "ISO3166-2-lvl4": "KH-21",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/511183207",
+      "latitude": 13.3450971,
+      "longitude": 103.846824,
+      "tags": {
+        "addr:city": "Siem Reap",
+        "addr:country": "KH",
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Kraoum"
+      },
+      "display_name": "Phsar Kraoum, ផ្លូវ ផ្សារក្រោម, ភូមិ​គ្រួស, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 177130, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Kraoum",
+        "road": "ផ្លូវ ផ្សារក្រោម",
+        "village": "ភូមិ​គ្រួស",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "177130",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/511183208",
+      "latitude": 13.3449429,
+      "longitude": 103.84899,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Kraoum Thmei"
+      },
+      "display_name": "Phsar Kraoum Thmei, ផ្លូវ ផ្សារក្រោម, ភូមិ​គ្រួស, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 177130, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Kraoum Thmei",
+        "road": "ផ្លូវ ផ្សារក្រោម",
+        "village": "ភូមិ​គ្រួស",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "177130",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/514067030",
+      "latitude": 12.7122996,
+      "longitude": 104.8875293,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Kampong Thom Central Market",
+        "name:vi": "Chợ Kampong Thom"
+      },
+      "display_name": "Kampong Thom Central Market, ផ្លូវជាតិលេខ៦, ក្រុងស្ទឹងសែន, ស្ទឹងសែន, ខេត្តកំពង់ធំ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Kampong Thom Central Market",
+        "road": "ផ្លូវជាតិលេខ៦",
+        "city": "ក្រុងស្ទឹងសែន",
+        "county": "ស្ទឹងសែន",
+        "state": "ខេត្តកំពង់ធំ",
+        "ISO3166-2-lvl4": "KH-6",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/514723949",
+      "latitude": 11.4700216,
+      "longitude": 104.9520945,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារកាចជ្រុង",
+        "name:en": "Kach Chrung Market"
+      },
+      "display_name": "ផ្សារកាចជ្រុង, ផ្លូវជាតិលេខ២១, តាខ្មៅ, ខេត្តកណ្ដាល, 121208, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារកាចជ្រុង",
+        "road": "ផ្លូវជាតិលេខ២១",
+        "city": "តាខ្មៅ",
+        "state": "ខេត្តកណ្ដាល",
+        "ISO3166-2-lvl4": "KH-8",
+        "postcode": "121208",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/514838356",
+      "latitude": 11.6082198,
+      "longitude": 102.9815916,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar"
+      },
+      "display_name": "Phsar, ផ្លូវជាតិលេខ៤៨, ខេមរភូមិន្ទ, ខេត្តកោះកុង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar",
+        "road": "ផ្លូវជាតិលេខ៤៨",
+        "city": "ខេមរភូមិន្ទ",
+        "state": "ខេត្តកោះកុង",
+        "ISO3166-2-lvl4": "KH-9",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/515803533",
+      "latitude": 13.3754819,
+      "longitude": 103.8689831,
+      "tags": {
+        "addr:city": "Siem Reap",
+        "addr:street": "Road. 60, Trang Village, Sangkat Slorkram",
+        "amenity": "marketplace",
+        "building": "yes",
+        "email": "info@aha-kh.com",
+        "name:en": "Angkor Handicraft Association / Fair Trade Village",
+        "phone": "+855 (0) 78 3414 54",
+        "shop": "craft",
+        "website": "https://www.aha-kh.com/"
+      },
+      "display_name": "Angkor Handicraft Association / Fair Trade Village, ផ្លូវ ទន្លេ, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171201, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Angkor Handicraft Association / Fair Trade Village",
+        "road": "ផ្លូវ ទន្លេ",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171201",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/515865785",
+      "latitude": 14.1752208,
+      "longitude": 103.506179,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Samraong"
+      },
+      "display_name": "Phsar Samraong, 56, ឃុំគោកមន, សំរោង, ខេត្តឧត្ដរមានជ័យ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Samraong",
+        "road": "56",
+        "village": "ឃុំគោកមន",
+        "county": "សំរោង",
+        "state": "ខេត្តឧត្ដរមានជ័យ",
+        "ISO3166-2-lvl4": "KH-22",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/516819822",
+      "latitude": 14.4082608,
+      "longitude": 103.6926862,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar"
+      },
+      "display_name": "Phsar, ផ្លូវជាតិលេខ៦៨, ផ្អុង, សំរោង, ខេត្តឧត្ដរមានជ័យ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar",
+        "road": "ផ្លូវជាតិលេខ៦៨",
+        "village": "ផ្អុង",
+        "county": "សំរោង",
+        "state": "ខេត្តឧត្ដរមានជ័យ",
+        "ISO3166-2-lvl4": "KH-22",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/516965890",
+      "latitude": 14.1956331,
+      "longitude": 104.3538334,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "commercial",
+        "name": "Phsar"
+      },
+      "display_name": "Phsar, Route 2648, ស្រុកត្រពាំងប្រាសាទ, ត្រពាំងប្រាសាទ, ខេត្តឧត្ដរមានជ័យ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar",
+        "road": "Route 2648",
+        "town": "ស្រុកត្រពាំងប្រាសាទ",
+        "county": "ត្រពាំងប្រាសាទ",
+        "state": "ខេត្តឧត្ដរមានជ័យ",
+        "ISO3166-2-lvl4": "KH-22",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/519048577",
+      "latitude": 11.9934373,
+      "longitude": 105.4657856,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Night Market"
+      },
+      "display_name": "ហាងលក់ទូរស័ព្ទ គីមរតនា, Preah Ponheayat, ក្រុងកំពង់ចាម, កំពង់ចាម, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "shop": "ហាងលក់ទូរស័ព្ទ គីមរតនា",
+        "road": "Preah Ponheayat",
+        "city": "ក្រុងកំពង់ចាម",
+        "county": "កំពង់ចាម",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/520030565",
+      "latitude": 13.086524,
+      "longitude": 103.2131573,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar"
+      },
+      "display_name": "ផ្ទះ​អាពងទា, Street 710, សង្កាត់ព្រែកព្រះស្តេច, បាត់ដំបង, ខេត្តបាត់ដំបង, 021402, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "shop": "ផ្ទះ​អាពងទា",
+        "road": "Street 710",
+        "village": "សង្កាត់ព្រែកព្រះស្តេច",
+        "county": "បាត់ដំបង",
+        "state": "ខេត្តបាត់ដំបង",
+        "ISO3166-2-lvl4": "KH-2",
+        "postcode": "021402",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/520030567",
+      "latitude": 13.0850698,
+      "longitude": 103.1996391,
+      "tags": {
+        "amenity": "marketplace",
+        "check_date:opening_hours": "2026-03-14",
+        "landuse": "retail",
+        "name": "Phsar Leu",
+        "opening_hours:signed": "no",
+        "wheelchair": "limited"
+      },
+      "display_name": "Phsar Leu, Road Number 1, ក្រុងបាត់ដំបង, បាត់ដំបង, ខេត្តបាត់ដំបង, 021402, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Leu",
+        "road": "Road Number 1",
+        "city": "ក្រុងបាត់ដំបង",
+        "county": "បាត់ដំបង",
+        "state": "ខេត្តបាត់ដំបង",
+        "ISO3166-2-lvl4": "KH-2",
+        "postcode": "021402",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/523938894",
+      "latitude": 10.9937925,
+      "longitude": 104.7852342,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារណាត់",
+        "name:en": "Phsar Nat"
+      },
+      "display_name": "ផ្សារណាត់, 110, ក្រុងដូនកែវ, ដូនកែវ, ខេត្តតាកែវ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារណាត់",
+        "road": "110",
+        "city": "ក្រុងដូនកែវ",
+        "county": "ដូនកែវ",
+        "state": "ខេត្តតាកែវ",
+        "ISO3166-2-lvl4": "KH-21",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/527244507",
+      "latitude": 11.5790435,
+      "longitude": 104.9327013,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar"
+      },
+      "display_name": "Phsar, វិថី វត្តចាស់, ចុងកោះមានជ័យបារមីតេជោ, សង្កាត់ជ្រោយចង្វា, ខណ្ឌជ្រោយចង្វារ, រាជធានីភ្នំពេញ, 121001, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar",
+        "road": "វិថី វត្តចាស់",
+        "hamlet": "ចុងកោះមានជ័យបារមីតេជោ",
+        "village": "សង្កាត់ជ្រោយចង្វា",
+        "town": "ខណ្ឌជ្រោយចង្វារ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "121001",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/527522381",
+      "latitude": 13.3605367,
+      "longitude": 103.8503003,
+      "tags": {
+        "addr:city": "Siem Reap",
+        "addr:country": "KH",
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Gne",
+        "name:km": "ផ្សារជីណេ"
+      },
+      "display_name": "Phsar Gne, វិថី​ទេព​វង្ស, ភូមិ​គ្រួស, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 123456, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Gne",
+        "road": "វិថី​ទេព​វង្ស",
+        "village": "ភូមិ​គ្រួស",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "123456",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/53356309",
+      "latitude": 13.5301666,
+      "longitude": 105.9719057,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារស្ទឹងត្រែង",
+        "name:en": "Stung Treng Market",
+        "name:es": "Mercado Steung Tráeng",
+        "name:km": "ផ្សារស្ទឹងត្រែង"
+      },
+      "display_name": "Market food restaurant, ផ្លូវលេខ ១៤, ក្រុងស្ទឹងត្រែង, ស្ទឹងត្រែង, ខេត្តស្ទឹងត្រែង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Market food restaurant",
+        "road": "ផ្លូវលេខ ១៤",
+        "city": "ក្រុងស្ទឹងត្រែង",
+        "county": "ស្ទឹងត្រែង",
+        "state": "ខេត្តស្ទឹងត្រែង",
+        "ISO3166-2-lvl4": "KH-19",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/53635723",
+      "latitude": 10.6157665,
+      "longitude": 104.1808733,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារលើ",
+        "name:en": "Phsar Leur Market"
+      },
+      "display_name": "Seamstresses in market (can fix bags, zips etc), Street 712, កំពត, ខេត្តកំពត, 070216, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "craft": "Seamstresses in market (can fix bags, zips etc)",
+        "road": "Street 712",
+        "city": "កំពត",
+        "county": "កំពត",
+        "state": "ខេត្តកំពត",
+        "ISO3166-2-lvl4": "KH-7",
+        "postcode": "070216",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/539881980",
+      "latitude": 11.5803762,
+      "longitude": 104.9109981,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "yes",
+        "name": "Art's Container"
+      },
+      "display_name": "Art's Container, Exhibition Street (159), សហគមន៍​បឹងកក់, សង្កាត់ផ្សារថ្មីទី ២, ខណ្ឌដូនពេញ, រាជធានីភ្នំពេញ, 120210, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Art's Container",
+        "road": "Exhibition Street (159)",
+        "hamlet": "សហគមន៍​បឹងកក់",
+        "village": "សង្កាត់ផ្សារថ្មីទី ២",
+        "town": "ខណ្ឌដូនពេញ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120210",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/554172383",
+      "latitude": 12.0756118,
+      "longitude": 106.4223526,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar"
+      },
+      "display_name": "Phsar, ផ្លូវជាតិលេខ៧, ស្រុក​ស្នួល, ស្នួល, ខេត្តក្រចេះ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar",
+        "road": "ផ្លូវជាតិលេខ៧",
+        "town": "ស្រុក​ស្នួល",
+        "county": "ស្នួល",
+        "state": "ខេត្តក្រចេះ",
+        "ISO3166-2-lvl4": "KH-10",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/554207416",
+      "latitude": 14.3302347,
+      "longitude": 103.1766307,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Market"
+      },
+      "display_name": "Market, ផ្លូវជាតិលេខ៥៨, បន្ទាយអំពិល, ខេត្តឧត្ដរមានជ័យ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Market",
+        "road": "ផ្លូវជាតិលេខ៥៨",
+        "county": "បន្ទាយអំពិល",
+        "state": "ខេត្តឧត្ដរមានជ័យ",
+        "ISO3166-2-lvl4": "KH-22",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/554581942",
+      "latitude": 11.6697307,
+      "longitude": 105.9777728,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Tro Peang Plong Market"
+      },
+      "display_name": "Tro Peang Plong Market, 72, ត្រពាំងផ្លុង, ពញាក្រែក, ខេត្តត្បូងឃ្មុំ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Tro Peang Plong Market",
+        "road": "72",
+        "village": "ត្រពាំងផ្លុង",
+        "county": "ពញាក្រែក",
+        "state": "ខេត្តត្បូងឃ្មុំ",
+        "ISO3166-2-lvl4": "KH-25",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/559964450",
+      "latitude": 11.6321535,
+      "longitude": 104.8984097,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារច្រាំងចំរេះ",
+        "name:en": "Chrang Chamreh Market",
+        "name:km": "ផ្សារច្រាំងចំរេះ"
+      },
+      "display_name": "ផ្សារច្រាំងចំរេះ, ផ្លូវជាតិលេខ៥, Phum1, សង្កាត់គីឡូម៉ែត្រលេខ៦, ខណ្ឌឫស្សីកែវ, រាជធានីភ្នំពេញ, 120704, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារច្រាំងចំរេះ",
+        "road": "ផ្លូវជាតិលេខ៥",
+        "neighbourhood": "Phum1",
+        "village": "សង្កាត់គីឡូម៉ែត្រលេខ៦",
+        "town": "ខណ្ឌឫស្សីកែវ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120704",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/571743424",
+      "latitude": 11.4854438,
+      "longitude": 105.3221274,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Prey Veng"
+      },
+      "display_name": "National Road 11, ក្រុងព្រៃវែង, ព្រៃវែង, ខេត្តព្រៃវែង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "National Road 11",
+        "city": "ក្រុងព្រៃវែង",
+        "county": "ព្រៃវែង",
+        "state": "ខេត្តព្រៃវែង",
+        "ISO3166-2-lvl4": "KH-14",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/592530018",
+      "latitude": 13.3396797,
+      "longitude": 103.8967913,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Khnar Market",
+        "name:km": "ផ្សារខ្នារ"
+      },
+      "display_name": "Khnar Market, Samdech Chea Sim Street, ក្រុងសៀមរាប, សៀមរាប, ខេត្តសៀមរាប, 171204, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Khnar Market",
+        "road": "Samdech Chea Sim Street",
+        "city": "ក្រុងសៀមរាប",
+        "county": "សៀមរាប",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "postcode": "171204",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/62219866",
+      "latitude": 11.5740501,
+      "longitude": 104.9272481,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារ​រាត្រី",
+        "name:en": "Phsar Reatrey Night Market",
+        "name:vi": "Chợ Đêm",
+        "tourism": "attraction"
+      },
+      "display_name": "ផ្សារ​រាត្រី, វិថី ព្រះអង្គអេង (១៣), សង្កាត់ផ្សារចាស់, ខណ្ឌដូនពេញ, រាជធានីភ្នំពេញ, 120209, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារ​រាត្រី",
+        "road": "វិថី ព្រះអង្គអេង (១៣)",
+        "village": "សង្កាត់ផ្សារចាស់",
+        "town": "ខណ្ឌដូនពេញ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120209",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/641418156",
+      "latitude": 11.5916504,
+      "longitude": 104.8973589,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារជ័យជំនះ",
+        "name:en": "Chey Chumneah Market"
+      },
+      "display_name": "ផ្សារជ័យជំនះ, ផ្លូវ ជាសុផារ៉ា (ផ្លូវ ៥៩៨), ភូមិទួលថ្ងាន់, សង្កាត់ទួលសង្កែទី២, ខណ្ឌឫស្សីកែវ, រាជធានីភ្នំពេញ, 120707, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារជ័យជំនះ",
+        "road": "ផ្លូវ ជាសុផារ៉ា (ផ្លូវ ៥៩៨)",
+        "hamlet": "ភូមិទួលថ្ងាន់",
+        "village": "សង្កាត់ទួលសង្កែទី២",
+        "town": "ខណ្ឌឫស្សីកែវ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120707",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/667826575",
+      "latitude": 12.2487788,
+      "longitude": 105.1241502,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Tangkok"
+      },
+      "display_name": "Phsar Tangkok, 222, ស្រុកតាំងគោក, តាំងគោក, ខេត្តកំពង់ធំ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Tangkok",
+        "road": "222",
+        "town": "ស្រុកតាំងគោក",
+        "county": "តាំងគោក",
+        "state": "ខេត្តកំពង់ធំ",
+        "ISO3166-2-lvl4": "KH-6",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/668071432",
+      "latitude": 11.0684994,
+      "longitude": 106.1549189,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារអន្តរជាតិ បាវិត",
+        "name:en": "Bavet Market",
+        "name:vi": "Chợ Bà Vẹt"
+      },
+      "display_name": "ផ្សារអន្តរជាតិ បាវិត, ផ្លូវជាតិលេខ១, សង្កាត់ច្រកម្ទេស, សង្កាត់បាវិត, បាវិត, ខេត្តស្វាយរៀង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារអន្តរជាតិ បាវិត",
+        "road": "ផ្លូវជាតិលេខ១",
+        "suburb": "សង្កាត់ច្រកម្ទេស",
+        "city": "សង្កាត់បាវិត",
+        "state": "ខេត្តស្វាយរៀង",
+        "ISO3166-2-lvl4": "KH-20",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/673276044",
+      "latitude": 11.5580734,
+      "longitude": 104.9228875,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Silep"
+      },
+      "display_name": "Phsar Silep, ផ្លូវ ត្រសក់ផ្អែម (៦៣), site analysis, សង្កាត់បឹងរាំង, ខណ្ឌដូនពេញ, រាជធានីភ្នំពេញ, 120203, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Silep",
+        "road": "ផ្លូវ ត្រសក់ផ្អែម (៦៣)",
+        "residential": "site analysis",
+        "village": "សង្កាត់បឹងរាំង",
+        "town": "ខណ្ឌដូនពេញ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120203",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/686832213",
+      "latitude": 11.5958897,
+      "longitude": 104.8766058,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "warehouse",
+        "name": "Global House Cambodia",
+        "name:km": "គ្លូប៊លហៅស៍ (ខេមបូឌា)",
+        "shop": "supermarket"
+      },
+      "display_name": "Global House Cambodia, Street 6, The Park Land Sen Sok, ភូមិបាយ៉ាប, សង្កាត់ភ្នំពេញថ្មី, ខណ្ឌសែនសុខ, រាជធានីភ្នំពេញ, 120801, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Global House Cambodia",
+        "road": "Street 6",
+        "residential": "The Park Land Sen Sok",
+        "hamlet": "ភូមិបាយ៉ាប",
+        "village": "សង្កាត់ភ្នំពេញថ្មី",
+        "town": "ខណ្ឌសែនសុខ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120801",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/687478247",
+      "latitude": 11.4798216,
+      "longitude": 104.9454731,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "yes",
+        "name": "ផ្សារទំនើប ឡាក់គី",
+        "name:en": "Lucky",
+        "shop": "supermarket"
+      },
+      "display_name": "ផ្សារទំនើប ឡាក់គី, ផ្លូវជាតិលេខ២១, តាខ្មៅ, ខេត្តកណ្ដាល, 121208, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារទំនើប ឡាក់គី",
+        "road": "ផ្លូវជាតិលេខ២១",
+        "city": "តាខ្មៅ",
+        "state": "ខេត្តកណ្ដាល",
+        "ISO3166-2-lvl4": "KH-8",
+        "postcode": "121208",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/710983408",
+      "latitude": 11.2625197,
+      "longitude": 105.2871918,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Neak Loeung"
+      },
+      "display_name": "Phsar Neak Loeung, ផ្លូវជាតិលេខ ១១, ឃុំអ្នកលឿង, ពាមរក៍, ខេត្តព្រៃវែង, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Phsar Neak Loeung",
+        "road": "ផ្លូវជាតិលេខ ១១",
+        "town": "ឃុំអ្នកលឿង",
+        "county": "ពាមរក៍",
+        "state": "ខេត្តព្រៃវែង",
+        "ISO3166-2-lvl4": "KH-14",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/736612945",
+      "latitude": 13.1231887,
+      "longitude": 104.3421811,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Kampong Kdei"
+      },
+      "display_name": "Local restaurant, ផ្លូវជាតិលេខ៦, ស្រុកជីក្រែង, ជីក្រែង, ខេត្តសៀមរាប, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Local restaurant",
+        "road": "ផ្លូវជាតិលេខ៦",
+        "town": "ស្រុកជីក្រែង",
+        "county": "ជីក្រែង",
+        "state": "ខេត្តសៀមរាប",
+        "ISO3166-2-lvl4": "KH-17",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/772454159",
+      "latitude": 11.5619351,
+      "longitude": 104.8412221,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "commercial",
+        "name": "ផ្សារតាំងក្រសាំង",
+        "name:en": "Tang Krosang Market",
+        "name:es": "Mercado Tang Krosang",
+        "name:km": "ផ្សារតាំងក្រសាំង"
+      },
+      "display_name": "Tela, ផ្លូវ ១០៥ក, ភូមិក្បាលដំរី, សង្កាត់កាកាបទី១, ខណ្ឌពោធិ៍សែនជ័យ, រាជធានីភ្នំពេញ, 120912, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Tela",
+        "road": "ផ្លូវ ១០៥ក",
+        "hamlet": "ភូមិក្បាលដំរី",
+        "village": "សង្កាត់កាកាបទី១",
+        "town": "ខណ្ឌពោធិ៍សែនជ័យ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120912",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/783811247",
+      "latitude": 11.5563135,
+      "longitude": 104.9032568,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារផ្លែឈើ",
+        "name:en": "Phsar Plaecher"
+      },
+      "display_name": "ផ្សារផ្លែឈើ, ផ្លូវ ៣១៦, សង្កាត់ផ្សារដើមគរ, ខណ្ឌទួលគោក, រាជធានីភ្នំពេញ, 120409, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារផ្លែឈើ",
+        "road": "ផ្លូវ ៣១៦",
+        "village": "សង្កាត់ផ្សារដើមគរ",
+        "town": "ខណ្ឌទួលគោក",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120409",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/785618557",
+      "latitude": 12.3000829,
+      "longitude": 105.4178383,
+      "tags": {
+        "addr:street": "ផ្លូវលេខ ២២២",
+        "amenity": "marketplace",
+        "name": "ផ្សារមេសរជ្រៃ"
+      },
+      "display_name": "ឱសថស្ថាន រង ខ រស្មីឧត្តម, NR 71C, ឃុំមេសរជ្រៃ (ស្រែវាល), ឃុំមេសរជ្រៃ, ស្ទឹងត្រង់, ខេត្តកំពង់ចាម, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ឱសថស្ថាន រង ខ រស្មីឧត្តម",
+        "road": "NR 71C",
+        "residential": "ឃុំមេសរជ្រៃ (ស្រែវាល)",
+        "village": "ឃុំមេសរជ្រៃ",
+        "county": "ស្ទឹងត្រង់",
+        "state": "ខេត្តកំពង់ចាម",
+        "ISO3166-2-lvl4": "KH-3",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/864720156",
+      "latitude": 12.774819,
+      "longitude": 105.9652376,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Sambour Market"
+      },
+      "display_name": "Sambour Market, Sambour–Svay Chek (MRD-CDRM-ICB-RW02-LOT2-10km), ស្រុកសំបូរ, សំបូរ, ខេត្តក្រចេះ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Sambour Market",
+        "road": "Sambour–Svay Chek (MRD-CDRM-ICB-RW02-LOT2-10km)",
+        "town": "ស្រុកសំបូរ",
+        "county": "សំបូរ",
+        "state": "ខេត្តក្រចេះ",
+        "ISO3166-2-lvl4": "KH-10",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/922572914",
+      "latitude": 11.6022743,
+      "longitude": 104.9092578,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "ផ្សារបឹងសាឡាងថ្មី",
+        "name:en": "Phsar Boeung Salang Thmei"
+      },
+      "display_name": "ផ្សារបឹងសាឡាងថ្មី, ផ្លូវ បេតុង, ភូមិទួលថ្ងាន់, សង្កាត់ឬស្សីកែវ, ខណ្ឌឫស្សីកែវ, រាជធានីភ្នំពេញ, 120707, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារបឹងសាឡាងថ្មី",
+        "road": "ផ្លូវ បេតុង",
+        "hamlet": "ភូមិទួលថ្ងាន់",
+        "village": "សង្កាត់ឬស្សីកែវ",
+        "town": "ខណ្ឌឫស្សីកែវ",
+        "state": "រាជធានីភ្នំពេញ",
+        "ISO3166-2-lvl4": "KH-12",
+        "postcode": "120707",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/925548653",
+      "latitude": 10.485839,
+      "longitude": 104.3213631,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Phsar Kep"
+      },
+      "display_name": "Mey-Mey Pharmacy, National Road 33A, សង្កាត់កែប, កែប, ខេត្តកែប, 012345, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Mey-Mey Pharmacy",
+        "road": "National Road 33A",
+        "city": "សង្កាត់កែប",
+        "state": "ខេត្តកែប",
+        "ISO3166-2-lvl4": "KH-23",
+        "postcode": "012345",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/932635568",
+      "latitude": 10.622669,
+      "longitude": 103.5300224,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "retail",
+        "name": "Phsar Leur"
+      },
+      "display_name": "ផ្លូវ ២១៨, សង្កាត់បី, ព្រះសីហនុ, ខេត្តព្រះសីហនុ, 180000, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "road": "ផ្លូវ ២១៨",
+        "suburb": "សង្កាត់បី",
+        "city": "ព្រះសីហនុ",
+        "county": "ព្រះសីហនុ",
+        "province": "ខេត្តព្រះសីហនុ",
+        "ISO3166-2-lvl4": "KH-18",
+        "postcode": "180000",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/934247314",
+      "latitude": 10.5473165,
+      "longitude": 104.2874948,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Sesor Market"
+      },
+      "display_name": "Sesor Market, National Road 33A, សង្កាត់អូរក្រសារ, កែប, ខេត្តកែប, 220201, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Sesor Market",
+        "road": "National Road 33A",
+        "suburb": "សង្កាត់អូរក្រសារ",
+        "city": "កែប",
+        "state": "ខេត្តកែប",
+        "ISO3166-2-lvl4": "KH-23",
+        "postcode": "220201",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/938019176",
+      "latitude": 10.4889278,
+      "longitude": 104.288921,
+      "tags": {
+        "amenity": "marketplace",
+        "building": "retail",
+        "name": "ផ្សារក្តាម",
+        "name:en": "Phsar K'Dam"
+      },
+      "display_name": "ផ្សារក្តាម, Promenade, សង្កាត់ព្រៃធំ, កែប, ខេត្តកែប, 220201, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "ផ្សារក្តាម",
+        "road": "Promenade",
+        "suburb": "សង្កាត់ព្រៃធំ",
+        "city": "កែប",
+        "state": "ខេត្តកែប",
+        "ISO3166-2-lvl4": "KH-23",
+        "postcode": "220201",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/968145428",
+      "latitude": 11.9095104,
+      "longitude": 105.6545074,
+      "tags": {
+        "amenity": "marketplace",
+        "landuse": "retail",
+        "name": "Suong Market"
+      },
+      "display_name": "Tangchieang Shop, 001228021, ផ្លូវជាតិលេខ៧, ក្រុង​សួង, សួង, ខេត្តត្បូងឃ្មុំ, 03307, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "shop": "Tangchieang Shop",
+        "house_number": "001228021",
+        "road": "ផ្លូវជាតិលេខ៧",
+        "town": "ក្រុង​សួង",
+        "county": "សួង",
+        "state": "ខេត្តត្បូងឃ្មុំ",
+        "ISO3166-2-lvl4": "KH-25",
+        "postcode": "03307",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    },
+    {
+      "osm_id": "way/980748964",
+      "latitude": 11.795916,
+      "longitude": 105.5018708,
+      "tags": {
+        "amenity": "marketplace",
+        "name": "Ou Reang Ov Market"
+      },
+      "display_name": "Ou Reang Ov Market, Phsa Oraing Ov - Boung Proul (MRD-CDRM-ICB-RW03), អូររាំងឪ, ខេត្តត្បូងឃ្មុំ, ព្រះរាជាណាចក្រ​កម្ពុជា",
+      "address": {
+        "amenity": "Ou Reang Ov Market",
+        "road": "Phsa Oraing Ov - Boung Proul (MRD-CDRM-ICB-RW03)",
+        "town": "អូររាំងឪ",
+        "county": "អូររាំងឪ",
+        "state": "ខេត្តត្បូងឃ្មុំ",
+        "ISO3166-2-lvl4": "KH-25",
+        "country": "ព្រះរាជាណាចក្រ​កម្ពុជា",
+        "country_code": "kh"
+      }
+    }
+  ]
+}

@@ -1,0 +1,540 @@
+{
+  "generated_at": "2026-07-22T09:55:06.596Z",
+  "translations": [
+    {
+      "source_id": "node/1060194618",
+      "name_en": "Phsar",
+      "name_kh": "ផ្សារ"
+    },
+    {
+      "source_id": "node/11112407812",
+      "name_en": "Weekly market",
+      "name_kh": "ទីផ្សារប្រចាំសប្តាហ៍"
+    },
+    {
+      "source_id": "node/11478674892",
+      "name_en": "Night market?",
+      "name_kh": "ផ្សាររាត្រី?"
+    },
+    {
+      "source_id": "node/11538732783",
+      "name_en": "Huge Market",
+      "name_kh": "ទីផ្សារដ៏ធំ"
+    },
+    {
+      "source_id": "node/13077553202",
+      "name_en": "Lucky Express Tuol Pongro",
+      "name_kh": "ឡាក់គី អ៊ិចប្រេស ទួលពង្រ"
+    },
+    {
+      "source_id": "node/13077553203",
+      "name_en": "Potential Department Store",
+      "name_kh": "ហាងលក់ទំនិញសក្តានុពល"
+    },
+    {
+      "source_id": "node/13080663894",
+      "name_en": "G-Smart Tech-CCTV Security System",
+      "name_kh": "ប្រព័ន្ធសុវត្ថិភាព ជី-ស្មាត តិច-ស៊ីស៊ីធីវី"
+    },
+    {
+      "source_id": "node/13081328656",
+      "name_en": "Kambol Rainbow Night Market",
+      "name_kh": "ផ្សាររាត្រីកំបូលឥន្ទធនូ"
+    },
+    {
+      "source_id": "node/13086800829",
+      "name_en": "An Ses Marketplace",
+      "name_kh": "ផ្សារសេស"
+    },
+    {
+      "source_id": "node/1750952343",
+      "name_en": "Memot Market",
+      "name_kh": "ផ្សារមេមត់"
+    },
+    {
+      "source_id": "node/1979165271",
+      "name_en": "Old Market",
+      "name_kh": "ផ្សារចាស់"
+    },
+    {
+      "source_id": "node/2702449979",
+      "name_en": "Kampong Thmar Market",
+      "name_kh": "ផ្សារកំពង់ថ្ម"
+    },
+    {
+      "source_id": "node/3414792946",
+      "name_en": "Spider Market",
+      "name_kh": "ទីផ្សារពីងពាង"
+    },
+    {
+      "source_id": "node/4408159668",
+      "name_en": "Kro Bey Wet Market",
+      "name_kh": "ផ្សារសើមក្របី"
+    },
+    {
+      "source_id": "node/4409203490",
+      "name_en": "Krobey Real Market",
+      "name_kh": "ផ្សារក្របីរៀល"
+    },
+    {
+      "source_id": "node/4558201089",
+      "name_en": "Phsar Pong Teuk",
+      "name_kh": "ផ្សារពងទឹក"
+    },
+    {
+      "source_id": "node/4682352219",
+      "name_en": "Kirivong Market",
+      "name_kh": "ផ្សារគីរីវង្ស"
+    },
+    {
+      "source_id": "node/4881385121",
+      "name_en": "Indigenous People's Market",
+      "name_kh": "ផ្សារជនជាតិដើមភាគតិច"
+    },
+    {
+      "source_id": "node/4884871121",
+      "name_en": "Orng Market",
+      "name_kh": "ផ្សារអូរាំង"
+    },
+    {
+      "source_id": "node/5122482900",
+      "name_en": "Tangkrosang Market",
+      "name_kh": "ផ្សារតាំងក្រសាំង"
+    },
+    {
+      "source_id": "node/5208493663",
+      "name_en": "Phsar Kroum",
+      "name_kh": "ផ្សារក្រោម"
+    },
+    {
+      "source_id": "node/5415136156",
+      "name_en": "Pailin Market",
+      "name_kh": "ផ្សារប៉ៃលិន"
+    },
+    {
+      "source_id": "node/5611141916",
+      "name_en": "Dak Dam Market",
+      "name_kh": "ផ្សារដាកដាំ"
+    },
+    {
+      "source_id": "node/568954855",
+      "name_en": "Banteay Chey Market",
+      "name_kh": "ផ្សារបន្ទាយជ័យ"
+    },
+    {
+      "source_id": "node/570497069",
+      "name_en": "Preah Dak Market",
+      "name_kh": "ផ្សារ​ព្រះ​ដាក"
+    },
+    {
+      "source_id": "node/6222984387",
+      "name_en": "Night Market",
+      "name_kh": "ផ្សាររាត្រី"
+    },
+    {
+      "source_id": "relation/6901826",
+      "name_en": "Angkor Night Market",
+      "name_kh": "ផ្សាររាត្រីអង្គរ"
+    },
+    {
+      "source_id": "way/1071956818",
+      "name_en": "Live Animal Market",
+      "name_kh": "ទីផ្សារសត្វរស់"
+    },
+    {
+      "source_id": "way/1128232804",
+      "name_en": "K. Leaeng Maret",
+      "name_kh": "ខេ លាង ម៉ារ៉េត"
+    },
+    {
+      "source_id": "way/1157951075",
+      "name_en": "Memot Market",
+      "name_kh": "ផ្សារមេមត់"
+    },
+    {
+      "source_id": "way/1189632946",
+      "name_en": "Romdul Market",
+      "name_kh": "ផ្សាររំដួល"
+    },
+    {
+      "source_id": "way/1197847098",
+      "name_en": "Cham Market",
+      "name_kh": "ផ្សារចាម"
+    },
+    {
+      "source_id": "way/121784627",
+      "name_en": "Phsar Boeung Kok",
+      "name_kh": "ផ្សារបឹងកក់"
+    },
+    {
+      "source_id": "way/1304387958",
+      "name_en": "2002 Market",
+      "name_kh": "ឆ្នាំ ២០០២ ទីផ្សារ"
+    },
+    {
+      "source_id": "way/1352536791",
+      "name_en": "market n3",
+      "name_kh": "ផ្សារលេខ៣"
+    },
+    {
+      "source_id": "way/1369574720",
+      "name_en": "Chamkadoung Market",
+      "name_kh": "ផ្សារចំការដូង"
+    },
+    {
+      "source_id": "way/1413022146",
+      "name_en": "Phum Ahha Night Market (closed)",
+      "name_kh": "ផ្សាររាត្រីភូមិអាហា (បិទ)"
+    },
+    {
+      "source_id": "way/1422961607",
+      "name_en": "Borey Sunny Project C",
+      "name_kh": "បុរីសាន់នី គម្រោងស៊ី"
+    },
+    {
+      "source_id": "way/1422995075",
+      "name_en": "Borey Sunny Project U",
+      "name_kh": "បុរីសាន់នី គម្រោងយូ"
+    },
+    {
+      "source_id": "way/1423468963",
+      "name_en": "Borey Chipmong 50M",
+      "name_kh": "បុរីជីបម៉ុង 50ម"
+    },
+    {
+      "source_id": "way/1445746838",
+      "name_en": "BoreyRaksmey's Night Market",
+      "name_kh": "ផ្សាររាត្រី បុរីរស្មី"
+    },
+    {
+      "source_id": "way/1450153412",
+      "name_en": "Pou Poui Market",
+      "name_kh": "ផ្សារពូពុយ"
+    },
+    {
+      "source_id": "way/1450172132",
+      "name_en": "Kandieang Market",
+      "name_kh": "ផ្សារកណ្តៀង"
+    },
+    {
+      "source_id": "way/1450282548",
+      "name_en": "Pramoay Market",
+      "name_kh": "ផ្សារព្រំ"
+    },
+    {
+      "source_id": "way/1450690972",
+      "name_en": "Kra Varnh Market",
+      "name_kh": "ផ្សារក្រវ៉ាញ"
+    },
+    {
+      "source_id": "way/1450811296",
+      "name_en": "Krakor Market",
+      "name_kh": "ផ្សារក្រគរ"
+    },
+    {
+      "source_id": "way/1451047420",
+      "name_en": "Beong Khnar Market",
+      "name_kh": "ផ្សារបឹងខ្នារ"
+    },
+    {
+      "source_id": "way/1451131060",
+      "name_en": "Pou Poui Market",
+      "name_kh": "ផ្សារពូពុយ"
+    },
+    {
+      "source_id": "way/1451366879",
+      "name_en": "Bam Nak Market",
+      "name_kh": "ផ្សារបាងណាក់"
+    },
+    {
+      "source_id": "way/1453116903",
+      "name_en": "Bokor Night Market",
+      "name_kh": "ផ្សាររាត្រីបូកគោ"
+    },
+    {
+      "source_id": "way/1466674840",
+      "name_en": "Borey Phnom Penh Sok San 7",
+      "name_kh": "បុរីភ្នំពេញសុខសាន ៧"
+    },
+    {
+      "source_id": "way/148570138",
+      "name_en": "Phsar Thmei",
+      "name_kh": "ផ្សារថ្មី។"
+    },
+    {
+      "source_id": "way/162424131",
+      "name_en": "Phsar 7 Makara",
+      "name_kh": "ផ្សារ៧មករា"
+    },
+    {
+      "source_id": "way/170294649",
+      "name_en": "Chợ Tha Mau Frontier",
+      "name_kh": "ផ្សារព្រំដែនថាម៉ៅ"
+    },
+    {
+      "source_id": "way/179566082",
+      "name_en": "Phsar Chom Chao",
+      "name_kh": "ផ្សារចោមចៅ"
+    },
+    {
+      "source_id": "way/185514141",
+      "name_en": "New  Market",
+      "name_kh": "ផ្សារថ្មី។"
+    },
+    {
+      "source_id": "way/185514142",
+      "name_en": "Moung Roessei Market",
+      "name_kh": "ផ្សារមោងឬស្សី"
+    },
+    {
+      "source_id": "way/185659327",
+      "name_en": "Market",
+      "name_kh": "ទីផ្សារ"
+    },
+    {
+      "source_id": "way/185659337",
+      "name_en": "Market",
+      "name_kh": "ទីផ្សារ"
+    },
+    {
+      "source_id": "way/230091047",
+      "name_en": "Phsar Prey Samdex",
+      "name_kh": "ផ្សារព្រៃសំដេច"
+    },
+    {
+      "source_id": "way/245719709",
+      "name_en": "Puok Market",
+      "name_kh": "ផ្សារពូក"
+    },
+    {
+      "source_id": "way/258510595",
+      "name_en": "Phsar Boeung Chhouk",
+      "name_kh": "ផ្សារបឹងឈូក"
+    },
+    {
+      "source_id": "way/260632859",
+      "name_en": "Phsar Street 60",
+      "name_kh": "ផ្សារ ផ្លូវ៦០"
+    },
+    {
+      "source_id": "way/304058307",
+      "name_en": "Veal Youn Market",
+      "name_kh": "ផ្សារវាលរេញ"
+    },
+    {
+      "source_id": "way/310963695",
+      "name_en": "Psar Chomka Kor (Psar Thmey)",
+      "name_kh": "ផ្សារចម្ការគរ (ផ្សារថ្មី)"
+    },
+    {
+      "source_id": "way/357814480",
+      "name_en": "Phsar Veal Renh",
+      "name_kh": "ផ្សារវាលរេញ"
+    },
+    {
+      "source_id": "way/378905988",
+      "name_en": "Phsar",
+      "name_kh": "ផ្សារ"
+    },
+    {
+      "source_id": "way/396695725",
+      "name_en": "Market",
+      "name_kh": "ទីផ្សារ"
+    },
+    {
+      "source_id": "way/426111510",
+      "name_en": "Phsar Thmei",
+      "name_kh": "ផ្សារថ្មី។"
+    },
+    {
+      "source_id": "way/448934520",
+      "name_en": "Phsar",
+      "name_kh": "ផ្សារ"
+    },
+    {
+      "source_id": "way/462908985",
+      "name_en": "Psar Riatrey Night Market",
+      "name_kh": "ផ្សាររាត្រីផ្សាររាត្រី"
+    },
+    {
+      "source_id": "way/475040888",
+      "name_en": "Palmyra fruit and frog stands",
+      "name_kh": "ផ្លែផាមមីរ៉ា និងកង្កែបឈរ"
+    },
+    {
+      "source_id": "way/479837064",
+      "name_en": "Phsar Kratie",
+      "name_kh": "ផ្សារក្រចេះ"
+    },
+    {
+      "source_id": "way/480011391",
+      "name_en": "Old Market",
+      "name_kh": "ផ្សារចាស់"
+    },
+    {
+      "source_id": "way/488465428",
+      "name_en": "Food Market",
+      "name_kh": "ទីផ្សារអាហារ"
+    },
+    {
+      "source_id": "way/488465429",
+      "name_en": "Phsar Thom",
+      "name_kh": "ផ្សារធំ"
+    },
+    {
+      "source_id": "way/490568428",
+      "name_en": "Phsar Samrong",
+      "name_kh": "ផ្សារសំរោង"
+    },
+    {
+      "source_id": "way/491263983",
+      "name_en": "Market Place",
+      "name_kh": "កន្លែងផ្សារ"
+    },
+    {
+      "source_id": "way/507810728",
+      "name_en": "Phsar Sorlar Chen",
+      "name_kh": "ផ្សារសូឡាចេន"
+    },
+    {
+      "source_id": "way/509402477",
+      "name_en": "Psar Serey Sophon",
+      "name_kh": "សិរីសោភ័ណ"
+    },
+    {
+      "source_id": "way/511183207",
+      "name_en": "Phsar Kraoum",
+      "name_kh": "ផ្សារក្រោម"
+    },
+    {
+      "source_id": "way/511183208",
+      "name_en": "Phsar Kraoum Thmei",
+      "name_kh": "ផ្សារក្រោមថ្មី។"
+    },
+    {
+      "source_id": "way/514067030",
+      "name_en": "Kampong Thom Central Market",
+      "name_kh": "ផ្សារធំថ្មី កំពង់ធំ"
+    },
+    {
+      "source_id": "way/514838356",
+      "name_en": "Phsar",
+      "name_kh": "ផ្សារ"
+    },
+    {
+      "source_id": "way/515803533",
+      "name_en": "Angkor Handicraft Association / Fair Trade Village",
+      "name_kh": "សមាគមសិប្បកម្មអង្គរ / ភូមិពាណិជ្ជកម្ម"
+    },
+    {
+      "source_id": "way/515865785",
+      "name_en": "Phsar Samraong",
+      "name_kh": "ផ្សារសំរោង"
+    },
+    {
+      "source_id": "way/516819822",
+      "name_en": "Phsar",
+      "name_kh": "ផ្សារ"
+    },
+    {
+      "source_id": "way/516965890",
+      "name_en": "Phsar",
+      "name_kh": "ផ្សារ"
+    },
+    {
+      "source_id": "way/519048577",
+      "name_en": "Night Market",
+      "name_kh": "ផ្សាររាត្រី"
+    },
+    {
+      "source_id": "way/520030565",
+      "name_en": "Phsar",
+      "name_kh": "ផ្សារ"
+    },
+    {
+      "source_id": "way/520030567",
+      "name_en": "Phsar Leu",
+      "name_kh": "ផ្សារលើ"
+    },
+    {
+      "source_id": "way/527244507",
+      "name_en": "Phsar",
+      "name_kh": "ផ្សារ"
+    },
+    {
+      "source_id": "way/539881980",
+      "name_en": "Art's Container",
+      "name_kh": "កុងតឺន័រសិល្បៈ"
+    },
+    {
+      "source_id": "way/554172383",
+      "name_en": "Phsar",
+      "name_kh": "ផ្សារ"
+    },
+    {
+      "source_id": "way/554207416",
+      "name_en": "Market",
+      "name_kh": "ទីផ្សារ"
+    },
+    {
+      "source_id": "way/554581942",
+      "name_en": "Tro Peang Plong Market",
+      "name_kh": "ផ្សារត្រពាំងផ្លុង"
+    },
+    {
+      "source_id": "way/571743424",
+      "name_en": "Phsar Prey Veng",
+      "name_kh": "ផ្សារព្រៃវែង"
+    },
+    {
+      "source_id": "way/667826575",
+      "name_en": "Phsar Tangkok",
+      "name_kh": "ផ្សារតាំងកុក"
+    },
+    {
+      "source_id": "way/673276044",
+      "name_en": "Phsar Silep",
+      "name_kh": "ផ្សារសីល"
+    },
+    {
+      "source_id": "way/710983408",
+      "name_en": "Phsar Neak Loeung",
+      "name_kh": "ផ្សារអ្នកលឿង"
+    },
+    {
+      "source_id": "way/736612945",
+      "name_en": "Phsar Kampong Kdei",
+      "name_kh": "ផ្សារកំពង់ក្តី"
+    },
+    {
+      "source_id": "way/864720156",
+      "name_en": "Sambour Market",
+      "name_kh": "ផ្សារសំបួរ"
+    },
+    {
+      "source_id": "way/925548653",
+      "name_en": "Phsar Kep",
+      "name_kh": "ផ្សារកែប"
+    },
+    {
+      "source_id": "way/932635568",
+      "name_en": "Phsar Leur",
+      "name_kh": "ផ្សារលើ"
+    },
+    {
+      "source_id": "way/934247314",
+      "name_en": "Sesor Market",
+      "name_kh": "ផ្សារសេសឺរ"
+    },
+    {
+      "source_id": "way/968145428",
+      "name_en": "Suong Market",
+      "name_kh": "ផ្សារសួង"
+    },
+    {
+      "source_id": "way/980748964",
+      "name_en": "Ou Reang Ov Market",
+      "name_kh": "ផ្សារអូរាំងឪ"
+    }
+  ]
+}
