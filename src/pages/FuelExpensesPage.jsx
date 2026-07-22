@@ -22,6 +22,8 @@ export default function FuelExpensesPage() {
   const [files, setFiles] = useState({})
   const [saving, setSaving] = useState(false)
   const [vehicleForm, setVehicleForm] = useState(null)
+  const [odometerLoading, setOdometerLoading] = useState(false)
+  const [odometerSource, setOdometerSource] = useState(null)
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -42,7 +44,8 @@ export default function FuelExpensesPage() {
   const filteredPlans = useMemo(() => lookups.plans.filter(plan => plan.assigned_to === form?.sales_user_id), [lookups.plans, form?.sales_user_id])
   const selectSales = salesUserId => {
     setLookups(current => ({ ...current, requests: [], districts: [] }))
-    setForm(current => ({ ...current, sales_user_id: salesUserId, visit_plan_id: '', visit_expense_id: '', province_id: '', district_id: '', expense_date: '' }))
+    setOdometerSource(null)
+    setForm(current => ({ ...current, sales_user_id: salesUserId, visit_plan_id: '', visit_expense_id: '', province_id: '', district_id: '', expense_date: '', vehicle_id: '', driver_id: '', start_odometer: '', end_odometer: '' }))
   }
   const selectPlan = async visitPlanId => {
     const plan = lookups.plans.find(item => item.id === visitPlanId)
@@ -53,9 +56,21 @@ export default function FuelExpensesPage() {
     setForm(current => ({ ...current, visit_plan_id: visitPlanId, visit_expense_id: request?.id || '', province_id: request?.province_id || '', district_id: '', expense_date: plan?.start_date || '' }))
   }
   const selectProvince = async provinceId => { const districts = await fuelExpenseService.districts(provinceId); setLookups(current => ({ ...current, districts: districts.data || [] })); setForm(current => ({ ...current, province_id: provinceId, district_id: '' })) }
-  const selectVehicle = vehicleId => {
+  const selectVehicle = async vehicleId => {
     const vehicle = lookups.vehicles.find(item => item.id === vehicleId)
-    setForm(current => ({ ...current, vehicle_id: vehicleId, start_odometer: vehicle?.current_odometer || '', driver_id: vehicle?.default_driver_id || current.driver_id }))
+    const salesUserId = form?.sales_user_id
+    setOdometerSource(null)
+    setForm(current => ({ ...current, vehicle_id: vehicleId, start_odometer: vehicle?.current_odometer || '', end_odometer: '', driver_id: vehicle?.default_driver_id || current.driver_id }))
+    if (!vehicleId || !salesUserId) return
+    setOdometerLoading(true)
+    const latest = await fuelExpenseService.latestOdometer(salesUserId, vehicleId)
+    setOdometerLoading(false)
+    if (latest.error) return toast.error(`មិនអាចទាញគីឡូម៉ែត្រចុងក្រោយ៖ ${latest.error.message}`)
+    const vehicleOdometer = Number(vehicle?.current_odometer) || 0
+    const previousEnd = Number(latest.data?.end_odometer) || 0
+    const nextStart = Math.max(vehicleOdometer, previousEnd)
+    setForm(current => current?.vehicle_id === vehicleId && current?.sales_user_id === salesUserId ? ({ ...current, start_odometer: nextStart || '' }) : current)
+    setOdometerSource(latest.data ? { code: latest.data.expense_code, date: latest.data.expense_date, value: previousEnd } : { value: vehicleOdometer })
   }
   const useCurrentLocation = () => {
     if (!navigator.geolocation) return toast.error('Browser នេះមិនគាំទ្រ GPS')
@@ -95,7 +110,7 @@ export default function FuelExpensesPage() {
     ['រង់ចាំអនុម័ត', number(stats.pending_count), Send, 'text-amber-600 bg-amber-50'],
   ]
   return <div className="space-y-5">
-    <div className="flex flex-wrap items-center justify-between gap-3"><div><h1 className="text-2xl font-bold">ចំណាយសាំង</h1><p className="text-sm text-slate-500">កត់ត្រាចម្ងាយ បរិមាណសាំង និងវិក្កយបត្រតាមផែនការចុះទីតាំង</p></div><div className="flex gap-2">{hasPermission('vehicles.manage') && <button className="btn-secondary" onClick={() => setVehicleForm({ vehicle_code: '', vehicle_type: 'car', brand_model: '', plate_number: '', current_odometer: 0, status: 'active' })}>បន្ថែមយានយន្ត</button>}{hasPermission('fuel.create') && <button className="btn-primary" onClick={() => setForm(emptyForm)}><Plus size={18}/>កត់ត្រាចំណាយសាំង</button>}</div></div>
+    <div className="flex flex-wrap items-center justify-between gap-3"><div><h1 className="text-2xl font-bold">ចំណាយសាំង</h1><p className="text-sm text-slate-500">កត់ត្រាចម្ងាយ បរិមាណសាំង និងវិក្កយបត្រតាមផែនការចុះទីតាំង</p></div><div className="flex gap-2">{hasPermission('vehicles.create') && <button className="btn-secondary" onClick={() => setVehicleForm({ vehicle_code: '', vehicle_type: 'car', brand_model: '', plate_number: '', current_odometer: 0, status: 'active' })}>បន្ថែមយានយន្ត</button>}{hasPermission('fuel.create') && <button className="btn-primary" onClick={() => { setOdometerSource(null); setForm({ ...emptyForm }) }}><Plus size={18}/>កត់ត្រាចំណាយសាំង</button>}</div></div>
     <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">{cards.map(([label, value, Icon, color]) => <div className="card flex items-center gap-3 p-4" key={label}><div className={`grid size-11 place-items-center rounded-xl ${color}`}><Icon size={22}/></div><div><p className="text-xs text-slate-500">{label}</p><p className="text-xl font-bold">{value}</p></div></div>)}</div>
     <div className="card grid gap-3 p-4 md:grid-cols-4"><div className="relative"><Search className="absolute left-3 top-3 text-slate-400" size={18}/><input className="field pl-10" placeholder="លេខបញ្ជី / វិក្កយបត្រ..." value={filters.search} onChange={event => setFilters({ ...filters, search: event.target.value })}/></div><select className="field" value={filters.status} onChange={event => setFilters({ ...filters, status: event.target.value })}><option value="">ស្ថានភាពទាំងអស់</option>{Object.entries(FUEL_STATUS).map(([key, item]) => <option key={key} value={key}>{item.label}</option>)}</select><select className="field" value={filters.vehicleId} onChange={event => setFilters({ ...filters, vehicleId: event.target.value })}><option value="">យានយន្តទាំងអស់</option>{lookups.vehicles.map(item => <option key={item.id} value={item.id}>{item.plate_number} · {item.brand_model}</option>)}</select><select className="field" value={filters.salesId} onChange={event => setFilters({ ...filters, salesId: event.target.value })}><option value="">Sales ទាំងអស់</option>{lookups.drivers.map(item => <option key={item.id} value={item.id}>{item.full_name}</option>)}</select></div>
     <div className="card overflow-hidden">{loading ? <LoadingState/> : rows.length === 0 ? <EmptyState title="មិនទាន់មានចំណាយសាំង"/> : <div className="overflow-x-auto"><table className="w-full min-w-[1200px]"><thead className="sticky top-0 bg-slate-50 text-left text-xs text-slate-500"><tr>{['លេខបញ្ជី','កាលបរិច្ឆេទ','Sales / Plan','យានយន្ត','ចម្ងាយ','សាំង','តម្លៃសរុប','ប្រសិទ្ធភាព','ស្ថានភាព','សកម្មភាព'].map(item => <th className="table-cell" key={item}>{item}</th>)}</tr></thead><tbody className="divide-y">{rows.map(row => { const status = FUEL_STATUS[row.status] || FUEL_STATUS.draft; return <tr key={row.id}><td className="table-cell font-semibold text-blue-700">{row.expense_code}</td><td className="table-cell">{new Date(row.expense_date).toLocaleDateString('km-KH')}</td><td className="table-cell"><b>{row.sales?.full_name}</b><p className="max-w-52 truncate text-xs text-slate-500">{row.plan?.title}</p></td><td className="table-cell">{row.vehicle?.plate_number}<p className="text-xs text-slate-500">{row.driver?.full_name}</p></td><td className="table-cell">{number(row.distance_km)} km</td><td className="table-cell">{number(row.fuel_liters)} L</td><td className="table-cell font-bold">{number(row.total_amount)} {row.currency}</td><td className="table-cell">{number(row.fuel_efficiency)} km/L</td><td className="table-cell"><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${status.className}`}>{status.label}</span></td><td className="table-cell"><div className="flex gap-1">{['draft','rejected'].includes(row.status) && hasPermission('fuel.submit') && <button title="ដាក់ស្នើ" className="rounded-lg p-2 text-blue-600 hover:bg-blue-50" onClick={() => submit(row.id)}><Send size={17}/></button>}{row.status === 'submitted' && hasPermission('fuel.approve') && <><button title="អនុម័ត" className="rounded-lg p-2 text-green-600 hover:bg-green-50" onClick={() => decide(row.id, 'approved')}><Check size={18}/></button><button title="បដិសេធ" className="rounded-lg p-2 text-red-600 hover:bg-red-50" onClick={() => decide(row.id, 'rejected')}><XCircle size={18}/></button></>}</div></td></tr> })}</tbody></table></div>}</div>
@@ -115,7 +130,7 @@ export default function FuelExpensesPage() {
       <FormSection number="3" title="យានយន្ត និងចម្ងាយ" description="កត់លេខកុងទ័រដើម្បីគណនាចម្ងាយដោយស្វ័យប្រវត្តិ។"><div className="grid gap-4 md:grid-cols-2">
         <Field label="យានយន្ត *"><select required className="field" value={form?.vehicle_id || ''} onChange={event => selectVehicle(event.target.value)}><option value="">ជ្រើសរើសយានយន្ត</option>{lookups.vehicles.map(item => <option key={item.id} value={item.id}>{item.plate_number} · {item.brand_model}</option>)}</select></Field>
         <Field label="អ្នកបើកបរ *"><select required className="field" value={form?.driver_id || ''} onChange={event => setForm({ ...form, driver_id: event.target.value })}><option value="">ជ្រើសរើសអ្នកបើកបរ</option>{lookups.drivers.map(item => <option key={item.id} value={item.id}>{item.full_name}</option>)}</select></Field>
-      <Field label="គីឡូម៉ែត្រចាប់ផ្តើម *"><input required min="0" step="0.01" type="number" className="field" value={form?.start_odometer || ''} onChange={event => setForm({ ...form, start_odometer: event.target.value })}/></Field>
+      <Field label="គីឡូម៉ែត្រចាប់ផ្តើម *"><input required readOnly min="0" step="0.01" type="number" className="field bg-slate-50 font-semibold text-blue-700" value={form?.start_odometer || ''}/>{odometerLoading ? <p className="mt-1 text-xs text-blue-600">កំពុងទាញគីឡូម៉ែត្រចុងក្រោយ...</p> : odometerSource?.code ? <p className="mt-1 text-xs text-emerald-700">បន្តពី {number(odometerSource.value)} km · {odometerSource.code} · {new Date(odometerSource.date).toLocaleDateString('km-KH')}</p> : form?.vehicle_id && <p className="mt-1 text-xs text-slate-500">យកពីគីឡូម៉ែត្របច្ចុប្បន្នរបស់យានយន្ត</p>}</Field>
       <Field label="គីឡូម៉ែត្របញ្ចប់ *"><input required min="0" step="0.01" type="number" className="field" value={form?.end_odometer || ''} onChange={event => setForm({ ...form, end_odometer: event.target.value })}/></Field>
       </div></FormSection>
       <FormSection number="4" title="ព័ត៌មានចាក់សាំង" description="បញ្ចូលបរិមាណ តម្លៃ និងឯកសារបញ្ជាក់។"><div className="grid gap-4 md:grid-cols-2">

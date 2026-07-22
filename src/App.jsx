@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import ProtectedRoute from './components/common/ProtectedRoute'
-import AdminRoute from './components/common/AdminRoute'
 import PermissionRoute from './components/common/PermissionRoute'
 import LoadingState from './components/common/LoadingState'
 import DashboardLayout from './layouts/DashboardLayout'
@@ -35,16 +34,16 @@ export default function App() {
     <Routes>
       <Route path="/login" element={<LoginPage/>}/>
       <Route element={<ProtectedRoute><DashboardLayout/></ProtectedRoute>}>
-        <Route index element={<PermissionRoute permission="dashboard"><DashboardPage/></PermissionRoute>}/>
-        <Route path="customers" element={<PermissionRoute permission="customers"><CustomersPage/></PermissionRoute>}/>
-        <Route path="customers/:id" element={<PermissionRoute permission="customers"><CustomerDetailPage/></PermissionRoute>}/>
-        <Route path="follow-ups" element={<PermissionRoute permission="follow_ups"><FollowUpsPage/></PermissionRoute>}/>
-        <Route path="visit-plans" element={<PermissionRoute permission="visit_plans"><VisitPlansPage/></PermissionRoute>}/>
-        <Route path="calls" element={<PermissionRoute permission="calls"><CallHistoryPage/></PermissionRoute>}/>
-        <Route path="reports" element={<PermissionRoute permission="reports"><ReportsPage/></PermissionRoute>}/>
-        <Route path="sales" element={<PermissionRoute permission="sales_team"><SalesTeamPage/></PermissionRoute>}/>
-        <Route path="notifications" element={<PermissionRoute permission="notifications"><NotificationsPage/></PermissionRoute>}/>
-        <Route path="users" element={<AdminRoute><UserManagementPage/></AdminRoute>}/>
+        <Route index element={<PermissionRoute permission="dashboard.view"><DashboardPage/></PermissionRoute>}/>
+        <Route path="customers" element={<PermissionRoute permission="customers.view"><CustomersPage/></PermissionRoute>}/>
+        <Route path="customers/:id" element={<PermissionRoute permission="customers.view"><CustomerDetailPage/></PermissionRoute>}/>
+        <Route path="follow-ups" element={<PermissionRoute permission="follow_ups.view"><FollowUpsPage/></PermissionRoute>}/>
+        <Route path="visit-plans" element={<PermissionRoute permission="visit_plans.view"><VisitPlansPage/></PermissionRoute>}/>
+        <Route path="calls" element={<PermissionRoute permission="calls.view"><CallHistoryPage/></PermissionRoute>}/>
+        <Route path="reports" element={<PermissionRoute permission="reports.view"><ReportsPage/></PermissionRoute>}/>
+        <Route path="sales" element={<PermissionRoute permission="sales_team.view"><SalesTeamPage/></PermissionRoute>}/>
+        <Route path="notifications" element={<PermissionRoute permission="notifications.view"><NotificationsPage/></PermissionRoute>}/>
+        <Route path="users" element={<PermissionRoute permission="users.view"><UserManagementPage/></PermissionRoute>}/>
         <Route path="markets" element={<PermissionRoute permission="markets.view"><MarketsPage/></PermissionRoute>}/>
         <Route path="markets/new" element={<PermissionRoute permission="markets.create"><MarketFormPage/></PermissionRoute>}/>
         <Route path="markets/:id" element={<PermissionRoute permission="markets.view"><MarketDetailPage/></PermissionRoute>}/>
@@ -57,7 +56,7 @@ export default function App() {
         <Route path="expenses/requests/:id/edit" element={<PermissionRoute permission="expenses.create"><ExpenseRequestFormPage/></PermissionRoute>}/>
         <Route path="expenses/fuel" element={<PermissionRoute permission="fuel.view"><FuelExpensesPage/></PermissionRoute>}/>
         <Route path="expenses/fuel/budgets" element={<PermissionRoute permission="fuel.budgets.view"><FuelBudgetsPage/></PermissionRoute>}/>
-        <Route path="settings" element={<PermissionRoute permission="settings"><SettingsPage/></PermissionRoute>}/>
+        <Route path="settings" element={<PermissionRoute permission="settings.view"><SettingsPage/></PermissionRoute>}/>
       </Route>
       <Route path="*" element={<NotFoundPage/>}/>
     </Routes>

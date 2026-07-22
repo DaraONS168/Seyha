@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { supabase } from '../services/supabase'
+import { LEGACY_PERMISSION_ALIASES } from '../utils/permissions'
 
 const AuthContext = createContext(null)
 const USERNAME_EMAIL_DOMAIN = 'users.crm.local'
@@ -35,7 +36,15 @@ export function AuthProvider({ children }) {
   const value = useMemo(() => ({
     session, user: session?.user || null, profile, loading,
     isAdmin: profile?.role === 'admin',
-    hasPermission: permission => profile?.role === 'admin' || (profile?.app_role?.permissions || profile?.permissions)?.includes(permission),
+    hasPermission: permission => {
+      if (profile?.role === 'admin') return true
+      const permissions = profile?.app_role?.permissions || profile?.permissions || []
+      if (permissions.includes(permission)) return true
+      const modernPermission = LEGACY_PERMISSION_ALIASES[permission]
+      if (modernPermission && permissions.includes(modernPermission)) return true
+      const legacyPermission = Object.entries(LEGACY_PERMISSION_ALIASES).find(([, modern]) => modern === permission)?.[0]
+      return Boolean(legacyPermission && permissions.includes(legacyPermission))
+    },
     signIn: (username, password) => supabase.auth.signInWithPassword({
       email: usernameToEmail(username), password,
     }),

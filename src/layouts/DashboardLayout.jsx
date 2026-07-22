@@ -5,11 +5,11 @@ import { useAuth } from '../contexts/AuthContext'
 import { useNotifications } from '../hooks/useNotifications'
 
 const navGroups = [
-  { label: 'ទូទៅ', items: [{ to:'/',label:'ផ្ទាំងគ្រប់គ្រង',icon:LayoutDashboard,permission:'dashboard' }] },
+  { label: 'ទូទៅ', items: [{ to:'/',label:'ផ្ទាំងគ្រប់គ្រង',icon:LayoutDashboard,permission:'dashboard.view' }] },
   { label: 'គ្រប់គ្រងអតិថិជន', items: [
-    { to:'/customers',label:'អតិថិជន',icon:Users,permission:'customers' },{ to:'/follow-ups',label:'Follow Up',icon:PhoneCall,permission:'follow_ups' },
-    { to:'/calls',label:'ប្រវត្តិការហៅ',icon:History,permission:'calls' },{ to:'/visit-plans',label:'ផែនការចុះស្រុក',icon:CalendarRange,permission:'visit_plans' },
-    { to:'/sales',label:'ក្រុមលក់',icon:UserRound,permission:'sales_team' },{ to:'/reports',label:'របាយការណ៍',icon:ChartNoAxesCombined,permission:'reports' },
+    { to:'/customers',label:'អតិថិជន',icon:Users,permission:'customers.view' },{ to:'/follow-ups',label:'Follow Up',icon:PhoneCall,permission:'follow_ups.view' },
+    { to:'/calls',label:'ប្រវត្តិការហៅ',icon:History,permission:'calls.view' },{ to:'/visit-plans',label:'ផែនការចុះស្រុក',icon:CalendarRange,permission:'visit_plans.view' },
+    { to:'/sales',label:'ក្រុមលក់',icon:UserRound,permission:'sales_team.view' },{ to:'/reports',label:'របាយការណ៍',icon:ChartNoAxesCombined,permission:'reports.view' },
   ]},
   { label: 'ប្រតិបត្តិការ', items: [{ to:'/markets',label:'គ្រប់គ្រងផ្សារ',icon:Store,permission:'markets.view' }] },
   { label: 'ហិរញ្ញវត្ថុ', items: [{ key:'expenses',label:'គ្រប់គ្រងចំណាយ',icon:WalletCards,permission:'expenses.view',children:[
@@ -18,7 +18,7 @@ const navGroups = [
     { to:'/expenses/fuel',label:'ចំណាយសាំង',icon:Fuel,permission:'fuel.view' },
     { to:'/expenses/fuel/budgets',label:'ថវិកាសាំង',icon:CircleDollarSign,permission:'fuel.budgets.view' },
   ]}]},
-  { label: 'ប្រព័ន្ធ', items: [{ to:'/notifications',label:'ការជូនដំណឹង',icon:Bell,permission:'notifications' },{ to:'/users',label:'អ្នកប្រើប្រាស់',icon:UserCog,permission:'user_management' },{ to:'/settings',label:'ការកំណត់',icon:Settings,permission:'settings' }] },
+  { label: 'ប្រព័ន្ធ', items: [{ to:'/notifications',label:'ការជូនដំណឹង',icon:Bell,permission:'notifications.view' },{ to:'/users',label:'អ្នកប្រើប្រាស់',icon:UserCog,permission:'users.view' },{ to:'/settings',label:'ការកំណត់',icon:Settings,permission:'settings.view' }] },
 ]
 
 export default function DashboardLayout() {

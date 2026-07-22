@@ -31,6 +31,15 @@ export const fuelExpenseService = {
   districts: provinceId => supabase.from('districts').select('id,name_kh').eq('province_id', provinceId).eq('is_active', true).order('name_kh'),
   markets: (provinceId, districtId) => supabase.from('markets').select('id,market_code,name_kh,name_en,province_id,district_id').eq('province_id', provinceId).eq('district_id', districtId).eq('status', 'active').is('deleted_at', null).order('name_kh'),
   drivers: () => supabase.from('profiles').select('id,full_name').order('full_name'),
+  latestOdometer: (salesUserId, vehicleId) => supabase.from('fuel_expenses')
+    .select('id,expense_code,expense_date,end_odometer,sales_user_id,vehicle_id')
+    .eq('sales_user_id', salesUserId)
+    .eq('vehicle_id', vehicleId)
+    .is('deleted_at', null)
+    .not('status', 'in', '(rejected,cancelled)')
+    .order('end_odometer', { ascending: false })
+    .limit(1)
+    .maybeSingle(),
   async create(payload, files) {
     const [startPhoto, endPhoto, receipt] = await Promise.all([
       upload(files.startPhoto, 'odometer-start'), upload(files.endPhoto, 'odometer-end'), upload(files.receipt, 'receipts'),

@@ -2,7 +2,16 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
 const headers = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type', 'Access-Control-Allow-Methods': 'POST, OPTIONS' }
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { ...headers, 'Content-Type': 'application/json' } })
-const allowedPermissions = new Set(['dashboard', 'customers', 'follow_ups', 'visit_plans', 'calls', 'reports', 'sales_team', 'markets.view', 'markets.create', 'markets.update', 'markets.delete', 'markets.restore', 'markets.import', 'markets.export', 'markets.view_audit', 'expenses.view', 'expenses.create', 'expenses.submit', 'expenses.approve', 'expenses.pay', 'expenses.actual', 'expenses.complete', 'expenses.reopen', 'expenses.override_limit', 'expenses.audit', 'expenses.reports', 'expenses.budgets.view', 'expenses.budgets.manage', 'expenses.budgets.revise', 'expenses.fiscal_lock', 'expenses.verify', 'fuel.view', 'fuel.create', 'fuel.submit', 'fuel.approve', 'fuel.reports', 'vehicles.manage', 'fuel.budgets.view', 'fuel.budgets.manage', 'notifications', 'settings', 'user_management'])
+const legacyPermissions = new Set(['dashboard', 'customers', 'follow_ups', 'visit_plans', 'calls', 'reports', 'sales_team', 'notifications', 'settings', 'user_management', 'vehicles.manage', 'expenses.budgets.manage', 'fuel.budgets.manage'])
+const permissionModules = new Set(['dashboard', 'notifications', 'customers', 'follow_ups', 'visit_plans', 'calls', 'reports', 'sales_team', 'markets', 'expenses', 'expenses.budgets', 'fuel', 'fuel.budgets', 'vehicles', 'users', 'settings'])
+const permissionActions = new Set(['view', 'create', 'update', 'delete', 'restore', 'import', 'export', 'view_audit', 'submit', 'approve', 'pay', 'actual', 'complete', 'reopen', 'override_limit', 'audit', 'reports', 'revise', 'fiscal_lock', 'verify'])
+const permissionValid = (key: unknown) => {
+  if (typeof key !== 'string') return false
+  if (legacyPermissions.has(key)) return true
+  const parts = key.split('.')
+  const action = parts.pop() || ''
+  return permissionModules.has(parts.join('.')) && permissionActions.has(action)
+}
 const passwordValid = (value: string) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(value)
 
 Deno.serve(async request => {
@@ -14,12 +23,15 @@ Deno.serve(async request => {
   const { data: authData } = await userClient.auth.getUser()
   if (!authData.user) return json({ error: 'Unauthorized' }, 401)
   const actorId = authData.user.id
-  const { data: actor } = await adminClient.from('profiles').select('role,is_active').eq('id', actorId).single()
-  if (actor?.role !== 'admin' || !actor.is_active) return json({ error: 'Admin access required' }, 403)
+  const { data: actor } = await adminClient.from('profiles').select('role,is_active,permissions,app_role:app_roles!profiles_role_fkey(permissions)').eq('id', actorId).single()
+  if (!actor?.is_active) return json({ error: 'Active account required' }, 403)
 
   let body: Record<string, unknown>
   try { body = await request.json() } catch { return json({ error: 'Invalid request body' }, 400) }
   const action = String(body.action || 'create')
+  const actorPermissions = ((actor.app_role as { permissions?: string[] } | null)?.permissions || actor.permissions || []) as string[]
+  const requiredPermission = action === 'create' || action === 'create_role' ? 'users.create' : action === 'delete' || action === 'delete_role' ? 'users.delete' : 'users.update'
+  if (actor.role !== 'admin' && !actorPermissions.includes(requiredPermission)) return json({ error: `Permission ${requiredPermission} required` }, 403)
   const targetId = String(body.user_id || '')
   const log = async (type: string, id: string | null, details: Record<string, unknown> = {}) => {
     await adminClient.from('user_audit_logs').insert({ actor_id: actorId, target_user_id: id, action: type, details })
@@ -28,13 +40,36 @@ Deno.serve(async request => {
 
   if (action === 'create_role') {
     const name = String(body.name || '').replace(/[<>]/g, '').trim()
-    const permissions = [...new Set(Array.isArray(body.permissions) ? body.permissions.filter(key => typeof key === 'string' && allowedPermissions.has(key)) : [])]
+    const permissions = [...new Set(Array.isArray(body.permissions) ? body.permissions.filter(permissionValid) : [])]
     if (name.length < 2 || name.length > 50) return json({ error: 'ឈ្មោះ Role ត្រូវមាន 2-50 តួ' }, 400)
     const key = `custom_${crypto.randomUUID().replaceAll('-', '').slice(0, 12)}`
     const { data, error } = await adminClient.from('app_roles').insert({ key, name, permissions }).select().single()
     if (error) return json({ error: error.code === '23505' ? 'ឈ្មោះ Role នេះមានរួចហើយ' : error.message }, 400)
     await log('role_created', null, { role_key: key, name, permissions })
     return json({ role: data }, 201)
+  }
+  if (action === 'update_role') {
+    const roleKey = String(body.role_key || '')
+    const name = String(body.name || '').replace(/[<>]/g, '').trim()
+    const permissions = [...new Set(Array.isArray(body.permissions) ? body.permissions.filter(permissionValid) : [])]
+    if (name.length < 2 || permissions.length === 0) return json({ error: 'Role និង Permissions មិនត្រឹមត្រូវ' }, 400)
+    if (roleKey === 'admin') return json({ error: 'Administrator មានសិទ្ធិទាំងអស់ និងមិនអាចកែបាន' }, 400)
+    const { data, error } = await adminClient.from('app_roles').update({ name, permissions }).eq('key', roleKey).select().single()
+    if (error) return json({ error: error.message }, 400)
+    await adminClient.from('profiles').update({ permissions }).eq('role', roleKey)
+    await log('role_updated', null, { role_key: roleKey, name, permissions })
+    return json({ role: data })
+  }
+  if (action === 'delete_role') {
+    const roleKey = String(body.role_key || '')
+    const { data: role } = await adminClient.from('app_roles').select('is_system').eq('key', roleKey).single()
+    if (!role || role.is_system) return json({ error: 'System Role មិនអាចលុបបានទេ' }, 400)
+    const { count } = await adminClient.from('profiles').select('id', { count: 'exact', head: true }).eq('role', roleKey)
+    if (count) return json({ error: `Role នេះកំពុងប្រើដោយ User ${count} នាក់` }, 400)
+    const { error } = await adminClient.from('app_roles').delete().eq('key', roleKey)
+    if (error) return json({ error: error.message }, 400)
+    await log('role_deleted', null, { role_key: roleKey })
+    return json({ success: true })
   }
 
   if (action === 'delete') {
