@@ -3,8 +3,8 @@ import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 const headers = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type', 'Access-Control-Allow-Methods': 'POST, OPTIONS' }
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { ...headers, 'Content-Type': 'application/json' } })
 const legacyPermissions = new Set(['dashboard', 'customers', 'follow_ups', 'visit_plans', 'calls', 'reports', 'sales_team', 'notifications', 'settings', 'user_management', 'vehicles.manage', 'expenses.budgets.manage', 'fuel.budgets.manage'])
-const permissionModules = new Set(['dashboard', 'notifications', 'customers', 'follow_ups', 'visit_plans', 'calls', 'reports', 'sales_team', 'markets', 'expenses', 'expenses.budgets', 'fuel', 'fuel.budgets', 'vehicles', 'users', 'settings'])
-const permissionActions = new Set(['view', 'create', 'update', 'delete', 'restore', 'import', 'export', 'view_audit', 'submit', 'approve', 'pay', 'actual', 'complete', 'reopen', 'override_limit', 'audit', 'reports', 'revise', 'fiscal_lock', 'verify'])
+const permissionModules = new Set(['dashboard', 'notifications', 'customers', 'follow_ups', 'visit_plans', 'calls', 'reports', 'sales_team', 'markets', 'expenses', 'expenses.budgets', 'fuel', 'fuel.budgets', 'vehicles', 'daily_reports', 'users', 'settings'])
+const permissionActions = new Set(['view', 'create', 'update', 'delete', 'review', 'restore', 'import', 'export', 'view_audit', 'submit', 'approve', 'pay', 'actual', 'complete', 'reopen', 'override_limit', 'audit', 'reports', 'revise', 'fiscal_lock', 'verify'])
 const permissionValid = (key: unknown) => {
   if (typeof key !== 'string') return false
   if (legacyPermissions.has(key)) return true

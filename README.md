@@ -157,6 +157,19 @@ The React + Supabase expense module follows this workflow:
 
 Migration `supabase/migrations/018_provincial_expense_management.sql` provides configurable approval rules, transaction-safe budget RPCs, separation of duties, private evidence storage, RLS and audit logs. Deploy it with `npx supabase db push`, then deploy updated user-role permissions with `npx supabase functions deploy manage-users`.
 
+## Sales Daily Reports
+
+The `/daily-reports` module links Sales reports directly to Visit Plans. Sales can save drafts, record visited markets and expenses, submit reports, and edit returned reports. Assigned managers can review, return, reject, or approve reports; approved reports are locked and every workflow action is stored in approval history.
+
+Database objects, transactional totals, RLS policies, team scope, report numbering and workflow RPCs are provided by `supabase/migrations/034_daily_sales_reports.sql`. Deploy database and role changes with:
+
+```bash
+npx supabase db push
+npx supabase functions deploy manage-users
+```
+
+After deployment, sign out and sign in again so the profile receives `daily_reports.*` permissions.
+
 ## Edge Functions
 
 This project includes Supabase Edge Functions for privileged user-management workflows:

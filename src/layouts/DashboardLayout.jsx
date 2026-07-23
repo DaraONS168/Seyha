@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { Bell, CalendarRange, ChartNoAxesCombined, ChevronDown, ChevronRight, CircleDollarSign, Fuel, History, Landmark, LayoutDashboard, LogOut, Menu, PhoneCall, ReceiptText, Search, Settings, Store, UserCog, Users, UserRound, WalletCards, X } from 'lucide-react'
+import { Bell, CalendarRange, ChartNoAxesCombined, ChevronDown, ChevronRight, CircleDollarSign, ClipboardList, Fuel, History, Landmark, LayoutDashboard, LogOut, Menu, PhoneCall, ReceiptText, Search, Settings, Store, UserCog, Users, UserRound, WalletCards, X } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import { useNotifications } from '../hooks/useNotifications'
 
@@ -12,6 +12,7 @@ const navGroups = [
     { to:'/sales',label:'ក្រុមលក់',icon:UserRound,permission:'sales_team.view' },{ to:'/reports',label:'របាយការណ៍',icon:ChartNoAxesCombined,permission:'reports.view' },
   ]},
   { label: 'ប្រតិបត្តិការ', items: [{ to:'/markets',label:'គ្រប់គ្រងផ្សារ',icon:Store,permission:'markets.view' }] },
+  { label: 'របាយការណ៍ប្រចាំថ្ងៃ', items: [{ to:'/daily-reports',label:'បញ្ជីរបាយការណ៍',icon:ClipboardList,permission:'daily_reports.view' }] },
   { label: 'ហិរញ្ញវត្ថុ', items: [{ key:'expenses',label:'គ្រប់គ្រងចំណាយ',icon:WalletCards,permission:'expenses.view',children:[
     { to:'/expenses',label:'ផ្ទាំងសង្ខេប',icon:Landmark,permission:'expenses.view' },{ to:'/expenses/requests',label:'សំណើចំណាយ',icon:ReceiptText,permission:'expenses.view' },
     { to:'/expenses/budgets',label:'ថវិកាតាមខេត្ត',icon:CircleDollarSign,permission:'expenses.budgets.view' },

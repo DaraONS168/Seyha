@@ -20,6 +20,7 @@ export const PERMISSION_MODULES = [
   { key: 'fuel', label: 'ចំណាយសាំង', group: 'ចំណាយសាំង' },
   { key: 'fuel.budgets', label: 'ថវិកាសាំង', group: 'ចំណាយសាំង' },
   { key: 'vehicles', label: 'យានយន្ត', group: 'ចំណាយសាំង' },
+  { key: 'daily_reports', label: 'របាយការណ៍ប្រចាំថ្ងៃ', group: 'របាយការណ៍ប្រចាំថ្ងៃ' },
   { key: 'users', label: 'អ្នកប្រើប្រាស់ និង Roles', group: 'ប្រព័ន្ធ' },
   { key: 'settings', label: 'ការកំណត់ប្រព័ន្ធ', group: 'ប្រព័ន្ធ' },
 ]
@@ -51,6 +52,7 @@ const WORKFLOW_PERMISSIONS = [
   { key: 'fuel.submit', label: 'ដាក់ស្នើចំណាយសាំង', group: 'ចំណាយសាំង' },
   { key: 'fuel.approve', label: 'អនុម័តចំណាយសាំង', group: 'ចំណាយសាំង' },
   { key: 'fuel.reports', label: 'របាយការណ៍ចំណាយសាំង', group: 'ចំណាយសាំង' },
+  { key: 'daily_reports.review', label: 'ពិនិត្យ និងអនុម័តរបាយការណ៍', group: 'របាយការណ៍ប្រចាំថ្ងៃ' },
 ]
 
 export const PERMISSIONS = [...crudPermissions, ...WORKFLOW_PERMISSIONS]
