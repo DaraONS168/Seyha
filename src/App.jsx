@@ -31,6 +31,7 @@ const FuelBudgetsPage = lazy(() => import('./pages/FuelBudgetsPage'))
 const DailyReportsPage = lazy(() => import('./pages/DailyReportsPage'))
 const DailyReportFormPage = lazy(() => import('./pages/DailyReportFormPage'))
 const DailyReportDetailPage = lazy(() => import('./pages/DailyReportDetailPage'))
+const DailyReportWorkspacePage = lazy(() => import('./pages/DailyReportWorkspacePage'))
 
 export default function App() {
   return <Suspense fallback={<LoadingState label="កំពុងបើកទំព័រ..."/>}>
@@ -60,6 +61,7 @@ export default function App() {
         <Route path="expenses/fuel" element={<PermissionRoute permission="fuel.view"><FuelExpensesPage/></PermissionRoute>}/>
         <Route path="expenses/fuel/budgets" element={<PermissionRoute permission="fuel.budgets.view"><FuelBudgetsPage/></PermissionRoute>}/>
         <Route path="daily-reports" element={<PermissionRoute permission="daily_reports.view"><DailyReportsPage/></PermissionRoute>}/>
+        <Route path="daily-reports/workspace" element={<PermissionRoute permission="daily_reports.view"><DailyReportWorkspacePage/></PermissionRoute>}/>
         <Route path="daily-reports/new" element={<PermissionRoute permission="daily_reports.create"><DailyReportFormPage/></PermissionRoute>}/>
         <Route path="daily-reports/:id" element={<PermissionRoute permission="daily_reports.view"><DailyReportDetailPage/></PermissionRoute>}/>
         <Route path="daily-reports/:id/edit" element={<PermissionRoute permission="daily_reports.update"><DailyReportFormPage/></PermissionRoute>}/>
