@@ -6,5 +6,6 @@ export const fuelBudgetService = {
   update: (id, payload) => supabase.from('fuel_budgets').update(payload).eq('id', id).select('id').single(),
   provinces: () => supabase.from('provinces').select('id,name_kh,name_en').eq('is_active', true).order('name_kh'),
   sales: () => supabase.from('profiles').select('id,full_name').eq('role', 'sales').eq('is_active', true).order('full_name'),
-  visitPlanLocations: salesUserId => supabase.rpc('fuel_budget_visit_plan_locations', { p_sales_user_id: salesUserId }),
+  visitPlans: salesUserId => supabase.rpc('fuel_budget_visit_plan_locations', { p_sales_user_id: salesUserId }),
+  visitPlanLocations: salesUserId => supabase.rpc('fuel_budget_visit_plan_options', { p_sales_user_id: salesUserId }),
 }
