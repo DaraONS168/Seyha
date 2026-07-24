@@ -14,6 +14,28 @@ const upload = async (file, folder) => {
   return path
 }
 
+const blankToNull = value => value === '' || value === undefined ? null : value
+const numberOrNull = value => value === '' || value === undefined ? null : Number(value)
+const cleanFuelPayload = payload => ({
+  ...payload,
+  sales_user_id: blankToNull(payload.sales_user_id),
+  visit_plan_id: blankToNull(payload.visit_plan_id),
+  visit_expense_id: blankToNull(payload.visit_expense_id),
+  province_id: blankToNull(payload.province_id),
+  district_id: blankToNull(payload.district_id),
+  vehicle_id: blankToNull(payload.vehicle_id),
+  driver_id: blankToNull(payload.driver_id),
+  latitude: numberOrNull(payload.latitude),
+  longitude: numberOrNull(payload.longitude),
+  start_odometer: numberOrNull(payload.start_odometer),
+  end_odometer: numberOrNull(payload.end_odometer),
+  fuel_liters: numberOrNull(payload.fuel_liters),
+  price_per_liter: numberOrNull(payload.price_per_liter),
+  fuel_station: blankToNull(payload.fuel_station?.trim()),
+  invoice_number: blankToNull(payload.invoice_number?.trim()),
+  note: blankToNull(payload.note?.trim()),
+})
+
 export const fuelExpenseService = {
   async list({ search = '', status = '', vehicleId = '', salesId = '' } = {}) {
     let query = supabase.from('fuel_expenses').select(fuelSelect).is('deleted_at', null).order('expense_date', { ascending: false })
@@ -44,7 +66,7 @@ export const fuelExpenseService = {
     const [startPhoto, endPhoto, receipt] = await Promise.all([
       upload(files.startPhoto, 'odometer-start'), upload(files.endPhoto, 'odometer-end'), upload(files.receipt, 'receipts'),
     ])
-    return supabase.from('fuel_expenses').insert({ ...payload, start_odometer_photo: startPhoto, end_odometer_photo: endPhoto, receipt_file: receipt }).select(fuelSelect).single()
+    return supabase.from('fuel_expenses').insert({ ...cleanFuelPayload(payload), start_odometer_photo: startPhoto, end_odometer_photo: endPhoto, receipt_file: receipt }).select(fuelSelect).single()
   },
   submit: id => supabase.rpc('submit_fuel_expense', { p_fuel_expense_id: id }),
   decide: (id, decision, comment = '') => supabase.rpc('decide_fuel_expense', { p_fuel_expense_id: id, p_decision: decision, p_comment: comment }),
