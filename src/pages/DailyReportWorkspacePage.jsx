@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Bell, BriefcaseBusiness, Camera, Car, Eye, FileText, Fuel, Gauge, MapPinned, Paperclip, Plus, Save, Send, ShoppingCart, Trash2, WalletCards, X } from 'lucide-react'
+import { useSearchParams } from 'react-router-dom'
 import { toast } from 'sonner'
 import { useAuth } from '../contexts/AuthContext'
 import { dailyReportService } from '../services/dailyReportService'
@@ -26,6 +27,8 @@ const emptyExpense = { type: '', province_id: '', district_id: '', market_id: ''
 
 export default function DailyReportWorkspacePage() {
   const { user } = useAuth()
+  const [searchParams] = useSearchParams()
+  const editReportId = searchParams.get('report')
   const [lookups, setLookups] = useState({ plans: [], teams: [], vehicles: [], provinces: [], districts: [], markets: [], categories: [] })
   const [date, setDate] = useState('2026-07-22')
   const [sales, setSales] = useState('Van')
@@ -39,6 +42,11 @@ export default function DailyReportWorkspacePage() {
   const [saving, setSaving] = useState(false)
   const [invoiceDialog, setInvoiceDialog] = useState(null)
   const [expenseDialog, setExpenseDialog] = useState(null)
+  const [notes, setNotes] = useState({
+    summary: '- បានចុះផ្សារ 6 កន្លែង\n- បានយក 12 Invoice\n- អតិថិជនចង់បាន Follow Up',
+    problems: 'អតិថិជនខ្លះស្នើពន្យារទូទាត់។',
+    next: 'ចំណាំបន្ថែម...',
+  })
 
   useEffect(() => {
     Promise.all([dailyReportService.plans(), dailyReportService.teams(), dailyReportService.vehicles(), dailyReportService.provinces(), dailyReportService.districts(), dailyReportService.markets(), dailyReportService.categories()])
@@ -46,10 +54,73 @@ export default function DailyReportWorkspacePage() {
         setLookups({ plans: plans.data || [], teams: teams.data || [], vehicles: vehicles.data || [], provinces: provinces.data || [], districts: districts.data || [], markets: markets.data || [], categories: categories.data || [] })
       })
   }, [])
+  useEffect(() => {
+    if (!editReportId) return
+    dailyReportService.get(editReportId).then(({ data, error }) => {
+      if (error) return toast.error(error.message)
+      setDate(data.report_date || '')
+      setSales(data.sales?.full_name || '')
+      setTeam(data.team?.name || 'Team A')
+      setPlan(data.visit_plan_id || '')
+      setProvince(data.plan?.province || data.province?.name_kh || '')
+      setVehicle(data.vehicle_id || '')
+      setInvoices((data.invoices || []).map(row => ({
+        code: row.invoice_number,
+        customer: row.customer_name,
+        province_id: row.market?.province_id || '',
+        district_id: row.market?.district_id || '',
+        market_id: row.market_id || '',
+        market: row.market?.name_kh || row.market_name || '',
+        amount: Number(row.invoice_amount || 0),
+        collected: Number(row.collected_amount || 0),
+        returned: Number(row.returned_amount || 0),
+        note: row.notes || '',
+      })))
+      setExpenses((data.expenses || []).map(row => ({
+        type: row.category?.name_kh || row.description || 'ផ្សេងៗ',
+        province_id: row.market?.province_id || '',
+        district_id: row.market?.district_id || '',
+        market_id: row.market_id || '',
+        vendor: row.market?.name_kh || row.vendor_name || '',
+        amount: Number(row.amount || Number(row.quantity || 0) * Number(row.unit_price || 0)),
+        note: row.notes || '',
+      })))
+      setFuel(current => ({
+        ...current,
+        liters: Number(data.fuel_liters || current.liters),
+        unitPrice: Number(data.fuel_unit_price || current.unitPrice),
+        station: data.fuel_station || current.station,
+        invoice: data.fuel_invoice_number || current.invoice,
+        start: Number(data.odometer_start || current.start),
+        end: Number(data.odometer_end || current.end),
+        night: Number(data.odometer_night || data.odometer_end || current.night),
+        workStartTime: data.work_start_time?.slice(0, 5) || current.workStartTime,
+        workEndTime: data.work_end_time?.slice(0, 5) || current.workEndTime,
+        nightCheckTime: data.night_check_time?.slice(0, 5) || current.nightCheckTime,
+      }))
+      setNotes({
+        summary: data.report_summary || '',
+        problems: data.problems || '',
+        next: data.next_plan || '',
+      })
+      toast.success(`បានបើកកែ ${data.report_code}`)
+    })
+  }, [editReportId])
 
+  const filteredPlans = useMemo(() => lookups.plans.filter(item => !sales || item.assignee?.full_name === sales), [lookups.plans, sales])
   const selectedPlan = lookups.plans.find(item => item.id === plan)
   const selectedVehicle = lookups.vehicles.find(item => item.id === vehicle)
+  const salesOptions = [{ value: '', label: 'Sales ទាំងអស់' }, ...[...new Set([...lookups.plans.map(item => item.assignee?.full_name).filter(Boolean), 'Van', 'Phanha', 'Pheak'])].map(name => ({ value: name, label: name }))]
   useEffect(() => {
+    if (!filteredPlans.length) return
+    if (filteredPlans.some(item => item.id === plan)) return
+    const next = filteredPlans[0]
+    setPlan(next.id)
+    setProvince(next.province || province)
+    setDate(next.start_date || date)
+  }, [filteredPlans, plan, province, date])
+  useEffect(() => {
+    if (editReportId) return
     if (!selectedPlan?.id || !date) return
     dailyReportService.fuelForPlanDate({ visitPlanId: selectedPlan.id, salesUserId: selectedPlan.assigned_to, reportDate: date }).then(({ data, error }) => {
       if (error) return toast.error(error.message)
@@ -63,7 +134,7 @@ export default function DailyReportWorkspacePage() {
       setFuel(current => ({ ...current, start, end, night: Math.max(Number(current.night || 0), end), liters: Number(liters.toFixed(2)), unitPrice: liters ? Number((total / liters).toFixed(2)) : current.unitPrice, station: latest.fuel_station || current.station, invoice: latest.invoice_number || current.invoice }))
       toast.success(`បានទាញចំណាយសាំង ${data.length} កំណត់ត្រា`)
     })
-  }, [date, selectedPlan?.id, selectedPlan?.assigned_to])
+  }, [date, editReportId, selectedPlan?.id, selectedPlan?.assigned_to])
 
   const totals = useMemo(() => {
     const salesAmount = invoices.reduce((sum, row) => sum + Number(row.amount), 0)
@@ -132,13 +203,14 @@ export default function DailyReportWorkspacePage() {
     setExpenseDialog(null)
   }
   const saveDraft = async () => {
-    const planRow = selectedPlan
+    const planRow = selectedPlan || filteredPlans[0]
     if (!planRow) return toast.error('សូមជ្រើសផែនការចុះ')
     setSaving(true)
-    const report = await dailyReportService.create({
+    const salesUserId = planRow.assigned_to || user?.id
+    const payload = {
       report_date: date,
       visit_plan_id: planRow.id,
-      sales_user_id: planRow.assigned_to || user?.id,
+      sales_user_id: salesUserId,
       vehicle_id: selectedVehicle?.id || null,
       odometer_start: fuel.start,
       odometer_end: fuel.end,
@@ -147,31 +219,46 @@ export default function DailyReportWorkspacePage() {
       fuel_unit_price: fuel.unitPrice,
       fuel_station: fuel.station,
       fuel_invoice_number: fuel.invoice,
-      report_summary: document.querySelector('[data-note="summary"]')?.value || '',
-      problems: document.querySelector('[data-note="problems"]')?.value || '',
-      next_plan: document.querySelector('[data-note="next"]')?.value || '',
-    })
-    if (report.error) { setSaving(false); return toast.error(report.error.message) }
+      report_summary: notes.summary,
+      problems: notes.problems,
+      next_plan: notes.next,
+    }
+    const existing = editReportId ? { data: [{ id: editReportId }] } : await dailyReportService.findDraft({ salesUserId, visitPlanId: planRow.id, reportDate: date })
+    if (existing.error) { setSaving(false); toast.error(existing.error.message); return null }
+    const existingReport = existing.data?.[0]
+    const report = existingReport ? await dailyReportService.update(existingReport.id, payload) : await dailyReportService.create(payload)
+    if (report.error) { setSaving(false); toast.error(report.error.message); return null }
     const reportId = report.data.id
     const invoiceResult = await dailyReportService.replaceInvoices(reportId, invoices.map(row => ({ invoice_number: row.code, customer_name: row.customer, market_id: row.market_id || null, market_name: row.market, invoice_amount: row.amount, collected_amount: row.collected, returned_amount: row.returned || 0, status: row.amount <= Number(row.collected || 0) + Number(row.returned || 0) ? 'paid' : Number(row.collected || 0) > 0 || Number(row.returned || 0) > 0 ? 'partial' : 'open' })))
     const category = lookups.categories.find(item => !item.is_fuel)
     const expenseResult = category ? await dailyReportService.replaceExpenses(reportId, expenses.map(row => ({ expense_category_id: category.id, expense_date: date, description: row.type, market_id: row.market_id || null, vendor_name: row.vendor, quantity: 1, unit_price: row.amount }))) : { error: null }
     setSaving(false)
-    if (invoiceResult.error || expenseResult.error) return toast.error(invoiceResult.error?.message || expenseResult.error?.message)
-    toast.success('បានរក្សាទុក Workspace ជាព្រាង')
+    if (invoiceResult.error || expenseResult.error) { toast.error(invoiceResult.error?.message || expenseResult.error?.message); return null }
+    toast.success(existingReport ? 'បានកែប្រែ Workspace ជាព្រាង' : 'បានរក្សាទុក Workspace ជាព្រាង')
+    return reportId
+  }
+  const submitToManager = async () => {
+    if (saving) return
+    const reportId = await saveDraft()
+    if (!reportId) return
+    setSaving(true)
+    const result = await dailyReportService.submit(reportId)
+    setSaving(false)
+    if (result.error) return toast.error(result.error.message)
+    toast.success('បានដាក់ស្នើទៅ Manager')
   }
 
   return <div className="space-y-4 text-slate-900">
     <div className="flex flex-wrap items-center justify-between gap-3">
       <div className="flex items-center gap-3"><button className="rounded-xl p-2 hover:bg-slate-100"><Bell size={21}/></button><div><h1 className="text-2xl font-bold">របាយការណ៍ប្រចាំថ្ងៃ</h1><p className="text-sm text-slate-500">បញ្ចូល Invoice, ចំណូល, ចំណាយ, សាំង និងចម្ងាយក្នុងមួយថ្ងៃ</p></div></div>
-      <div className="flex gap-2"><button className="btn-secondary" disabled={saving} onClick={saveDraft}><Save size={18}/>{saving ? 'កំពុងរក្សា...' : 'រក្សាទុកព្រាង'}</button><button className="btn-primary bg-green-600 hover:bg-green-700"><Send size={18}/>ដាក់ស្នើទៅ Manager</button></div>
+      <div className="flex gap-2"><button className="btn-secondary" disabled={saving} onClick={saveDraft}><Save size={18}/>{saving ? 'កំពុងរក្សា...' : 'រក្សាទុកព្រាង'}</button><button className="btn-primary bg-green-600 hover:bg-green-700" disabled={saving} onClick={submitToManager}><Send size={18}/>{saving ? 'កំពុងរក្សា...' : 'ដាក់ស្នើទៅ Manager'}</button></div>
     </div>
 
     <div className="card grid gap-3 p-4 md:grid-cols-3 xl:grid-cols-6">
       <Filter label="ថ្ងៃរបាយការណ៍" value={date} onChange={setDate} type="date"/>
-      <Filter label="បុគ្គលិកលក់" value={sales} onChange={setSales} options={[...new Set(lookups.plans.map(item => item.assignee?.full_name).filter(Boolean)), 'Van', 'Phanha', 'Pheak']}/>
+      <Filter label="បុគ្គលិកលក់" value={sales} onChange={value => { setSales(value); setPlan('') }} options={salesOptions}/>
       <Filter label="ក្រុម Sales" value={team} onChange={setTeam} options={[...lookups.teams.map(item => item.name), 'Team A', 'Team B']}/>
-      <Filter label="លេខផែនការចុះ" value={plan} onChange={value => { const next = lookups.plans.find(item => item.id === value); setPlan(value); setSales(next?.assignee?.full_name || sales); setProvince(next?.province || province); setDate(next?.start_date || date) }} options={lookups.plans.length ? lookups.plans.map(item => ({ value: item.id, label: item.title })) : ['VP-2026-0024', 'VP-2026-0025']}/>
+      <Filter label="លេខផែនការចុះ" value={plan} onChange={value => { const next = lookups.plans.find(item => item.id === value); setPlan(value); setSales(next?.assignee?.full_name || sales); setProvince(next?.province || province); setDate(next?.start_date || date) }} options={filteredPlans.length ? filteredPlans.map(item => ({ value: item.id, label: item.title })) : [{ value: '', label: 'មិនមានផែនការ' }]}/>
       <Filter label="ខេត្ត" value={province} onChange={setProvince} options={[...new Set(lookups.plans.map(item => item.province).filter(Boolean)), 'កំពង់ចាម', 'ភ្នំពេញ']}/>
       <Filter label="យានយន្ត" value={vehicle} onChange={value => { const next = lookups.vehicles.find(item => item.id === value); setVehicle(value); if (next?.current_odometer) setFuel(current => ({ ...current, start: Number(next.current_odometer) })) }} options={lookups.vehicles.length ? lookups.vehicles.map(item => ({ value: item.id, label: `${item.brand_model} ${item.plate_number}` })) : ['Toyota Hilux 2AB-1234', 'Prius 2BC-7312']}/>
     </div>
@@ -228,9 +315,9 @@ export default function DailyReportWorkspacePage() {
         <div className="mt-4 grid gap-3 rounded-lg bg-green-50 p-3 md:grid-cols-4"><Mini icon={MapPinned} label="ចម្ងាយ" value={`${totals.distance} KM`}/><Mini icon={Fuel} label="ប្រើសាំង" value={`${fuel.liters} L`}/><Mini icon={Gauge} label="ប្រសិទ្ធភាព" value={`${totals.efficiency.toFixed(2)} KM/L`}/><Mini icon={WalletCards} label="ចំណាយក្នុង 1 KM" value={money(totals.costPerKm)}/></div>
       </section>
       <section className="grid gap-3 md:grid-cols-3 xl:grid-cols-1">
-        <Note id="summary" title="សង្ខេបការងារប្រចាំថ្ងៃ" text="- បានចុះផ្សារ 6 កន្លែង&#10;- បានយក 12 Invoice&#10;- អតិថិជនចង់បាន Follow Up"/>
-        <Note id="problems" title="បញ្ហាប្រឈម" text="អតិថិជនខ្លះស្នើពន្យារទូទាត់។"/>
-        <Note id="next" title="ផែនការបន្ទាប់" text="ចំណាំបន្ថែម..."/>
+        <Note title="សង្ខេបការងារប្រចាំថ្ងៃ" value={notes.summary} onChange={value => setNotes({ ...notes, summary: value })}/>
+        <Note title="បញ្ហាប្រឈម" value={notes.problems} onChange={value => setNotes({ ...notes, problems: value })}/>
+        <Note title="ផែនការបន្ទាប់" value={notes.next} onChange={value => setNotes({ ...notes, next: value })}/>
       </section>
     </div>
     <Modal open={Boolean(invoiceDialog)} onClose={() => setInvoiceDialog(null)} title={invoiceDialog?.mode === 'edit' ? 'កែ Invoice' : 'បន្ថែម Invoice'} size="max-w-3xl">
@@ -284,7 +371,7 @@ function Odometer({ label, value, time, onChange, onTimeChange }) { return <labe
 function Upload({ label }) { return <div><p className="mb-2 text-sm font-medium">{label}</p><div className="flex items-center gap-2"><span className="grid size-12 place-items-center rounded-lg bg-slate-100"><Camera size={20}/></span><button className="btn-secondary px-3 py-2">មើល</button><button className="btn-secondary px-3 py-2"><Camera size={16}/>ថតរូប</button></div></div> }
 function FuelInput({ label, value, onChange, suffix, readOnly }) { return <label className="block text-sm"><span className="mb-1.5 block font-medium">{label}</span><div className="relative"><input readOnly={readOnly} className={`field ${readOnly ? 'bg-green-50 font-bold text-green-700' : ''}`} value={value} onChange={event => onChange?.(event.target.value)}/>{suffix && <span className="absolute right-3 top-2.5 text-xs text-slate-400">{suffix}</span>}</div></label> }
 function Mini({ icon: Icon, label, value }) { return <div className="flex items-center gap-2"><Icon className="text-green-600" size={24}/><div><p className="text-xs text-slate-500">{label}</p><p className="font-bold">{value}</p></div></div> }
-function Note({ id, title, text }) { return <div className="card p-4"><h3 className="mb-2 font-bold">{title}</h3><textarea data-note={id} className="field min-h-24 whitespace-pre-line" defaultValue={text.replaceAll('&#10;', '\n')}/></div> }
+function Note({ title, value, onChange }) { return <div className="card p-4"><h3 className="mb-2 font-bold">{title}</h3><textarea className="field min-h-24 whitespace-pre-line" value={value} onChange={event => onChange(event.target.value)}/></div> }
 function Field({ label, children }) { return <div><label className="label">{label}</label>{children}</div> }
 function Info({ label, value }) { return <div><p className="text-xs text-slate-500">{label}</p><p className="font-bold">{value}</p></div> }
 function change(rows, index, key, value) { return rows.map((row, i) => i === index ? (key ? { ...row, [key]: value } : value) : row) }

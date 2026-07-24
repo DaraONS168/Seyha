@@ -40,6 +40,10 @@ export function AuthProvider({ children }) {
       if (profile?.role === 'admin') return true
       const permissions = profile?.app_role?.permissions || profile?.permissions || []
       if (permissions.includes(permission)) return true
+      const wildcardPermission = `${permission.split('.')[0]}.*`
+      if (permissions.includes(wildcardPermission)) return true
+      const nestedWildcardPermission = permission.split('.').slice(0, -1).join('.')
+      if (nestedWildcardPermission && permissions.includes(`${nestedWildcardPermission}.*`)) return true
       const modernPermission = LEGACY_PERMISSION_ALIASES[permission]
       if (modernPermission && permissions.includes(modernPermission)) return true
       const legacyPermission = Object.entries(LEGACY_PERMISSION_ALIASES).find(([, modern]) => modern === permission)?.[0]
