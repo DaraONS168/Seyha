@@ -66,6 +66,14 @@ export default function UserManagementPage() {
     const { data: sessionData } = await supabase.auth.refreshSession()
     return supabase.functions.invoke('manage-users', { body, headers: { Authorization: `Bearer ${sessionData.session?.access_token}` } })
   }
+  const functionError = async (error, data) => {
+    if (data?.error) return data.error
+    if (error?.context) {
+      const detail = await error.context.clone().json().catch(() => null)
+      if (detail?.error) return detail.error
+    }
+    return error?.message || 'មានបញ្ហាក្នុងការភ្ជាប់ Edge Function'
+  }
   const filtered = useMemo(() => users.filter(item => {
     const term = search.trim().toLowerCase()
     const matchesText = !term || item.full_name?.toLowerCase().includes(term) || item.username?.toLowerCase().includes(term)
@@ -89,14 +97,14 @@ export default function UserManagementPage() {
     event.preventDefault(); setSaving(true)
     const { data, error } = await invoke({ action: editingRole ? 'update_role' : 'create_role', role_key: editingRole?.key, ...roleForm })
     setSaving(false)
-    if (error || data?.error) return toast.error(data?.error || error?.message)
+    if (error || data?.error) return toast.error(await functionError(error, data))
     toast.success(editingRole ? 'បានកែប្រែ Role' : 'បានបង្កើត Role ថ្មី'); closeRoleModal(); load()
   }
   const deleteRole = async role => {
     if (role.is_system) return toast.error('System Role មិនអាចលុបបានទេ')
     if (!window.confirm(`តើអ្នកចង់លុប Role ${role.name} មែនទេ?`)) return
     const { data, error } = await invoke({ action: 'delete_role', role_key: role.key })
-    if (error || data?.error) return toast.error(data?.error || error?.message)
+    if (error || data?.error) return toast.error(await functionError(error, data))
     toast.success('បានលុប Role'); load()
   }
 
@@ -108,7 +116,7 @@ export default function UserManagementPage() {
     const payload = { action: editing ? 'update' : 'create', user_id: editing?.id, ...form, full_name: sanitizeText(form.full_name), phone: sanitizeText(form.phone) }
     const { data, error } = await invoke(payload)
     setSaving(false)
-    if (error || data?.error) return toast.error(data?.error || error?.message)
+    if (error || data?.error) return toast.error(await functionError(error, data))
     toast.success(editing ? 'បានកែប្រែ User' : 'បានបង្កើត User')
     setFormOpen(false); load()
   }
@@ -116,7 +124,7 @@ export default function UserManagementPage() {
     setSaving(true)
     const { data, error } = await invoke({ action: confirm.action, user_id: confirm.user.id, is_active: confirm.value })
     setSaving(false)
-    if (error || data?.error) return toast.error(data?.error || error?.message)
+    if (error || data?.error) return toast.error(await functionError(error, data))
     toast.success(confirm.action === 'delete' ? 'បានលុប User' : 'បានកែស្ថានភាព User')
     setConfirm(null); load()
   }
@@ -126,7 +134,7 @@ export default function UserManagementPage() {
     setSaving(true)
     const { data, error } = await invoke({ action: 'reset_password', user_id: resetUser.id, password: newPassword })
     setSaving(false)
-    if (error || data?.error) return toast.error(data?.error || error?.message)
+    if (error || data?.error) return toast.error(await functionError(error, data))
     toast.success('បានកំណត់ Password ថ្មី'); setResetUser(null); setNewPassword('')
   }
 
