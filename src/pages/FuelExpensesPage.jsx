@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Check, Crosshair, Fuel, Gauge, Plus, Route, Search, Send, XCircle } from 'lucide-react'
+import { Check, Crosshair, Fuel, Gauge, Pencil, Plus, Route, Search, Send, XCircle } from 'lucide-react'
 import { toast } from 'sonner'
 import EmptyState from '../components/common/EmptyState'
 import LoadingState from '../components/common/LoadingState'
@@ -93,12 +93,44 @@ export default function FuelExpensesPage() {
     if (Number(form.end_odometer) <= Number(form.start_odometer)) return toast.error('គីឡូម៉ែត្របញ្ចប់ត្រូវធំជាងគីឡូម៉ែត្រចាប់ផ្តើម')
     if (!form.visit_plan_id) return toast.error('សូមជ្រើសផែនការចុះមុនរក្សាទុក')
     const expenseDate = selectedPlan ? clampDate(form.expense_date, selectedPlan.start_date, selectedPlan.end_date) : form.expense_date
-    if (!files.startPhoto || !files.endPhoto || !files.receipt) return toast.error('សូមភ្ជាប់រូបកុងទ័រទាំងពីរ និងវិក្កយបត្រ')
+    if (!form.id && (!files.startPhoto || !files.endPhoto || !files.receipt)) return toast.error('សូមភ្ជាប់រូបកុងទ័រទាំងពីរ និងវិក្កយបត្រ')
     setSaving(true)
-    const result = await fuelExpenseService.create({ ...form, expense_date: expenseDate }, files).catch(error => ({ error }))
+    const payload = { ...form, expense_date: expenseDate }
+    const result = form.id ? await fuelExpenseService.update(form.id, payload, files).catch(error => ({ error })) : await fuelExpenseService.create(payload, files).catch(error => ({ error }))
     setSaving(false)
     if (result.error) return toast.error(result.error.message)
-    toast.success('បានរក្សាទុកចំណាយសាំង'); setForm(null); setFiles({}); load()
+    toast.success(form.id ? 'បានកែប្រែចំណាយសាំង' : 'បានរក្សាទុកចំណាយសាំង'); setForm(null); setFiles({}); load()
+  }
+  const edit = async row => {
+    setFiles({})
+    setOdometerSource(null)
+    const [requests, districts] = await Promise.all([
+      fuelExpenseService.requests(row.visit_plan_id),
+      row.province_id ? fuelExpenseService.districts(row.province_id) : { data: [] },
+    ])
+    setLookups(current => ({ ...current, requests: requests.data || [], districts: districts.data || [] }))
+    setForm({
+      id: row.id,
+      sales_user_id: row.sales_user_id || '',
+      visit_plan_id: row.visit_plan_id || '',
+      visit_expense_id: row.visit_expense_id || '',
+      province_id: row.province_id || '',
+      district_id: row.district_id || '',
+      expense_date: row.expense_date || '',
+      latitude: row.latitude || '',
+      longitude: row.longitude || '',
+      vehicle_id: row.vehicle_id || '',
+      driver_id: row.driver_id || '',
+      start_odometer: row.start_odometer || '',
+      end_odometer: row.end_odometer || '',
+      fuel_liters: row.fuel_liters || '',
+      price_per_liter: row.price_per_liter || '',
+      currency: row.currency || 'KHR',
+      fuel_station: row.fuel_station || '',
+      invoice_number: row.invoice_number || '',
+      note: row.note || '',
+      status: row.status,
+    })
   }
   const submit = async id => { const result = await fuelExpenseService.submit(id); result.error ? toast.error(result.error.message) : (toast.success('បានដាក់ស្នើអនុម័ត'), load()) }
   const decide = async (id, decision) => {
@@ -123,8 +155,8 @@ export default function FuelExpensesPage() {
     <div className="flex flex-wrap items-center justify-between gap-3"><div><h1 className="text-2xl font-bold">ចំណាយសាំង</h1><p className="text-sm text-slate-500">កត់ត្រាចម្ងាយ បរិមាណសាំង និងវិក្កយបត្រតាមផែនការចុះទីតាំង</p></div><div className="flex gap-2">{hasPermission('vehicles.create') && <button className="btn-secondary" onClick={() => setVehicleForm({ vehicle_code: '', vehicle_type: 'car', brand_model: '', plate_number: '', current_odometer: 0, status: 'active' })}>បន្ថែមយានយន្ត</button>}{hasPermission('fuel.create') && <button className="btn-primary" onClick={() => { setOdometerSource(null); setForm({ ...emptyForm }) }}><Plus size={18}/>កត់ត្រាចំណាយសាំង</button>}</div></div>
     <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">{cards.map(([label, value, Icon, color]) => <div className="card flex items-center gap-3 p-4" key={label}><div className={`grid size-11 place-items-center rounded-xl ${color}`}><Icon size={22}/></div><div><p className="text-xs text-slate-500">{label}</p><p className="text-xl font-bold">{value}</p></div></div>)}</div>
     <div className="card grid gap-3 p-4 md:grid-cols-4"><div className="relative"><Search className="absolute left-3 top-3 text-slate-400" size={18}/><input className="field pl-10" placeholder="លេខបញ្ជី / វិក្កយបត្រ..." value={filters.search} onChange={event => setFilters({ ...filters, search: event.target.value })}/></div><select className="field" value={filters.status} onChange={event => setFilters({ ...filters, status: event.target.value })}><option value="">ស្ថានភាពទាំងអស់</option>{Object.entries(FUEL_STATUS).map(([key, item]) => <option key={key} value={key}>{item.label}</option>)}</select><select className="field" value={filters.vehicleId} onChange={event => setFilters({ ...filters, vehicleId: event.target.value })}><option value="">យានយន្តទាំងអស់</option>{lookups.vehicles.map(item => <option key={item.id} value={item.id}>{item.plate_number} · {item.brand_model}</option>)}</select><select className="field" value={filters.salesId} onChange={event => setFilters({ ...filters, salesId: event.target.value })}><option value="">Sales ទាំងអស់</option>{lookups.drivers.map(item => <option key={item.id} value={item.id}>{item.full_name}</option>)}</select></div>
-    <div className="card overflow-hidden">{loading ? <LoadingState/> : rows.length === 0 ? <EmptyState title="មិនទាន់មានចំណាយសាំង"/> : <div className="overflow-x-auto"><table className="w-full min-w-[1200px]"><thead className="sticky top-0 bg-slate-50 text-left text-xs text-slate-500"><tr>{['លេខបញ្ជី','កាលបរិច្ឆេទ','Sales / Plan','យានយន្ត','ចម្ងាយ','សាំង','តម្លៃសរុប','ប្រសិទ្ធភាព','ស្ថានភាព','សកម្មភាព'].map(item => <th className="table-cell" key={item}>{item}</th>)}</tr></thead><tbody className="divide-y">{rows.map(row => { const status = FUEL_STATUS[row.status] || FUEL_STATUS.draft; return <tr key={row.id}><td className="table-cell font-semibold text-blue-700">{row.expense_code}</td><td className="table-cell">{new Date(row.expense_date).toLocaleDateString('km-KH')}</td><td className="table-cell"><b>{row.sales?.full_name}</b><p className="max-w-52 truncate text-xs text-slate-500">{row.plan?.title}</p></td><td className="table-cell">{row.vehicle?.plate_number}<p className="text-xs text-slate-500">{row.driver?.full_name}</p></td><td className="table-cell">{number(row.distance_km)} km</td><td className="table-cell">{number(row.fuel_liters)} L</td><td className="table-cell font-bold">{number(row.total_amount)} {row.currency}</td><td className="table-cell">{number(row.fuel_efficiency)} km/L</td><td className="table-cell"><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${status.className}`}>{status.label}</span></td><td className="table-cell"><div className="flex gap-1">{['draft','rejected'].includes(row.status) && hasPermission('fuel.submit') && <button title="ដាក់ស្នើ" className="rounded-lg p-2 text-blue-600 hover:bg-blue-50" onClick={() => submit(row.id)}><Send size={17}/></button>}{row.status === 'submitted' && hasPermission('fuel.approve') && <><button title="អនុម័ត" className="rounded-lg p-2 text-green-600 hover:bg-green-50" onClick={() => decide(row.id, 'approved')}><Check size={18}/></button><button title="បដិសេធ" className="rounded-lg p-2 text-red-600 hover:bg-red-50" onClick={() => decide(row.id, 'rejected')}><XCircle size={18}/></button></>}</div></td></tr> })}</tbody></table></div>}</div>
-    <Modal open={Boolean(form)} onClose={() => setForm(null)} title="កត់ត្រាចំណាយសាំង" size="max-w-4xl"><form className="space-y-5" onSubmit={save}>
+    <div className="card overflow-hidden">{loading ? <LoadingState/> : rows.length === 0 ? <EmptyState title="មិនទាន់មានចំណាយសាំង"/> : <div className="overflow-x-auto"><table className="w-full min-w-[1200px]"><thead className="sticky top-0 bg-slate-50 text-left text-xs text-slate-500"><tr>{['លេខបញ្ជី','កាលបរិច្ឆេទ','Sales / Plan','យានយន្ត','ចម្ងាយ','សាំង','តម្លៃសរុប','ប្រសិទ្ធភាព','ស្ថានភាព','សកម្មភាព'].map(item => <th className="table-cell" key={item}>{item}</th>)}</tr></thead><tbody className="divide-y">{rows.map(row => { const status = FUEL_STATUS[row.status] || FUEL_STATUS.draft; return <tr key={row.id}><td className="table-cell font-semibold text-blue-700">{row.expense_code}</td><td className="table-cell">{new Date(row.expense_date).toLocaleDateString('km-KH')}</td><td className="table-cell"><b>{row.sales?.full_name}</b><p className="max-w-52 truncate text-xs text-slate-500">{row.plan?.title}</p></td><td className="table-cell">{row.vehicle?.plate_number}<p className="text-xs text-slate-500">{row.driver?.full_name}</p></td><td className="table-cell">{number(row.distance_km)} km</td><td className="table-cell">{number(row.fuel_liters)} L</td><td className="table-cell font-bold">{number(row.total_amount)} {row.currency}</td><td className="table-cell">{number(row.fuel_efficiency)} km/L</td><td className="table-cell"><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${status.className}`}>{status.label}</span></td><td className="table-cell"><div className="flex gap-1">{['draft','rejected','submitted'].includes(row.status) && hasPermission('fuel.update') && <button title="កែប្រែ" className="rounded-lg p-2 text-blue-600 hover:bg-blue-50" onClick={() => edit(row)}><Pencil size={17}/></button>}{['draft','rejected'].includes(row.status) && hasPermission('fuel.submit') && <button title="ដាក់ស្នើ" className="rounded-lg p-2 text-blue-600 hover:bg-blue-50" onClick={() => submit(row.id)}><Send size={17}/></button>}{row.status === 'submitted' && hasPermission('fuel.approve') && <><button title="អនុម័ត" className="rounded-lg p-2 text-green-600 hover:bg-green-50" onClick={() => decide(row.id, 'approved')}><Check size={18}/></button><button title="បដិសេធ" className="rounded-lg p-2 text-red-600 hover:bg-red-50" onClick={() => decide(row.id, 'rejected')}><XCircle size={18}/></button></>}</div></td></tr> })}</tbody></table></div>}</div>
+    <Modal open={Boolean(form)} onClose={() => setForm(null)} title={form?.id ? 'កែចំណាយសាំង' : 'កត់ត្រាចំណាយសាំង'} size="max-w-4xl"><form className="space-y-5" onSubmit={save}>
       <FormSection number="1" title="បុគ្គលិក និងផែនការចុះទីតាំង" description="ជ្រើស Sales ជាមុន ដើម្បីបង្ហាញតែផែនការរបស់បុគ្គលិកនោះ។"><div className="grid gap-4 md:grid-cols-3">
         <Field label="ឈ្មោះ Sales *"><select required className="field" value={form?.sales_user_id || ''} onChange={event => selectSales(event.target.value)}><option value="">ជ្រើសរើស Sales</option>{salesOptions.map(item => <option key={item.id} value={item.id}>{item.full_name}</option>)}</select></Field>
         <Field label="ផែនការចុះទីតាំង *"><select required disabled={!form?.sales_user_id} className="field disabled:cursor-not-allowed disabled:bg-slate-100" value={form?.visit_plan_id || ''} onChange={event => selectPlan(event.target.value)}><option value="">{form?.sales_user_id ? 'ជ្រើសរើស Plan' : 'សូមជ្រើស Sales ជាមុន'}</option>{filteredPlans.map(item => <option key={item.id} value={item.id}>{item.title}</option>)}</select><p className="mt-1 text-xs text-slate-500">មាន {filteredPlans.length} ផែនការ</p></Field>
@@ -150,17 +182,17 @@ export default function FuelExpensesPage() {
       <Field label="ស្ថានីយប្រេង *"><input required className="field" value={form?.fuel_station || ''} onChange={event => setForm({ ...form, fuel_station: event.target.value })}/></Field>
       <Field label="លេខវិក្កយបត្រ *"><input required className="field" value={form?.invoice_number || ''} onChange={event => setForm({ ...form, invoice_number: event.target.value })}/></Field>
       <div className="grid grid-cols-2 gap-3 rounded-xl bg-blue-50 p-4 md:col-span-2"><Metric label="ចម្ងាយ" value={`${number(metrics.distance_km)} km`}/><Metric label="តម្លៃសរុប" value={`${number(metrics.total_amount)} ${form?.currency || 'KHR'}`}/><Metric label="ប្រសិទ្ធភាព" value={`${number(metrics.fuel_efficiency)} km/L`}/><Metric label="ចំណាយក្នុង 1 km" value={`${number(metrics.cost_per_km)} ${form?.currency || 'KHR'}`}/></div>
-      <FileField label="រូបកុងទ័រចាប់ផ្តើម *" onChange={file => setFiles({ ...files, startPhoto: file })}/><FileField label="រូបកុងទ័របញ្ចប់ *" onChange={file => setFiles({ ...files, endPhoto: file })}/><FileField label="វិក្កយបត្រ/បង្កាន់ដៃ *" onChange={file => setFiles({ ...files, receipt: file })}/>
+      <FileField required={!form?.id} label={`រូបកុងទ័រចាប់ផ្តើម${form?.id ? '' : ' *'}`} onChange={file => setFiles({ ...files, startPhoto: file })}/><FileField required={!form?.id} label={`រូបកុងទ័របញ្ចប់${form?.id ? '' : ' *'}`} onChange={file => setFiles({ ...files, endPhoto: file })}/><FileField required={!form?.id} label={`វិក្កយបត្រ/បង្កាន់ដៃ${form?.id ? '' : ' *'}`} onChange={file => setFiles({ ...files, receipt: file })}/>
       <Field label="កំណត់សម្គាល់"><input className="field" value={form?.note || ''} onChange={event => setForm({ ...form, note: event.target.value })}/></Field>
       </div></FormSection>
-      <div className="sticky bottom-0 flex justify-end gap-2 border-t bg-white py-4"><button type="button" className="btn-secondary" onClick={() => setForm(null)}>បោះបង់</button><button disabled={saving} className="btn-primary">{saving ? 'កំពុងរក្សាទុក...' : 'រក្សាទុកព្រាង'}</button></div>
+      <div className="sticky bottom-0 flex justify-end gap-2 border-t bg-white py-4"><button type="button" className="btn-secondary" onClick={() => setForm(null)}>បោះបង់</button><button disabled={saving} className="btn-primary">{saving ? 'កំពុងរក្សាទុក...' : form?.id ? 'រក្សាទុកការកែប្រែ' : 'រក្សាទុកព្រាង'}</button></div>
     </form></Modal>
     <Modal open={Boolean(vehicleForm)} onClose={() => setVehicleForm(null)} title="បន្ថែមយានយន្ត"><form className="grid gap-4 md:grid-cols-2" onSubmit={saveVehicle}><Field label="លេខកូដ *"><input required className="field" value={vehicleForm?.vehicle_code || ''} onChange={event => setVehicleForm({ ...vehicleForm, vehicle_code: event.target.value })}/></Field><Field label="ស្លាកលេខ *"><input required className="field" value={vehicleForm?.plate_number || ''} onChange={event => setVehicleForm({ ...vehicleForm, plate_number: event.target.value })}/></Field><Field label="ម៉ាក / ម៉ូដែល *"><input required className="field" value={vehicleForm?.brand_model || ''} onChange={event => setVehicleForm({ ...vehicleForm, brand_model: event.target.value })}/></Field><Field label="ប្រភេទ *"><select className="field" value={vehicleForm?.vehicle_type || 'car'} onChange={event => setVehicleForm({ ...vehicleForm, vehicle_type: event.target.value })}><option value="car">រថយន្ត</option><option value="motorcycle">ម៉ូតូ</option><option value="truck">រថយន្តដឹកទំនិញ</option></select></Field><Field label="គីឡូម៉ែត្របច្ចុប្បន្ន"><input min="0" type="number" className="field" value={vehicleForm?.current_odometer || 0} onChange={event => setVehicleForm({ ...vehicleForm, current_odometer: event.target.value })}/></Field><div className="flex items-end"><button className="btn-primary w-full">រក្សាទុក</button></div></form></Modal>
   </div>
 }
 
 function Field({ label, children }) { return <div><label className="label">{label}</label>{children}</div> }
-function FileField({ label, onChange }) { return <Field label={label}><input required accept="image/jpeg,image/png,image/webp,application/pdf" type="file" className="field p-2" onChange={event => onChange(event.target.files[0])}/></Field> }
+function FileField({ label, required = true, onChange }) { return <Field label={label}><input required={required} accept="image/jpeg,image/png,image/webp,application/pdf" type="file" className="field p-2" onChange={event => onChange(event.target.files[0])}/></Field> }
 function Metric({ label, value }) { return <div><p className="text-xs text-blue-700">{label}</p><p className="font-bold text-blue-950">{value}</p></div> }
 function FormSection({ number, title, description, children }) { return <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm"><div className="mb-4 flex items-start gap-3"><span className="grid size-8 shrink-0 place-items-center rounded-full bg-blue-600 text-sm font-bold text-white">{number}</span><div><h3 className="font-bold text-slate-900">{title}</h3><p className="text-xs text-slate-500">{description}</p></div></div>{children}</section> }
 function formatDate(value) { return value ? new Date(`${value}T00:00:00`).toLocaleDateString('km-KH') : '' }
