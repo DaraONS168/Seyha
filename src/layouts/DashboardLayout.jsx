@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { Bell, CalendarRange, ChartNoAxesCombined, ChevronDown, ChevronRight, CircleDollarSign, ClipboardList, Fuel, History, Landmark, LayoutDashboard, LogOut, Menu, Pencil, PhoneCall, ReceiptText, Search, Send, Settings, Store, UserCog, Users, UserRound, WalletCards, X } from 'lucide-react'
 import { useAuth } from '../contexts/AuthContext'
 import { useNotifications } from '../hooks/useNotifications'
+import { supabase } from '../services/supabase'
 
 const navGroups = [
   { label: 'ទូទៅ', items: [{ to:'/',label:'ផ្ទាំងគ្រប់គ្រង',icon:LayoutDashboard,permission:'dashboard.view' }] },
@@ -31,10 +32,16 @@ export default function DashboardLayout() {
   const [profileOpen, setProfileOpen] = useState(false)
   const location = useLocation()
   const [expanded, setExpanded] = useState({ expenses: location.pathname.startsWith('/expenses') })
+  const [pendingDailyReports, setPendingDailyReports] = useState(0)
   const { profile, signOut, hasPermission } = useAuth()
   const { unread } = useNotifications()
   const navigate = useNavigate()
   const logout = async () => { await signOut(); navigate('/login') }
+  useEffect(() => {
+    if (!hasPermission('daily_reports.review')) return
+    supabase.from('daily_reports').select('id', { count: 'exact', head: true }).eq('status', 'submitted').is('deleted_at', null)
+      .then(({ count }) => setPendingDailyReports(count || 0))
+  }, [hasPermission])
   const linkClass = ({ isActive }) => `group relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all ${isActive ? 'bg-white text-blue-700 shadow-sm' : 'text-blue-50 hover:bg-white/10 hover:text-white'}`
   const sidebar = <>
     <div className="flex h-[76px] items-center gap-3 border-b border-white/10 px-4"><div className="grid size-11 shrink-0 place-items-center rounded-2xl bg-white text-blue-600 shadow-sm"><PhoneCall size={22}/></div><div className="min-w-0"><p className="truncate text-base font-bold tracking-tight">Customer CRM</p><p className="truncate text-xs text-blue-100">Government Management System</p></div></div>
@@ -43,7 +50,7 @@ export default function DashboardLayout() {
       if(!visibleItems.length)return null
       return <section key={group.label}><p className="mb-1.5 px-3 text-[10px] font-bold uppercase tracking-[0.16em] text-blue-200/80">{group.label}</p><div className="space-y-1">{visibleItems.map(item=>{
         const Icon=item.icon
-        if(item.children){const children=item.children.filter(child=>hasPermission(child.permission));const isActive=item.children.some(child=>location.pathname===child.to||location.pathname.startsWith(`${child.to}/`));const open=expanded[item.key]||isActive;return <div key={item.key}><button onClick={()=>setExpanded(current=>({...current,[item.key]:!open}))} className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${isActive?'bg-blue-700/40 text-white':'text-blue-50 hover:bg-white/10'}`}><Icon size={19}/><span className="flex-1 text-left">{item.label}</span>{open?<ChevronDown size={16}/>:<ChevronRight size={16}/>}</button>{open&&<div className="ml-5 mt-1 space-y-1 border-l border-blue-300/30 pl-3">{children.map(child=>{const ChildIcon=child.icon;return <NavLink key={child.to} to={child.to} end={child.to==='/expenses'} onClick={()=>setMobile(false)} className={linkClass}><ChildIcon size={17}/><span className="flex-1">{child.label}</span></NavLink>})}</div>}</div>}
+        if(item.children){const children=item.children.filter(child=>hasPermission(child.permission));const isActive=item.children.some(child=>location.pathname===child.to||location.pathname.startsWith(`${child.to}/`));const open=expanded[item.key]||isActive;return <div key={item.key}><button onClick={()=>setExpanded(current=>({...current,[item.key]:!open}))} className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${isActive?'bg-blue-700/40 text-white':'text-blue-50 hover:bg-white/10'}`}><Icon size={19}/><span className="flex-1 text-left">{item.label}</span>{pendingDailyReports>0&&item.key==='dailyReports'&&<span className="grid min-w-5 place-items-center rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] text-white">{pendingDailyReports>9?'9+':pendingDailyReports}</span>}{open?<ChevronDown size={16}/>:<ChevronRight size={16}/>}</button>{open&&<div className="ml-5 mt-1 space-y-1 border-l border-blue-300/30 pl-3">{children.map(child=>{const ChildIcon=child.icon;const childPending=child.to.includes('status=submitted')&&pendingDailyReports>0;return <NavLink key={child.to} to={child.to} end={child.to==='/expenses'} onClick={()=>setMobile(false)} className={linkClass}><ChildIcon size={17}/><span className="flex-1">{child.label}</span>{childPending&&<span className="grid min-w-5 place-items-center rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] text-white">{pendingDailyReports>9?'9+':pendingDailyReports}</span>}</NavLink>})}</div>}</div>}
         return <NavLink key={item.to} to={item.to} end={item.to==='/'} onClick={()=>setMobile(false)} className={linkClass}><Icon size={19}/><span className="flex-1">{item.label}</span>{item.to==='/notifications'&&unread>0&&<span className="grid min-w-5 place-items-center rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] text-white">{unread>9?'9+':unread}</span>}</NavLink>
       })}</div></section>})}</nav>
     <div className="border-t border-white/10 p-3"><button onClick={logout} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-blue-100 transition hover:bg-red-500/20 hover:text-white"><LogOut size={19}/>ចាកចេញ</button></div>

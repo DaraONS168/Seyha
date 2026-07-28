@@ -20,6 +20,10 @@ export default function DailyReportsPage() {
   const [count, setCount] = useState(0)
   const [loading, setLoading] = useState(true)
 
+  useEffect(() => {
+    setFilters(current => current.status === initialStatus ? current : { ...current, status: initialStatus, page: 1 })
+  }, [initialStatus])
+
   const load = useCallback(async () => {
     setLoading(true)
     const result = await dailyReportService.list(filters)
