@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
-import { AlertTriangle, Banknote, BellRing, CalendarClock, CheckCircle2, Download, Eye, FileSpreadsheet, History, MessageCircle, MoreHorizontal, PhoneCall, Plus, Printer, ReceiptText, Search, Send, ShieldAlert, Trash2, TrendingUp, Undo2, WalletCards, XCircle } from 'lucide-react'
+import { AlertTriangle, Banknote, BellRing, CalendarClock, CheckCircle2, Download, Eye, FileSpreadsheet, History, MessageCircle, MoreHorizontal, Paperclip, PhoneCall, Plus, Printer, ReceiptText, Search, Send, ShieldAlert, Trash2, TrendingUp, Undo2, WalletCards, XCircle } from 'lucide-react'
 import { toast } from 'sonner'
 import Modal from '../components/common/Modal'
+import { marketLookupService } from '../services/marketLookupService'
 
 const initialDebts = [
   { id: 'DEBT-2026-0001', customer: 'សុខ ដារ៉ា', phone: '012 345 678', province: 'ភ្នំពេញ', invoice: 'INV-2026-00125', invoiceDate: '2026-07-12', dueDate: '2026-07-22', total: 1250, paid: 850, remaining: 400, sales: 'Van', method: 'ABA', paymentStatus: 'Partially Paid', debtStatus: 'Overdue', risk: 'High', lastFollowUp: 'បានសន្យាបង់ថ្ងៃ 25/07/2026' },
@@ -207,8 +208,11 @@ function PromiseModal({ debt, onClose, onSave }) {
   </Modal>
 }
 
-function DebtFormModal({ open, onClose, onSave }) {
-  const [form, setForm] = useState({ customer: '', phone: '', province: 'ភ្នំពេញ', invoice: '', invoiceDate: '2026-07-30', dueDate: '2026-08-02', total: '', paid: '0', sales: 'Van', notes: '' })
+function DebtFormModal({ open, onClose, onSave, provinces = [] }) {
+  const emptyForm = { customer: '', phone: '', province: 'ភ្នំពេញ', invoice: '', invoiceDate: '2026-07-30', dueDate: '2026-08-02', total: '', paid: '0', sales: 'Van', notes: '', attachments: [] }
+  const [form, setForm] = useState(emptyForm)
+  const [fileInputKey, setFileInputKey] = useState(0)
+  const provinceOptions = provinces.length ? provinces.map(item => item.name_kh) : ['ភ្នំពេញ', 'កណ្ដាល', 'តាកែវ', 'កំពង់ចាម']
   const save = event => {
     event.preventDefault()
     const total = Number(form.total)
@@ -218,14 +222,28 @@ function DebtFormModal({ open, onClose, onSave }) {
     if (!total || total <= 0) return toast.error('Total Amount ត្រូវធំជាង 0')
     if (paid < 0 || paid > total) return toast.error('Paid Amount មិនត្រឹមត្រូវ')
     onSave({ ...form, total, paid })
-    setForm({ customer: '', phone: '', province: 'ភ្នំពេញ', invoice: '', invoiceDate: '2026-07-30', dueDate: '2026-08-02', total: '', paid: '0', sales: 'Van', notes: '' })
+    setForm(emptyForm)
+    setFileInputKey(current => current + 1)
   }
   const set = key => event => setForm(current => ({ ...current, [key]: event.target.value }))
+  const addAttachments = event => {
+    const files = Array.from(event.target.files || [])
+    if (!files.length) return
+    const attachments = files.map(file => ({
+      id: `${file.name}-${file.size}-${file.lastModified}`,
+      name: file.name,
+      size: file.size,
+      type: file.type || 'Unknown',
+      addedAt: new Date().toISOString(),
+    }))
+    setForm(current => ({ ...current, attachments: [...current.attachments, ...attachments] }))
+  }
+  const removeAttachment = id => setForm(current => ({ ...current, attachments: current.attachments.filter(item => item.id !== id) }))
   return <Modal open={open} onClose={onClose} title="បន្ថែម Debt ថ្មី" size="max-w-3xl">
     <form onSubmit={save} className="grid gap-4 md:grid-cols-2">
       <div><label className="label">អតិថិជន *</label><input className="field" value={form.customer} onChange={set('customer')} placeholder="ឧ. សុខ ដារ៉ា"/></div>
       <div><label className="label">លេខទូរស័ព្ទ</label><input className="field" value={form.phone} onChange={set('phone')} placeholder="ឧ. 012 345 678"/></div>
-      <div><label className="label">ខេត្ត</label><select className="field" value={form.province} onChange={set('province')}><option>ភ្នំពេញ</option><option>កណ្ដាល</option><option>តាកែវ</option><option>កំពង់ចាម</option></select></div>
+      <div><label className="label">ខេត្ត</label><select className="field" value={form.province} onChange={set('province')}><option value="">ជ្រើសរើសខេត្ត</option>{provinceOptions.map(item => <option key={item} value={item}>{item}</option>)}</select></div>
       <div><label className="label">លេខវិក្កយបត្រ *</label><input className="field" value={form.invoice} onChange={set('invoice')} placeholder="INV-2026-00135"/></div>
       <div><label className="label">ថ្ងៃវិក្កយបត្រ *</label><input className="field" type="date" value={form.invoiceDate} onChange={set('invoiceDate')}/></div>
       <div><label className="label">ថ្ងៃត្រូវបង់ *</label><input className="field" type="date" value={form.dueDate} onChange={set('dueDate')}/></div>
@@ -233,6 +251,24 @@ function DebtFormModal({ open, onClose, onSave }) {
       <div><label className="label">Paid Amount</label><input className="field" type="number" min="0" step="0.01" value={form.paid} onChange={set('paid')}/></div>
       <div><label className="label">Assigned Sales</label><select className="field" value={form.sales} onChange={set('sales')}><option>Van</option><option>Phanha</option><option>Pheak</option></select></div>
       <div><label className="label">Risk Level</label><select className="field" defaultValue="Medium"><option>Low</option><option>Medium</option><option>High</option></select></div>
+      <div className="md:col-span-2">
+        <label className="label">Attachment</label>
+        <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-4 text-sm font-bold text-slate-600 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700">
+          <Paperclip size={18}/>
+          <span>ជ្រើសរើស Invoice / រូបភាព / ឯកសារភ្ជាប់</span>
+          <input key={fileInputKey} className="hidden" type="file" multiple onChange={addAttachments}/>
+        </label>
+        {form.attachments.length > 0 && <div className="mt-3 space-y-2">
+          {form.attachments.map(item => <div key={item.id} className="flex items-center justify-between gap-3 rounded-xl border bg-white px-3 py-2 text-sm">
+            <div className="flex min-w-0 items-center gap-2">
+              <Paperclip className="shrink-0 text-blue-600" size={16}/>
+              <span className="truncate font-bold text-slate-700">{item.name}</span>
+              <span className="shrink-0 text-xs text-slate-400">{(item.size / 1024).toFixed(1)} KB</span>
+            </div>
+            <button type="button" className="rounded-lg p-1.5 text-red-600 hover:bg-red-50" onClick={() => removeAttachment(item.id)}><Trash2 size={15}/></button>
+          </div>)}
+        </div>}
+      </div>
       <div className="md:col-span-2"><label className="label">Notes</label><textarea className="field min-h-24" value={form.notes} onChange={set('notes')}/></div>
       <div className="flex justify-end gap-3 border-t pt-4 md:col-span-2"><button type="button" className="btn-secondary" onClick={onClose}>បោះបង់</button><button className="btn-primary"><Plus size={17}/>រក្សាទុក Debt</button></div>
     </form>
@@ -306,6 +342,16 @@ function DebtDetail({ debt, onPay, onPromise, onRefund, onDeleteRefund }) {
         </div>
       </section>
       <section>
+        <h3 className="mb-2 font-bold">ឯកសារភ្ជាប់</h3>
+        <div className="space-y-2">{(debt.attachments || []).length ? debt.attachments.map(item => <div key={item.id || item.name} className="flex items-center gap-3 rounded-xl border p-3 text-sm">
+          <Paperclip className="shrink-0 text-blue-600" size={16}/>
+          <div className="min-w-0">
+            <p className="truncate font-bold">{item.name}</p>
+            <p className="text-xs text-slate-500">{item.type || 'Unknown'} · {Number(item.size || 0) ? `${(Number(item.size) / 1024).toFixed(1)} KB` : 'No size'}</p>
+          </div>
+        </div>) : <p className="rounded-xl border border-dashed p-3 text-sm text-slate-500">មិនទាន់មានឯកសារភ្ជាប់</p>}</div>
+      </section>
+      <section>
         <h3 className="mb-2 font-bold">ប្រវត្តិបង់ប្រាក់</h3>
         <p className="mb-2 text-xs text-slate-500">ទិន្នន័យ sample សម្រាប់ prototype</p>
         <div className="space-y-2">{payments.map(item => <div key={item.receipt} className="rounded-xl border p-3 text-sm"><div className="flex justify-between"><b>{item.receipt}</b><span className="font-bold text-green-600">{fmt(item.amount)}</span></div><p className="mt-1 text-xs text-slate-500">{item.date} · {item.method} · {item.collector}</p></div>)}</div>
@@ -333,9 +379,16 @@ export default function DebtManagementPage() {
   const [reportOpen, setReportOpen] = useState(false)
   const [moreDebt, setMoreDebt] = useState(null)
   const [status, setStatus] = useState('all')
+  const [provinces, setProvinces] = useState([])
   useEffect(() => {
     window.localStorage.setItem(DEBT_STORAGE_KEY, JSON.stringify(rows))
   }, [rows])
+  useEffect(() => {
+    marketLookupService.provinces().then(({ data, error }) => {
+      if (error) return toast.error(error.message)
+      setProvinces(data || [])
+    })
+  }, [])
   const filtered = useMemo(() => rows.filter(item => status === 'all' || item.debtStatus === status), [rows, status])
   const totalOutstanding = rows.filter(item => item.debtStatus !== 'Fully Paid').reduce((sum, item) => sum + item.remaining, 0)
   const overdue = rows.filter(item => item.debtStatus === 'Overdue').reduce((sum, item) => sum + item.remaining, 0)
@@ -363,6 +416,7 @@ export default function DebtManagementPage() {
       debtStatus: debtStatusFor(remaining, form.dueDate),
       risk: remaining > 500 ? 'High' : remaining > 0 ? 'Medium' : 'Low',
       lastFollowUp: form.notes || 'Debt ថ្មី មិនទាន់មាន follow up',
+      attachments: form.attachments || [],
     }
     setRows(current => [debt, ...current])
     setSelected(debt)
@@ -539,7 +593,7 @@ export default function DebtManagementPage() {
       </div>
     </section>
 
-    <DebtFormModal open={formOpen} onClose={() => setFormOpen(false)} onSave={saveDebt}/>
+    <DebtFormModal open={formOpen} onClose={() => setFormOpen(false)} onSave={saveDebt} provinces={provinces}/>
     <ReportModal open={reportOpen} onClose={() => setReportOpen(false)} rows={filtered}/>
     <MoreActionsModal debt={moreDebt} onClose={() => setMoreDebt(null)} onPay={setPaymentDebt} onPromise={setPromiseDebt} onRefund={setRefundDebt}/>
     <PaymentModal debt={paymentDebt} onClose={() => setPaymentDebt(null)} onSave={savePayment}/>
