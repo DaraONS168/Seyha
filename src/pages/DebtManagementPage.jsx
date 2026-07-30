@@ -3,6 +3,7 @@ import { AlertTriangle, Banknote, BellRing, CalendarClock, CheckCircle2, Downloa
 import { toast } from 'sonner'
 import Modal from '../components/common/Modal'
 import { marketLookupService } from '../services/marketLookupService'
+import { marketService } from '../services/marketService'
 
 const initialDebts = [
   { id: 'DEBT-2026-0001', customer: 'សុខ ដារ៉ា', phone: '012 345 678', province: 'ភ្នំពេញ', invoice: 'INV-2026-00125', invoiceDate: '2026-07-12', dueDate: '2026-07-22', total: 1250, paid: 850, remaining: 400, sales: 'Van', method: 'ABA', paymentStatus: 'Partially Paid', debtStatus: 'Overdue', risk: 'High', lastFollowUp: 'បានសន្យាបង់ថ្ងៃ 25/07/2026' },
@@ -209,15 +210,18 @@ function PromiseModal({ debt, onClose, onSave }) {
 }
 
 function DebtFormModal({ open, onClose, onSave, provinces = [] }) {
-  const emptyForm = { customer: '', phone: '', province: 'ភ្នំពេញ', invoice: '', invoiceDate: '2026-07-30', dueDate: '2026-08-02', total: '', paid: '0', sales: 'Van', notes: '', attachments: [] }
+  const emptyForm = { customer: '', phone: '', province: '', province_id: '', district: '', district_id: '', market: '', market_id: '', market_code: '', invoice: '', invoiceDate: '2026-07-30', dueDate: '2026-08-02', total: '', paid: '0', sales: 'Van', notes: '', attachments: [] }
   const [form, setForm] = useState(emptyForm)
+  const [districts, setDistricts] = useState([])
+  const [markets, setMarkets] = useState([])
   const [fileInputKey, setFileInputKey] = useState(0)
-  const provinceOptions = provinces.length ? provinces.map(item => item.name_kh) : ['ភ្នំពេញ', 'កណ្ដាល', 'តាកែវ', 'កំពង់ចាម']
+  const provinceOptions = provinces.length ? provinces : ['ភ្នំពេញ', 'កណ្ដាល', 'តាកែវ', 'កំពង់ចាម'].map((name, index) => ({ id: `fallback-${index}`, name_kh: name }))
   const save = event => {
     event.preventDefault()
     const total = Number(form.total)
     const paid = Number(form.paid || 0)
     if (!form.customer.trim()) return toast.error('សូមបញ្ចូលឈ្មោះអតិថិជន')
+    if (!form.province.trim()) return toast.error('សូមជ្រើសរាជធានី/ខេត្ត')
     if (!form.invoice.trim()) return toast.error('សូមបញ្ចូលលេខវិក្កយបត្រ')
     if (!total || total <= 0) return toast.error('Total Amount ត្រូវធំជាង 0')
     if (paid < 0 || paid > total) return toast.error('Paid Amount មិនត្រឹមត្រូវ')
@@ -226,6 +230,32 @@ function DebtFormModal({ open, onClose, onSave, provinces = [] }) {
     setFileInputKey(current => current + 1)
   }
   const set = key => event => setForm(current => ({ ...current, [key]: event.target.value }))
+  const selectProvince = async event => {
+    const provinceId = event.target.value
+    const province = provinceOptions.find(item => String(item.id) === provinceId)
+    setForm(current => ({ ...current, province_id: provinceId, province: province?.name_kh || '', district_id: '', district: '', market_id: '', market: '', market_code: '' }))
+    setDistricts([])
+    setMarkets([])
+    if (!provinceId || String(provinceId).startsWith('fallback-')) return
+    const { data, error } = await marketLookupService.districts(provinceId)
+    if (error) return toast.error(error.message)
+    setDistricts(data || [])
+  }
+  const selectDistrict = async event => {
+    const districtId = event.target.value
+    const district = districts.find(item => String(item.id) === districtId)
+    setForm(current => ({ ...current, district_id: districtId, district: district?.name_kh || '', market_id: '', market: '', market_code: '' }))
+    setMarkets([])
+    if (!districtId || String(form.province_id).startsWith('fallback-')) return
+    const { data, error } = await marketService.list({ provinceId: form.province_id, districtId, status: 'active', pageSize: 200 })
+    if (error) return toast.error(error.message)
+    setMarkets(data || [])
+  }
+  const selectMarket = event => {
+    const marketId = event.target.value
+    const market = markets.find(item => String(item.id) === marketId)
+    setForm(current => ({ ...current, market_id: marketId, market: market?.name_kh || '', market_code: market?.market_code || '' }))
+  }
   const addAttachments = event => {
     const files = Array.from(event.target.files || [])
     if (!files.length) return
@@ -243,7 +273,9 @@ function DebtFormModal({ open, onClose, onSave, provinces = [] }) {
     <form onSubmit={save} className="grid gap-4 md:grid-cols-2">
       <div><label className="label">អតិថិជន *</label><input className="field" value={form.customer} onChange={set('customer')} placeholder="ឧ. សុខ ដារ៉ា"/></div>
       <div><label className="label">លេខទូរស័ព្ទ</label><input className="field" value={form.phone} onChange={set('phone')} placeholder="ឧ. 012 345 678"/></div>
-      <div><label className="label">ខេត្ត</label><select className="field" value={form.province} onChange={set('province')}><option value="">ជ្រើសរើសខេត្ត</option>{provinceOptions.map(item => <option key={item} value={item}>{item}</option>)}</select></div>
+      <div><label className="label">ខេត្ត *</label><select className="field" value={form.province_id} onChange={selectProvince}><option value="">ជ្រើសរើសខេត្ត</option>{provinceOptions.map(item => <option key={item.id} value={item.id}>{item.name_kh}</option>)}</select></div>
+      <div><label className="label">ស្រុក/ខណ្ឌ</label><select className="field" disabled={!form.province_id || districts.length === 0} value={form.district_id} onChange={selectDistrict}><option value="">{form.province_id ? 'ជ្រើសរើសស្រុក/ខណ្ឌ' : 'ជ្រើសខេត្តជាមុន'}</option>{districts.map(item => <option key={item.id} value={item.id}>{item.name_kh}</option>)}</select></div>
+      <div><label className="label">ផ្សារ</label><select className="field" disabled={!form.district_id || markets.length === 0} value={form.market_id} onChange={selectMarket}><option value="">{form.district_id ? 'ជ្រើសរើសផ្សារ' : 'ជ្រើសស្រុក/ខណ្ឌជាមុន'}</option>{markets.map(item => <option key={item.id} value={item.id}>{item.name_kh} · {item.market_code}</option>)}</select></div>
       <div><label className="label">លេខវិក្កយបត្រ *</label><input className="field" value={form.invoice} onChange={set('invoice')} placeholder="INV-2026-00135"/></div>
       <div><label className="label">ថ្ងៃវិក្កយបត្រ *</label><input className="field" type="date" value={form.invoiceDate} onChange={set('invoiceDate')}/></div>
       <div><label className="label">ថ្ងៃត្រូវបង់ *</label><input className="field" type="date" value={form.dueDate} onChange={set('dueDate')}/></div>
@@ -336,6 +368,8 @@ function DebtDetail({ debt, onPay, onPromise, onRefund, onDeleteRefund }) {
         <h3 className="mb-2 font-bold">ព័ត៌មានវិក្កយបត្រ</h3>
         <div className="grid gap-2 text-sm">
           <p className="flex justify-between"><span className="text-slate-500">លេខវិក្កយបត្រ</span><b>{debt.invoice}</b></p>
+          <p className="flex justify-between"><span className="text-slate-500">ទីតាំង</span><b>{[debt.province, debt.district].filter(Boolean).join(' / ') || '-'}</b></p>
+          <p className="flex justify-between"><span className="text-slate-500">ផ្សារ</span><b>{debt.market ? `${debt.market}${debt.market_code ? ` · ${debt.market_code}` : ''}` : '-'}</b></p>
           <p className="flex justify-between"><span className="text-slate-500">ថ្ងៃវិក្កយបត្រ</span><b>{debt.invoiceDate}</b></p>
           <p className="flex justify-between"><span className="text-slate-500">ថ្ងៃត្រូវបង់</span><b>{debt.dueDate}</b></p>
           <p className="flex justify-between"><span className="text-slate-500">ថ្ងៃនៅសល់/ហួស</span><b className={days < 0 ? 'text-red-600' : 'text-slate-900'}>{days < 0 ? `${Math.abs(days)} days overdue` : `${days} days left`}</b></p>
@@ -403,6 +437,12 @@ export default function DebtManagementPage() {
       customer: form.customer,
       phone: form.phone || 'មិនមានលេខ',
       province: form.province,
+      province_id: form.province_id,
+      district: form.district,
+      district_id: form.district_id,
+      market: form.market,
+      market_id: form.market_id,
+      market_code: form.market_code,
       invoice: form.invoice,
       invoiceDate: form.invoiceDate,
       dueDate: form.dueDate,
