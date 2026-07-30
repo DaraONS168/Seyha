@@ -34,6 +34,7 @@ const debtStatusFor = (remaining, dueDate) => {
   return 'Active'
 }
 const extractMoney = value => Number(String(value || '').match(/\$?([\d,.]+)/)?.[1]?.replaceAll(',', '') || 0)
+const grossTotalFor = debt => Number(debt.total || 0) + Number(debt.refunded || 0)
 const normalizeDebt = debt => {
   const total = Number(debt.total || 0)
   const paid = Number(debt.paid || 0)
@@ -66,10 +67,10 @@ const loadStoredDebts = () => {
   }
 }
 const downloadCsv = rows => {
-  const headers = ['Debt ID', 'Customer', 'Phone', 'Invoice', 'Due Date', 'Total', 'Paid', 'Refunded', 'Latest Credit Note', 'Refund Reason', 'Refund Approval', 'Remaining', 'Sales', 'Debt Status']
+  const headers = ['Debt ID', 'Customer', 'Phone', 'Invoice', 'Due Date', 'Gross Sales', 'Net Total', 'Paid', 'Refunded', 'Latest Credit Note', 'Refund Reason', 'Refund Approval', 'Remaining', 'Sales', 'Debt Status']
   const lines = rows.map(row => {
     const refund = row.refundHistory?.[0] || {}
-    return [row.id, row.customer, row.phone, row.invoice, row.dueDate, row.total, row.paid, row.refunded || 0, refund.creditNote || '', refund.reason || '', refund.approvalStatus || '', row.remaining, row.sales, row.debtStatus]
+    return [row.id, row.customer, row.phone, row.invoice, row.dueDate, grossTotalFor(row), row.total, row.paid, row.refunded || 0, refund.creditNote || '', refund.reason || '', refund.approvalStatus || '', row.remaining, row.sales, row.debtStatus]
   })
   const csv = [headers, ...lines].map(line => line.map(value => `"${String(value).replaceAll('"', '""')}"`).join(',')).join('\n')
   const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8;' }))
@@ -240,14 +241,15 @@ function DebtFormModal({ open, onClose, onSave }) {
 
 function ReportModal({ open, onClose, rows }) {
   return <Modal open={open} onClose={onClose} title="របាយការណ៍បំណុលសង្ខេប" size="max-w-4xl">
-    <div className="grid gap-3 md:grid-cols-5">
+    <div className="grid gap-3 md:grid-cols-6">
       <SummaryCard icon={WalletCards} label="Debt Count" value={rows.length} tone="blue"/>
+      <SummaryCard icon={TrendingUp} label="លក់បានសរុប" value={fmt(rows.reduce((sum, item) => sum + grossTotalFor(item), 0))} tone="green"/>
       <SummaryCard icon={ShieldAlert} label="Overdue" value={rows.filter(item => item.debtStatus === 'Overdue').length} tone="red"/>
       <SummaryCard icon={Banknote} label="ប្រាក់នៅសល់" value={fmt(rows.reduce((sum, item) => sum + item.remaining, 0))} tone="amber"/>
       <SummaryCard icon={Undo2} label="សងលុយសរុប" value={fmt(rows.reduce((sum, item) => sum + Number(item.refunded || 0), 0))} tone="red"/>
       <SummaryCard icon={CheckCircle2} label="Fully Paid" value={rows.filter(item => item.debtStatus === 'Fully Paid').length} tone="green"/>
     </div>
-    <div className="mt-5 overflow-hidden rounded-xl border"><table className="w-full"><thead className="bg-slate-50 text-left text-xs text-slate-500"><tr><th className="table-cell">អតិថិជន</th><th className="table-cell">វិក្កយបត្រ</th><th className="table-cell text-right">សរុប</th><th className="table-cell text-right">សងលុយ</th><th className="table-cell text-right">ប្រាក់នៅសល់</th><th className="table-cell">ស្ថានភាព</th></tr></thead><tbody className="divide-y">{rows.map(item => { const refund = item.refundHistory?.[0]; return <tr key={item.id}><td className="table-cell font-bold">{item.customer}</td><td className="table-cell">{item.invoice}</td><td className="table-cell text-right">{fmt(item.total)}</td><td className="table-cell text-right"><p className="font-bold text-red-600">{fmt(item.refunded || 0)}</p>{refund && <p className="text-xs text-slate-500">{refund.creditNote} · {refund.reason}</p>}</td><td className="table-cell text-right font-bold">{fmt(item.remaining)}</td><td className="table-cell"><StatusBadge status={refund?.approvalStatus || item.debtStatus}/></td></tr> })}</tbody></table></div>
+    <div className="mt-5 overflow-hidden rounded-xl border"><table className="w-full"><thead className="bg-slate-50 text-left text-xs text-slate-500"><tr><th className="table-cell">អតិថិជន</th><th className="table-cell">វិក្កយបត្រ</th><th className="table-cell text-right">លក់បាន</th><th className="table-cell text-right">សរុបបន្ទាប់ដក</th><th className="table-cell text-right">សងលុយ</th><th className="table-cell text-right">ប្រាក់នៅសល់</th><th className="table-cell">ស្ថានភាព</th></tr></thead><tbody className="divide-y">{rows.map(item => { const refund = item.refundHistory?.[0]; return <tr key={item.id}><td className="table-cell font-bold">{item.customer}</td><td className="table-cell">{item.invoice}</td><td className="table-cell text-right font-bold">{fmt(grossTotalFor(item))}</td><td className="table-cell text-right">{fmt(item.total)}</td><td className="table-cell text-right"><p className="font-bold text-red-600">{fmt(item.refunded || 0)}</p>{refund && <p className="text-xs text-slate-500">{refund.creditNote} · {refund.reason}</p>}</td><td className="table-cell text-right font-bold">{fmt(item.remaining)}</td><td className="table-cell"><StatusBadge status={refund?.approvalStatus || item.debtStatus}/></td></tr> })}</tbody></table></div>
     <div className="mt-5 flex justify-end gap-3 border-t pt-4"><button className="btn-secondary" onClick={onClose}>បិទ</button><button className="btn-primary" onClick={() => downloadCsv(rows)}><Download size={17}/>Download CSV</button></div>
   </Modal>
 }
@@ -277,8 +279,9 @@ function DebtDetail({ debt, onPay, onPromise, onRefund, onDeleteRefund }) {
         </div>
         <StatusBadge status={debt.debtStatus}/>
       </div>
-      <div className="mt-4 grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
-        <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Total</p><p className="font-extrabold">{fmt(debt.total)}</p></div>
+      <div className="mt-4 grid grid-cols-2 gap-2 text-center sm:grid-cols-5">
+        <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Sales</p><p className="font-extrabold">{fmt(grossTotalFor(debt))}</p></div>
+        <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Net</p><p className="font-extrabold">{fmt(debt.total)}</p></div>
         <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Paid</p><p className="font-extrabold text-green-600">{fmt(debt.paid)}</p></div>
         <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Refund</p><p className="font-extrabold text-red-600">{fmt(debt.refunded || 0)}</p></div>
         <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Balance</p><p className="font-extrabold text-red-600">{fmt(debt.remaining)}</p></div>
@@ -338,6 +341,7 @@ export default function DebtManagementPage() {
   const dueToday = rows.filter(item => item.debtStatus === 'Due Today').reduce((sum, item) => sum + item.remaining, 0)
   const collected = rows.reduce((sum, item) => sum + item.paid, 0)
   const refunded = rows.reduce((sum, item) => sum + Number(item.refunded || 0), 0)
+  const grossSales = rows.reduce((sum, item) => sum + grossTotalFor(item), 0)
   const saveDebt = form => {
     const remaining = form.total - form.paid
     const debt = {
@@ -450,7 +454,8 @@ export default function DebtManagementPage() {
       </div>
     </div>
 
-    <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+    <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-6">
+      <SummaryCard icon={TrendingUp} label="លក់បានសរុប" value={fmt(grossSales)} helper="មុនដក refund" tone="green"/>
       <SummaryCard icon={WalletCards} label="ប្រាក់នៅសល់សរុប" value={fmt(totalOutstanding)} helper="មិនរាប់បង់រួច" tone="blue"/>
       <SummaryCard icon={ShieldAlert} label="បំណុលហួសថ្ងៃ" value={fmt(overdue)} helper="ត្រូវ follow up បន្ទាន់" tone="red"/>
       <SummaryCard icon={CalendarClock} label="ត្រូវបង់ថ្ងៃនេះ" value={fmt(dueToday)} helper="ត្រូវទារថ្ងៃនេះ" tone="amber"/>
@@ -475,15 +480,16 @@ export default function DebtManagementPage() {
           <button className="btn-secondary" onClick={() => setReportOpen(true)}><FileSpreadsheet size={17}/>របាយការណ៍</button>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[1080px]">
+          <table className="w-full min-w-[1180px]">
             <thead className="bg-slate-50 text-left text-xs font-bold uppercase text-slate-500">
-              <tr><th className="table-cell">អតិថិជន</th><th className="table-cell">វិក្កយបត្រ</th><th className="table-cell">ថ្ងៃត្រូវបង់</th><th className="table-cell text-right">សរុប</th><th className="table-cell text-right">បានបង់</th><th className="table-cell text-right">សងលុយ</th><th className="table-cell text-right">នៅសល់</th><th className="table-cell">ស្ថានភាព</th><th className="table-cell">ហានិភ័យ</th><th className="table-cell text-right">សកម្មភាព</th></tr>
+              <tr><th className="table-cell">អតិថិជន</th><th className="table-cell">វិក្កយបត្រ</th><th className="table-cell">ថ្ងៃត្រូវបង់</th><th className="table-cell text-right">លក់បាន</th><th className="table-cell text-right">សរុបបន្ទាប់ដក</th><th className="table-cell text-right">បានបង់</th><th className="table-cell text-right">សងលុយ</th><th className="table-cell text-right">នៅសល់</th><th className="table-cell">ស្ថានភាព</th><th className="table-cell">ហានិភ័យ</th><th className="table-cell text-right">សកម្មភាព</th></tr>
             </thead>
             <tbody className="divide-y">
               {filtered.map(item => <tr key={item.id} onClick={() => setSelected(item)} className={`cursor-pointer hover:bg-blue-50/40 ${selected?.id === item.id ? 'bg-blue-50' : ''}`}>
                 <td className="table-cell"><p className="font-bold">{item.customer}</p><p className="text-xs text-slate-500">{item.phone} · {item.sales}</p></td>
                 <td className="table-cell"><p className="font-bold text-blue-700">{item.invoice}</p><p className="text-xs text-slate-500">{item.invoiceDate}</p></td>
                 <td className="table-cell"><p className="font-bold">{item.dueDate}</p><p className="text-xs text-slate-500">{item.lastFollowUp}</p></td>
+                <td className="table-cell text-right font-bold">{fmt(grossTotalFor(item))}</td>
                 <td className="table-cell text-right font-bold">{fmt(item.total)}</td>
                 <td className="table-cell text-right font-bold text-green-600">{fmt(item.paid)}</td>
                 <td className="table-cell text-right font-bold text-red-600">{fmt(item.refunded || 0)}</td>
