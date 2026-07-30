@@ -33,11 +33,30 @@ const debtStatusFor = (remaining, dueDate) => {
   if (days <= 3) return 'Due Soon'
   return 'Active'
 }
+const extractMoney = value => Number(String(value || '').match(/\$?([\d,.]+)/)?.[1]?.replaceAll(',', '') || 0)
+const normalizeDebt = debt => {
+  const total = Number(debt.total || 0)
+  const paid = Number(debt.paid || 0)
+  const expectedRemaining = Math.max(0, total - paid)
+  if (!String(debt.lastFollowUp || '').includes('សងលុយ') || Number(debt.remaining || 0) <= expectedRemaining) return debt
+  const refundAmount = extractMoney(debt.lastFollowUp)
+  const updatedTotal = Math.max(0, total - refundAmount)
+  const updatedPaid = Math.min(paid, updatedTotal)
+  const updatedRemaining = Math.max(0, updatedTotal - updatedPaid)
+  return {
+    ...debt,
+    total: updatedTotal,
+    paid: updatedPaid,
+    remaining: updatedRemaining,
+    paymentStatus: paymentStatusFor(updatedPaid, updatedRemaining),
+    debtStatus: debtStatusFor(updatedRemaining, debt.dueDate),
+  }
+}
 const loadStoredDebts = () => {
   try {
     const stored = window.localStorage.getItem(DEBT_STORAGE_KEY)
     const parsed = stored ? JSON.parse(stored) : null
-    return Array.isArray(parsed) ? parsed : initialDebts
+    return Array.isArray(parsed) ? parsed.map(normalizeDebt) : initialDebts
   } catch {
     return initialDebts
   }
@@ -144,7 +163,7 @@ function RefundModal({ debt, onClose, onSave }) {
       <div><label className="label">អ្នកធ្វើប្រតិបត្តិការ *</label><select className="field" defaultValue={debt?.sales}><option>Van</option><option>Phanha</option><option>Pheak</option></select></div>
       <div className="md:col-span-3"><label className="label">ភ្ជាប់បង្កាន់ដៃសងលុយ</label><input className="field" type="file"/></div>
       <div className="md:col-span-3"><label className="label">មូលហេតុ / កំណត់សម្គាល់</label><textarea className="field min-h-24" placeholder="ឧ. អតិថិជនប្តូរឥវ៉ាន់វិញ / កែតម្លៃ / បង់លើស..."/></div>
-      <div className="rounded-xl bg-red-50 p-4 text-sm font-bold text-red-700 md:col-span-3">ពេលរក្សាទុក៖ កត់ត្រា Cash Out, កាត់ Paid Amount បើមាន និងបង្កើន Balance សម្រាប់ audit។</div>
+      <div className="rounded-xl bg-red-50 p-4 text-sm font-bold text-red-700 md:col-span-3">ពេលរក្សាទុក៖ កត់ត្រា Cash Out/Credit Note, ដកចេញពី Total និង Balance សម្រាប់ audit។</div>
       <div className="mt-1 flex justify-end gap-3 border-t pt-4 md:col-span-3"><button type="button" className="btn-secondary" onClick={onClose}>បោះបង់</button><button className="btn-primary bg-red-600 hover:bg-red-700"><Undo2 size={17}/>រក្សាទុកការសងលុយ</button></div>
     </form>
   </Modal>
@@ -325,10 +344,10 @@ export default function DebtManagementPage() {
     toast.success('បានកាត់ប្រាក់ និង update balance ក្នុង prototype')
   }
   const saveRefund = (debt, amount) => {
-    const updatedPaid = Math.max(0, Number(debt.paid) - amount)
-    const refundOverflow = Math.max(0, amount - Number(debt.paid))
-    const updatedRemaining = Math.max(0, Number(debt.total) - updatedPaid + refundOverflow)
-    const next = { ...debt, paid: updatedPaid, remaining: updatedRemaining, paymentStatus: paymentStatusFor(updatedPaid, updatedRemaining), debtStatus: debtStatusFor(updatedRemaining, debt.dueDate), lastFollowUp: `បានសងលុយទៅអតិថិជន ${fmt(amount)}` }
+    const updatedTotal = Math.max(0, Number(debt.total) - amount)
+    const updatedPaid = Math.min(Number(debt.paid), updatedTotal)
+    const updatedRemaining = Math.max(0, updatedTotal - updatedPaid)
+    const next = { ...debt, total: updatedTotal, paid: updatedPaid, remaining: updatedRemaining, paymentStatus: paymentStatusFor(updatedPaid, updatedRemaining), debtStatus: debtStatusFor(updatedRemaining, debt.dueDate), lastFollowUp: `បានដក/សងលុយទៅអតិថិជន ${fmt(amount)}` }
     setRows(current => current.map(item => item.id === debt.id ? next : item))
     setSelected(next)
     setRefundDebt(null)
