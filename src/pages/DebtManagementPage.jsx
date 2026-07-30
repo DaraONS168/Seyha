@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react'
-import { AlertTriangle, Banknote, BellRing, CalendarClock, CheckCircle2, Download, Eye, FileSpreadsheet, History, MessageCircle, MoreHorizontal, PhoneCall, Plus, Printer, ReceiptText, Search, Send, ShieldAlert, TrendingUp, WalletCards, XCircle } from 'lucide-react'
+import { useEffect, useMemo, useState } from 'react'
+import { AlertTriangle, Banknote, BellRing, CalendarClock, CheckCircle2, Download, Eye, FileSpreadsheet, History, MessageCircle, MoreHorizontal, PhoneCall, Plus, Printer, ReceiptText, Search, Send, ShieldAlert, Trash2, TrendingUp, WalletCards, XCircle } from 'lucide-react'
 import { toast } from 'sonner'
 import Modal from '../components/common/Modal'
 
@@ -9,6 +9,8 @@ const initialDebts = [
   { id: 'DEBT-2026-0003', customer: 'ហេង វិសាល', phone: '011 222 333', province: 'តាកែវ', invoice: 'INV-2026-00131', invoiceDate: '2026-07-25', dueDate: '2026-08-02', total: 420, paid: 120, remaining: 300, sales: 'Van', method: 'Bank Transfer', paymentStatus: 'Partially Paid', debtStatus: 'Due Soon', risk: 'Low', lastFollowUp: 'សន្យាបង់នៅដើមខែ' },
   { id: 'DEBT-2026-0004', customer: 'លី សុភ័ក្រ', phone: '010 900 111', province: 'កំពង់ចាម', invoice: 'INV-2026-00134', invoiceDate: '2026-07-08', dueDate: '2026-07-20', total: 950, paid: 950, remaining: 0, sales: 'Pheak', method: 'Wing', paymentStatus: 'Paid', debtStatus: 'Fully Paid', risk: 'Low', lastFollowUp: 'បង់រួចរាល់' },
 ]
+
+const DEBT_STORAGE_KEY = 'seyha_debt_management_rows'
 
 const payments = [
   { receipt: 'RCPT-2026-00041', date: '2026-07-14', amount: 500, method: 'ABA', collector: 'Van' },
@@ -30,6 +32,15 @@ const debtStatusFor = (remaining, dueDate) => {
   if (days === 0) return 'Due Today'
   if (days <= 3) return 'Due Soon'
   return 'Active'
+}
+const loadStoredDebts = () => {
+  try {
+    const stored = window.localStorage.getItem(DEBT_STORAGE_KEY)
+    const parsed = stored ? JSON.parse(stored) : null
+    return Array.isArray(parsed) ? parsed : initialDebts
+  } catch {
+    return initialDebts
+  }
 }
 const downloadCsv = rows => {
   const headers = ['Debt ID', 'Customer', 'Phone', 'Invoice', 'Due Date', 'Total', 'Paid', 'Remaining', 'Sales', 'Debt Status']
@@ -135,7 +146,7 @@ function DebtFormModal({ open, onClose, onSave }) {
     const total = Number(form.total)
     const paid = Number(form.paid || 0)
     if (!form.customer.trim()) return toast.error('សូមបញ្ចូលឈ្មោះអតិថិជន')
-    if (!form.invoice.trim()) return toast.error('សូមបញ្ចូលលេខ Invoice')
+    if (!form.invoice.trim()) return toast.error('សូមបញ្ចូលលេខវិក្កយបត្រ')
     if (!total || total <= 0) return toast.error('Total Amount ត្រូវធំជាង 0')
     if (paid < 0 || paid > total) return toast.error('Paid Amount មិនត្រឹមត្រូវ')
     onSave({ ...form, total, paid })
@@ -147,8 +158,8 @@ function DebtFormModal({ open, onClose, onSave }) {
       <div><label className="label">អតិថិជន *</label><input className="field" value={form.customer} onChange={set('customer')} placeholder="ឧ. សុខ ដារ៉ា"/></div>
       <div><label className="label">លេខទូរស័ព្ទ</label><input className="field" value={form.phone} onChange={set('phone')} placeholder="ឧ. 012 345 678"/></div>
       <div><label className="label">ខេត្ត</label><select className="field" value={form.province} onChange={set('province')}><option>ភ្នំពេញ</option><option>កណ្ដាល</option><option>តាកែវ</option><option>កំពង់ចាម</option></select></div>
-      <div><label className="label">លេខ Invoice *</label><input className="field" value={form.invoice} onChange={set('invoice')} placeholder="INV-2026-00135"/></div>
-      <div><label className="label">ថ្ងៃ Invoice *</label><input className="field" type="date" value={form.invoiceDate} onChange={set('invoiceDate')}/></div>
+      <div><label className="label">លេខវិក្កយបត្រ *</label><input className="field" value={form.invoice} onChange={set('invoice')} placeholder="INV-2026-00135"/></div>
+      <div><label className="label">ថ្ងៃវិក្កយបត្រ *</label><input className="field" type="date" value={form.invoiceDate} onChange={set('invoiceDate')}/></div>
       <div><label className="label">ថ្ងៃត្រូវបង់ *</label><input className="field" type="date" value={form.dueDate} onChange={set('dueDate')}/></div>
       <div><label className="label">Total Amount *</label><input className="field" type="number" min="0.01" step="0.01" value={form.total} onChange={set('total')}/></div>
       <div><label className="label">Paid Amount</label><input className="field" type="number" min="0" step="0.01" value={form.paid} onChange={set('paid')}/></div>
@@ -165,10 +176,10 @@ function ReportModal({ open, onClose, rows }) {
     <div className="grid gap-3 md:grid-cols-4">
       <SummaryCard icon={WalletCards} label="Debt Count" value={rows.length} tone="blue"/>
       <SummaryCard icon={ShieldAlert} label="Overdue" value={rows.filter(item => item.debtStatus === 'Overdue').length} tone="red"/>
-      <SummaryCard icon={Banknote} label="Outstanding" value={fmt(rows.reduce((sum, item) => sum + item.remaining, 0))} tone="amber"/>
+      <SummaryCard icon={Banknote} label="ប្រាក់នៅសល់" value={fmt(rows.reduce((sum, item) => sum + item.remaining, 0))} tone="amber"/>
       <SummaryCard icon={CheckCircle2} label="Fully Paid" value={rows.filter(item => item.debtStatus === 'Fully Paid').length} tone="green"/>
     </div>
-    <div className="mt-5 overflow-hidden rounded-xl border"><table className="w-full"><thead className="bg-slate-50 text-left text-xs text-slate-500"><tr><th className="table-cell">Customer</th><th className="table-cell">Invoice</th><th className="table-cell text-right">Balance</th><th className="table-cell">Status</th></tr></thead><tbody className="divide-y">{rows.map(item => <tr key={item.id}><td className="table-cell font-bold">{item.customer}</td><td className="table-cell">{item.invoice}</td><td className="table-cell text-right font-bold">{fmt(item.remaining)}</td><td className="table-cell"><StatusBadge status={item.debtStatus}/></td></tr>)}</tbody></table></div>
+    <div className="mt-5 overflow-hidden rounded-xl border"><table className="w-full"><thead className="bg-slate-50 text-left text-xs text-slate-500"><tr><th className="table-cell">អតិថិជន</th><th className="table-cell">វិក្កយបត្រ</th><th className="table-cell text-right">ប្រាក់នៅសល់</th><th className="table-cell">ស្ថានភាព</th></tr></thead><tbody className="divide-y">{rows.map(item => <tr key={item.id}><td className="table-cell font-bold">{item.customer}</td><td className="table-cell">{item.invoice}</td><td className="table-cell text-right font-bold">{fmt(item.remaining)}</td><td className="table-cell"><StatusBadge status={item.debtStatus}/></td></tr>)}</tbody></table></div>
     <div className="mt-5 flex justify-end gap-3 border-t pt-4"><button className="btn-secondary" onClick={onClose}>បិទ</button><button className="btn-primary" onClick={() => downloadCsv(rows)}><Download size={17}/>Download CSV</button></div>
   </Modal>
 }
@@ -176,16 +187,16 @@ function ReportModal({ open, onClose, rows }) {
 function MoreActionsModal({ debt, onClose, onPay, onPromise }) {
   return <Modal open={Boolean(debt)} onClose={onClose} title="សកម្មភាពបន្ថែម" size="max-w-md">
     <div className="space-y-2">
-      <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-green-50" onClick={() => { onClose(); onPay(debt) }}><Banknote className="text-green-600" size={18}/>Record Payment</button>
-      <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-amber-50" onClick={() => { onClose(); onPromise(debt) }}><BellRing className="text-amber-600" size={18}/>Promise to Pay</button>
-      <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-blue-50" onClick={() => toast.info(`កំពុងរៀបចំ Statement សម្រាប់ ${debt?.customer}`)}><Printer className="text-blue-600" size={18}/>Print Statement</button>
-      <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-red-50" onClick={() => toast.warning('Write Off ត្រូវការ Admin approval និង reason') }><ShieldAlert className="text-red-600" size={18}/>Write Off</button>
+      <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-green-50" onClick={() => { onClose(); onPay(debt) }}><Banknote className="text-green-600" size={18}/>កត់ត្រាការបង់ប្រាក់</button>
+      <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-amber-50" onClick={() => { onClose(); onPromise(debt) }}><BellRing className="text-amber-600" size={18}/>សន្យាបង់ប្រាក់</button>
+      <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-blue-50" onClick={() => toast.info(`កំពុងរៀបចំ Statement សម្រាប់ ${debt?.customer}`)}><Printer className="text-blue-600" size={18}/>បោះពុម្ព Statement</button>
+      <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-red-50" onClick={() => toast.warning('ការកាត់ចោលបំណុលត្រូវការ Admin approval និង reason') }><ShieldAlert className="text-red-600" size={18}/>កាត់ចោលបំណុល</button>
     </div>
   </Modal>
 }
 
 function DebtDetail({ debt, onPay, onPromise }) {
-  if (!debt) return <aside className="card p-5 text-center text-sm text-slate-500">ជ្រើស debt មួយ ដើម្បីមើល Detail, Payment History និង Follow Up Timeline។</aside>
+  if (!debt) return <aside className="card p-5 text-center text-sm text-slate-500">ជ្រើសបំណុលមួយ ដើម្បីមើលព័ត៌មានលម្អិត ប្រវត្តិបង់ប្រាក់ និង Follow Up Timeline។</aside>
   const days = daysBetween(debt.dueDate)
   return <aside className="card overflow-hidden">
     <div className="border-b bg-slate-50 p-5">
@@ -207,24 +218,24 @@ function DebtDetail({ debt, onPay, onPromise }) {
       <div className="grid gap-3 sm:grid-cols-2">
         <button className="btn-primary" onClick={() => onPay(debt)}><Banknote size={17}/>កត់ត្រាការបង់ប្រាក់</button>
         <button className="btn-secondary" onClick={() => onPromise(debt)}><BellRing size={17}/>សន្យាបង់ប្រាក់</button>
-        <a className="btn-secondary" href={`tel:${debt.phone.replaceAll(' ', '')}`}><PhoneCall size={17}/>Call Customer</a>
-        <button className="btn-secondary" onClick={() => window.print()}><Printer size={17}/>Print Statement</button>
+        <a className="btn-secondary" href={`tel:${debt.phone.replaceAll(' ', '')}`}><PhoneCall size={17}/>ហៅអតិថិជន</a>
+        <button className="btn-secondary" onClick={() => window.print()}><Printer size={17}/>បោះពុម្ព Statement</button>
       </div>
       <section>
-        <h3 className="mb-2 font-bold">ព័ត៌មាន Invoice</h3>
+        <h3 className="mb-2 font-bold">ព័ត៌មានវិក្កយបត្រ</h3>
         <div className="grid gap-2 text-sm">
-          <p className="flex justify-between"><span className="text-slate-500">Invoice</span><b>{debt.invoice}</b></p>
-          <p className="flex justify-between"><span className="text-slate-500">ថ្ងៃ Invoice</span><b>{debt.invoiceDate}</b></p>
+          <p className="flex justify-between"><span className="text-slate-500">លេខវិក្កយបត្រ</span><b>{debt.invoice}</b></p>
+          <p className="flex justify-between"><span className="text-slate-500">ថ្ងៃវិក្កយបត្រ</span><b>{debt.invoiceDate}</b></p>
           <p className="flex justify-between"><span className="text-slate-500">ថ្ងៃត្រូវបង់</span><b>{debt.dueDate}</b></p>
           <p className="flex justify-between"><span className="text-slate-500">ថ្ងៃនៅសល់/ហួស</span><b className={days < 0 ? 'text-red-600' : 'text-slate-900'}>{days < 0 ? `${Math.abs(days)} days overdue` : `${days} days left`}</b></p>
         </div>
       </section>
       <section>
-        <h3 className="mb-2 font-bold">Payment History</h3>
+        <h3 className="mb-2 font-bold">ប្រវត្តិបង់ប្រាក់</h3>
         <div className="space-y-2">{payments.map(item => <div key={item.receipt} className="rounded-xl border p-3 text-sm"><div className="flex justify-between"><b>{item.receipt}</b><span className="font-bold text-green-600">{fmt(item.amount)}</span></div><p className="mt-1 text-xs text-slate-500">{item.date} · {item.method} · {item.collector}</p></div>)}</div>
       </section>
       <section>
-        <h3 className="mb-2 font-bold">Promise History</h3>
+        <h3 className="mb-2 font-bold">ប្រវត្តិសន្យាបង់ប្រាក់</h3>
         <div className="space-y-2">{promises.map(item => <div key={item.date} className="rounded-xl border p-3 text-sm"><div className="flex justify-between"><b>{item.date}</b><StatusBadge status={item.status}/></div><p className="mt-1 text-xs text-slate-500">{fmt(item.amount)} · {item.note}</p></div>)}</div>
       </section>
     </div>
@@ -232,14 +243,17 @@ function DebtDetail({ debt, onPay, onPromise }) {
 }
 
 export default function DebtManagementPage() {
-  const [rows, setRows] = useState(initialDebts)
-  const [selected, setSelected] = useState(initialDebts[0])
+  const [rows, setRows] = useState(loadStoredDebts)
+  const [selected, setSelected] = useState(() => rows[0] || null)
   const [paymentDebt, setPaymentDebt] = useState(null)
   const [promiseDebt, setPromiseDebt] = useState(null)
   const [formOpen, setFormOpen] = useState(false)
   const [reportOpen, setReportOpen] = useState(false)
   const [moreDebt, setMoreDebt] = useState(null)
   const [status, setStatus] = useState('all')
+  useEffect(() => {
+    window.localStorage.setItem(DEBT_STORAGE_KEY, JSON.stringify(rows))
+  }, [rows])
   const filtered = useMemo(() => rows.filter(item => status === 'all' || item.debtStatus === status), [rows, status])
   const totalOutstanding = rows.filter(item => item.debtStatus !== 'Fully Paid').reduce((sum, item) => sum + item.remaining, 0)
   const overdue = rows.filter(item => item.debtStatus === 'Overdue').reduce((sum, item) => sum + item.remaining, 0)
@@ -283,6 +297,15 @@ export default function DebtManagementPage() {
     setPromiseDebt(null)
     toast.success(`បានកត់ត្រាសន្យាបង់ប្រាក់សម្រាប់ ${debt.customer}`)
   }
+  const deleteDebt = debt => {
+    if (!window.confirm(`តើអ្នកចង់លុបបំណុល ${debt.invoice} របស់ ${debt.customer} មែនទេ?`)) return
+    setRows(current => {
+      const nextRows = current.filter(item => item.id !== debt.id)
+      setSelected(currentSelected => currentSelected?.id === debt.id ? nextRows[0] || null : currentSelected)
+      return nextRows
+    })
+    toast.success('បានលុបបំណុលចេញពីបញ្ជី')
+  }
   const callSelected = () => {
     if (!selected) return toast.error('សូមជ្រើស Debt មួយសិន')
     window.location.href = `tel:${selected.phone.replaceAll(' ', '')}`
@@ -291,9 +314,9 @@ export default function DebtManagementPage() {
   return <div className="space-y-5">
     <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
       <div>
-        <p className="text-sm font-bold text-blue-600">Debt Management</p>
+        <p className="text-sm font-bold text-blue-600">គ្រប់គ្រងបំណុល</p>
         <h1 className="text-3xl font-extrabold tracking-tight text-slate-950">គ្រប់គ្រងបំណុលអតិថិជន</h1>
-        <p className="mt-1 text-sm text-slate-500">តាមដានបំណុល, ការបង់ប្រាក់, Reminder, Promise to Pay និង Cash Flow</p>
+        <p className="mt-1 text-sm text-slate-500">តាមដានបំណុល, ការបង់ប្រាក់, រំលឹកបំណុល, សន្យាបង់ប្រាក់ និង Cash Flow</p>
       </div>
       <div className="flex flex-wrap gap-2">
         <button className="btn-secondary" onClick={() => downloadCsv(filtered)}><Download size={17}/>Export</button>
@@ -303,15 +326,15 @@ export default function DebtManagementPage() {
     </div>
 
     <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-      <SummaryCard icon={WalletCards} label="Outstanding សរុប" value={fmt(totalOutstanding)} helper="មិនរាប់ Fully Paid" tone="blue"/>
-      <SummaryCard icon={ShieldAlert} label="Overdue Amount" value={fmt(overdue)} helper="ត្រូវ follow up បន្ទាន់" tone="red"/>
-      <SummaryCard icon={CalendarClock} label="Due Today" value={fmt(dueToday)} helper="ត្រូវទារថ្ងៃនេះ" tone="amber"/>
-      <SummaryCard icon={TrendingUp} label="Collected សរុប" value={fmt(collected)} helper="ពី payment history" tone="green"/>
+      <SummaryCard icon={WalletCards} label="ប្រាក់នៅសល់សរុប" value={fmt(totalOutstanding)} helper="មិនរាប់បង់រួច" tone="blue"/>
+      <SummaryCard icon={ShieldAlert} label="បំណុលហួសថ្ងៃ" value={fmt(overdue)} helper="ត្រូវ follow up បន្ទាន់" tone="red"/>
+      <SummaryCard icon={CalendarClock} label="ត្រូវបង់ថ្ងៃនេះ" value={fmt(dueToday)} helper="ត្រូវទារថ្ងៃនេះ" tone="amber"/>
+      <SummaryCard icon={TrendingUp} label="បានប្រមូលសរុប" value={fmt(collected)} helper="ពីប្រវត្តិបង់ប្រាក់" tone="green"/>
     </div>
 
     <section className="card p-4">
       <div className="grid gap-3 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
-        <div className="relative"><Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18}/><input className="field pl-10" placeholder="ស្វែងរក Customer / Invoice / Phone..."/></div>
+        <div className="relative"><Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18}/><input className="field pl-10" placeholder="ស្វែងរកអតិថិជន / វិក្កយបត្រ / លេខទូរស័ព្ទ..."/></div>
         <select className="field" defaultValue="all"><option value="all">Sales ទាំងអស់</option><option>Van</option><option>Phanha</option><option>Pheak</option></select>
         <select className="field" value={status} onChange={event => setStatus(event.target.value)}><option value="all">Debt Status ទាំងអស់</option><option>Overdue</option><option>Due Today</option><option>Due Soon</option><option>Fully Paid</option></select>
         <select className="field" defaultValue="all"><option value="all">Province ទាំងអស់</option><option>ភ្នំពេញ</option><option>កណ្ដាល</option><option>តាកែវ</option></select>
@@ -323,12 +346,12 @@ export default function DebtManagementPage() {
       <section className="card overflow-hidden">
         <div className="flex items-center justify-between border-b bg-slate-50 px-5 py-4">
           <div><h2 className="font-extrabold">បញ្ជីបំណុល</h2><p className="text-xs text-slate-500">ចុច row ដើម្បីមើល detail និង action បន្ទាប់</p></div>
-          <button className="btn-secondary" onClick={() => setReportOpen(true)}><FileSpreadsheet size={17}/>Report</button>
+          <button className="btn-secondary" onClick={() => setReportOpen(true)}><FileSpreadsheet size={17}/>របាយការណ៍</button>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[980px]">
             <thead className="bg-slate-50 text-left text-xs font-bold uppercase text-slate-500">
-              <tr><th className="table-cell">Customer</th><th className="table-cell">Invoice</th><th className="table-cell">Due Date</th><th className="table-cell text-right">Total</th><th className="table-cell text-right">Paid</th><th className="table-cell text-right">Balance</th><th className="table-cell">Status</th><th className="table-cell">Risk</th><th className="table-cell text-right">Action</th></tr>
+              <tr><th className="table-cell">អតិថិជន</th><th className="table-cell">វិក្កយបត្រ</th><th className="table-cell">ថ្ងៃត្រូវបង់</th><th className="table-cell text-right">សរុប</th><th className="table-cell text-right">បានបង់</th><th className="table-cell text-right">នៅសល់</th><th className="table-cell">ស្ថានភាព</th><th className="table-cell">ហានិភ័យ</th><th className="table-cell text-right">សកម្មភាព</th></tr>
             </thead>
             <tbody className="divide-y">
               {filtered.map(item => <tr key={item.id} onClick={() => setSelected(item)} className={`cursor-pointer hover:bg-blue-50/40 ${selected?.id === item.id ? 'bg-blue-50' : ''}`}>
@@ -341,9 +364,10 @@ export default function DebtManagementPage() {
                 <td className="table-cell"><StatusBadge status={item.debtStatus}/></td>
                 <td className="table-cell"><StatusBadge status={item.risk}/></td>
                 <td className="table-cell"><div className="flex justify-end gap-1" onClick={event => event.stopPropagation()}>
-                  <button className="rounded-lg p-2 text-blue-600 hover:bg-blue-100" title="View" onClick={() => setSelected(item)}><Eye size={17}/></button>
-                  <button className="rounded-lg p-2 text-green-600 hover:bg-green-100" title="Record Payment" onClick={() => setPaymentDebt(item)}><Banknote size={17}/></button>
-                  <button className="rounded-lg p-2 text-slate-600 hover:bg-slate-100" title="More" onClick={() => setMoreDebt(item)}><MoreHorizontal size={17}/></button>
+                  <button className="rounded-lg p-2 text-blue-600 hover:bg-blue-100" title="មើលលម្អិត" onClick={() => setSelected(item)}><Eye size={17}/></button>
+                  <button className="rounded-lg p-2 text-green-600 hover:bg-green-100" title="កត់ត្រាការបង់ប្រាក់" onClick={() => setPaymentDebt(item)}><Banknote size={17}/></button>
+                  <button className="rounded-lg p-2 text-red-600 hover:bg-red-100" title="លុបបំណុល" onClick={() => deleteDebt(item)}><Trash2 size={17}/></button>
+                  <button className="rounded-lg p-2 text-slate-600 hover:bg-slate-100" title="សកម្មភាពបន្ថែម" onClick={() => setMoreDebt(item)}><MoreHorizontal size={17}/></button>
                 </div></td>
               </tr>)}
             </tbody>
@@ -358,17 +382,17 @@ export default function DebtManagementPage() {
       <div className="card p-5 xl:col-span-2">
         <div className="mb-4 flex items-center justify-between"><h2 className="font-extrabold">របាយការណ៍សម្រាប់ Manager</h2><button className="btn-secondary" onClick={() => toast.success('បានសាកល្បងបញ្ជូន Report ទៅ Manager')}><Send size={17}/>បញ្ជូន Report</button></div>
         <div className="grid gap-3 md:grid-cols-3">
-          <div className="rounded-xl border p-4"><AlertTriangle className="mb-3 text-red-500"/><p className="text-sm text-slate-500">High Risk Customers</p><p className="text-2xl font-extrabold">1</p></div>
-          <div className="rounded-xl border p-4"><XCircle className="mb-3 text-red-500"/><p className="text-sm text-slate-500">Broken Promise</p><p className="text-2xl font-extrabold">1</p></div>
-          <div className="rounded-xl border p-4"><CheckCircle2 className="mb-3 text-green-500"/><p className="text-sm text-slate-500">Collection Rate</p><p className="text-2xl font-extrabold">59%</p></div>
+          <div className="rounded-xl border p-4"><AlertTriangle className="mb-3 text-red-500"/><p className="text-sm text-slate-500">អតិថិជនហានិភ័យខ្ពស់</p><p className="text-2xl font-extrabold">1</p></div>
+          <div className="rounded-xl border p-4"><XCircle className="mb-3 text-red-500"/><p className="text-sm text-slate-500">សន្យាបង់ខកខាន</p><p className="text-2xl font-extrabold">1</p></div>
+          <div className="rounded-xl border p-4"><CheckCircle2 className="mb-3 text-green-500"/><p className="text-sm text-slate-500">អត្រាប្រមូលប្រាក់</p><p className="text-2xl font-extrabold">59%</p></div>
         </div>
       </div>
       <div className="card p-5">
-        <h2 className="mb-4 font-extrabold">Next Actions</h2>
+        <h2 className="mb-4 font-extrabold">សកម្មភាពបន្ទាប់</h2>
         <div className="space-y-3 text-sm">
           <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-slate-50" onClick={callSelected}><PhoneCall className="text-blue-600" size={18}/><span>Call overdue customer</span></button>
-          <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-slate-50" onClick={() => toast.info('Reminder message ត្រូវបានរៀបចំសម្រាប់ test')}><MessageCircle className="text-amber-600" size={18}/><span>Send reminder message</span></button>
-          <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-slate-50" onClick={() => toast.info('Audit trail នឹងភ្ជាប់ទៅ database នៅជំហានបន្ទាប់')}><History className="text-slate-600" size={18}/><span>Review audit trail</span></button>
+          <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-slate-50" onClick={() => toast.info('Reminder message ត្រូវបានរៀបចំសម្រាប់ test')}><MessageCircle className="text-amber-600" size={18}/><span>ផ្ញើសាររំលឹក</span></button>
+          <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-slate-50" onClick={() => toast.info('Audit trail នឹងភ្ជាប់ទៅ database នៅជំហានបន្ទាប់')}><History className="text-slate-600" size={18}/><span>មើល Audit Trail</span></button>
         </div>
       </div>
     </section>
