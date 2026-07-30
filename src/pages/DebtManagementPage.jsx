@@ -264,7 +264,7 @@ function MoreActionsModal({ debt, onClose, onPay, onPromise, onRefund }) {
   </Modal>
 }
 
-function DebtDetail({ debt, onPay, onPromise, onRefund }) {
+function DebtDetail({ debt, onPay, onPromise, onRefund, onDeleteRefund }) {
   if (!debt) return <aside className="card p-5 text-center text-sm text-slate-500">ជ្រើសបំណុលមួយ ដើម្បីមើលព័ត៌មានលម្អិត ប្រវត្តិបង់ប្រាក់ និង Follow Up Timeline។</aside>
   const days = daysBetween(debt.dueDate)
   return <aside className="card overflow-hidden">
@@ -303,14 +303,16 @@ function DebtDetail({ debt, onPay, onPromise, onRefund }) {
       </section>
       <section>
         <h3 className="mb-2 font-bold">ប្រវត្តិបង់ប្រាក់</h3>
+        <p className="mb-2 text-xs text-slate-500">ទិន្នន័យ sample សម្រាប់ prototype</p>
         <div className="space-y-2">{payments.map(item => <div key={item.receipt} className="rounded-xl border p-3 text-sm"><div className="flex justify-between"><b>{item.receipt}</b><span className="font-bold text-green-600">{fmt(item.amount)}</span></div><p className="mt-1 text-xs text-slate-500">{item.date} · {item.method} · {item.collector}</p></div>)}</div>
       </section>
       <section>
         <h3 className="mb-2 font-bold">ប្រវត្តិសងលុយ / Credit Note</h3>
-        <div className="space-y-2">{(debt.refundHistory || []).length ? debt.refundHistory.map(item => <div key={item.creditNote} className="rounded-xl border border-red-100 bg-red-50/40 p-3 text-sm"><div className="flex justify-between gap-3"><b>{item.creditNote}</b><span className="font-bold text-red-600">{fmt(item.amount)}</span></div><p className="mt-1 text-xs text-slate-600">{item.date} · {item.reason} · {item.method} · {item.cashFlowType}</p><div className="mt-2 flex items-center justify-between gap-3 text-xs"><span className="text-slate-500">{item.reference}</span><StatusBadge status={item.approvalStatus}/></div></div>) : <p className="rounded-xl border border-dashed p-3 text-sm text-slate-500">មិនទាន់មានការសងលុយ</p>}</div>
+        <div className="space-y-2">{(debt.refundHistory || []).length ? debt.refundHistory.map(item => <div key={item.creditNote} className="rounded-xl border border-red-100 bg-red-50/40 p-3 text-sm"><div className="flex justify-between gap-3"><b>{item.creditNote}</b><div className="flex items-center gap-2"><span className="font-bold text-red-600">{fmt(item.amount)}</span><button className="rounded-lg p-1.5 text-red-600 hover:bg-red-100" title="លុប Credit Note" onClick={() => onDeleteRefund(debt, item)}><Trash2 size={15}/></button></div></div><p className="mt-1 text-xs text-slate-600">{item.date} · {item.reason} · {item.method} · {item.cashFlowType}</p><div className="mt-2 flex items-center justify-between gap-3 text-xs"><span className="text-slate-500">{item.reference}</span><StatusBadge status={item.approvalStatus}/></div></div>) : <p className="rounded-xl border border-dashed p-3 text-sm text-slate-500">មិនទាន់មានការសងលុយ</p>}</div>
       </section>
       <section>
         <h3 className="mb-2 font-bold">ប្រវត្តិសន្យាបង់ប្រាក់</h3>
+        <p className="mb-2 text-xs text-slate-500">ទិន្នន័យ sample សម្រាប់ prototype</p>
         <div className="space-y-2">{promises.map(item => <div key={item.date} className="rounded-xl border p-3 text-sm"><div className="flex justify-between"><b>{item.date}</b><StatusBadge status={item.status}/></div><p className="mt-1 text-xs text-slate-500">{fmt(item.amount)} · {item.note}</p></div>)}</div>
       </section>
     </div>
@@ -397,6 +399,25 @@ export default function DebtManagementPage() {
     setRefundDebt(null)
     toast.success('បានកត់ត្រាការសងលុយទៅអតិថិជន')
   }
+  const deleteRefund = (debt, refund) => {
+    if (!window.confirm(`តើអ្នកចង់លុប ${refund.creditNote} មែនទេ?`)) return
+    const updatedRefunded = Math.max(0, Number(debt.refunded || 0) - Number(refund.amount || 0))
+    const updatedTotal = Number(debt.total || 0) + Number(refund.amount || 0)
+    const updatedRemaining = Math.max(0, updatedTotal - Number(debt.paid || 0))
+    const next = {
+      ...debt,
+      total: updatedTotal,
+      refunded: updatedRefunded,
+      refundHistory: (debt.refundHistory || []).filter(item => item.creditNote !== refund.creditNote),
+      remaining: updatedRemaining,
+      paymentStatus: paymentStatusFor(debt.paid, updatedRemaining),
+      debtStatus: debtStatusFor(updatedRemaining, debt.dueDate),
+      lastFollowUp: `បានលុប Credit Note ${refund.creditNote}`,
+    }
+    setRows(current => current.map(item => item.id === debt.id ? next : item))
+    setSelected(next)
+    toast.success('បានលុប Credit Note និងកែ Balance វិញ')
+  }
   const savePromise = debt => {
     setPromiseDebt(null)
     toast.success(`បានកត់ត្រាសន្យាបង់ប្រាក់សម្រាប់ ${debt.customer}`)
@@ -482,7 +503,7 @@ export default function DebtManagementPage() {
         </div>
       </section>
 
-      <DebtDetail debt={selected} onPay={setPaymentDebt} onPromise={setPromiseDebt} onRefund={setRefundDebt}/>
+      <DebtDetail debt={selected} onPay={setPaymentDebt} onPromise={setPromiseDebt} onRefund={setRefundDebt} onDeleteRefund={deleteRefund}/>
     </div>
 
     <section className="grid gap-5 xl:grid-cols-3">
