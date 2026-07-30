@@ -128,7 +128,6 @@ function RefundModal({ debt, onClose, onSave }) {
     event.preventDefault()
     const refundAmount = Number(amount)
     if (!refundAmount || refundAmount <= 0) return toast.error('សូមបញ្ចូលចំនួនសងឲ្យត្រឹមត្រូវ')
-    if (refundAmount > Number(debt.paid)) return toast.error('ចំនួនសងមិនអាចធំជាងប្រាក់ដែលបានបង់រួចបានទេ')
     onSave(debt, refundAmount)
   }
   return <Modal open={Boolean(debt)} onClose={onClose} title="សងលុយទៅអតិថិជន" size="max-w-3xl">
@@ -138,14 +137,14 @@ function RefundModal({ debt, onClose, onSave }) {
         <p className="text-xs text-slate-600">{debt?.invoice} · បានបង់រួច {fmt(debt?.paid)} · នៅសល់ {fmt(debt?.remaining)}</p>
       </div>
       <div><label className="label">ថ្ងៃសងលុយ *</label><input className="field" type="date" defaultValue="2026-07-30"/></div>
-      <div><label className="label">ចំនួនសង *</label><input className="field" type="number" value={amount} min="0.01" max={debt?.paid || 0} step="0.01" placeholder="0.00" onChange={event => setAmount(event.target.value)}/></div>
+      <div><label className="label">ចំនួនសង *</label><input className="field" type="number" value={amount} min="0.01" step="0.01" placeholder="0.00" onChange={event => setAmount(event.target.value)}/></div>
       <div><label className="label">វិធីសងលុយ *</label><select className="field" defaultValue="ABA"><option>Cash</option><option>ABA</option><option>Bank Transfer</option><option>Wing</option><option>Other</option></select></div>
       <div><label className="label">Cash Account *</label><select className="field"><option>ABA Main Account</option><option>Cash Box</option><option>Wing Account</option></select></div>
       <div><label className="label">Reference Number</label><input className="field" placeholder="ឧ. REFUND-29391"/></div>
       <div><label className="label">អ្នកធ្វើប្រតិបត្តិការ *</label><select className="field" defaultValue={debt?.sales}><option>Van</option><option>Phanha</option><option>Pheak</option></select></div>
       <div className="md:col-span-3"><label className="label">ភ្ជាប់បង្កាន់ដៃសងលុយ</label><input className="field" type="file"/></div>
       <div className="md:col-span-3"><label className="label">មូលហេតុ / កំណត់សម្គាល់</label><textarea className="field min-h-24" placeholder="ឧ. អតិថិជនប្តូរឥវ៉ាន់វិញ / កែតម្លៃ / បង់លើស..."/></div>
-      <div className="rounded-xl bg-red-50 p-4 text-sm font-bold text-red-700 md:col-span-3">ពេលរក្សាទុក៖ កាត់ Paid Amount ចុះ, បង្កើន Balance និងកត់ត្រា Cash Out សម្រាប់ audit។</div>
+      <div className="rounded-xl bg-red-50 p-4 text-sm font-bold text-red-700 md:col-span-3">ពេលរក្សាទុក៖ កត់ត្រា Cash Out, កាត់ Paid Amount បើមាន និងបង្កើន Balance សម្រាប់ audit។</div>
       <div className="mt-1 flex justify-end gap-3 border-t pt-4 md:col-span-3"><button type="button" className="btn-secondary" onClick={onClose}>បោះបង់</button><button className="btn-primary bg-red-600 hover:bg-red-700"><Undo2 size={17}/>រក្សាទុកការសងលុយ</button></div>
     </form>
   </Modal>
@@ -327,7 +326,8 @@ export default function DebtManagementPage() {
   }
   const saveRefund = (debt, amount) => {
     const updatedPaid = Math.max(0, Number(debt.paid) - amount)
-    const updatedRemaining = Math.max(0, Number(debt.total) - updatedPaid)
+    const refundOverflow = Math.max(0, amount - Number(debt.paid))
+    const updatedRemaining = Math.max(0, Number(debt.total) - updatedPaid + refundOverflow)
     const next = { ...debt, paid: updatedPaid, remaining: updatedRemaining, paymentStatus: paymentStatusFor(updatedPaid, updatedRemaining), debtStatus: debtStatusFor(updatedRemaining, debt.dueDate), lastFollowUp: `បានសងលុយទៅអតិថិជន ${fmt(amount)}` }
     setRows(current => current.map(item => item.id === debt.id ? next : item))
     setSelected(next)
