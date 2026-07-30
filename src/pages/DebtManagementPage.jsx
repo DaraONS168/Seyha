@@ -102,7 +102,7 @@ function StatusBadge({ status }) {
   return <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-bold ${styles[status] || 'bg-slate-100 text-slate-600'}`}>{status}</span>
 }
 
-function SummaryCard({ icon: Icon, label, value, tone = 'blue', helper }) {
+function SummaryCard({ icon: Icon, label, value, tone = 'blue', helper, valueClassName = 'text-slate-950' }) {
   const tones = {
     blue: 'border-blue-100 bg-blue-50/40 text-blue-600',
     red: 'border-red-100 bg-red-50/50 text-red-600',
@@ -115,7 +115,7 @@ function SummaryCard({ icon: Icon, label, value, tone = 'blue', helper }) {
       <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-white/80"><Icon size={22}/></span>
       <div className="min-w-0">
         <p className="truncate text-xs font-bold">{label}</p>
-        <p className="text-2xl font-extrabold text-slate-950">{value}</p>
+        <p className={`text-2xl font-extrabold ${valueClassName}`}>{value}</p>
         {helper && <p className="mt-0.5 truncate text-xs text-slate-500">{helper}</p>}
       </div>
     </div>
@@ -240,16 +240,17 @@ function DebtFormModal({ open, onClose, onSave }) {
 }
 
 function ReportModal({ open, onClose, rows }) {
+  const reportOutstanding = rows.reduce((sum, item) => sum + item.remaining, 0)
   return <Modal open={open} onClose={onClose} title="របាយការណ៍បំណុលសង្ខេប" size="max-w-4xl">
     <div className="grid gap-3 md:grid-cols-6">
       <SummaryCard icon={WalletCards} label="Debt Count" value={rows.length} tone="blue"/>
       <SummaryCard icon={TrendingUp} label="លក់បានសរុប" value={fmt(rows.reduce((sum, item) => sum + grossTotalFor(item), 0))} tone="green"/>
       <SummaryCard icon={ShieldAlert} label="Overdue" value={rows.filter(item => item.debtStatus === 'Overdue').length} tone="red"/>
-      <SummaryCard icon={Banknote} label="ប្រាក់នៅសល់" value={fmt(rows.reduce((sum, item) => sum + item.remaining, 0))} tone="amber"/>
+      <SummaryCard icon={Banknote} label="ប្រាក់នៅសល់" value={fmt(reportOutstanding)} tone={reportOutstanding > 0 ? 'red' : 'green'} valueClassName={reportOutstanding > 0 ? 'text-red-600' : 'text-green-600'}/>
       <SummaryCard icon={Undo2} label="សងលុយសរុប" value={fmt(rows.reduce((sum, item) => sum + Number(item.refunded || 0), 0))} tone="red"/>
       <SummaryCard icon={CheckCircle2} label="Fully Paid" value={rows.filter(item => item.debtStatus === 'Fully Paid').length} tone="green"/>
     </div>
-    <div className="mt-5 overflow-hidden rounded-xl border"><table className="w-full"><thead className="bg-slate-50 text-left text-xs text-slate-500"><tr><th className="table-cell">អតិថិជន</th><th className="table-cell">វិក្កយបត្រ</th><th className="table-cell text-right">លក់បាន</th><th className="table-cell text-right">សរុបបន្ទាប់ដក</th><th className="table-cell text-right">សងលុយ</th><th className="table-cell text-right">ប្រាក់នៅសល់</th><th className="table-cell">ស្ថានភាព</th></tr></thead><tbody className="divide-y">{rows.map(item => { const refund = item.refundHistory?.[0]; return <tr key={item.id}><td className="table-cell font-bold">{item.customer}</td><td className="table-cell">{item.invoice}</td><td className="table-cell text-right font-bold">{fmt(grossTotalFor(item))}</td><td className="table-cell text-right">{fmt(item.total)}</td><td className="table-cell text-right"><p className="font-bold text-red-600">{fmt(item.refunded || 0)}</p>{refund && <p className="text-xs text-slate-500">{refund.creditNote} · {refund.reason}</p>}</td><td className="table-cell text-right font-bold">{fmt(item.remaining)}</td><td className="table-cell"><StatusBadge status={refund?.approvalStatus || item.debtStatus}/></td></tr> })}</tbody></table></div>
+    <div className="mt-5 overflow-hidden rounded-xl border"><table className="w-full"><thead className="bg-slate-50 text-left text-xs text-slate-500"><tr><th className="table-cell">អតិថិជន</th><th className="table-cell">វិក្កយបត្រ</th><th className="table-cell text-right">លក់បាន</th><th className="table-cell text-right">សរុបបន្ទាប់ដក</th><th className="table-cell text-right">សងលុយ</th><th className="table-cell text-right">ប្រាក់នៅសល់</th><th className="table-cell">ស្ថានភាព</th></tr></thead><tbody className="divide-y">{rows.map(item => { const refund = item.refundHistory?.[0]; return <tr key={item.id}><td className="table-cell font-bold">{item.customer}</td><td className="table-cell">{item.invoice}</td><td className="table-cell text-right font-bold">{fmt(grossTotalFor(item))}</td><td className="table-cell text-right">{fmt(item.total)}</td><td className="table-cell text-right"><p className="font-bold text-red-600">{fmt(item.refunded || 0)}</p>{refund && <p className="text-xs text-slate-500">{refund.creditNote} · {refund.reason}</p>}</td><td className={`table-cell text-right font-bold ${Number(item.remaining) > 0 ? 'text-red-600' : 'text-green-600'}`}>{fmt(item.remaining)}</td><td className="table-cell"><StatusBadge status={refund?.approvalStatus || item.debtStatus}/></td></tr> })}</tbody></table></div>
     <div className="mt-5 flex justify-end gap-3 border-t pt-4"><button className="btn-secondary" onClick={onClose}>បិទ</button><button className="btn-primary" onClick={() => downloadCsv(rows)}><Download size={17}/>Download CSV</button></div>
   </Modal>
 }
@@ -284,7 +285,7 @@ function DebtDetail({ debt, onPay, onPromise, onRefund, onDeleteRefund }) {
         <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Net</p><p className="font-extrabold">{fmt(debt.total)}</p></div>
         <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Paid</p><p className="font-extrabold text-green-600">{fmt(debt.paid)}</p></div>
         <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Refund</p><p className="font-extrabold text-red-600">{fmt(debt.refunded || 0)}</p></div>
-        <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Balance</p><p className="font-extrabold text-red-600">{fmt(debt.remaining)}</p></div>
+        <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Balance</p><p className={`font-extrabold ${Number(debt.remaining) > 0 ? 'text-red-600' : 'text-green-600'}`}>{fmt(debt.remaining)}</p></div>
       </div>
     </div>
     <div className="space-y-5 p-5">
@@ -456,7 +457,14 @@ export default function DebtManagementPage() {
 
     <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-6">
       <SummaryCard icon={TrendingUp} label="លក់បានសរុប" value={fmt(grossSales)} helper="មុនដក refund" tone="green"/>
-      <SummaryCard icon={WalletCards} label="ប្រាក់នៅសល់សរុប" value={fmt(totalOutstanding)} helper="មិនរាប់បង់រួច" tone="blue"/>
+      <SummaryCard
+        icon={WalletCards}
+        label="ប្រាក់នៅសល់សរុប"
+        value={fmt(totalOutstanding)}
+        helper="មិនទាន់ទូទាត់"
+        tone={totalOutstanding > 0 ? 'red' : 'green'}
+        valueClassName={totalOutstanding > 0 ? 'text-red-600' : 'text-green-600'}
+      />
       <SummaryCard icon={ShieldAlert} label="បំណុលហួសថ្ងៃ" value={fmt(overdue)} helper="ត្រូវ follow up បន្ទាន់" tone="red"/>
       <SummaryCard icon={CalendarClock} label="ត្រូវបង់ថ្ងៃនេះ" value={fmt(dueToday)} helper="ត្រូវទារថ្ងៃនេះ" tone="amber"/>
       <SummaryCard icon={Undo2} label="សងលុយសរុប" value={fmt(refunded)} helper="Credit/Refund" tone="red"/>
@@ -493,7 +501,7 @@ export default function DebtManagementPage() {
                 <td className="table-cell text-right font-bold">{fmt(item.total)}</td>
                 <td className="table-cell text-right font-bold text-green-600">{fmt(item.paid)}</td>
                 <td className="table-cell text-right font-bold text-red-600">{fmt(item.refunded || 0)}</td>
-                <td className="table-cell text-right font-extrabold text-red-600">{fmt(item.remaining)}</td>
+                <td className={`table-cell text-right font-extrabold ${Number(item.remaining) > 0 ? 'text-red-600' : 'text-green-600'}`}>{fmt(item.remaining)}</td>
                 <td className="table-cell"><StatusBadge status={item.debtStatus}/></td>
                 <td className="table-cell"><StatusBadge status={item.risk}/></td>
                 <td className="table-cell"><div className="flex justify-end gap-1" onClick={event => event.stopPropagation()}>
