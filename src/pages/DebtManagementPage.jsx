@@ -37,9 +37,11 @@ const extractMoney = value => Number(String(value || '').match(/\$?([\d,.]+)/)?.
 const normalizeDebt = debt => {
   const total = Number(debt.total || 0)
   const paid = Number(debt.paid || 0)
+  const noteRefund = String(debt.lastFollowUp || '').includes('សងលុយ') || String(debt.lastFollowUp || '').includes('ដក/')
+  const refundAmount = Number(debt.refunded || 0) || (noteRefund ? extractMoney(debt.lastFollowUp) : 0)
+  const refundHistory = debt.refundHistory || (refundAmount ? [{ creditNote: `CN-${new Date().getFullYear()}-LEGACY`, date: new Date().toISOString().slice(0, 10), amount: refundAmount, method: 'Unknown', account: 'Unknown', reference: 'LEGACY', operator: debt.sales, reason: 'ទិន្នន័យចាស់', note: debt.lastFollowUp || '', approvalStatus: 'Approved', cashFlowType: 'Cash Out' }] : [])
   const expectedRemaining = Math.max(0, total - paid)
-  if (!String(debt.lastFollowUp || '').includes('សងលុយ') || Number(debt.remaining || 0) <= expectedRemaining) return debt
-  const refundAmount = extractMoney(debt.lastFollowUp)
+  if (!noteRefund || Number(debt.remaining || 0) <= expectedRemaining) return { ...debt, refunded: refundAmount, refundHistory }
   const updatedTotal = Math.max(0, total - refundAmount)
   const updatedPaid = Math.min(paid, updatedTotal)
   const updatedRemaining = Math.max(0, updatedTotal - updatedPaid)
@@ -47,6 +49,8 @@ const normalizeDebt = debt => {
     ...debt,
     total: updatedTotal,
     paid: updatedPaid,
+    refunded: refundAmount,
+    refundHistory,
     remaining: updatedRemaining,
     paymentStatus: paymentStatusFor(updatedPaid, updatedRemaining),
     debtStatus: debtStatusFor(updatedRemaining, debt.dueDate),
@@ -62,8 +66,11 @@ const loadStoredDebts = () => {
   }
 }
 const downloadCsv = rows => {
-  const headers = ['Debt ID', 'Customer', 'Phone', 'Invoice', 'Due Date', 'Total', 'Paid', 'Remaining', 'Sales', 'Debt Status']
-  const lines = rows.map(row => [row.id, row.customer, row.phone, row.invoice, row.dueDate, row.total, row.paid, row.remaining, row.sales, row.debtStatus])
+  const headers = ['Debt ID', 'Customer', 'Phone', 'Invoice', 'Due Date', 'Total', 'Paid', 'Refunded', 'Latest Credit Note', 'Refund Reason', 'Refund Approval', 'Remaining', 'Sales', 'Debt Status']
+  const lines = rows.map(row => {
+    const refund = row.refundHistory?.[0] || {}
+    return [row.id, row.customer, row.phone, row.invoice, row.dueDate, row.total, row.paid, row.refunded || 0, refund.creditNote || '', refund.reason || '', refund.approvalStatus || '', row.remaining, row.sales, row.debtStatus]
+  })
   const csv = [headers, ...lines].map(line => line.map(value => `"${String(value).replaceAll('"', '""')}"`).join(',')).join('\n')
   const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8;' }))
   const link = document.createElement('a')
@@ -88,6 +95,8 @@ function StatusBadge({ status }) {
     Low: 'bg-green-50 text-green-700',
     Broken: 'bg-red-50 text-red-700',
     Pending: 'bg-amber-50 text-amber-700',
+    Approved: 'bg-green-50 text-green-700',
+    'Pending Approval': 'bg-amber-50 text-amber-700',
   }
   return <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-bold ${styles[status] || 'bg-slate-100 text-slate-600'}`}>{status}</span>
 }
@@ -145,9 +154,19 @@ function RefundModal({ debt, onClose, onSave }) {
   const [amount, setAmount] = useState('')
   const save = event => {
     event.preventDefault()
+    const form = new FormData(event.currentTarget)
     const refundAmount = Number(amount)
     if (!refundAmount || refundAmount <= 0) return toast.error('សូមបញ្ចូលចំនួនសងឲ្យត្រឹមត្រូវ')
-    onSave(debt, refundAmount)
+    onSave(debt, {
+      amount: refundAmount,
+      date: form.get('date'),
+      method: form.get('method'),
+      account: form.get('account'),
+      reference: form.get('reference'),
+      operator: form.get('operator'),
+      reason: form.get('reason'),
+      note: form.get('note'),
+    })
   }
   return <Modal open={Boolean(debt)} onClose={onClose} title="សងលុយទៅអតិថិជន" size="max-w-3xl">
     <form onSubmit={save} className="grid gap-4 md:grid-cols-3">
@@ -155,14 +174,15 @@ function RefundModal({ debt, onClose, onSave }) {
         <p className="text-sm font-bold">{debt?.customer}</p>
         <p className="text-xs text-slate-600">{debt?.invoice} · បានបង់រួច {fmt(debt?.paid)} · នៅសល់ {fmt(debt?.remaining)}</p>
       </div>
-      <div><label className="label">ថ្ងៃសងលុយ *</label><input className="field" type="date" defaultValue="2026-07-30"/></div>
+      <div><label className="label">ថ្ងៃសងលុយ *</label><input className="field" name="date" type="date" defaultValue="2026-07-30"/></div>
       <div><label className="label">ចំនួនសង *</label><input className="field" type="number" value={amount} min="0.01" step="0.01" placeholder="0.00" onChange={event => setAmount(event.target.value)}/></div>
-      <div><label className="label">វិធីសងលុយ *</label><select className="field" defaultValue="ABA"><option>Cash</option><option>ABA</option><option>Bank Transfer</option><option>Wing</option><option>Other</option></select></div>
-      <div><label className="label">Cash Account *</label><select className="field"><option>ABA Main Account</option><option>Cash Box</option><option>Wing Account</option></select></div>
-      <div><label className="label">Reference Number</label><input className="field" placeholder="ឧ. REFUND-29391"/></div>
-      <div><label className="label">អ្នកធ្វើប្រតិបត្តិការ *</label><select className="field" defaultValue={debt?.sales}><option>Van</option><option>Phanha</option><option>Pheak</option></select></div>
+      <div><label className="label">មូលហេតុ *</label><select className="field" name="reason" defaultValue="ប្តូរឥវ៉ាន់"><option>ប្តូរឥវ៉ាន់</option><option>បង់លើស</option><option>កែតម្លៃ</option><option>ទំនិញខូច</option><option>ផ្សេងៗ</option></select></div>
+      <div><label className="label">វិធីសងលុយ *</label><select className="field" name="method" defaultValue="ABA"><option>Cash</option><option>ABA</option><option>Bank Transfer</option><option>Wing</option><option>Other</option></select></div>
+      <div><label className="label">Cash Account *</label><select className="field" name="account"><option>ABA Main Account</option><option>Cash Box</option><option>Wing Account</option></select></div>
+      <div><label className="label">Reference Number</label><input className="field" name="reference" placeholder="ឧ. REFUND-29391"/></div>
+      <div><label className="label">អ្នកធ្វើប្រតិបត្តិការ *</label><select className="field" name="operator" defaultValue={debt?.sales}><option>Van</option><option>Phanha</option><option>Pheak</option></select></div>
       <div className="md:col-span-3"><label className="label">ភ្ជាប់បង្កាន់ដៃសងលុយ</label><input className="field" type="file"/></div>
-      <div className="md:col-span-3"><label className="label">មូលហេតុ / កំណត់សម្គាល់</label><textarea className="field min-h-24" placeholder="ឧ. អតិថិជនប្តូរឥវ៉ាន់វិញ / កែតម្លៃ / បង់លើស..."/></div>
+      <div className="md:col-span-3"><label className="label">កំណត់សម្គាល់</label><textarea className="field min-h-24" name="note" placeholder="ឧ. អតិថិជនប្តូរឥវ៉ាន់វិញ / កែតម្លៃ / បង់លើស..."/></div>
       <div className="rounded-xl bg-red-50 p-4 text-sm font-bold text-red-700 md:col-span-3">ពេលរក្សាទុក៖ កត់ត្រា Cash Out/Credit Note, ដកចេញពី Total និង Balance សម្រាប់ audit។</div>
       <div className="mt-1 flex justify-end gap-3 border-t pt-4 md:col-span-3"><button type="button" className="btn-secondary" onClick={onClose}>បោះបង់</button><button className="btn-primary bg-red-600 hover:bg-red-700"><Undo2 size={17}/>រក្សាទុកការសងលុយ</button></div>
     </form>
@@ -220,13 +240,14 @@ function DebtFormModal({ open, onClose, onSave }) {
 
 function ReportModal({ open, onClose, rows }) {
   return <Modal open={open} onClose={onClose} title="របាយការណ៍បំណុលសង្ខេប" size="max-w-4xl">
-    <div className="grid gap-3 md:grid-cols-4">
+    <div className="grid gap-3 md:grid-cols-5">
       <SummaryCard icon={WalletCards} label="Debt Count" value={rows.length} tone="blue"/>
       <SummaryCard icon={ShieldAlert} label="Overdue" value={rows.filter(item => item.debtStatus === 'Overdue').length} tone="red"/>
       <SummaryCard icon={Banknote} label="ប្រាក់នៅសល់" value={fmt(rows.reduce((sum, item) => sum + item.remaining, 0))} tone="amber"/>
+      <SummaryCard icon={Undo2} label="សងលុយសរុប" value={fmt(rows.reduce((sum, item) => sum + Number(item.refunded || 0), 0))} tone="red"/>
       <SummaryCard icon={CheckCircle2} label="Fully Paid" value={rows.filter(item => item.debtStatus === 'Fully Paid').length} tone="green"/>
     </div>
-    <div className="mt-5 overflow-hidden rounded-xl border"><table className="w-full"><thead className="bg-slate-50 text-left text-xs text-slate-500"><tr><th className="table-cell">អតិថិជន</th><th className="table-cell">វិក្កយបត្រ</th><th className="table-cell text-right">ប្រាក់នៅសល់</th><th className="table-cell">ស្ថានភាព</th></tr></thead><tbody className="divide-y">{rows.map(item => <tr key={item.id}><td className="table-cell font-bold">{item.customer}</td><td className="table-cell">{item.invoice}</td><td className="table-cell text-right font-bold">{fmt(item.remaining)}</td><td className="table-cell"><StatusBadge status={item.debtStatus}/></td></tr>)}</tbody></table></div>
+    <div className="mt-5 overflow-hidden rounded-xl border"><table className="w-full"><thead className="bg-slate-50 text-left text-xs text-slate-500"><tr><th className="table-cell">អតិថិជន</th><th className="table-cell">វិក្កយបត្រ</th><th className="table-cell text-right">សរុប</th><th className="table-cell text-right">សងលុយ</th><th className="table-cell text-right">ប្រាក់នៅសល់</th><th className="table-cell">ស្ថានភាព</th></tr></thead><tbody className="divide-y">{rows.map(item => { const refund = item.refundHistory?.[0]; return <tr key={item.id}><td className="table-cell font-bold">{item.customer}</td><td className="table-cell">{item.invoice}</td><td className="table-cell text-right">{fmt(item.total)}</td><td className="table-cell text-right"><p className="font-bold text-red-600">{fmt(item.refunded || 0)}</p>{refund && <p className="text-xs text-slate-500">{refund.creditNote} · {refund.reason}</p>}</td><td className="table-cell text-right font-bold">{fmt(item.remaining)}</td><td className="table-cell"><StatusBadge status={refund?.approvalStatus || item.debtStatus}/></td></tr> })}</tbody></table></div>
     <div className="mt-5 flex justify-end gap-3 border-t pt-4"><button className="btn-secondary" onClick={onClose}>បិទ</button><button className="btn-primary" onClick={() => downloadCsv(rows)}><Download size={17}/>Download CSV</button></div>
   </Modal>
 }
@@ -256,9 +277,10 @@ function DebtDetail({ debt, onPay, onPromise, onRefund }) {
         </div>
         <StatusBadge status={debt.debtStatus}/>
       </div>
-      <div className="mt-4 grid grid-cols-3 gap-2 text-center">
+      <div className="mt-4 grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
         <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Total</p><p className="font-extrabold">{fmt(debt.total)}</p></div>
         <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Paid</p><p className="font-extrabold text-green-600">{fmt(debt.paid)}</p></div>
+        <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Refund</p><p className="font-extrabold text-red-600">{fmt(debt.refunded || 0)}</p></div>
         <div className="rounded-xl bg-white p-3"><p className="text-xs text-slate-500">Balance</p><p className="font-extrabold text-red-600">{fmt(debt.remaining)}</p></div>
       </div>
     </div>
@@ -282,6 +304,10 @@ function DebtDetail({ debt, onPay, onPromise, onRefund }) {
       <section>
         <h3 className="mb-2 font-bold">ប្រវត្តិបង់ប្រាក់</h3>
         <div className="space-y-2">{payments.map(item => <div key={item.receipt} className="rounded-xl border p-3 text-sm"><div className="flex justify-between"><b>{item.receipt}</b><span className="font-bold text-green-600">{fmt(item.amount)}</span></div><p className="mt-1 text-xs text-slate-500">{item.date} · {item.method} · {item.collector}</p></div>)}</div>
+      </section>
+      <section>
+        <h3 className="mb-2 font-bold">ប្រវត្តិសងលុយ / Credit Note</h3>
+        <div className="space-y-2">{(debt.refundHistory || []).length ? debt.refundHistory.map(item => <div key={item.creditNote} className="rounded-xl border border-red-100 bg-red-50/40 p-3 text-sm"><div className="flex justify-between gap-3"><b>{item.creditNote}</b><span className="font-bold text-red-600">{fmt(item.amount)}</span></div><p className="mt-1 text-xs text-slate-600">{item.date} · {item.reason} · {item.method} · {item.cashFlowType}</p><div className="mt-2 flex items-center justify-between gap-3 text-xs"><span className="text-slate-500">{item.reference}</span><StatusBadge status={item.approvalStatus}/></div></div>) : <p className="rounded-xl border border-dashed p-3 text-sm text-slate-500">មិនទាន់មានការសងលុយ</p>}</div>
       </section>
       <section>
         <h3 className="mb-2 font-bold">ប្រវត្តិសន្យាបង់ប្រាក់</h3>
@@ -309,6 +335,7 @@ export default function DebtManagementPage() {
   const overdue = rows.filter(item => item.debtStatus === 'Overdue').reduce((sum, item) => sum + item.remaining, 0)
   const dueToday = rows.filter(item => item.debtStatus === 'Due Today').reduce((sum, item) => sum + item.remaining, 0)
   const collected = rows.reduce((sum, item) => sum + item.paid, 0)
+  const refunded = rows.reduce((sum, item) => sum + Number(item.refunded || 0), 0)
   const saveDebt = form => {
     const remaining = form.total - form.paid
     const debt = {
@@ -321,6 +348,7 @@ export default function DebtManagementPage() {
       dueDate: form.dueDate,
       total: form.total,
       paid: form.paid,
+      refunded: 0,
       remaining,
       sales: form.sales,
       method: 'Cash',
@@ -343,11 +371,27 @@ export default function DebtManagementPage() {
     setPaymentDebt(null)
     toast.success('បានកាត់ប្រាក់ និង update balance ក្នុង prototype')
   }
-  const saveRefund = (debt, amount) => {
+  const saveRefund = (debt, refund) => {
+    const amount = Number(refund.amount)
     const updatedTotal = Math.max(0, Number(debt.total) - amount)
     const updatedPaid = Math.min(Number(debt.paid), updatedTotal)
     const updatedRemaining = Math.max(0, updatedTotal - updatedPaid)
-    const next = { ...debt, total: updatedTotal, paid: updatedPaid, remaining: updatedRemaining, paymentStatus: paymentStatusFor(updatedPaid, updatedRemaining), debtStatus: debtStatusFor(updatedRemaining, debt.dueDate), lastFollowUp: `បានដក/សងលុយទៅអតិថិជន ${fmt(amount)}` }
+    const updatedRefunded = Number(debt.refunded || 0) + amount
+    const creditNote = `CN-${new Date().getFullYear()}-${String((debt.refundHistory || []).length + 1).padStart(5, '0')}`
+    const refundRecord = {
+      creditNote,
+      date: refund.date || new Date().toISOString().slice(0, 10),
+      amount,
+      method: refund.method || 'Cash',
+      account: refund.account || 'Cash Box',
+      reference: refund.reference || creditNote,
+      operator: refund.operator || debt.sales,
+      reason: refund.reason || 'ផ្សេងៗ',
+      note: refund.note || '',
+      approvalStatus: amount >= 100 ? 'Pending Approval' : 'Approved',
+      cashFlowType: 'Cash Out',
+    }
+    const next = { ...debt, total: updatedTotal, paid: updatedPaid, refunded: updatedRefunded, refundHistory: [refundRecord, ...(debt.refundHistory || [])], remaining: updatedRemaining, paymentStatus: paymentStatusFor(updatedPaid, updatedRemaining), debtStatus: debtStatusFor(updatedRemaining, debt.dueDate), lastFollowUp: `បានដក/សងលុយទៅអតិថិជន ${fmt(amount)} · ${creditNote}` }
     setRows(current => current.map(item => item.id === debt.id ? next : item))
     setSelected(next)
     setRefundDebt(null)
@@ -385,10 +429,11 @@ export default function DebtManagementPage() {
       </div>
     </div>
 
-    <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+    <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
       <SummaryCard icon={WalletCards} label="ប្រាក់នៅសល់សរុប" value={fmt(totalOutstanding)} helper="មិនរាប់បង់រួច" tone="blue"/>
       <SummaryCard icon={ShieldAlert} label="បំណុលហួសថ្ងៃ" value={fmt(overdue)} helper="ត្រូវ follow up បន្ទាន់" tone="red"/>
       <SummaryCard icon={CalendarClock} label="ត្រូវបង់ថ្ងៃនេះ" value={fmt(dueToday)} helper="ត្រូវទារថ្ងៃនេះ" tone="amber"/>
+      <SummaryCard icon={Undo2} label="សងលុយសរុប" value={fmt(refunded)} helper="Credit/Refund" tone="red"/>
       <SummaryCard icon={TrendingUp} label="បានប្រមូលសរុប" value={fmt(collected)} helper="ពីប្រវត្តិបង់ប្រាក់" tone="green"/>
     </div>
 
@@ -409,9 +454,9 @@ export default function DebtManagementPage() {
           <button className="btn-secondary" onClick={() => setReportOpen(true)}><FileSpreadsheet size={17}/>របាយការណ៍</button>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[980px]">
+          <table className="w-full min-w-[1080px]">
             <thead className="bg-slate-50 text-left text-xs font-bold uppercase text-slate-500">
-              <tr><th className="table-cell">អតិថិជន</th><th className="table-cell">វិក្កយបត្រ</th><th className="table-cell">ថ្ងៃត្រូវបង់</th><th className="table-cell text-right">សរុប</th><th className="table-cell text-right">បានបង់</th><th className="table-cell text-right">នៅសល់</th><th className="table-cell">ស្ថានភាព</th><th className="table-cell">ហានិភ័យ</th><th className="table-cell text-right">សកម្មភាព</th></tr>
+              <tr><th className="table-cell">អតិថិជន</th><th className="table-cell">វិក្កយបត្រ</th><th className="table-cell">ថ្ងៃត្រូវបង់</th><th className="table-cell text-right">សរុប</th><th className="table-cell text-right">បានបង់</th><th className="table-cell text-right">សងលុយ</th><th className="table-cell text-right">នៅសល់</th><th className="table-cell">ស្ថានភាព</th><th className="table-cell">ហានិភ័យ</th><th className="table-cell text-right">សកម្មភាព</th></tr>
             </thead>
             <tbody className="divide-y">
               {filtered.map(item => <tr key={item.id} onClick={() => setSelected(item)} className={`cursor-pointer hover:bg-blue-50/40 ${selected?.id === item.id ? 'bg-blue-50' : ''}`}>
@@ -420,6 +465,7 @@ export default function DebtManagementPage() {
                 <td className="table-cell"><p className="font-bold">{item.dueDate}</p><p className="text-xs text-slate-500">{item.lastFollowUp}</p></td>
                 <td className="table-cell text-right font-bold">{fmt(item.total)}</td>
                 <td className="table-cell text-right font-bold text-green-600">{fmt(item.paid)}</td>
+                <td className="table-cell text-right font-bold text-red-600">{fmt(item.refunded || 0)}</td>
                 <td className="table-cell text-right font-extrabold text-red-600">{fmt(item.remaining)}</td>
                 <td className="table-cell"><StatusBadge status={item.debtStatus}/></td>
                 <td className="table-cell"><StatusBadge status={item.risk}/></td>
