@@ -7,9 +7,10 @@ import AppErrorBoundary from './components/common/AppErrorBoundary'
 import { AuthProvider } from './contexts/AuthContext'
 import './index.css'
 
-const basename = import.meta.env.BASE_URL === '/' ? undefined : import.meta.env.BASE_URL.replace(/\/$/, '')
+const isNativeShell = window.location.protocol === 'capacitor:'
+const basename = import.meta.env.BASE_URL === '/' || isNativeShell ? undefined : import.meta.env.BASE_URL.replace(/\/$/, '')
 
-if ('serviceWorker' in navigator && import.meta.env.PROD) {
+if ('serviceWorker' in navigator && import.meta.env.PROD && !isNativeShell) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`, { scope: import.meta.env.BASE_URL })
   })

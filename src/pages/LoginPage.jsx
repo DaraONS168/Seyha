@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Eye, EyeOff, LockKeyhole, PhoneCall, UserRound } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import InstallAppButton from '../components/common/InstallAppButton'
 import { useAuth } from '../contexts/AuthContext'
 import { isSupabaseConfigured } from '../services/supabase'
 
@@ -41,6 +42,7 @@ export default function LoginPage() {
     <section className="flex items-center justify-center p-5">
       <div className="w-full max-w-md">
         <div className="mb-8 lg:hidden"><div className="mb-3 grid size-12 place-items-center rounded-2xl bg-blue-600 text-white"><PhoneCall/></div><h1 className="text-xl font-bold">Customer Follow Up</h1></div>
+        <div className="mb-5 flex justify-end"><InstallAppButton/></div>
         <h2 className="text-3xl font-bold text-slate-900">ចូលប្រើប្រាស់</h2>
         <p className="mt-2 text-slate-500">បញ្ចូល Username និងពាក្យសម្ងាត់ដើម្បីបន្ត</p>
         {error && <div className="mt-5 rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700">{error}</div>}

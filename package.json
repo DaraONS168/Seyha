@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:ios": "vite build --mode capacitor",
     "preview": "vite preview",
+    "ios:add": "npx cap add ios",
+    "ios:sync": "npm run build:ios && npx cap sync ios",
+    "ios:open": "npx cap open ios",
     "lint": "eslint . --max-warnings 0",
     "test": "vitest run",
     "test:watch": "vitest"
@@ -25,6 +29,9 @@
     "sonner": "^1.7.1"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.4.2",
+    "@capacitor/core": "^8.4.2",
+    "@capacitor/ios": "^8.4.2",
     "@eslint/js": "^9.17.0",
     "@testing-library/jest-dom": "^7.0.0",
     "@testing-library/react": "^16.3.2",

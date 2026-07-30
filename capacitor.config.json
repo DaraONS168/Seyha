@@ -1,0 +1,12 @@
+{
+  "appId": "com.shadowpv.seyha",
+  "appName": "Customer CRM",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "ios": {
+    "contentInset": "automatic"
+  },
+  "server": {
+    "iosScheme": "https"
+  }
+}

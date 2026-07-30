@@ -32,6 +32,9 @@ const DailyReportsPage = lazy(() => import('./pages/DailyReportsPage'))
 const DailyReportFormPage = lazy(() => import('./pages/DailyReportFormPage'))
 const DailyReportDetailPage = lazy(() => import('./pages/DailyReportDetailPage'))
 const DailyReportWorkspacePage = lazy(() => import('./pages/DailyReportWorkspacePage'))
+const DailyOdometerCheckPage = lazy(() => import('./pages/DailyOdometerCheckPage'))
+const DebtManagementPage = lazy(() => import('./pages/DebtManagementPage'))
+const DebtBrandSystemPage = lazy(() => import('./pages/DebtBrandSystemPage'))
 
 export default function App() {
   return <Suspense fallback={<LoadingState label="កំពុងបើកទំព័រ..."/>}>
@@ -62,9 +65,12 @@ export default function App() {
         <Route path="expenses/fuel/budgets" element={<PermissionRoute permission="fuel.budgets.view"><FuelBudgetsPage/></PermissionRoute>}/>
         <Route path="daily-reports" element={<PermissionRoute permission="daily_reports.view"><DailyReportsPage/></PermissionRoute>}/>
         <Route path="daily-reports/workspace" element={<PermissionRoute permission="daily_reports.view"><DailyReportWorkspacePage/></PermissionRoute>}/>
+        <Route path="daily-reports/odometer" element={<PermissionRoute permission="daily_reports.view"><DailyOdometerCheckPage/></PermissionRoute>}/>
         <Route path="daily-reports/new" element={<PermissionRoute permission="daily_reports.create"><DailyReportFormPage/></PermissionRoute>}/>
         <Route path="daily-reports/:id" element={<PermissionRoute permission="daily_reports.view"><DailyReportDetailPage/></PermissionRoute>}/>
         <Route path="daily-reports/:id/edit" element={<PermissionRoute permission="daily_reports.update"><DailyReportFormPage/></PermissionRoute>}/>
+        <Route path="debts" element={<PermissionRoute permission="dashboard.view"><DebtManagementPage/></PermissionRoute>}/>
+        <Route path="debts/brand-system" element={<PermissionRoute permission="dashboard.view"><DebtBrandSystemPage/></PermissionRoute>}/>
         <Route path="settings" element={<PermissionRoute permission="settings.view"><SettingsPage/></PermissionRoute>}/>
       </Route>
       <Route path="*" element={<NotFoundPage/>}/>

@@ -4,6 +4,12 @@ import { LEGACY_PERMISSION_ALIASES } from '../utils/permissions'
 
 const AuthContext = createContext(null)
 const USERNAME_EMAIL_DOMAIN = 'users.crm.local'
+const AUTH_STARTUP_TIMEOUT_MS = 8000
+
+const withTimeout = (promise, ms = AUTH_STARTUP_TIMEOUT_MS) => Promise.race([
+  promise,
+  new Promise(resolve => setTimeout(() => resolve({ timedOut: true }), ms)),
+])
 
 const usernameToEmail = value => {
   const login = value.trim().toLowerCase()
@@ -17,14 +23,18 @@ export function AuthProvider({ children }) {
 
   const loadProfile = useCallback(async (user) => {
     if (!user) { setProfile(null); return }
-    const { data } = await supabase.from('profiles').select('*,app_role:app_roles!profiles_role_fkey(name,permissions)').eq('id', user.id).single()
-    setProfile(data || { id: user.id, email: user.email, full_name: user.user_metadata?.full_name || user.email, role: 'sales' })
+    const fallback = { id: user.id, email: user.email, full_name: user.user_metadata?.full_name || user.email, role: 'sales' }
+    const result = await withTimeout(supabase.from('profiles').select('*,app_role:app_roles!profiles_role_fkey(name,permissions)').eq('id', user.id).single())
+    setProfile(result?.data || fallback)
   }, [])
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      setSession(data.session)
-      return loadProfile(data.session?.user)
+    withTimeout(supabase.auth.getSession()).then(({ data } = {}) => {
+      setSession(data?.session || null)
+      return loadProfile(data?.session?.user)
+    }).catch(() => {
+      setSession(null)
+      setProfile(null)
     }).finally(() => setLoading(false))
     const { data: listener } = supabase.auth.onAuthStateChange((_event, next) => {
       setSession(next)
