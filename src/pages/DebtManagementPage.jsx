@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { AlertTriangle, Banknote, BellRing, CalendarClock, CheckCircle2, Download, Eye, FileSpreadsheet, History, MessageCircle, MoreHorizontal, PhoneCall, Plus, Printer, ReceiptText, Search, Send, ShieldAlert, Trash2, TrendingUp, WalletCards, XCircle } from 'lucide-react'
+import { AlertTriangle, Banknote, BellRing, CalendarClock, CheckCircle2, Download, Eye, FileSpreadsheet, History, MessageCircle, MoreHorizontal, PhoneCall, Plus, Printer, ReceiptText, Search, Send, ShieldAlert, Trash2, TrendingUp, Undo2, WalletCards, XCircle } from 'lucide-react'
 import { toast } from 'sonner'
 import Modal from '../components/common/Modal'
 
@@ -122,6 +122,35 @@ function PaymentModal({ debt, onClose, onSave }) {
   </Modal>
 }
 
+function RefundModal({ debt, onClose, onSave }) {
+  const [amount, setAmount] = useState('')
+  const save = event => {
+    event.preventDefault()
+    const refundAmount = Number(amount)
+    if (!refundAmount || refundAmount <= 0) return toast.error('សូមបញ្ចូលចំនួនសងឲ្យត្រឹមត្រូវ')
+    if (refundAmount > Number(debt.paid)) return toast.error('ចំនួនសងមិនអាចធំជាងប្រាក់ដែលបានបង់រួចបានទេ')
+    onSave(debt, refundAmount)
+  }
+  return <Modal open={Boolean(debt)} onClose={onClose} title="សងលុយទៅអតិថិជន" size="max-w-3xl">
+    <form onSubmit={save} className="grid gap-4 md:grid-cols-3">
+      <div className="rounded-2xl border bg-red-50 p-4 md:col-span-3">
+        <p className="text-sm font-bold">{debt?.customer}</p>
+        <p className="text-xs text-slate-600">{debt?.invoice} · បានបង់រួច {fmt(debt?.paid)} · នៅសល់ {fmt(debt?.remaining)}</p>
+      </div>
+      <div><label className="label">ថ្ងៃសងលុយ *</label><input className="field" type="date" defaultValue="2026-07-30"/></div>
+      <div><label className="label">ចំនួនសង *</label><input className="field" type="number" value={amount} min="0.01" max={debt?.paid || 0} step="0.01" placeholder="0.00" onChange={event => setAmount(event.target.value)}/></div>
+      <div><label className="label">វិធីសងលុយ *</label><select className="field" defaultValue="ABA"><option>Cash</option><option>ABA</option><option>Bank Transfer</option><option>Wing</option><option>Other</option></select></div>
+      <div><label className="label">Cash Account *</label><select className="field"><option>ABA Main Account</option><option>Cash Box</option><option>Wing Account</option></select></div>
+      <div><label className="label">Reference Number</label><input className="field" placeholder="ឧ. REFUND-29391"/></div>
+      <div><label className="label">អ្នកធ្វើប្រតិបត្តិការ *</label><select className="field" defaultValue={debt?.sales}><option>Van</option><option>Phanha</option><option>Pheak</option></select></div>
+      <div className="md:col-span-3"><label className="label">ភ្ជាប់បង្កាន់ដៃសងលុយ</label><input className="field" type="file"/></div>
+      <div className="md:col-span-3"><label className="label">មូលហេតុ / កំណត់សម្គាល់</label><textarea className="field min-h-24" placeholder="ឧ. អតិថិជនប្តូរឥវ៉ាន់វិញ / កែតម្លៃ / បង់លើស..."/></div>
+      <div className="rounded-xl bg-red-50 p-4 text-sm font-bold text-red-700 md:col-span-3">ពេលរក្សាទុក៖ កាត់ Paid Amount ចុះ, បង្កើន Balance និងកត់ត្រា Cash Out សម្រាប់ audit។</div>
+      <div className="mt-1 flex justify-end gap-3 border-t pt-4 md:col-span-3"><button type="button" className="btn-secondary" onClick={onClose}>បោះបង់</button><button className="btn-primary bg-red-600 hover:bg-red-700"><Undo2 size={17}/>រក្សាទុកការសងលុយ</button></div>
+    </form>
+  </Modal>
+}
+
 function PromiseModal({ debt, onClose, onSave }) {
   const save = event => {
     event.preventDefault()
@@ -184,10 +213,11 @@ function ReportModal({ open, onClose, rows }) {
   </Modal>
 }
 
-function MoreActionsModal({ debt, onClose, onPay, onPromise }) {
+function MoreActionsModal({ debt, onClose, onPay, onPromise, onRefund }) {
   return <Modal open={Boolean(debt)} onClose={onClose} title="សកម្មភាពបន្ថែម" size="max-w-md">
     <div className="space-y-2">
       <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-green-50" onClick={() => { onClose(); onPay(debt) }}><Banknote className="text-green-600" size={18}/>កត់ត្រាការបង់ប្រាក់</button>
+      <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-red-50" onClick={() => { onClose(); onRefund(debt) }}><Undo2 className="text-red-600" size={18}/>សងលុយទៅអតិថិជន</button>
       <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-amber-50" onClick={() => { onClose(); onPromise(debt) }}><BellRing className="text-amber-600" size={18}/>សន្យាបង់ប្រាក់</button>
       <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-blue-50" onClick={() => toast.info(`កំពុងរៀបចំ Statement សម្រាប់ ${debt?.customer}`)}><Printer className="text-blue-600" size={18}/>បោះពុម្ព Statement</button>
       <button className="flex w-full items-center gap-3 rounded-xl border p-3 text-left hover:bg-red-50" onClick={() => toast.warning('ការកាត់ចោលបំណុលត្រូវការ Admin approval និង reason') }><ShieldAlert className="text-red-600" size={18}/>កាត់ចោលបំណុល</button>
@@ -195,7 +225,7 @@ function MoreActionsModal({ debt, onClose, onPay, onPromise }) {
   </Modal>
 }
 
-function DebtDetail({ debt, onPay, onPromise }) {
+function DebtDetail({ debt, onPay, onPromise, onRefund }) {
   if (!debt) return <aside className="card p-5 text-center text-sm text-slate-500">ជ្រើសបំណុលមួយ ដើម្បីមើលព័ត៌មានលម្អិត ប្រវត្តិបង់ប្រាក់ និង Follow Up Timeline។</aside>
   const days = daysBetween(debt.dueDate)
   return <aside className="card overflow-hidden">
@@ -217,6 +247,7 @@ function DebtDetail({ debt, onPay, onPromise }) {
     <div className="space-y-5 p-5">
       <div className="grid gap-3 sm:grid-cols-2">
         <button className="btn-primary" onClick={() => onPay(debt)}><Banknote size={17}/>កត់ត្រាការបង់ប្រាក់</button>
+        <button className="btn-secondary text-red-600 hover:bg-red-50" onClick={() => onRefund(debt)}><Undo2 size={17}/>សងលុយ</button>
         <button className="btn-secondary" onClick={() => onPromise(debt)}><BellRing size={17}/>សន្យាបង់ប្រាក់</button>
         <a className="btn-secondary" href={`tel:${debt.phone.replaceAll(' ', '')}`}><PhoneCall size={17}/>ហៅអតិថិជន</a>
         <button className="btn-secondary" onClick={() => window.print()}><Printer size={17}/>បោះពុម្ព Statement</button>
@@ -246,6 +277,7 @@ export default function DebtManagementPage() {
   const [rows, setRows] = useState(loadStoredDebts)
   const [selected, setSelected] = useState(() => rows[0] || null)
   const [paymentDebt, setPaymentDebt] = useState(null)
+  const [refundDebt, setRefundDebt] = useState(null)
   const [promiseDebt, setPromiseDebt] = useState(null)
   const [formOpen, setFormOpen] = useState(false)
   const [reportOpen, setReportOpen] = useState(false)
@@ -292,6 +324,15 @@ export default function DebtManagementPage() {
     setSelected(next)
     setPaymentDebt(null)
     toast.success('បានកាត់ប្រាក់ និង update balance ក្នុង prototype')
+  }
+  const saveRefund = (debt, amount) => {
+    const updatedPaid = Math.max(0, Number(debt.paid) - amount)
+    const updatedRemaining = Math.max(0, Number(debt.total) - updatedPaid)
+    const next = { ...debt, paid: updatedPaid, remaining: updatedRemaining, paymentStatus: paymentStatusFor(updatedPaid, updatedRemaining), debtStatus: debtStatusFor(updatedRemaining, debt.dueDate), lastFollowUp: `បានសងលុយទៅអតិថិជន ${fmt(amount)}` }
+    setRows(current => current.map(item => item.id === debt.id ? next : item))
+    setSelected(next)
+    setRefundDebt(null)
+    toast.success('បានកត់ត្រាការសងលុយទៅអតិថិជន')
   }
   const savePromise = debt => {
     setPromiseDebt(null)
@@ -366,6 +407,7 @@ export default function DebtManagementPage() {
                 <td className="table-cell"><div className="flex justify-end gap-1" onClick={event => event.stopPropagation()}>
                   <button className="rounded-lg p-2 text-blue-600 hover:bg-blue-100" title="មើលលម្អិត" onClick={() => setSelected(item)}><Eye size={17}/></button>
                   <button className="rounded-lg p-2 text-green-600 hover:bg-green-100" title="កត់ត្រាការបង់ប្រាក់" onClick={() => setPaymentDebt(item)}><Banknote size={17}/></button>
+                  <button className="rounded-lg p-2 text-red-600 hover:bg-red-100" title="សងលុយទៅអតិថិជន" onClick={() => setRefundDebt(item)}><Undo2 size={17}/></button>
                   <button className="rounded-lg p-2 text-red-600 hover:bg-red-100" title="លុបបំណុល" onClick={() => deleteDebt(item)}><Trash2 size={17}/></button>
                   <button className="rounded-lg p-2 text-slate-600 hover:bg-slate-100" title="សកម្មភាពបន្ថែម" onClick={() => setMoreDebt(item)}><MoreHorizontal size={17}/></button>
                 </div></td>
@@ -375,7 +417,7 @@ export default function DebtManagementPage() {
         </div>
       </section>
 
-      <DebtDetail debt={selected} onPay={setPaymentDebt} onPromise={setPromiseDebt}/>
+      <DebtDetail debt={selected} onPay={setPaymentDebt} onPromise={setPromiseDebt} onRefund={setRefundDebt}/>
     </div>
 
     <section className="grid gap-5 xl:grid-cols-3">
@@ -399,8 +441,9 @@ export default function DebtManagementPage() {
 
     <DebtFormModal open={formOpen} onClose={() => setFormOpen(false)} onSave={saveDebt}/>
     <ReportModal open={reportOpen} onClose={() => setReportOpen(false)} rows={filtered}/>
-    <MoreActionsModal debt={moreDebt} onClose={() => setMoreDebt(null)} onPay={setPaymentDebt} onPromise={setPromiseDebt}/>
+    <MoreActionsModal debt={moreDebt} onClose={() => setMoreDebt(null)} onPay={setPaymentDebt} onPromise={setPromiseDebt} onRefund={setRefundDebt}/>
     <PaymentModal debt={paymentDebt} onClose={() => setPaymentDebt(null)} onSave={savePayment}/>
+    <RefundModal debt={refundDebt} onClose={() => setRefundDebt(null)} onSave={saveRefund}/>
     <PromiseModal debt={promiseDebt} onClose={() => setPromiseDebt(null)} onSave={savePromise}/>
   </div>
 }
