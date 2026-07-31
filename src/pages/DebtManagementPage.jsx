@@ -411,6 +411,7 @@ export default function DebtManagementPage() {
   const [promiseDebt, setPromiseDebt] = useState(null)
   const [formOpen, setFormOpen] = useState(false)
   const [reportOpen, setReportOpen] = useState(false)
+  const [detailDebt, setDetailDebt] = useState(null)
   const [moreDebt, setMoreDebt] = useState(null)
   const [status, setStatus] = useState('all')
   const [provinces, setProvinces] = useState([])
@@ -469,6 +470,7 @@ export default function DebtManagementPage() {
     const next = { ...debt, paid: updatedPaid, remaining: updatedRemaining, paymentStatus: paymentStatusFor(updatedPaid, updatedRemaining), debtStatus: debtStatusFor(updatedRemaining, debt.dueDate), lastFollowUp: `បានកត់ត្រាការបង់ប្រាក់ ${fmt(amount)}` }
     setRows(current => current.map(item => item.id === debt.id ? next : item))
     setSelected(next)
+    setDetailDebt(current => current?.id === debt.id ? next : current)
     setPaymentDebt(null)
     toast.success('បានកាត់ប្រាក់ និង update balance ក្នុង prototype')
   }
@@ -495,6 +497,7 @@ export default function DebtManagementPage() {
     const next = { ...debt, total: updatedTotal, paid: updatedPaid, refunded: updatedRefunded, refundHistory: [refundRecord, ...(debt.refundHistory || [])], remaining: updatedRemaining, paymentStatus: paymentStatusFor(updatedPaid, updatedRemaining), debtStatus: debtStatusFor(updatedRemaining, debt.dueDate), lastFollowUp: `បានដក/សងលុយទៅអតិថិជន ${fmt(amount)} · ${creditNote}` }
     setRows(current => current.map(item => item.id === debt.id ? next : item))
     setSelected(next)
+    setDetailDebt(current => current?.id === debt.id ? next : current)
     setRefundDebt(null)
     toast.success('បានកត់ត្រាការសងលុយទៅអតិថិជន')
   }
@@ -515,6 +518,7 @@ export default function DebtManagementPage() {
     }
     setRows(current => current.map(item => item.id === debt.id ? next : item))
     setSelected(next)
+    setDetailDebt(current => current?.id === debt.id ? next : current)
     toast.success('បានលុប Credit Note និងកែ Balance វិញ')
   }
   const savePromise = debt => {
@@ -526,6 +530,7 @@ export default function DebtManagementPage() {
     setRows(current => {
       const nextRows = current.filter(item => item.id !== debt.id)
       setSelected(currentSelected => currentSelected?.id === debt.id ? nextRows[0] || null : currentSelected)
+      setDetailDebt(currentDetail => currentDetail?.id === debt.id ? null : currentDetail)
       return nextRows
     })
     toast.success('បានលុបបំណុលចេញពីបញ្ជី')
@@ -599,7 +604,7 @@ export default function DebtManagementPage() {
                 <td className="table-cell"><StatusBadge status={item.debtStatus}/></td>
                 <td className="table-cell"><StatusBadge status={item.risk}/></td>
                 <td className="table-cell"><div className="flex justify-end gap-1" onClick={event => event.stopPropagation()}>
-                  <button className="rounded-lg p-2 text-blue-600 hover:bg-blue-100" title="មើលលម្អិត" onClick={() => setSelected(item)}><Eye size={17}/></button>
+                  <button className="rounded-lg p-2 text-blue-600 hover:bg-blue-100" title="មើលលម្អិត" onClick={() => { setSelected(item); setDetailDebt(item) }}><Eye size={17}/></button>
                   <button className="rounded-lg p-2 text-green-600 hover:bg-green-100" title="កត់ត្រាការបង់ប្រាក់" onClick={() => setPaymentDebt(item)}><Banknote size={17}/></button>
                   <button className="rounded-lg p-2 text-red-600 hover:bg-red-100" title="សងលុយទៅអតិថិជន" onClick={() => setRefundDebt(item)}><Undo2 size={17}/></button>
                   <button className="rounded-lg p-2 text-red-600 hover:bg-red-100" title="លុបបំណុល" onClick={() => deleteDebt(item)}><Trash2 size={17}/></button>
@@ -635,6 +640,9 @@ export default function DebtManagementPage() {
 
     <DebtFormModal open={formOpen} onClose={() => setFormOpen(false)} onSave={saveDebt} provinces={provinces}/>
     <ReportModal open={reportOpen} onClose={() => setReportOpen(false)} rows={filtered}/>
+    <Modal open={Boolean(detailDebt)} onClose={() => setDetailDebt(null)} title="ព័ត៌មានលម្អិត Debt" size="max-w-4xl">
+      <DebtDetail debt={detailDebt} onPay={setPaymentDebt} onPromise={setPromiseDebt} onRefund={setRefundDebt} onDeleteRefund={deleteRefund}/>
+    </Modal>
     <MoreActionsModal debt={moreDebt} onClose={() => setMoreDebt(null)} onPay={setPaymentDebt} onPromise={setPromiseDebt} onRefund={setRefundDebt}/>
     <PaymentModal debt={paymentDebt} onClose={() => setPaymentDebt(null)} onSave={savePayment}/>
     <RefundModal debt={refundDebt} onClose={() => setRefundDebt(null)} onSave={saveRefund}/>
