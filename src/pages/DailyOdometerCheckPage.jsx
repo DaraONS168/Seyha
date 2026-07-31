@@ -25,13 +25,31 @@ const emptyForm = {
 
 const number = value => Number(value || 0)
 const km = value => `${Number(value || 0).toLocaleString()} KM`
+const savedAt = value => {
+  if (!value) return '—'
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return '—'
+  return date.toLocaleString('km-KH')
+}
 
 function loadRows() {
   try {
     const parsed = JSON.parse(localStorage.getItem(storageKey) || '[]')
-    return Array.isArray(parsed) ? parsed : []
+    if (Array.isArray(parsed) && parsed.length) return parsed
+    return [sampleRow()]
   } catch {
-    return []
+    return [sampleRow()]
+  }
+}
+
+function sampleRow() {
+  return {
+    ...emptyForm,
+    id: `${emptyForm.check_date}-${emptyForm.sales}-${emptyForm.vehicle}`,
+    work_distance_km: 126,
+    after_hours_distance_km: 0,
+    total_distance_km: 126,
+    saved_at: new Date().toISOString(),
   }
 }
 
@@ -69,6 +87,7 @@ export default function DailyOdometerCheckPage() {
   const [form, setForm] = useState(emptyForm)
   const [rows, setRows] = useState([])
   const [query, setQuery] = useState('')
+  const [dateFilter, setDateFilter] = useState({ mode: 'all', from: '', to: '' })
 
   useEffect(() => setRows(loadRows()), [])
 
@@ -80,8 +99,11 @@ export default function DailyOdometerCheckPage() {
 
   const filteredRows = useMemo(() => rows.filter(row => {
     const text = `${row.check_date} ${row.sales} ${row.vehicle}`.toLowerCase()
-    return !query || text.includes(query.toLowerCase())
-  }), [query, rows])
+    const matchesText = !query || text.includes(query.toLowerCase())
+    const matchesFrom = dateFilter.mode === 'all' || !dateFilter.from || row.check_date >= dateFilter.from
+    const matchesTo = dateFilter.mode === 'all' || !dateFilter.to || row.check_date <= dateFilter.to
+    return matchesText && matchesFrom && matchesTo
+  }), [dateFilter, query, rows])
 
   const update = (key, value) => setForm(current => ({ ...current, [key]: value }))
   const save = event => {
@@ -102,8 +124,8 @@ export default function DailyOdometerCheckPage() {
     toast.success('បានលុបកំណត់ត្រា')
   }
   const exportCsv = () => {
-    const headers = ['Date', 'Sales', 'Vehicle', 'Start Time', 'Start Odo', 'End Time', 'End Odo', 'Night Time', 'Night Odo', 'Work KM', 'After Hours KM']
-    const csv = [headers, ...rows.map(row => [row.check_date, row.sales, row.vehicle, row.work_start_time, row.work_start_odometer, row.work_end_time, row.work_end_odometer, row.night_check_time, row.night_check_odometer, row.work_distance_km, row.after_hours_distance_km])].map(line => line.map(value => `"${String(value).replaceAll('"', '""')}"`).join(',')).join('\n')
+    const headers = ['Date', 'Sales', 'Vehicle', 'Start Time', 'Start Odo', 'End Time', 'End Odo', 'Night Time', 'Night Odo', 'Work KM', 'After Hours KM', 'Total KM', 'Start Photo', 'End Photo', 'Night Photo', 'Notes', 'Saved At']
+    const csv = [headers, ...filteredRows.map(row => [row.check_date, row.sales, row.vehicle, row.work_start_time, row.work_start_odometer, row.work_end_time, row.work_end_odometer, row.night_check_time, row.night_check_odometer, row.work_distance_km, row.after_hours_distance_km, row.total_distance_km, row.start_photo, row.end_photo, row.night_photo, row.notes, row.saved_at])].map(line => line.map(value => `"${String(value ?? '').replaceAll('"', '""')}"`).join(',')).join('\n')
     const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8;' }))
     const link = document.createElement('a')
     link.href = url
@@ -159,13 +181,21 @@ export default function DailyOdometerCheckPage() {
     </form>
 
     <section className="card overflow-hidden">
-      <div className="flex flex-col gap-3 border-b bg-slate-50 p-4 md:flex-row md:items-center md:justify-between">
+      <div className="grid gap-3 border-b bg-slate-50 p-4 xl:grid-cols-[260px_1fr] xl:items-center">
         <div><h2 className="font-extrabold">ប្រវត្តិបំពេញប្រចាំថ្ងៃ</h2><p className="text-xs text-slate-500">រក្សាទុកក្នុង browser សម្រាប់ prototype test មុនភ្ជាប់ Supabase។</p></div>
-        <div className="relative w-full md:w-80"><Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={17}/><input className="field pl-10" value={query} onChange={event => setQuery(event.target.value)} placeholder="ស្វែងរក Sales / យានយន្ត..."/></div>
+        <div className="grid w-full gap-2 md:grid-cols-[150px_1fr_1fr_280px]">
+          <select className="field" value={dateFilter.mode} onChange={event => setDateFilter(current => ({ ...current, mode: event.target.value }))}>
+            <option value="all">All</option>
+            <option value="range">From - To</option>
+          </select>
+          <input className="field" type="date" disabled={dateFilter.mode === 'all'} value={dateFilter.from} onChange={event => setDateFilter(current => ({ ...current, from: event.target.value }))}/>
+          <input className="field" type="date" disabled={dateFilter.mode === 'all'} value={dateFilter.to} onChange={event => setDateFilter(current => ({ ...current, to: event.target.value }))}/>
+          <div className="relative"><Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={17}/><input className="field pl-10" value={query} onChange={event => setQuery(event.target.value)} placeholder="ស្វែងរក Sales / យានយន្ត..."/></div>
+        </div>
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[980px]">
-          <thead className="bg-slate-50 text-left text-xs text-slate-500"><tr>{['ថ្ងៃ','Sales','យានយន្ត','ចាប់ផ្តើម','បញ្ចប់','ពេលយប់','ចម្ងាយការងារ','ក្រៅម៉ោង','ស្ថានភាព',''].map(item => <th key={item} className="table-cell">{item}</th>)}</tr></thead>
+        <table className="w-full min-w-[1500px]">
+          <thead className="bg-slate-50 text-left text-xs text-slate-500"><tr>{['ថ្ងៃ','Sales','យានយន្ត','ចាប់ផ្តើម','បញ្ចប់','ពេលយប់','ចម្ងាយការងារ','ក្រៅម៉ោង','សរុប','រូបភាព','កំណត់សម្គាល់','រក្សាទុកនៅ','ស្ថានភាព',''].map(item => <th key={item} className="table-cell">{item}</th>)}</tr></thead>
           <tbody className="divide-y">
             {filteredRows.map(row => <tr key={row.id}>
               <td className="table-cell font-bold">{row.check_date}</td>
@@ -176,10 +206,18 @@ export default function DailyOdometerCheckPage() {
               <td className="table-cell">{row.night_check_time} · {row.night_check_odometer}</td>
               <td className="table-cell font-bold text-blue-700">{km(row.work_distance_km)}</td>
               <td className={`table-cell font-bold ${row.after_hours_distance_km > 0 ? 'text-orange-600' : 'text-green-600'}`}>{km(row.after_hours_distance_km)}</td>
+              <td className="table-cell font-bold text-slate-900">{km(row.total_distance_km)}</td>
+              <td className="table-cell min-w-52 text-xs text-slate-600">
+                <p><b>Start:</b> {row.start_photo || '—'}</p>
+                <p><b>End:</b> {row.end_photo || '—'}</p>
+                <p><b>Night:</b> {row.night_photo || '—'}</p>
+              </td>
+              <td className="table-cell max-w-72 whitespace-normal text-sm text-slate-600">{row.notes || '—'}</td>
+              <td className="table-cell text-xs text-slate-500">{savedAt(row.saved_at)}</td>
               <td className="table-cell">{row.after_hours_distance_km > 0 ? <span className="rounded-full bg-orange-50 px-2.5 py-1 text-xs font-bold text-orange-700">ត្រូវពិនិត្យ</span> : <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-1 text-xs font-bold text-green-700"><CheckCircle2 size={13}/>ធម្មតា</span>}</td>
               <td className="table-cell text-right"><button className="rounded-lg p-2 text-red-600 hover:bg-red-50" onClick={() => remove(row.id)}><Trash2 size={16}/></button></td>
             </tr>)}
-            {!filteredRows.length && <tr><td colSpan="10" className="table-cell py-10 text-center text-slate-500"><Gauge className="mx-auto mb-2 text-slate-300"/>មិនទាន់មានកំណត់ត្រា</td></tr>}
+            {!filteredRows.length && <tr><td colSpan="14" className="table-cell py-10 text-center text-slate-500"><Gauge className="mx-auto mb-2 text-slate-300"/>មិនទាន់មានកំណត់ត្រា</td></tr>}
           </tbody>
         </table>
       </div>
